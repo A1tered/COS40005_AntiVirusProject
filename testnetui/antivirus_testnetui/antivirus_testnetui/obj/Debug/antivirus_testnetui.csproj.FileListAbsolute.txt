@@ -1,0 +1,10 @@
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\bin\Debug\antivirus_testnetui.exe.config
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\bin\Debug\antivirus_testnetui.exe
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\bin\Debug\antivirus_testnetui.pdb
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.csproj.AssemblyReference.cache
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.Properties.Resources.resources
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.csproj.GenerateResource.cache
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.csproj.CoreCompileInputs.cache
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.exe
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.pdb
+C:\Users\Zach\Documents\GitHub\COS40005_AntiVirusProject\testnetui\antivirus_testnetui\antivirus_testnetui\obj\Debug\antivirus_testnetui.Form1.resources
