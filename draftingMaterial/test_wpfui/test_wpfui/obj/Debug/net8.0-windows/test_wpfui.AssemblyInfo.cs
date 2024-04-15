@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08c0190671db801cd4148826e6a943a0e1fef2c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9d956ab7746bda4690baf2456746f45e11bee5c")]
 [assembly: System.Reflection.AssemblyProductAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
