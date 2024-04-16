@@ -330,11 +330,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\DatabaseProofOfConcept\\DatabaseProofOfConcept.csproj",
+      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\Databases\\DatabaseProofOfConcept\\DatabaseProofOfConcept.csproj",
       "projectName": "DatabaseProofOfConcept",
-      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\DatabaseProofOfConcept\\DatabaseProofOfConcept.csproj",
+      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\Databases\\DatabaseProofOfConcept\\DatabaseProofOfConcept.csproj",
       "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\DatabaseProofOfConcept\\obj\\",
+      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\Databases\\DatabaseProofOfConcept\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -27,7 +27,7 @@ namespace DatabaseProofOfConcept
             SqliteConnectionStringBuilder stringBuilder = new SqliteConnectionStringBuilder();
             _typeEnforcer = ["NULL", "INTEGER", "REAL", "BLOB", "TEXT"];
             stringBuilder.Add("Mode", SqliteOpenMode.ReadWriteCreate);
-            stringBuilder.Add("Data Source", $"Databases/databaseName");
+            stringBuilder.Add("Data Source", $"Databases/{databaseName}");
             _sqliteConnectionRepresentation = new SqliteConnection(stringBuilder.ToString());
             _sqliteConnectionRepresentation.Open();
         }
@@ -90,6 +90,15 @@ namespace DatabaseProofOfConcept
             return stringBuild.ToString();
         }
 
+        /// <summary>
+        /// This function creates a table, based on TableName, array of names, and array of types.
+        /// 
+        /// Please refer to SQLite documentation in regards to data types as theyre different compared to SQL/MariaDB.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public bool CreateTable(string tableName, string[] name, string[] type)
         {
             // Unpack
@@ -114,7 +123,13 @@ namespace DatabaseProofOfConcept
             }
             return false;
         }
-
+        /// <summary>
+        ///  Basic query function
+        ///  Table name and the columns to query. (Basically will show the entire column) You can pass in just *, to present all results.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         public string BasicQuery(string tableName, string[] columns)
         {
             // Unpack
@@ -130,9 +145,6 @@ namespace DatabaseProofOfConcept
                         stringBuildColumns.Append(",");
                     }
                 }
-
-
-
                 try
                 {
                     using (SqliteCommand sqliteCommandRepresentation = _sqliteConnectionRepresentation.CreateCommand())
@@ -166,6 +178,15 @@ namespace DatabaseProofOfConcept
             return "null";
         }
 
+        /// <summary>
+        /// Insert value equivalent
+        /// 
+        /// provide table name, columns to insert value into, and values.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="columns"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public bool InsertValuesExplicit(string tableName, string[] columns, string[] values)
         {
             _idTracker += 1;
