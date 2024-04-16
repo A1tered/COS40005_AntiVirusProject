@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>DatabaseProofOfConcept</id>
+    <version>1.0.0</version>
+    <authors>DatabaseProofOfConcept</authors>
+    <description>Package Description</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.Data.Sqlite" version="8.0.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\Cos40005 Technology Project A\Programs\DatabaseProofOfConcept\bin\Debug\net8.0\DatabaseProofOfConcept.runtimeconfig.json" target="lib\net8.0\DatabaseProofOfConcept.runtimeconfig.json" />
+    <file src="C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\Cos40005 Technology Project A\Programs\DatabaseProofOfConcept\bin\Debug\net8.0\DatabaseProofOfConcept.dll" target="lib\net8.0\DatabaseProofOfConcept.dll" />
+  </files>
+</package>
