@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WxZqrJcv75dtLBsEqQWcUbUE9XlSZpRzk9ypl5eBDMSjpWkWK8NI1ARXso4ljMRDC6T9rwFWF2zqv/0iNKtMnQ==",
+  "dgSpecHash": "nSk54PajTf703B5Lo2paAZM7Pw7dG0upFnN3fztFuwEi3wlbLuTqul9KBDU/wVmB0+kCCzX93BrLtonkMI43hw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zach\\Documents\\GitHub\\COS40005_AntiVirusProject\\draftingMaterial\\test_wpfui\\test_wpfui\\test_wpfui.csproj",
+  "projectFilePath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\draftingMaterial\\test_wpfui\\test_wpfui\\test_wpfui.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Zach\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512"
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512"
   ],
   "logs": []
 }
