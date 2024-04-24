@@ -35,7 +35,6 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcept
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1.csproj.AssemblyReference.cache
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\App.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\DashboardPage.g.cs
-C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\DataPage.g.cs
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\SettingsPage.g.cs
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Windows\MainWindow.g.cs
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\App.g.cs
@@ -44,7 +43,6 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcept
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1_MarkupCompile.cache
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1_MarkupCompile.lref
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\DashboardPage.baml
-C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\DataPage.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\SettingsPage.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Windows\MainWindow.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1.g.resources

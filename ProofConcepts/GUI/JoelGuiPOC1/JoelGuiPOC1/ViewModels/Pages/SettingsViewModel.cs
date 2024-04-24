@@ -24,7 +24,7 @@ namespace JoelGuiPOC1.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+            AppVersion = $"Simple Antivirus - v.{GetAssemblyVersion()}";
 
             _isInitialized = true;
         }

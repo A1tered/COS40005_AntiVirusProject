@@ -10,9 +10,6 @@
     <Page Update="Views\Pages\DashboardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\DataPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
