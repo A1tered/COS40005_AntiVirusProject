@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\asynchronousprogrammingpractice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\asynchronousprogrammingpractice\\asynchronouscaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|solutionrelative:asynchronouscaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\asynchronousprogrammingpractice\\hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|solutionrelative:hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\asynchronousprogrammingpractice\\synchronouscaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33D547AB-E4B8-41B9-9666-5574E9A6B47D}|AsynchronousProgrammingPractice.csproj|solutionrelative:synchronouscaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:19:24.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AsynchronousCaller.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\AsynchronousCaller.cs",
+              "RelativeDocumentMoniker": "AsynchronousCaller.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\AsynchronousCaller.cs",
+              "RelativeToolTip": "AsynchronousCaller.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAYwCwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T06:31:14.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hasher.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\Hasher.cs",
+              "RelativeDocumentMoniker": "Hasher.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\Hasher.cs",
+              "RelativeToolTip": "Hasher.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:27:58.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SynchronousCaller.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\SynchronousCaller.cs",
+              "RelativeDocumentMoniker": "SynchronousCaller.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\AsynchronousProgrammingPractice\\SynchronousCaller.cs",
+              "RelativeToolTip": "SynchronousCaller.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAYwCoAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T06:31:07.804Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
