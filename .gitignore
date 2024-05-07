@@ -1,1 +1,4 @@
-*/.vs
+/.vs
+draftingMaterial/test_wpfui/.vs
+ProofConcepts/Databases/DatabaseProofOfConcept/.vs
+ProofConcepts/GUI/JoelGuiPOC1/.vs
