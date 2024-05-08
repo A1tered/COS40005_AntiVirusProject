@@ -17,15 +17,20 @@ namespace FileHashChecking
             Console.WriteLine("File Selection\n");
             Console.WriteLine("Please enter the path of the file: ");
             string path = Console.ReadLine();
-            try
+            if (path != "")
             {
-                FileStream file = File.Open(path, FileMode.Open, FileAccess.Read);
-                return file;
+                try
+                {
+                    FileStream currentFile = File.Open(path, FileMode.Open, FileAccess.Read);
+                    return currentFile;
+                }
+                catch (IOException error)
+                {
+                    return null;
+                }
             }
-            catch (IOException error)
-            {
-                return null;
-            }
+            Console.Clear();
+            return null;
         }
 
         public static string GetHash(FileStream filestream)
@@ -47,12 +52,11 @@ namespace FileHashChecking
 
             // Create database
             string dbDir = dirMan.getDatabaseDirectory("signatureDB");
-            Console.WriteLine($"Database Directory Found: {dbDir}");
             Database signatureDB = new Database(dbDir);
             bool scanResult = signatureDB.Scan(hash);
             if (!scanResult)
             {
-                Console.WriteLine("A database error occurred whilst scanning your file. Please try again later.");
+                Console.WriteLine("Error: A database error occurred whilst scanning your file. Please try again later.");
             }
         }
 
@@ -68,21 +72,25 @@ namespace FileHashChecking
             switch (Console.ReadLine())
             {
                 case "1":
+                    Console.Clear();
                     FileStream path = OpenFile();
                     if (path != null)
                     {
                         // Get hash
                         string hash = GetHash(path);
                         string file = Path.GetFileName(path.Name);
+                        Console.Clear();
                         Console.WriteLine($"The hash of '{file}' is: {hash}\n");
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Error: Invalid or no file selected.\r\n");
                     }
                     MainMenu();
                     break;
                 case "2":
+                    Console.Clear();
                     FileStream pathToScan = OpenFile();
                     if (pathToScan != null)
                     {
@@ -93,14 +101,19 @@ namespace FileHashChecking
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Error: Invalid or no file selected.\r\n");
                     }
+                    MainMenu();
                     break;
                 case "3":
                     Console.WriteLine("Program exiting.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                     break;
                 default:
-                    Console.WriteLine("No option selected.");
+                    Console.Clear();
+                    Console.WriteLine("Error: No option selected.");
                     MainMenu();
                     break;
             }

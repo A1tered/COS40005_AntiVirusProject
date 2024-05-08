@@ -30,7 +30,7 @@ namespace FileHashChecking
 
         public string getDatabaseDirectory(string databaseName) // Find database folder and then database, return directory (assumption folder name is Databases.
         {
-            Console.WriteLine("Database File Searcher:");
+            Console.WriteLine("\r\nDatabase File Searcher:");
             string databaseDirectory;
             string[] directoryContents;
             string[] itemContents;

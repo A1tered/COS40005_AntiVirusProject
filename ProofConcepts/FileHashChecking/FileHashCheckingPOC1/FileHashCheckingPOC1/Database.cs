@@ -68,7 +68,15 @@ namespace FileHashChecking
                     if (reader.HasRows)
                     {
                         string queryResult = reader.GetString(0);
-                        Console.WriteLine($"Threats found! {queryResult} threats have been quarantined.");
+                        Console.Clear();
+                        if (queryResult != "1")
+                        {
+                            Console.WriteLine($"Threats found! {queryResult} threats have been quarantined.");
+                        }
+                        else if (queryResult == "1") 
+                        {
+                            Console.WriteLine($"Threats found! {queryResult} threat has been quarantined.");
+                        }
                         return true;
                     }
                     else
