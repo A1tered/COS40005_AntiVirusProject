@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "ZRIuwHS+1nCywSF6X8JJo05b5Q5mU1ccHVL0gomyWb60ZcrQ6KFMsrxpTTP5ZgtWzo1i6XKFglRVKRdSKuRGdg==",
+  "dgSpecHash": "LhknqGiWXzgKcfEkRDh1Ju7TGdpGvBRLI4jXWCS3go9l6oh69d+Iq3fwN9WYhdLCvec4crCQt15ltIjF5xnM9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashCheckingPOC1\\FileHashCheckingPOC1\\FileHashCheckingPOC1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\microsoft.data.sqlite\\8.0.4\\microsoft.data.sqlite.8.0.4.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.4\\microsoft.data.sqlite.core.8.0.4.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }
