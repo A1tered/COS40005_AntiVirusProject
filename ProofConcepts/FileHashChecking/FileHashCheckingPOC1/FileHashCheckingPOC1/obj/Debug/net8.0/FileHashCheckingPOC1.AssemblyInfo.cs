@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileHashCheckingPOC1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37b8f36351ffcd3d1c94a5bc18e34fcc1aecd1f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+669faa4ee2a00697a55b6d39ca7921c92d12a975")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileHashCheckingPOC1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileHashCheckingPOC1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

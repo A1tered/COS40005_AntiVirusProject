@@ -81,7 +81,9 @@ namespace FileHashChecking
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("No threats detected.");
+                        return true;
                     }
                 }
                 catch (Exception ex)

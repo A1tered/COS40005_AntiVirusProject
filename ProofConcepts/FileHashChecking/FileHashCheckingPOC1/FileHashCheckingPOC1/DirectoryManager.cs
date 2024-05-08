@@ -18,10 +18,8 @@ namespace FileHashChecking
         {
             foreach (string directory in directorySet)
             {
-                Console.WriteLine($"Debug Directory Cycler: {directory}");
                 if (directory.Contains(name))
                 {
-                    Console.WriteLine($"Found {directory}");
                     return directory;
                 }
             }
@@ -30,7 +28,6 @@ namespace FileHashChecking
 
         public string getDatabaseDirectory(string databaseName) // Find database folder and then database, return directory (assumption folder name is Databases.
         {
-            Console.WriteLine("\r\nDatabase File Searcher:");
             string databaseDirectory;
             string[] directoryContents;
             string[] itemContents;
@@ -44,7 +41,6 @@ namespace FileHashChecking
                 if (fetchDirectory != "")
                 {
                     itemContents = Directory.GetFiles(fetchDirectory);
-                    Console.WriteLine(itemContents[0]);
                     databaseDirectory = MatchDirectory(itemContents, databaseName);
                     if (databaseDirectory != "")
                     {
