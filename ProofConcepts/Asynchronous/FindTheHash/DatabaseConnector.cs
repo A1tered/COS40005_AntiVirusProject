@@ -16,7 +16,7 @@ namespace FindTheHash
     {
         private SqliteConnection _sqliteConnectionRepresentation;
         private string _tableName;
-        public DatabaseConnector(string databaseDirectory)
+        public DatabaseConnector(string databaseDirectory, bool writeAccess = false)
         {
             _tableName = "hashTable";
             
@@ -25,7 +25,14 @@ namespace FindTheHash
                 Directory.CreateDirectory("Databases");
             }
             SqliteConnectionStringBuilder stringBuilder = new SqliteConnectionStringBuilder();
-            stringBuilder.Add("Mode", SqliteOpenMode.ReadOnly);
+            if (!writeAccess)
+            {
+                stringBuilder.Add("Mode", SqliteOpenMode.ReadOnly);
+            }
+            else
+            {
+                stringBuilder.Add("Mode", SqliteOpenMode.ReadWrite);
+            }
             stringBuilder.Add("Data Source", $"{databaseDirectory}");
             _sqliteConnectionRepresentation = new SqliteConnection(stringBuilder.ToString());
             _sqliteConnectionRepresentation.Open();
@@ -57,6 +64,8 @@ namespace FindTheHash
             }
             return false;
         }
+
+
 
         public int[] QueryHashBatch(string[] hash) // Attempt to efficiently do set of hashes, return index
         {
@@ -91,6 +100,30 @@ namespace FindTheHash
                 }
             }
             return returnIndex.ToArray();
+        }
+
+
+        public bool AddHash(string hash)
+        {
+            if (QueryHash(hash))
+            {
+                return false;
+            }
+            if (ConnectionSuccessful())
+            {
+                SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
+                commandCreation.CommandText = (@"
+                INSERT INTO hashTable VALUES ($hash);
+                ");
+                //commandCreation.Parameters.AddWithValue("$table", _tableName);
+                commandCreation.Parameters.AddWithValue("$hash", hash);
+                int sqliteDataReader = commandCreation.ExecuteNonQuery();
+                if (sqliteDataReader > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool ConnectionSuccessful() // If connection is ready for commands, returns true.
