@@ -21,10 +21,7 @@ class Program
         {
             // Get all processes that are named "cmd" or "powershell"
             var processes = Process.GetProcesses()
-                                   .Where(p => p.ProcessName.Equals("cmd", StringComparison.OrdinalIgnoreCase) ||
-                                               p.ProcessName.Equals("powershell", StringComparison.OrdinalIgnoreCase) ||
-                                               p.ProcessName.Equals("pwsh", StringComparison.OrdinalIgnoreCase))
-                                   .ToList();
+                                   .Where(p => p.ProcessName.Equals("cmd", StringComparison.OrdinalIgnoreCase) ||p.ProcessName.Equals("powershell", StringComparison.OrdinalIgnoreCase) ||p.ProcessName.Equals("pwsh", StringComparison.OrdinalIgnoreCase)).ToList();
 
             foreach (var process in processes)
             {
@@ -32,7 +29,7 @@ class Program
                 DetectedTerminalisRunning(process);
             }
 
-            await Task.Delay(1); // Wait for 5 seconds before checking again. Delay needed to reduce hardware usage while maintaining performance
+            await Task.Delay(5000); // Wait for 5 seconds before checking again. Delay needed to reduce hardware usage while maintaining performance
         }
     }
 
