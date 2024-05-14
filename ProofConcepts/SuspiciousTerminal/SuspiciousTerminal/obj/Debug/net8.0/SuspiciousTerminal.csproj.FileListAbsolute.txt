@@ -1,0 +1,15 @@
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\SuspiciousTerminal.exe
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\SuspiciousTerminal.deps.json
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\SuspiciousTerminal.runtimeconfig.json
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\SuspiciousTerminal.dll
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\SuspiciousTerminal.pdb
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.AssemblyInfoInputs.cache
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.AssemblyInfo.cs
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.csproj.CoreCompileInputs.cache
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.sourcelink.json
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.dll
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\refint\SuspiciousTerminal.dll
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.pdb
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.genruntimeconfig.cache
+C:\Users\Tim\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\ref\SuspiciousTerminal.dll
