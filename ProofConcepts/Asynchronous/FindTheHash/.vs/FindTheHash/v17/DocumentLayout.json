@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\splitprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:splitprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\hunter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:hunter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|c:\\users\\yumcy\\onedrive\\desktop\\universitysubjects\\cos40005 technology project a\\programs\\findthehash\\directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FindTheHash.csproj|solutionrelative:directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Hasher.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Hasher.cs",
+              "RelativeDocumentMoniker": "Hasher.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Hasher.cs",
+              "RelativeToolTip": "Hasher.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwBcAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-05T06:12:20.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T07:41:48.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SplitProcess.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\SplitProcess.cs",
+              "RelativeDocumentMoniker": "SplitProcess.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\SplitProcess.cs",
+              "RelativeToolTip": "SplitProcess.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwC4AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T07:41:55.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hunter.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Hunter.cs",
+              "RelativeDocumentMoniker": "Hunter.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\Hunter.cs",
+              "RelativeToolTip": "Hunter.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAgwEwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T07:37:25.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatabaseConnector.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\DatabaseConnector.cs",
+              "RelativeDocumentMoniker": "DatabaseConnector.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\DatabaseConnector.cs",
+              "RelativeToolTip": "DatabaseConnector.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T00:13:05.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DirectoryManager.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\DirectoryManager.cs",
+              "RelativeDocumentMoniker": "DirectoryManager.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\Cos40005 Technology Project A\\Programs\\FindTheHash\\DirectoryManager.cs",
+              "RelativeToolTip": "DirectoryManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T23:30:59.517Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
