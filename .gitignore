@@ -7,3 +7,4 @@ ProofConcepts/Asynchronous/FindTheHashNOTFINISHED/.vs
 ProofConcepts/FileHashChecking/FileHashCheckingPOC1/.vs
 *.v2
 *.vsidx
+*.bin
