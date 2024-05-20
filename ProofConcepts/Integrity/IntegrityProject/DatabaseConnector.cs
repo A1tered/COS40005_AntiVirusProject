@@ -74,6 +74,18 @@ namespace FindTheHash
             return new List<string>();
         }
 
+        public bool EmptyDatabase()
+        {
+            if (ConnectionSuccessful())
+            {
+                SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
+                commandCreation.CommandText = (@$"DELETE FROM integrityTrack");
+                int sqliteResult = commandCreation.ExecuteNonQuery();
+                return (sqliteResult > 0); // If successful, amount of rows should be bigger than 0.
+            }
+            return false;
+        }
+
         public bool AddIntegrityEntry(string directory, string hash, long modificationTime, long signatureTime, long sizeBytes)
         {
             if (ConnectionSuccessful())

@@ -12,7 +12,7 @@ IntegrityManager integrityManager = new(databaseDirectory);
 
 Console.WriteLine(WindowsIdentity.GetCurrent().Name);
 bool initialIntegrityRun = true;
-bool configAdd = false; // Whether to scan or just add entries.
+bool configAdd = true; // Whether to scan or just add entries.
 if (!configAdd)
 {
 
@@ -41,6 +41,7 @@ if (!configAdd)
 }
 else // If configadd, run the code here. (If integrity already exists, it updates entry).
 {
+    integrityManager.ClearDatabase();
     string[] directorySet = Directory.GetFiles(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\Cos40005 Technology Project A\TestingGrounds\IntegrityCheckedFiles");
     Console.WriteLine(directorySet.Count());
     foreach (string insideDirectory in directorySet)

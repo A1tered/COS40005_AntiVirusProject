@@ -28,6 +28,11 @@ namespace IntegrityMarkRecordGetAccessRecords
             return DateTimeOffset.FromUnixTimeSeconds(unixTime).ToString("dd:MM:yyyy");
         }
 
+        public bool ClearDatabase()
+        {
+            return _databaseConnector.EmptyDatabase();
+        }
+
         public List<string> IntegrityCheck(bool bootCheck = false)
         {
             List<String> directorySet = _databaseConnector.QueryDirectories();
