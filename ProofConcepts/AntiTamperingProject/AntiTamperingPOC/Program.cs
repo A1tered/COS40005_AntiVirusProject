@@ -88,9 +88,10 @@ namespace TestAntiVirusInput
                 // trim ensures that there isn't any leading or trailing whitespace characters in the users input.
                 // ToUpper converts the trimmed string into uppercase.
                 // != means if user input is not Y, exit will turn to true, breaking/stopping the loop.
-                exit = response.Trim().ToUpper() != "Y";
-                Console.WriteLine("Exiting program.");
-            }
+                if(exit = response.Trim().ToUpper() != "Y")
+                {
+                    Console.WriteLine("Exiting program.");
+                }
         }
     }
 }
