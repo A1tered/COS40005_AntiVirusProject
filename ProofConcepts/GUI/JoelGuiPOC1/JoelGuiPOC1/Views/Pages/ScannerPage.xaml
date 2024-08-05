@@ -14,4 +14,15 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d"/>
+    mc:Ignorable="d">
+    <StackPanel>
+        <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" Text="Run either a quick scan, full scan or custom scan with the options below." VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20"/>
+        <RadioButton Content="Quick scan" Checked="RadioButton_Checked" HorizontalAlignment="Left" IsChecked="True"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="Scans folders where threats are most commonly found." Margin="0,0,0,7"/>
+        <RadioButton Content="Full scan" Checked="RadioButton_Checked"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="Scans all files and programs on this PC. Depending on your system, this scan may take several hours." Margin="0,0,0,10"/>
+        <RadioButton Content="Custom scan" Checked="RadioButton_Checked"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="Choose specific files or folders to scan." Margin="0,0,0,10"/>
+        <ui:Button Content="Scan now!" Margin="0,0,10,0" Background="#FF2204B8" Height="30" FontSize="11" FontWeight="Bold" Foreground="#E4FFFFFF"/>
+    </StackPanel>
+</Page>

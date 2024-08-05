@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\Pages\ScanningPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Pages\ProtectionHistoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>

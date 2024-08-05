@@ -14,4 +14,11 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d"/>
+    mc:Ignorable="d">
+    <StackPanel>
+        <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+            <Run Language="en-au" Text="View reports of previous scans as well as any active or quarantined threats "/>
+        </ui:TextBlock>
+        <ui:DataGrid Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+    </StackPanel>
+</Page>

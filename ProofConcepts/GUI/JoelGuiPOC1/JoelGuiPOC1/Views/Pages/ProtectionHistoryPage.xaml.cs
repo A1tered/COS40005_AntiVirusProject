@@ -14,5 +14,15 @@ namespace JoelGuiPOC1.Views.Pages
 
             InitializeComponent();
         }
+
+        private void CheckBox_Checked()
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\App.xaml
-5265488423
+61502112467
 1282391436
-20-282232637
+221123135511
 227-1588884612
-Views\Pages\DashboardPage.xaml;Views\Pages\ProtectionHistoryPage.xaml;Views\Pages\ScannerPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
+Views\Pages\DashboardPage.xaml;Views\Pages\ProtectionHistoryPage.xaml;Views\Pages\ScannerPage.xaml;Views\Pages\ScanningPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
 
 False
 
