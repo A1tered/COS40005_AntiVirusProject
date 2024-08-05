@@ -16,6 +16,20 @@ namespace JoelGuiPOC1.ViewModels.Windows
                 Content = "Home",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                 TargetPageType = typeof(Views.Pages.DashboardPage)
+            },
+
+            new NavigationViewItem()
+            {
+                Content = "Scan",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.SearchShield20},
+                TargetPageType = typeof(Views.Pages.ScannerPage)
+            },
+
+            new NavigationViewItem()
+            {
+                Content = "Protection History",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.ReceiptSearch20},
+                TargetPageType = typeof(Views.Pages.ProtectionHistoryPage)
             }
         };
 

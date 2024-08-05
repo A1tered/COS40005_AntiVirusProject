@@ -47,6 +47,10 @@ namespace JoelGuiPOC1
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+                services.AddSingleton<ProtectionHistoryPage>();
+                services.AddSingleton<ProtectionHistoryViewModel>();
+                services.AddSingleton<ScannerPage>();
+                services.AddSingleton<ScannerViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
             }).Build();

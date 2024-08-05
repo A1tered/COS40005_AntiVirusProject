@@ -57,3 +57,7 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcept
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1.pdb
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\JoelGuiPOC1.genruntimeconfig.cache
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\ref\JoelGuiPOC1.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\ProtectionHistoryPage.g.cs
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\ScannerPage.g.cs
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\ProtectionHistoryPage.baml
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\JoelGuiPOC1\JoelGuiPOC1\obj\Debug\net8.0-windows\Views\Pages\ScannerPage.baml

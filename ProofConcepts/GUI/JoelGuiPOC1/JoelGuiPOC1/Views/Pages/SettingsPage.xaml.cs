@@ -14,5 +14,9 @@ namespace JoelGuiPOC1.Views.Pages
 
             InitializeComponent();
         }
+
+        private void ToggleSwitch_Checked(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
