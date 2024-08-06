@@ -23,7 +23,9 @@ namespace JoelGuiPOC1.Views.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            ScanningViewModel _viewModel = new ScanningViewModel();
+            ScanningPage _scanningPage = new ScanningPage(_viewModel);
+            this.NavigationService.Navigate(_scanningPage);
         }
     }
 }
