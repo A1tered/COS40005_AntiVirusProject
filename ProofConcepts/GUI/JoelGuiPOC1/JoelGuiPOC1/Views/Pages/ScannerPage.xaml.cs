@@ -1,4 +1,5 @@
 ﻿using JoelGuiPOC1.ViewModels.Pages;
+using JoelGuiPOC1.Views.Windows;
 using Wpf.Ui.Controls;
 
 namespace JoelGuiPOC1.Views.Pages
@@ -16,6 +17,11 @@ namespace JoelGuiPOC1.Views.Pages
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

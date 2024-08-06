@@ -23,6 +23,6 @@
         <ui:TextBlock TextWrapping="Wrap" Text="Scans all files and programs on this PC. Depending on your system, this scan may take several hours." Margin="0,0,0,10"/>
         <RadioButton Content="Custom scan" Checked="RadioButton_Checked"/>
         <ui:TextBlock TextWrapping="Wrap" Text="Choose specific files or folders to scan." Margin="0,0,0,10"/>
-        <ui:Button Content="Scan now!" Margin="0,0,10,0" Background="#FF2204B8" Height="30" FontSize="11" FontWeight="Bold" Foreground="#E4FFFFFF"/>
+        <ui:Button Content="Scan now!" Click="Button_Click" Margin="0,0,10,0" Background="#FF2204B8" Height="30" FontSize="11" FontWeight="Bold" Foreground="#E4FFFFFF"/>
     </StackPanel>
 </Page>

@@ -51,6 +51,8 @@ namespace JoelGuiPOC1
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
+                services.AddSingleton<ScanningPage>();
+                services.AddSingleton<ScanningViewModel>(); 
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
             }).Build();
