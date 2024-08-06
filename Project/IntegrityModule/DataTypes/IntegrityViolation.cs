@@ -13,6 +13,7 @@ namespace IntegrityModule.DataTypes
         public bool _missing;
         public string _hash;
         public long _fileSizeBytes;
+        public string _userRecent;
         public string _ogHash;
         public long _ogFileSizeBytes;
 
@@ -73,6 +74,18 @@ namespace IntegrityModule.DataTypes
             set
             {
                 _fileSizeBytes = value;
+            }
+        }
+
+        public string RecentUser
+        {
+            get
+            {
+                return _userRecent;
+            }
+            set
+            {
+                _userRecent = value;
             }
         }
 
