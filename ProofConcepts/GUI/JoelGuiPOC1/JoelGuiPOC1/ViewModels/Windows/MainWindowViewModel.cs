@@ -30,6 +30,20 @@ namespace JoelGuiPOC1.ViewModels.Windows
                 Content = "Protection History",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.ReceiptSearch20},
                 TargetPageType = typeof(Views.Pages.ProtectionHistoryPage)
+            },
+
+            new NavigationViewItem()
+            {
+                Content = "Quarantined Items",
+                TargetPageType = typeof(Views.Pages.QuarantinedItemsPage),
+                Visibility = Visibility.Collapsed
+            },
+
+            new NavigationViewItem()
+            {
+                Content = "Mark as Malicious",
+                TargetPageType = typeof(Views.Pages.BlacklistPage),
+                Visibility = Visibility.Collapsed
             }
         };
 
