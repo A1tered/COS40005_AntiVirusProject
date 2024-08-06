@@ -18,24 +18,42 @@ namespace DatabaseFoundations
         /// Finds database folder, and opens connection to the database.
         /// </summary>
         /// <param name="databaseName">Name of database SQLite file</param>
-        public DatabaseIntermediary(string databaseName)
+        public DatabaseIntermediary(string databaseName, bool makeDatabase = false)
         {
+            // Find database folder
             string returnedDirectoryDatabase = FileDirectorySearcher(AppDomain.CurrentDomain.BaseDirectory, "Databases");
             string databaseSpecificPath;
-            if (returnedDirectoryDatabase != null)
+            // If database folder does not exist, make one.
+            if (returnedDirectoryDatabase == null)
             {
-                databaseSpecificPath = FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
+                returnedDirectoryDatabase = Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases")).FullName;
+            }
+            // Does the database exist within Database folder?
+            databaseSpecificPath = FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
+            if (databaseSpecificPath != null || makeDatabase)
+            {
+                // Make database.
+                if (databaseSpecificPath == null)
+                {
+                    databaseSpecificPath = Path.Combine(returnedDirectoryDatabase, databaseName);
+                }
                 SqliteConnectionStringBuilder connectionBuild = new();
+                Console.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
+                connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
             }
             else
             {
-                // Create databases folder (Not to be done in real production environment, because we want to supply the database)
-                Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases"));
-                throw new Exception("Please put already made databases in folder");
+                // If the database is not allowed to be created, then return error if it does not exist.
+                throw new Exception("Database non-existent");
             }
+        }
+
+        ~DatabaseIntermediary()
+        {
+            _databaseConnection.Close();
         }
 
         /// <summary>
