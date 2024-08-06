@@ -38,14 +38,23 @@ namespace DatabaseFoundations
         public bool AddEntry(string path)
         {
             List<string> pathProcess = new();
+            Queue<string> directoryProcess = new();
             bool success = false;
             // If for any process to access status, or for debug console:
             int progress = 0;
             int maxSize = 0;
+            string tempPathUnpack = "";
             if (Directory.Exists(path))
             {
+                Directory.GetDirectories(path).ToList().ForEach(directoryProcess.Enqueue);
                 // Item is directory, so process contents
-                pathProcess = Directory.GetFiles(path).ToList<string>();
+                Directory.GetFiles(path).ToList<string>().ForEach(pathProcess.Add);
+                while (directoryProcess.Count() > 0 && pathProcess.Count() < 10000)
+                {
+                    tempPathUnpack = directoryProcess.Dequeue();
+                    Directory.GetDirectories(tempPathUnpack).ToList().ForEach(directoryProcess.Enqueue);
+                    Directory.GetFiles(tempPathUnpack).ToList<string>().ForEach(pathProcess.Add);
+                }
             }
             else
             {
@@ -77,6 +86,38 @@ namespace DatabaseFoundations
             return success;
         }
 
+        public bool RemoveEntry(string path)
+        {
+            List<string> pathsToRemove = new();
+            bool success = false;
+            int progress = 0;
+            int maxProgress;
+            if (Directory.Exists(path))
+            {
+               pathsToRemove = Directory.GetFiles(path).ToList();
+            }
+            else
+            {
+                pathsToRemove.Add(path);
+            }
+            maxProgress = pathsToRemove.Count();
+            foreach (string pathCycle in pathsToRemove)
+            {
+                Console.Write($"\r Deleted {progress}/{maxProgress}");
+                progress++;
+                SqliteCommand command = new();
+                command.CommandText = @"DELETE FROM IntegrityTrack WHERE directory=$directorySet";
+                command.Parameters.AddWithValue("$directorySet", pathCycle);
+                success = QueryNoReader(command) > 0;
+            }
+            return success;
+        }
+
+        /// <summary>
+        /// Checks whether a directory exists in the integrity database.
+        /// </summary>
+        /// <param name="path">Windows directory</param>
+        /// <returns>True/False depending on whether the entry exists within the database</returns>
         public bool CheckExistence(string path)
         {
             SqliteCommand command = new();
@@ -90,6 +131,10 @@ namespace DatabaseFoundations
             return false;
         }
 
+        /// <summary>
+        /// Creates the table, may do other setup tasks.
+        /// </summary>
+        /// <remarks>Only to be ran once at initialisation, any more and it will be at risk of easy tampering</remarks>
         public bool SetupDatabase()
         {
             SqliteCommand command = new();
@@ -98,6 +143,11 @@ namespace DatabaseFoundations
             return QueryNoReader(command) > 0;
         }
 
+        /// <summary>
+        /// Get all info off a single row based on directory
+        /// </summary>
+        /// <param name="directory">Windows Directory</param>
+        /// <returns>Directory, Hash, ModificationTime, SignatureCreation, OriginalSizeInBytes</returns>
         public Tuple<string, string, long, long, long> GetDirectoryInfo(string directory)
         {
             SqliteCommand command = new();

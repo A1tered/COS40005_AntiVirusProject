@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        DatabaseIntermediary.cs
+ * Author:      Christopher Thompson, others
+ * Description: The parent class for all database readers, provides infrastructure to maintain a connection along with queries.
+ * Last Modified: 6/08/2024
+ * Libraries:   [Location Libraries / Dependencies]
+ **************************************************************************/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -172,6 +181,16 @@ namespace DatabaseFoundations
                 }
             }
             return output;
+        }
+
+        /// <summary>
+        /// When you delete items from SQLite, size does not decrease, you must call VACUUM to rebuild database and reduce size.
+        /// </summary>
+        public void Vacuum()
+        {
+            SqliteCommand command = _databaseConnection.CreateCommand();
+            command.CommandText = "VACUUM";
+            QueryNoReader(command);
         }
     }
 }
