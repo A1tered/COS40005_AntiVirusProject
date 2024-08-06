@@ -19,7 +19,6 @@ namespace DatabaseFoundations
             }
         }
 
-
         /// <summary>
         /// Creates the table, may do other setup tasks.
         /// </summary>
@@ -143,7 +142,6 @@ namespace DatabaseFoundations
             }
             return false;
         }
-
 
         /// <summary>
         /// Get all info off a single row based on directory

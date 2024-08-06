@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\",
+  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasemodules\\databasefoundations\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasemodules\\databasefoundations\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasefoundations\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasemodules\\databasefoundations\\integrityrelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:integrityrelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasefoundations\\integritydatabaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:integritydatabaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasemodules\\databasefoundations\\integritydatabaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:integritydatabaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasefoundations\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\project\\databasefoundations\\integrityrelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8117080-A845-45DA-ADB9-135EFBD842F6}|DatabaseFoundations.csproj|solutionrelative:integrityrelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,59 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\Program.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBUAAAAJAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T10:21:32.057Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DatabaseIntermediary.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\DatabaseIntermediary.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\DatabaseIntermediary.cs",
               "RelativeDocumentMoniker": "DatabaseIntermediary.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\DatabaseIntermediary.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\DatabaseIntermediary.cs",
               "RelativeToolTip": "DatabaseIntermediary.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAALsAAAAWAAAA",
+              "ViewState": "AQIAAKQAAAAAAAAAAAAAALsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T09:04:55.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "IntegrityDatabaseIntermediary.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\IntegrityDatabaseIntermediary.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\IntegrityDatabaseIntermediary.cs",
               "RelativeDocumentMoniker": "IntegrityDatabaseIntermediary.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\IntegrityDatabaseIntermediary.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\IntegrityDatabaseIntermediary.cs",
               "RelativeToolTip": "IntegrityDatabaseIntermediary.cs",
-              "ViewState": "AQIAAKUAAAAAAAAAAAAUwDMAAABTAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAowCAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T09:51:34.039Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FileInfoRequester.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\IntegrityRelated\\FileInfoRequester.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\IntegrityRelated\\FileInfoRequester.cs",
               "RelativeDocumentMoniker": "IntegrityRelated\\FileInfoRequester.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseModules\\DatabaseFoundations\\IntegrityRelated\\FileInfoRequester.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\DatabaseFoundations\\IntegrityRelated\\FileInfoRequester.cs",
               "RelativeToolTip": "IntegrityRelated\\FileInfoRequester.cs",
               "ViewState": "AQIAABkAAAAAAAAAAAAQwCgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T00:01:10.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-06T00:01:10.497Z"
             }
           ]
         }

@@ -12,7 +12,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        IntegrityDatabaseIntermediary integrityDatabaseIntermediary = new("IntegrityDatabase", false);
+        IntegrityDatabaseIntermediary integrityDatabaseIntermediary = new("IntegrityDatabase", true);
         integrityDatabaseIntermediary.Vacuum();
 /*        integrityDatabaseIntermediary.DeleteAll();
         //integrityDatabaseIntermediary.AddEntry(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\Archive");
