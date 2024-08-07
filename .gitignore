@@ -5,7 +5,8 @@ ProofConcepts/GUI/JoelGuiPOC1/.vs
 ProofConcepts/Asynchronous/AsynchronousProgrammingPractice/.vs
 ProofConcepts/Asynchronous/FindTheHashNOTFINISHED/.vs
 ProofConcepts/FileHashChecking/FileHashCheckingPOC1/.vs
-
+ProofConcepts/Alerts/AlertsPoC/.vs
+ProofConcepts/FileQuarantine/FileQuarantinePoC/.vs
 *.v2
 *.vsidx
 *.bin
