@@ -32,10 +32,10 @@
   <p align="center">
     SAV is an awesome and Simple AntiVirus project made by a small team of student at Swinburne Uni!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/A1tered/COS40005_AntiVirusProject"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/A1tered/COS40005_AntiVirusProject">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
