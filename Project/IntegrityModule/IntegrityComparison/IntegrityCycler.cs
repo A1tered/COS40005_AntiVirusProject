@@ -10,6 +10,7 @@ namespace IntegrityModule.IntegrityComparison
 {
     public class IntegrityCycler
     {
+        // How many data sets does 1 thread undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
         public IntegrityCycler(IntegrityDatabaseIntermediary database)
@@ -21,6 +22,7 @@ namespace IntegrityModule.IntegrityComparison
         public bool InitiateScan()
         {
             List<IntegrityDataPooler> dataPoolerList = new();
+            List<Task<List<IntegrityViolation>>> taskList = new();
             List<IntegrityViolation> summaryViolation = new();
             long amountEntry = _database.QueryAmount("IntegrityTrack");
             decimal divison = (decimal)amountEntry / _amountPerSet;
@@ -34,11 +36,28 @@ namespace IntegrityModule.IntegrityComparison
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
-                poolerObject.CheckIntegrity().ForEach(summaryViolation.Add);
+                taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
             }
             // Note to self to add asynchronous support, and to immediately emit alerts rather than holding onto them.
+            Task.WaitAll(taskList.ToArray());
+            foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+            {
+                taskItem.Result.ForEach(summaryViolation.Add);
+            }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
             return true;
+        }
+
+        public int AmountSet
+        {
+            get
+            {
+                return _amountPerSet;
+            }
+            set
+            {
+                _amountPerSet = value;
+            }
         }
     }
 }

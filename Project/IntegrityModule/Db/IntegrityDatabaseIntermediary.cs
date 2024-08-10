@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,19 +43,11 @@ namespace DatabaseFoundations
             return QueryNoReader(command) > 0;
         }
 
-        /// <summary>
-        /// Add integrity path, adds entry into IntegrityDatabase such as Hash info, file info, time of signature creation.
-        /// </summary>
-        /// <param name="path">Directory windows (file or directory)</param>
-        /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
-        public bool AddEntry(string path)
+        private List<string> PathCollector(string path)
         {
             List<string> pathProcess = new();
             Queue<string> directoryProcess = new();
-            bool success = false;
             // If for any process to access status, or for debug console:
-            int progress = 0;
-            int maxSize = 0;
             string tempPathUnpack = "";
             if (Directory.Exists(path))
             {
@@ -72,11 +65,16 @@ namespace DatabaseFoundations
             {
                 pathProcess.Add(path);
             }
-            maxSize = pathProcess.Count();
-            foreach (string cyclePath in pathProcess)
+            return pathProcess;
+        }
+
+        private List<string> AsyncAdd(List<string> givenPaths, int id)
+        {
+            Console.WriteLine("Started");
+            bool success = false;
+            List<string> failureList = new();
+            foreach (string cyclePath in givenPaths)
             {
-                Console.Write($"\r{progress}/{maxSize}");
-                progress++;
                 SqliteCommand command = new();
                 string getHash = FileInfoRequester.HashFile(cyclePath);
                 Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
@@ -93,26 +91,53 @@ namespace DatabaseFoundations
                     command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
                     command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
                     success = QueryNoReader(command) > 0;
+                    if (success != true)
+                    {
+                        failureList.Add(cyclePath);
+                    }
                 }
             }
-            return success;
+            Console.WriteLine($"Completed add set - {id}");
+            return failureList;
+        }
+
+        /// <summary>
+        /// Add integrity path, adds entry into IntegrityDatabase such as Hash info, file info, time of signature creation.
+        /// </summary>
+        /// <param name="path">Directory windows (file or directory)</param>
+        /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
+        public bool AddEntry(string path)
+        {
+            List<string> pathProcess = PathCollector(path);
+            List<Task<List<string>>> taskManager = new();
+            List<string> tempPathCreator = new();
+            int idTracker = 0;
+            int maxIds = pathProcess.Count() / 100;
+            for (int v = 0; v < pathProcess.Count(); v++)
+            {
+                tempPathCreator.Add(pathProcess[v]);
+                if (v % 100 == 0)
+                {
+                    Console.WriteLine("list created");
+                    taskManager.Add(Task.Run(() => AsyncAdd(new List<string>(tempPathCreator), idTracker)));
+                    tempPathCreator.Clear();
+                    idTracker++;
+                }
+            }
+            // Deal with remainders
+            taskManager.Add(Task.Run(() => AsyncAdd(new List<string>(tempPathCreator), idTracker)));
+            // We need a protection, if baseline fails to add...
+            Task.WaitAll(taskManager.ToArray());
+            Console.WriteLine("Completed");
+            return true;
         }
 
         public bool RemoveEntry(string path)
         {
-            List<string> pathsToRemove = new();
+            List<string> pathsToRemove = PathCollector(path);
             bool success = false;
             int progress = 0;
-            int maxProgress;
-            if (Directory.Exists(path))
-            {
-               pathsToRemove = Directory.GetFiles(path).ToList();
-            }
-            else
-            {
-                pathsToRemove.Add(path);
-            }
-            maxProgress = pathsToRemove.Count();
+            int maxProgress = pathsToRemove.Count();
             foreach (string pathCycle in pathsToRemove)
             {
                 Console.Write($"\r Deleted {progress}/{maxProgress}");
@@ -168,12 +193,13 @@ namespace DatabaseFoundations
         {
             SqliteCommand command = new();
             Dictionary<string, string> returnDictionary = new();
-            command.CommandText = @"SELECT * FROM IntegrityTrack"; // LIMIT $limit OFFSET $offset
+            command.CommandText = @"SELECT * FROM IntegrityTrack LIMIT $limit OFFSET $offset";
             int setUp = set + 1;
             command.Parameters.AddWithValue("$limit", amountHandledPerSet);
             command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
             SqliteDataReader dataReader = QueryReader(command);
             int amount = 0;
+            Console.WriteLine("Amount flag");
             if (dataReader != null)
             {
                 while (dataReader.Read())

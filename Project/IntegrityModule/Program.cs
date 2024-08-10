@@ -17,7 +17,8 @@ class Program
     public static void Main(string[] args)
     {
        IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("IntegrityDatabase", false));
-        //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles");
-        integrityModule.Scan();
+        integrityModule.ClearDatabase();
+        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\TreeIntegrityFiles");
+        //integrityModule.Scan(true);
     }
 }

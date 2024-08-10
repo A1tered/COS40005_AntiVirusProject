@@ -2,6 +2,7 @@
 using IntegrityModule.IntegrityComparison;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,25 @@ namespace IntegrityModule.ControlClasses
 
         // Alert Handler to be placed here at later date.
 
-        public bool Scan()
+        /// <summary>
+        /// Start scanning all data in database, and compare to system files.
+        /// </summary>
+        /// <param name="benchmark">Whether to return debug time taken for scan</param>
+        /// <returns></returns>
+        public bool Scan(bool benchmark = false)
         {
-           return _integrityCycler.InitiateScan();
+            Stopwatch timer = new();
+            if (benchmark)
+            {
+                timer.Start();
+            }
+            bool returnItem = _integrityCycler.InitiateScan();
+            if (benchmark)
+            {
+                timer.Stop();
+                Console.WriteLine($"Time taken for scan: {timer.Elapsed}");
+            }
+            return returnItem;
         }
 
         public bool AddBaseline(string path)
@@ -38,6 +55,11 @@ namespace IntegrityModule.ControlClasses
         public bool ClearDatabase()
         {
             return _integrityConfigurator.RemoveAll();
+        }
+
+        public void ChangeSetAmount(int amount)
+        {
+            _integrityCycler.AmountSet = amount;
         }
     }
 }
