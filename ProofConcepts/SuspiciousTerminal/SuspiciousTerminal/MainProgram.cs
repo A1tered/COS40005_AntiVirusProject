@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**************************************************************************
+ * Author:      Timothy Loh
+ * Description: Ma
+ * Last Modified: [Date]
+ * Libraries:   [Location Libraries / Dependencies]
+ **************************************************************************/
+
+
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,14 +15,14 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        await MonitorCmdAndPowershellAsync();
+        await MonitorCLIAsync();
         //"await" "async" and "task" is part of asynchornous programming
         // "async" defines this method as asynchornous
         //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
         // "task" defines that output.
     }
 
-    static async Task MonitorCmdAndPowershellAsync()
+    static async Task MonitorCLIAsync()
     {
         //Because this is always monitoring, the while loop never ends. Thanks to async programming, this does not hold up the rest of the code.
         while (true)

@@ -4,7 +4,7 @@
  * Description: [Brief description of what the file does]
  * Last Modified: [Date]
  * Libraries:   [Location Libraries / Dependencies]
- **************************************************************************/
+ *************************************************************************
 
 using System; 
 // Add other necessary using directives here
@@ -24,3 +24,4 @@ namespace [YourNamespace]
 
 
 
+*/
