@@ -36,7 +36,7 @@ namespace FileHashChecking
         public static string GetHash(FileStream filestream)
         {
             StringBuilder stringBuild = new();
-            byte[] file = SHA256.HashData(filestream);
+            byte[] file = SHA1.HashData(filestream);
 
             foreach (byte Byte in file)
             {
