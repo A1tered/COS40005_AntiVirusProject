@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SuspiciousTerminal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e230e62695d59f71062204fb82c8b1b564796a7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+795c35f03c62695777883c0bb9c887186bca5742")]
 [assembly: System.Reflection.AssemblyProductAttribute("SuspiciousTerminal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SuspiciousTerminal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

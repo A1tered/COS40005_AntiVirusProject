@@ -1,7 +1,7 @@
 ﻿/**************************************************************************
  * File:        [FileName].cs
  * Author:      [Name]
- * Description: [Brief description of what the file does]
+ * Description: This file will do everything database related.
  * Last Modified: [Date]
  * Libraries:   [Location Libraries / Dependencies]
  *************************************************************************
