@@ -1,8 +1,9 @@
 ﻿/**************************************************************************
  * Author:      Timothy Loh
- * Description: Ma
- * Last Modified: [Date]
- * Libraries:   [Location Libraries / Dependencies]
+ * Description: Main monitoring of CLI inputs. 
+ * - Behaviour of keyboard inputs
+ * - Behaviour of mouse movements
+ * Last Modified: 11/08/24
  **************************************************************************/
 
 
@@ -20,6 +21,16 @@ class Program
         // "async" defines this method as asynchornous
         //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
         // "task" defines that output.
+
+
+
+
+
+
+
+
+
+
     }
 
     static async Task MonitorCLIAsync()
