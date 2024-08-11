@@ -68,13 +68,15 @@ namespace DatabaseFoundations
             return pathProcess;
         }
 
-        private List<string> AsyncAdd(List<string> givenPaths, int id)
+        private List<string> AsyncAdd(string[] givenPaths, int id)
         {
-            Console.WriteLine("Started");
+            Console.WriteLine($"Started {id}");
+            Console.WriteLine(givenPaths[0]);
             bool success = false;
             List<string> failureList = new();
             foreach (string cyclePath in givenPaths)
             {
+                //Console.WriteLine($"ADD: {cyclePath}");
                 SqliteCommand command = new();
                 string getHash = FileInfoRequester.HashFile(cyclePath);
                 Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
@@ -113,19 +115,22 @@ namespace DatabaseFoundations
             List<string> tempPathCreator = new();
             int idTracker = 0;
             int maxIds = pathProcess.Count() / 100;
+            Console.WriteLine($"Sets required: {maxIds}");
             for (int v = 0; v < pathProcess.Count(); v++)
             {
                 tempPathCreator.Add(pathProcess[v]);
-                if (v % 100 == 0)
+                //Console.WriteLine($"AddEntry: {pathProcess[v]}");
+                if (v % 100 == 0 && v != 0)
                 {
-                    Console.WriteLine("list created");
-                    taskManager.Add(Task.Run(() => AsyncAdd(new List<string>(tempPathCreator), idTracker)));
+                    string[] pathArray = tempPathCreator.ToArray();
+                    Console.WriteLine(idTracker);
+                    taskManager.Add(Task.Run(() => AsyncAdd(pathArray, idTracker)));
                     tempPathCreator.Clear();
                     idTracker++;
                 }
             }
             // Deal with remainders
-            taskManager.Add(Task.Run(() => AsyncAdd(new List<string>(tempPathCreator), idTracker)));
+            taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker)));
             // We need a protection, if baseline fails to add...
             Task.WaitAll(taskManager.ToArray());
             Console.WriteLine("Completed");
@@ -199,7 +204,6 @@ namespace DatabaseFoundations
             command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
             SqliteDataReader dataReader = QueryReader(command);
             int amount = 0;
-            Console.WriteLine("Amount flag");
             if (dataReader != null)
             {
                 while (dataReader.Read())
