@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e230e62695d59f71062204fb82c8b1b564796a7c")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32940531e0528d7e5c2e9c57ab05f78a40294122")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("test_wpfui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
