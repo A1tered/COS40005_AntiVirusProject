@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace DatabaseFoundations
 {
     public class IntegrityDatabaseIntermediary : DatabaseIntermediary
     {
-        public IntegrityDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun)
+        public IntegrityDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
         {
             // AntiTampering will need to ensure that this is only run at initialisation!!!
             if (firstRun)
@@ -19,7 +20,6 @@ namespace DatabaseFoundations
             }
         }
 
-
         /// <summary>
         /// Creates the table, may do other setup tasks.
         /// </summary>
@@ -27,8 +27,8 @@ namespace DatabaseFoundations
         public bool SetupDatabase()
         {
             SqliteCommand command = new();
-            command.CommandText = @"CREATE TABLE IF NOT EXISTS
-            IntegrityTrack(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
+            command.CommandText = @$"CREATE TABLE IF NOT EXISTS
+            {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
             return QueryNoReader(command) > 0;
         }
 
@@ -39,8 +39,43 @@ namespace DatabaseFoundations
         public bool DeleteAll()
         {
             SqliteCommand command = new();
-            command.CommandText = "DELETE FROM IntegrityTrack";
+            command.CommandText = $"DELETE FROM {_defaultTable}";
             return QueryNoReader(command) > 0;
+        }
+
+        private List<string> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans)
+        {
+            Console.WriteLine($"Started {id}");
+            bool success = false;
+            List<string> failureList = new();
+            foreach (string cyclePath in givenPaths)
+            {
+                //Console.WriteLine($"ADD: {cyclePath}");
+                SqliteCommand command = new();
+                command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
+                command.Transaction = trans;
+                string getHash = FileInfoRequester.HashFile(cyclePath);
+                Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
+                if (CheckExistence(cyclePath, trans))
+                {
+                    Console.WriteLine("Warning, replacing existing entry");
+                }
+                if (getHash != "")
+                {
+                    command.Parameters.AddWithValue("$path", cyclePath);
+                    command.Parameters.AddWithValue("$hash", getHash);
+                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+                    success = QueryNoReader(command) > 0;
+                    if (success != true)
+                    {
+                        failureList.Add(cyclePath);
+                    }
+                }
+            }
+            Console.WriteLine($"Completed add set - {id}");
+            return failureList;
         }
 
         /// <summary>
@@ -48,78 +83,50 @@ namespace DatabaseFoundations
         /// </summary>
         /// <param name="path">Directory windows (file or directory)</param>
         /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
-        public bool AddEntry(string path)
+        public bool AddEntry(string path, int amountPerSet)
         {
-            List<string> pathProcess = new();
-            Queue<string> directoryProcess = new();
-            bool success = false;
-            // If for any process to access status, or for debug console:
-            int progress = 0;
-            int maxSize = 0;
-            string tempPathUnpack = "";
-            if (Directory.Exists(path))
+            List<string> pathProcess =  FileInfoRequester.PathCollector(path);
+            List<Task<List<string>>> taskManager = new();
+            List<string> tempPathCreator = new();
+            int idTracker = 0;
+            int maxIds = pathProcess.Count() / amountPerSet;
+            Console.WriteLine($"Sets required: {maxIds}");
+            SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction(); // remove if not good
+            for (int v = 0; v < pathProcess.Count(); v++)
             {
-                Directory.GetDirectories(path).ToList().ForEach(directoryProcess.Enqueue);
-                // Item is directory, so process contents
-                Directory.GetFiles(path).ToList<string>().ForEach(pathProcess.Add);
-                while (directoryProcess.Count() > 0 && pathProcess.Count() < 10000)
+                tempPathCreator.Add(pathProcess[v]);
+                //Console.WriteLine($"AddEntry: {pathProcess[v]}");
+                if (v % amountPerSet == 0 && v != 0)
                 {
-                    tempPathUnpack = directoryProcess.Dequeue();
-                    Directory.GetDirectories(tempPathUnpack).ToList().ForEach(directoryProcess.Enqueue);
-                    Directory.GetFiles(tempPathUnpack).ToList<string>().ForEach(pathProcess.Add);
+                    string[] pathArray = tempPathCreator.ToArray();
+                    int tempInt = idTracker;
+                    Console.WriteLine(idTracker);
+                    taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate)));
+                    tempPathCreator.Clear();
+                    idTracker++;
                 }
             }
-            else
-            {
-                pathProcess.Add(path);
-            }
-            maxSize = pathProcess.Count();
-            foreach (string cyclePath in pathProcess)
-            {
-                Console.Write($"\r{progress}/{maxSize}");
-                progress++;
-                SqliteCommand command = new();
-                string getHash = FileInfoRequester.HashFile(cyclePath);
-                Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
-                if (CheckExistence(cyclePath))
-                {
-                    Console.WriteLine("Warning, replacing existing entry");
-                }
-                if (getHash != "")
-                {
-                    command.CommandText = @"REPLACE INTO IntegrityTrack VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
-                    command.Parameters.AddWithValue("$path", cyclePath);
-                    command.Parameters.AddWithValue("$hash", getHash);
-                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    success = QueryNoReader(command) > 0;
-                }
-            }
-            return success;
+            // Deal with remainders
+            taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(),idTracker, transactionCreate)));
+            // We need a protection, if baseline fails to add...
+            Task.WaitAll(taskManager.ToArray());
+            transactionCreate.Commit();
+            Console.WriteLine("Completed");
+            return true;
         }
 
         public bool RemoveEntry(string path)
         {
-            List<string> pathsToRemove = new();
+            List<string> pathsToRemove = FileInfoRequester.PathCollector(path);
             bool success = false;
             int progress = 0;
-            int maxProgress;
-            if (Directory.Exists(path))
-            {
-               pathsToRemove = Directory.GetFiles(path).ToList();
-            }
-            else
-            {
-                pathsToRemove.Add(path);
-            }
-            maxProgress = pathsToRemove.Count();
+            int maxProgress = pathsToRemove.Count();
             foreach (string pathCycle in pathsToRemove)
             {
                 Console.Write($"\r Deleted {progress}/{maxProgress}");
                 progress++;
                 SqliteCommand command = new();
-                command.CommandText = @"DELETE FROM IntegrityTrack WHERE directory=$directorySet";
+                command.CommandText = @$"DELETE FROM {_defaultTable} WHERE directory=$directorySet";
                 command.Parameters.AddWithValue("$directorySet", pathCycle);
                 success = QueryNoReader(command) > 0;
             }
@@ -131,11 +138,12 @@ namespace DatabaseFoundations
         /// </summary>
         /// <param name="path">Windows directory</param>
         /// <returns>True/False depending on whether the entry exists within the database</returns>
-        public bool CheckExistence(string path)
+        public bool CheckExistence(string path, SqliteTransaction trans = null)
         {
             SqliteCommand command = new();
-            command.CommandText = @"SELECT directory FROM IntegrityTrack WHERE directory = $directorySet";
+            command.CommandText = @$"SELECT directory FROM {_defaultTable} WHERE directory = $directorySet";
             command.Parameters.AddWithValue("$directorySet", path);
+            command.Transaction = trans;
             SqliteDataReader reader = QueryReader(command);
             if (reader != null)
             {
@@ -143,7 +151,6 @@ namespace DatabaseFoundations
             }
             return false;
         }
-
 
         /// <summary>
         /// Get all info off a single row based on directory
@@ -153,7 +160,7 @@ namespace DatabaseFoundations
         public Tuple<string, string, long, long, long> GetDirectoryInfo(string directory)
         {
             SqliteCommand command = new();
-            command.CommandText = "SELECT * FROM IntegrityTrack WHERE directory = $directorySet";
+            command.CommandText = $"SELECT * FROM {_defaultTable} WHERE directory = $directorySet";
             command.Parameters.AddWithValue("$directorySet", directory);
             SqliteDataReader dataReader = QueryReader(command);
             if (dataReader.Read())
@@ -170,7 +177,7 @@ namespace DatabaseFoundations
         {
             SqliteCommand command = new();
             Dictionary<string, string> returnDictionary = new();
-            command.CommandText = @"SELECT * FROM IntegrityTrack"; // LIMIT $limit OFFSET $offset
+            command.CommandText = @$"SELECT * FROM {_defaultTable} LIMIT $limit OFFSET $offset";
             int setUp = set + 1;
             command.Parameters.AddWithValue("$limit", amountHandledPerSet);
             command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);

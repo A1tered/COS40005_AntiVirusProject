@@ -139,14 +139,19 @@ namespace DatabaseFoundations
         /// tableName should not be provided by the user (SQLite Injection Vulnerable)
         /// </remarks>
         /// <returns></returns>
-        public long QueryAmount(string tableName)
+        public long QueryAmount(string tableName = null)
         {
+            string insertTable = tableName;
+            if (tableName == null)
+            {
+                insertTable = _defaultTable;
+            }
             if (DatabaseUsable())
             {
                 SqliteCommand command = _databaseConnection.CreateCommand();
                 // Concerns may arise from inserting tableName like this, however SQLite parameters does not support placement of table names,
                 // do not allow user direct input for this function.
-                command.CommandText = $"SELECT COUNT(*) FROM {tableName}";
+                command.CommandText = $"SELECT COUNT(*) FROM {insertTable}";
                 SqliteDataReader returnInfo = command.ExecuteReader();
                 returnInfo.Read();
                 return returnInfo.GetInt64(0);
