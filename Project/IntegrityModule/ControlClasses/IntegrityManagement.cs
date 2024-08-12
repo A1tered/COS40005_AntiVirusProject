@@ -1,5 +1,6 @@
 ﻿using DatabaseFoundations;
 using IntegrityModule.IntegrityComparison;
+using IntegrityModule.Reactive;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,10 +14,13 @@ namespace IntegrityModule.ControlClasses
     {
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;
+        private ReactiveControl _reactiveControl;
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             _integrityCycler = new IntegrityCycler(integrityIntermediary);
+            _reactiveControl = new(integrityIntermediary);
+            _reactiveControl.Initialize();
         }
 
         // Alert Handler to be placed here at later date.
@@ -42,9 +46,9 @@ namespace IntegrityModule.ControlClasses
             return returnItem;
         }
 
-        public bool AddBaseline(string path)
+        public bool AddBaseline(string path, bool debug = false)
         {
-           return _integrityConfigurator.AddIntegrityDirectory(path);
+           return _integrityConfigurator.AddIntegrityDirectory(path, debug);
         }
 
         public bool RemoveBaseline(string path)

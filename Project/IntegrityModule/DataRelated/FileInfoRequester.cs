@@ -20,14 +20,25 @@ namespace DatabaseFoundations.IntegrityRelated
             if (Path.Exists(directory))
             {
                 StringBuilder hashReturn = new();
-                using (FileStream openFile = File.Open(directory, FileMode.Open, FileAccess.Read))
+                try
                 {
-                    byte[] returnByteSet = SHA256.HashData(openFile);
-                    foreach (byte individualByte in returnByteSet)
+                    using (FileStream openFile = File.Open(directory, FileMode.Open, FileAccess.Read))
                     {
-                        hashReturn.Append(individualByte.ToString("X2"));
+                        byte[] returnByteSet = SHA256.HashData(openFile);
+                        foreach (byte individualByte in returnByteSet)
+                        {
+                            hashReturn.Append(individualByte.ToString("X2"));
+                        }
+                        return hashReturn.ToString();
                     }
-                    return hashReturn.ToString();
+                }
+                catch (IOException e )
+                {
+                    Console.WriteLine($"IOException (Likely process use) {directory}");
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    Console.WriteLine($"Unauthorized access {directory}");
                 }
 
             }
@@ -43,6 +54,39 @@ namespace DatabaseFoundations.IntegrityRelated
         {
             FileInfo fileInfoCreate = new FileInfo(path);
             return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
+        }
+
+
+        public static List<string> PathCollector(string path)
+        {
+            List<string> pathProcess = new();
+            Queue<string> directoryProcess = new();
+            // If for any process to access status, or for debug console:
+            string tempPathUnpack = "";
+            if (Directory.Exists(path))
+            {
+                Directory.GetDirectories(path).ToList().ForEach(directoryProcess.Enqueue);
+                // Item is directory, so process contents
+                Directory.GetFiles(path).ToList<string>().ForEach(pathProcess.Add);
+                while (directoryProcess.Count() > 0 && pathProcess.Count() < 10000)
+                {
+                    tempPathUnpack = directoryProcess.Dequeue();
+                    try
+                    {
+                        Directory.GetDirectories(tempPathUnpack).ToList().ForEach(directoryProcess.Enqueue);
+                        Directory.GetFiles(tempPathUnpack).ToList<string>().ForEach(pathProcess.Add);
+                    }
+                    catch (UnauthorizedAccessException e)
+                    {
+                        Console.WriteLine($"Unauthorized Permission Warning: {tempPathUnpack}");
+                    }
+                }
+            }
+            else
+            {
+                pathProcess.Add(path);
+            }
+            return pathProcess;
         }
     }
 }

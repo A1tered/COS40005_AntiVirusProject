@@ -20,18 +20,19 @@ namespace DatabaseFoundations
     public class DatabaseIntermediary
     {
         protected SqliteConnection _databaseConnection;
-
+        protected string _defaultTable;
 
         /// <summary>
         /// Constructor
         /// Finds database folder, and opens connection to the database.
         /// </summary>
         /// <param name="databaseName">Name of database SQLite file</param>
-        public DatabaseIntermediary(string databaseName, bool makeDatabase = false)
+        public DatabaseIntermediary(string databaseName, bool makeDatabase = false, string defaultTable = "")
         {
             // Find database folder
             string returnedDirectoryDatabase = FileDirectorySearcher(AppDomain.CurrentDomain.BaseDirectory, "Databases");
             string databaseSpecificPath;
+            _defaultTable = defaultTable;
             // If database folder does not exist, make one.
             if (returnedDirectoryDatabase == null)
             {
