@@ -58,7 +58,7 @@ namespace FindTheHash
         public string HashFile(FileStream fileStream)
         {
             StringBuilder stringBuild = new();
-            byte[] byteArray = SHA256.HashData(fileStream);
+            byte[] byteArray = SHA1.HashData(fileStream);
             foreach (byte byteRep in byteArray)
             {
                 stringBuild.Append(byteRep.ToString("X2"));
