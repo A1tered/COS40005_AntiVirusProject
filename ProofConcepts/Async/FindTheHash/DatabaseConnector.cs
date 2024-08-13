@@ -18,7 +18,7 @@ namespace FindTheHash
         private string _tableName;
         public DatabaseConnector(string databaseDirectory, bool writeAccess = false)
         {
-            _tableName = "hashTable";
+            _tableName = "hashSignatures";
             
             if (!Directory.Exists("Databases"))
             {
@@ -49,7 +49,7 @@ namespace FindTheHash
             {
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
-                SELECT * FROM hashTable WHERE hash = $hash;
+                SELECT * FROM hashSignatures WHERE sigHash = $hash;
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
                 commandCreation.Parameters.AddWithValue("$hash", hash);
@@ -79,7 +79,7 @@ namespace FindTheHash
                 {
                     SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                     commandCreation.CommandText = (@"
-                SELECT * FROM hashTable WHERE hash = $hash;
+                SELECT * FROM hashSignatures WHERE sigHash = $hash;
                 ");
                     //commandCreation.Parameters.AddWithValue("$table", _tableName);
                     commandCreation.Parameters.AddWithValue("$hash", hashComponent);
@@ -113,10 +113,10 @@ namespace FindTheHash
             {
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
-                INSERT INTO hashTable VALUES ($hash);
+                INSERT INTO hashSignatures VALUES ($sigHash);
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
-                commandCreation.Parameters.AddWithValue("$hash", hash);
+                commandCreation.Parameters.AddWithValue("$sigHash", hash);
                 int sqliteDataReader = commandCreation.ExecuteNonQuery();
                 if (sqliteDataReader > 0)
                 {

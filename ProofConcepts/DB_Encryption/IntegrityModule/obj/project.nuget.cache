@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "JvDn2iPKiB3zfW1KQKUA/nqF7I94JM5DKxHwMAwudiewkrnDhj2/H0Gt8Mc1AMlbvRqK1CJ+YJuFhl2tfeHOXw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\IntegrityModule.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3mc\\2.1.9\\sqlitepclraw.bundle_e_sqlite3mc.2.1.9.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.core\\2.1.9\\sqlitepclraw.core.2.1.9.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3mc\\2.1.9\\sqlitepclraw.lib.e_sqlite3mc.2.1.9.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3mc\\2.1.9\\sqlitepclraw.provider.e_sqlite3mc.2.1.9.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}

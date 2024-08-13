@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHashCheckingDraft2", "FileHashCheckingDraft2.csproj", "{EF0CAC56-EA32-4A2E-AF11-F4FB78A72ED2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF0CAC56-EA32-4A2E-AF11-F4FB78A72ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0CAC56-EA32-4A2E-AF11-F4FB78A72ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0CAC56-EA32-4A2E-AF11-F4FB78A72ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0CAC56-EA32-4A2E-AF11-F4FB78A72ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1354827-F847-409E-A117-2C651A87B651}
+	EndGlobalSection
+EndGlobal
