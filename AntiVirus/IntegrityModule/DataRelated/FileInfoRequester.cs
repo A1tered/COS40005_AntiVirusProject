@@ -11,10 +11,10 @@ namespace DatabaseFoundations.IntegrityRelated
     public static class FileInfoRequester
     {
         /// <summary>
-        /// Hash File via SHA256
+        /// Hash File via SHA1
         /// </summary>
         /// <param name="directory">File Directory</param>
-        /// <returns>SHA256 Hash of file</returns>
+        /// <returns>SHA1 Hash of file</returns>
         public static string HashFile(string directory)
         {
             if (Path.Exists(directory))
@@ -24,7 +24,7 @@ namespace DatabaseFoundations.IntegrityRelated
                 {
                     using (FileStream openFile = File.Open(directory, FileMode.Open, FileAccess.Read))
                     {
-                        byte[] returnByteSet = SHA256.HashData(openFile);
+                        byte[] returnByteSet = SHA1.HashData(openFile);
                         foreach (byte individualByte in returnByteSet)
                         {
                             hashReturn.Append(individualByte.ToString("X2"));

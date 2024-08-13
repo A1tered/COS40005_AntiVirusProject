@@ -49,12 +49,12 @@ namespace DatabaseFoundations
         /// <param name="givenPaths">Array of string paths.</param>
         /// <param name="id">id provided by AddEntry function.</param>
         /// <param name="trans">SQLiteTransaction reference.</param>
-        /// <returns>Paths that failed to be added.</returns>
-        private List<string> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans)
+        /// <returns>Path failed to be added.</returns>
+        private bool AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans)
         {
             Console.WriteLine($"Started {id}");
-            bool success = false;
-            List<string> failureList = new();
+            bool noFailure = true;
+            string failurePath = "";
             foreach (string cyclePath in givenPaths)
             {
                 //Console.WriteLine($"ADD: {cyclePath}");
@@ -74,15 +74,27 @@ namespace DatabaseFoundations
                     command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
                     command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
                     command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    success = QueryNoReader(command) > 0;
-                    if (success != true)
+                    if (QueryNoReader(command) <= 0)
                     {
-                        failureList.Add(cyclePath);
+                        // Failure detected
+                        noFailure = false;
+                        failurePath = cyclePath;
+                        break;
                     }
                 }
+                else
+                {
+                    noFailure = false;
+                    failurePath = cyclePath;
+                }
+            }
+            if (noFailure == false)
+            {
+                Console.WriteLine($"Failure to add {failurePath}, changes were reverted.");
+                return false;
             }
             Console.WriteLine($"Completed add set - {id}");
-            return failureList;
+            return true;
         }
 
         /// <summary>
@@ -93,33 +105,44 @@ namespace DatabaseFoundations
         public bool AddEntry(string path, int amountPerSet)
         {
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
-            List<Task<List<string>>> taskManager = new();
+            List<Task<bool>> taskManager = new();
             List<string> tempPathCreator = new();
             int idTracker = 0;
             int maxIds = pathProcess.Count() / amountPerSet;
             Console.WriteLine($"Sets required: {maxIds}");
-            SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction(); // remove if not good
-            for (int v = 0; v < pathProcess.Count(); v++)
-            {
-                tempPathCreator.Add(pathProcess[v]);
-                //Console.WriteLine($"AddEntry: {pathProcess[v]}");
-                if (v % amountPerSet == 0 && v != 0)
+            using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
+            { // remove if not good
+                for (int v = 0; v < pathProcess.Count(); v++)
                 {
-                    string[] pathArray = tempPathCreator.ToArray();
-                    int tempInt = idTracker;
-                    Console.WriteLine(idTracker);
-                    taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate)));
-                    tempPathCreator.Clear();
-                    idTracker++;
+                    tempPathCreator.Add(pathProcess[v]);
+                    //Console.WriteLine($"AddEntry: {pathProcess[v]}");
+                    if (v % amountPerSet == 0 && v != 0)
+                    {
+                        string[] pathArray = tempPathCreator.ToArray();
+                        int tempInt = idTracker;
+                        Console.WriteLine(idTracker);
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate)));
+                        tempPathCreator.Clear();
+                        idTracker++;
+                    }
                 }
+                // Deal with remainders
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate)));
+                // We need a protection, if baseline fails to add...
+                Task.WaitAll(taskManager.ToArray());
+                foreach (Task<bool> taskItem in taskManager)
+                {
+                    // Add each failed path to list.
+                    if (taskItem.Result == false)
+                    {
+                        transactionCreate.Rollback();
+                        return false;
+                    }
+                }
+                transactionCreate.Commit();
+                Console.WriteLine("Completed");
+                return true;
             }
-            // Deal with remainders
-            taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(),idTracker, transactionCreate)));
-            // We need a protection, if baseline fails to add...
-            Task.WaitAll(taskManager.ToArray());
-            transactionCreate.Commit();
-            Console.WriteLine("Completed");
-            return true;
         }
 
         /// <summary>
@@ -192,7 +215,7 @@ namespace DatabaseFoundations
         /// </summary>
         /// <param name="set">Interval of set.</param>
         /// <param name="amountHandledPerSet">Amount per set.</param>
-        /// <returns>Dictionary, hash pairs</returns>
+        /// <returns>Dictionary, hash pairs.</returns>
         public Dictionary<string, string> GetSetEntries(int set, int amountHandledPerSet)
         {
             SqliteCommand command = new();
