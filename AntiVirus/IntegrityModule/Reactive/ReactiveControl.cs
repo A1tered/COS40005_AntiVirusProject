@@ -1,5 +1,7 @@
 ﻿using DatabaseFoundations;
 using DatabaseFoundations.IntegrityRelated;
+using IntegrityModule.DataTypes;
+using IntegrityModule.IntegrityComparison;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +14,12 @@ namespace IntegrityModule.Reactive
     {
         private List<FileSystemWatcher> _fileWatcherList;
         private IntegrityDatabaseIntermediary _intermediaryDB;
-        public ReactiveControl(IntegrityDatabaseIntermediary intermediary)
+        private IntegrityCycler _integrityCycler;
+        public ReactiveControl(IntegrityDatabaseIntermediary intermediary, IntegrityCycler cycler)
         {
             _fileWatcherList = new();
             _intermediaryDB = intermediary;
+            _integrityCycler = cycler;
         }
 
         public bool Initialize()
@@ -49,6 +53,7 @@ namespace IntegrityModule.Reactive
         private void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
         {
             Console.WriteLine($"Item changed {eventArguments.FullPath}");
+            _integrityCycler.InitiateSingleScan(eventArguments.FullPath);
         }
 
         public void Add(string path)

@@ -17,6 +17,12 @@ namespace IntegrityModule.ControlClasses
             _database = integrityDatabase;
         }
 
+        /// <summary>
+        /// Add windows directory / file to Integrity Database
+        /// </summary>
+        /// <param name="path">Windows directory.</param>
+        /// <param name="debug">Whether console information is shown</param>
+        /// <returns></returns>
         public bool AddIntegrityDirectory(string path, bool debug = false)
         {
             // This parameter affects adding baseline performance, especially for adding huge folders.
@@ -42,11 +48,20 @@ namespace IntegrityModule.ControlClasses
             return returnItem;
         }
 
+        /// <summary>
+        /// Remove a certain path (item or folder) from IntegrityDatabase
+        /// </summary>
+        /// <param name="path">Windows directory</param>
+        /// <returns></returns>
         public bool RemoveIntegrityDirectory(string path)
         {
             return _database.RemoveEntry(path);
         }
 
+        /// <summary>
+        /// Remove all items within IntegrityTrack table.
+        /// </summary>
+        /// <returns></returns>
         public bool RemoveAll()
         {
             return _database.DeleteAll();

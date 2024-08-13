@@ -18,9 +18,9 @@ class Program
     {
        IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("IntegrityDatabase", false));
         integrityModule.ClearDatabase();
-        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
-        Console.ReadLine();
-        //integrityModule.Scan(true);
+        integrityModule.AddBaseline(@"C:\Users\yumcy\AppData\Local", true);
+        integrityModule.Scan(true);
         //integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
+        Console.ReadLine(); // Remove when merging
     }
 }

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace IntegrityModule.DataTypes
 {
+    /// <summary>
+    /// Represents a data structure for a IntegrityViolation,
+    /// includes all the necessary information.
+    /// </summary>
     public class IntegrityViolation
     {
         public long _timeOfViolation;
