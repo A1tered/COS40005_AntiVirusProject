@@ -50,13 +50,14 @@ namespace DatabaseFoundations
         /// <param name="id">id provided by AddEntry function.</param>
         /// <param name="trans">SQLiteTransaction reference.</param>
         /// <returns>Path failed to be added.</returns>
-        private bool AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans)
+        private bool AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans, CancellationToken cancelToken)
         {
             Console.WriteLine($"Started {id}");
             bool noFailure = true;
             string failurePath = "";
             foreach (string cyclePath in givenPaths)
             {
+                cancelToken.ThrowIfCancellationRequested();
                 //Console.WriteLine($"ADD: {cyclePath}");
                 SqliteCommand command = new();
                 command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
@@ -90,7 +91,7 @@ namespace DatabaseFoundations
             }
             if (noFailure == false)
             {
-                Console.WriteLine($"Failure to add {failurePath}, changes were reverted.");
+                Console.WriteLine($"Failure to add {failurePath}, changes will be reverted.");
                 return false;
             }
             Console.WriteLine($"Completed add set - {id}");
@@ -109,6 +110,9 @@ namespace DatabaseFoundations
             List<string> tempPathCreator = new();
             int idTracker = 0;
             int maxIds = pathProcess.Count() / amountPerSet;
+            // Cancellation control variables
+            bool forceFailure = false;
+            CancellationTokenSource cancelToken = new();
             Console.WriteLine($"Sets required: {maxIds}");
             using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
             { // remove if not good
@@ -121,23 +125,49 @@ namespace DatabaseFoundations
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         Console.WriteLine(idTracker);
-                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token), cancelToken.Token));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token), cancelToken.Token));
                 // We need a protection, if baseline fails to add...
-                Task.WaitAll(taskManager.ToArray());
-                foreach (Task<bool> taskItem in taskManager)
+                while (taskManager.Count() > 0)
                 {
-                    // Add each failed path to list.
-                    if (taskItem.Result == false)
+                    try
                     {
-                        transactionCreate.Rollback();
-                        return false;
+                        Task.WaitAny(taskManager.ToArray());
                     }
+                    catch (OperationCanceledException)
+                    {
+                        Console.WriteLine("operation cancelled");
+                    }
+                    foreach (Task<bool> taskItem in taskManager)
+                    {
+                        // Add each failed path to list.
+                        if (taskItem.IsCompleted)
+                        {
+                            if (taskItem.Result == false)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Rollbacking Database due to adding directory error");
+                                Console.ResetColor();
+                                forceFailure = true;
+                                cancelToken.Cancel();
+                                break;
+                            }
+                        }
+                    }
+                    // Remove all completed tasks;
+                    taskManager.RemoveAll(x => x.IsCompleted);
+                }
+                if (forceFailure)
+                {
+                    taskManager.Clear();
+                    transactionCreate.Rollback();
+                    cancelToken.Dispose();
+                    return false;
                 }
                 transactionCreate.Commit();
                 Console.WriteLine("Completed");

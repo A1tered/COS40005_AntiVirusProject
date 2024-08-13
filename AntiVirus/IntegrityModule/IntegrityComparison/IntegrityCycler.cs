@@ -29,6 +29,11 @@ namespace IntegrityModule.IntegrityComparison
             List<Task<List<IntegrityViolation>>> taskList = new();
             List<IntegrityViolation> summaryViolation = new();
             long amountEntry = _database.QueryAmount("IntegrityTrack");
+            if (amountEntry == 0)
+            {
+                Console.WriteLine("No entries to scan");
+                return;
+            }
             decimal divison = (decimal)amountEntry / _amountPerSet;
             int sets = Convert.ToInt32(Math.Ceiling(divison));
             // For each set, give it to a pooler

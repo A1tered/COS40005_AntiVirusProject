@@ -52,8 +52,15 @@ namespace DatabaseFoundations.IntegrityRelated
         /// <returns>Tuple(long, long) LastWriteTime, Size of file in bytes</returns>
         public static Tuple<long, long> RetrieveFileInfo(string path)
         {
-            FileInfo fileInfoCreate = new FileInfo(path);
-            return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
+            try
+            {
+                FileInfo fileInfoCreate = new FileInfo(path);
+                return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
+            }
+            catch (FileNotFoundException e)
+            {
+                return new Tuple<long, long>(0,0);
+            }
         }
 
         /// <summary>
