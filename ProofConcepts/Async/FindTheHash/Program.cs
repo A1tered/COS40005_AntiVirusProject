@@ -6,9 +6,9 @@ using System.Diagnostics;
 
 DirectoryManager directoryManager = new DirectoryManager();
 // Get directory to database.
-string databaseDirectory = directoryManager.getDatabaseDirectory("hashDatabase");
+string databaseDirectory = directoryManager.getDatabaseDirectory("SigHashDB.db");
 // Directory to search, should work with any folder.
-string directorySearch = "C:\\Users\\yumcy\\AppData\\Local";
+string directorySearch = "C:\\";
 // True => Enable Asynchronous Search, False => Synchronous Search. 
 bool enableAsync = true;
 // Triggers whether scan is done, or configuration code BELOW
