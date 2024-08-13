@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7OUwvDtBysCLtPMql7Fip0rhJ3N3NgA4ASLSYaVXFCT7mTgLeMlpby1CClX4Rj5zd5uJ4zoOJzbotZpG+56lAQ==",
+  "dgSpecHash": "a2G+u2C3uqq7Ptuo80D22LkzxqjSa9fWM60RuYzcBhOLlawQfqDqoP1ED+ss7jrXdwSOqDRF/t5cmI2FoDwcDw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\Project\\IntegrityModule\\IntegrityModule.csproj",
+  "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.7\\microsoft.data.sqlite.8.0.7.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",

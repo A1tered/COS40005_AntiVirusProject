@@ -43,6 +43,13 @@ namespace DatabaseFoundations
             return QueryNoReader(command) > 0;
         }
 
+        /// <summary>
+        /// Adds all the paths to the database.
+        /// </summary>
+        /// <param name="givenPaths">Array of string paths.</param>
+        /// <param name="id">id provided by AddEntry function.</param>
+        /// <param name="trans">SQLiteTransaction reference.</param>
+        /// <returns>Paths that failed to be added.</returns>
         private List<string> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans)
         {
             Console.WriteLine($"Started {id}");
@@ -115,6 +122,11 @@ namespace DatabaseFoundations
             return true;
         }
 
+        /// <summary>
+        /// Remove items from database, whether that be directory and its contents, or a singular path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>(True) Items changed, (false) Items unchanged.</returns>
         public bool RemoveEntry(string path)
         {
             List<string> pathsToRemove = FileInfoRequester.PathCollector(path);
@@ -165,6 +177,7 @@ namespace DatabaseFoundations
             SqliteDataReader dataReader = QueryReader(command);
             if (dataReader.Read())
             {
+                // Directory, Hash, ModificationTime, SignatureCreation, OriginalSize
                 return new Tuple<string, string, long, long, long>(dataReader.GetString(0), dataReader.GetString(1), dataReader.GetInt64(2), dataReader.GetInt64(3), dataReader.GetInt64(4));
             }
             else
@@ -173,6 +186,13 @@ namespace DatabaseFoundations
             }
         }
 
+
+        /// <summary>
+        /// Get a set of data from the database.
+        /// </summary>
+        /// <param name="set">Interval of set.</param>
+        /// <param name="amountHandledPerSet">Amount per set.</param>
+        /// <returns>Dictionary, hash pairs</returns>
         public Dictionary<string, string> GetSetEntries(int set, int amountHandledPerSet)
         {
             SqliteCommand command = new();

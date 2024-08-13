@@ -56,7 +56,11 @@ namespace DatabaseFoundations.IntegrityRelated
             return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
         }
 
-
+        /// <summary>
+        /// Get all paths in a directory.
+        /// </summary>
+        /// <param name="path">Windows Directory Path.</param>
+        /// <returns>All window paths to items within that directory and sub directories.</returns>
         public static List<string> PathCollector(string path)
         {
             List<string> pathProcess = new();
@@ -87,6 +91,25 @@ namespace DatabaseFoundations.IntegrityRelated
                 pathProcess.Add(path);
             }
             return pathProcess;
+        }
+
+        /// <summary>
+        /// Private function that finds files/directories with certain names, within the provided directory.
+        /// </summary>
+        /// <param name="startDirectory">Name of database SQLite file</param>\
+        /// <param name="term">Search term for what the desired file path should have</param>
+        public static string FileDirectorySearcher(string startDirectory, string term)
+        {
+            string[] filePaths = Directory.GetFiles(startDirectory).Concat(Directory.GetDirectories(startDirectory)).ToArray();
+            // Find path that contains database.
+            foreach (string path in filePaths)
+            {
+                if (Path.GetFileNameWithoutExtension(path).Contains(term))
+                {
+                    return path;
+                }
+            }
+            return null;
         }
     }
 }
