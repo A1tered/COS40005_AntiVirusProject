@@ -15,5 +15,5 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-    <ui:TextBlock Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="29" HorizontalAlignment="Center"/>
+    <ui:TextBlock Margin="10,10,0,0" TextWrapping="Wrap" Text="Quarantined Items" VerticalAlignment="Top" Height="29" HorizontalAlignment="Center"/>
 </Page>

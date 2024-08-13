@@ -27,7 +27,7 @@
             <TextBlock Width="125" RenderTransformOrigin="0.012,0.559" HorizontalAlignment="Left" Height="30" ><Run Language="en-au" Text="Open on startup"/><LineBreak/><Run Language="en-au"/></TextBlock>
             <ui:ToggleSwitch Checked="ToggleSwitch_Checked" IsChecked="False" Width="794" Content="Disabled" Margin="0,0,0,10" Padding="8,6,0,0"/>
             <TextBlock Width="124" RenderTransformOrigin="0.012,0.559" Height="30" HorizontalAlignment="Left" ><Run Language="en-au" Text="Enable dark theme"/><LineBreak/><Run Language="en-au"/><LineBreak/><Run/></TextBlock>
-            <ui:ToggleSwitch Checked="ToggleSwitch_Checked" IsChecked="False" Width="794" Content="Light theme enabled" Padding="8,6,0,0" Margin="0,0,0,10"/>
+            <ui:ToggleSwitch Checked="ToggleSwitch_Checked" Unchecked="ToggleSwitch_Unchecked" IsChecked="False" Width="794" Content="Light theme enabled" Padding="8,6,0,0" Margin="0,0,0,10"/>
             <TextBlock
             FontSize="20"
             FontWeight="Medium" Height="35"
