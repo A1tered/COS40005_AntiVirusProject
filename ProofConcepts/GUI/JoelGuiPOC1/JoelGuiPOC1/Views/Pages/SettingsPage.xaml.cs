@@ -17,6 +17,14 @@ namespace JoelGuiPOC1.Views.Pages
 
         private void ToggleSwitch_Checked(object sender, RoutedEventArgs e)
         {
+            SettingsViewModel viewModel = new SettingsViewModel();
+            viewModel.OnChangeTheme("theme_dark");
+        }
+
+        private void ToggleSwitch_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SettingsViewModel viewModel = new SettingsViewModel();
+            viewModel.OnChangeTheme("theme_light");
         }
 
         private void QuarantinedItemsLinkClicked(object sender, RoutedEventArgs e)
