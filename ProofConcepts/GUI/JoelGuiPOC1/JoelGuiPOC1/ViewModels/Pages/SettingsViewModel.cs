@@ -36,7 +36,7 @@ namespace JoelGuiPOC1.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void OnChangeTheme(string parameter)
+        public void OnChangeTheme(string parameter)
         {
             switch (parameter)
             {
