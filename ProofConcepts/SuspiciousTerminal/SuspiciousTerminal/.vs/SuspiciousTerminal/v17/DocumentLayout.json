@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Tim\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\",
+  "WorkspaceRootPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tim\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tloh1\\onedrive\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\terminalmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:terminalmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tloh1\\onedrive\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\suspiciousterminaldbintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:suspiciousterminaldbintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tloh1\\onedrive\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\suspiciousterminal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:suspiciousterminal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tloh1\\onedrive\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +34,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Tim\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Tim\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAzwCMAAAA6AAAA",
+              "DocumentIndex": 1,
+              "Title": "SuspiciousTerminalDBIntermediary.cs",
+              "DocumentMoniker": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminalDBIntermediary.cs",
+              "RelativeDocumentMoniker": "SuspiciousTerminalDBIntermediary.cs",
+              "ToolTip": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminalDBIntermediary.cs",
+              "RelativeToolTip": "SuspiciousTerminalDBIntermediary.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAADAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T11:48:43.331Z",
+              "WhenOpened": "2024-08-18T01:49:19.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TerminalMain.cs",
+              "DocumentMoniker": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\TerminalMain.cs",
+              "RelativeDocumentMoniker": "TerminalMain.cs",
+              "ToolTip": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\TerminalMain.cs",
+              "RelativeToolTip": "TerminalMain.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAkwEUAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T01:15:12.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SuspiciousTerminal",
+              "DocumentMoniker": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
+              "RelativeDocumentMoniker": "SuspiciousTerminal.csproj",
+              "ToolTip": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
+              "RelativeToolTip": "SuspiciousTerminal.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-18T01:50:05.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\Database.cs",
+              "RelativeDocumentMoniker": "Database.cs",
+              "ToolTip": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\Database.cs",
+              "RelativeToolTip": "Database.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwB0AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T01:33:14.011Z",
               "EditorCaption": ""
             }
           ]
