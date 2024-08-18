@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:JoelGuiPOC1.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
+    Title="ScannerPage"
     d:DataContext="{d:DesignInstance local:ScannerPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"

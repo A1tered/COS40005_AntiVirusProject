@@ -45,6 +45,8 @@ namespace JoelGuiPOC1
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<BlacklistPage>();
+                services.AddSingleton<BlacklistViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<ProtectionHistoryPage>();
@@ -55,6 +57,8 @@ namespace JoelGuiPOC1
                 services.AddSingleton<ScanningViewModel>(); 
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
+                services.AddSingleton<QuarantinedItemsPage>();
+                services.AddSingleton<QuarantinedViewModel>();
             }).Build();
 
         /// <summary>

@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:JoelGuiPOC1.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
+    Title="ScanningPage"
     d:DataContext="{d:DesignInstance local:ScanningPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
@@ -17,14 +17,15 @@
     mc:Ignorable="d">
     <StackPanel>
         <StackPanel.Resources>
-            <Storyboard x:Key="Rotate" RepeatBehavior="Forever">
+            <Storyboard x:Key="RotateRing" RepeatBehavior="Forever">
                 <DoubleAnimation
                     Storyboard.TargetName="rotateTransform"
                     Storyboard.TargetProperty="Angle"
                     From="0" To="360"
-                    Duration="0:00:1"/>
+                    Duration="0:0:1" />
             </Storyboard>
         </StackPanel.Resources>
+        
         <ui:TextBlock TextWrapping="Wrap" Text="Scanning..." FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" Margin="0,70,0,20"/>
         <ui:ProgressRing RenderTransformOrigin="0.5,0.5">
             <ui:ProgressRing.RenderTransform>
@@ -36,11 +37,12 @@
                 </TransformGroup>
             </ui:ProgressRing.RenderTransform>
         </ui:ProgressRing>
+        
         <ui:TextBlock TextWrapping="Wrap" Text="Scan in progress... Please wait" FontSize="24" HorizontalAlignment="Center"/>
         <ProgressBar Height="14" Width="258" Margin="0,10,0,0"/>
         <ui:TextBlock TextWrapping="Wrap" Text="X% complete" FontSize="24" HorizontalAlignment="Center"/>
         <ui:TextBlock TextWrapping="Wrap" Text="Y items scanned" FontSize="24" HorizontalAlignment="Center"/>
         <ui:TextBlock TextWrapping="Wrap" Text="Z threats found" FontSize="24" HorizontalAlignment="Center"/>
-        <ui:Button Content="Cancel scan" HorizontalAlignment="Center" Margin="0,21,0,0" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold"/>
+        <ui:Button Content="Cancel scan" Click="Cancel_Scan" HorizontalAlignment="Center" Margin="0,21,0,0" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold"/>
     </StackPanel>
 </Page>
