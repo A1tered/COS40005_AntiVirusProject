@@ -19,12 +19,21 @@ namespace IntegrityModule.IntegrityComparison
             _amountPerSet = 100;
         }
 
-        public bool InitiateScan()
+        /// <summary>
+        /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
+        /// </summary>
+        /// <remarks>One of the most important functions.</remarks>
+        public void InitiateScan()
         {
             List<IntegrityDataPooler> dataPoolerList = new();
             List<Task<List<IntegrityViolation>>> taskList = new();
             List<IntegrityViolation> summaryViolation = new();
             long amountEntry = _database.QueryAmount("IntegrityTrack");
+            if (amountEntry == 0)
+            {
+                Console.WriteLine("No entries to scan");
+                return;
+            }
             decimal divison = (decimal)amountEntry / _amountPerSet;
             int sets = Convert.ToInt32(Math.Ceiling(divison));
             // For each set, give it to a pooler
@@ -45,7 +54,19 @@ namespace IntegrityModule.IntegrityComparison
                 taskItem.Result.ForEach(summaryViolation.Add);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
-            return true;
+        }
+
+        /// <summary>
+        /// Similar to InitiateScan, except it only scans 1 file.
+        /// </summary>
+        /// <param name="path">Windows File Path</param>
+        public void InitiateSingleScan(string path)
+        {
+            IntegrityDataPooler singlePooler = new(_database, path);
+            IntegrityViolation violation = singlePooler.CheckIntegrityFile();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
+            Console.ResetColor();
         }
 
         public int AmountSet

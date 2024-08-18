@@ -11,10 +11,10 @@ namespace DatabaseFoundations.IntegrityRelated
     public static class FileInfoRequester
     {
         /// <summary>
-        /// Hash File via SHA256
+        /// Hash File via SHA1
         /// </summary>
         /// <param name="directory">File Directory</param>
-        /// <returns>SHA256 Hash of file</returns>
+        /// <returns>SHA1 Hash of file</returns>
         public static string HashFile(string directory)
         {
             if (Path.Exists(directory))
@@ -24,7 +24,7 @@ namespace DatabaseFoundations.IntegrityRelated
                 {
                     using (FileStream openFile = File.Open(directory, FileMode.Open, FileAccess.Read))
                     {
-                        byte[] returnByteSet = SHA256.HashData(openFile);
+                        byte[] returnByteSet = SHA1.HashData(openFile);
                         foreach (byte individualByte in returnByteSet)
                         {
                             hashReturn.Append(individualByte.ToString("X2"));
@@ -52,11 +52,22 @@ namespace DatabaseFoundations.IntegrityRelated
         /// <returns>Tuple(long, long) LastWriteTime, Size of file in bytes</returns>
         public static Tuple<long, long> RetrieveFileInfo(string path)
         {
-            FileInfo fileInfoCreate = new FileInfo(path);
-            return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
+            try
+            {
+                FileInfo fileInfoCreate = new FileInfo(path);
+                return new Tuple<long, long>(new DateTimeOffset(fileInfoCreate.LastWriteTime).ToUnixTimeSeconds(), fileInfoCreate.Length);
+            }
+            catch (FileNotFoundException e)
+            {
+                return new Tuple<long, long>(0,0);
+            }
         }
 
-
+        /// <summary>
+        /// Get all paths in a directory.
+        /// </summary>
+        /// <param name="path">Windows Directory Path.</param>
+        /// <returns>All window paths to items within that directory and sub directories.</returns>
         public static List<string> PathCollector(string path)
         {
             List<string> pathProcess = new();
@@ -87,6 +98,25 @@ namespace DatabaseFoundations.IntegrityRelated
                 pathProcess.Add(path);
             }
             return pathProcess;
+        }
+
+        /// <summary>
+        /// Private function that finds files/directories with certain names, within the provided directory.
+        /// </summary>
+        /// <param name="startDirectory">Name of database SQLite file</param>\
+        /// <param name="term">Search term for what the desired file path should have</param>
+        public static string FileDirectorySearcher(string startDirectory, string term)
+        {
+            string[] filePaths = Directory.GetFiles(startDirectory).Concat(Directory.GetDirectories(startDirectory)).ToArray();
+            // Find path that contains database.
+            foreach (string path in filePaths)
+            {
+                if (Path.GetFileNameWithoutExtension(path).Contains(term))
+                {
+                    return path;
+                }
+            }
+            return null;
         }
     }
 }

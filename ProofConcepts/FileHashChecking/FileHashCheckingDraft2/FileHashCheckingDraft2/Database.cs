@@ -55,7 +55,7 @@ namespace FileHashChecking
                 SELECT * FROM hashSignatures WHERE sigHash = $hash;
                 ");
 
-                    // command.Paramaters.AddWithValue("$table", _tableName_);
+                    // command.Parameters.AddWithValue("$table", _tableName_);
                     command.Parameters.AddWithValue("$hash", hash);
                     SqliteDataReader reader = command.ExecuteReader();
                     reader.Read();
