@@ -17,7 +17,6 @@ using DatabaseProofOfConcept;
 
 class Program
 {
-
     public delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
 
     // The hook ID and the hook procedure callback
@@ -35,41 +34,65 @@ class Program
     [DllImport("user32.dll", SetLastError = true)]
     private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
+    
+    
+    //-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
     static async Task Main(string[] args)
     {
         //Variable will hold the state of any foreign network connections. If checks determine a remote connection is occuring, Value is changed to True.
-        bool TerminalNetworkConnection = false;
+       // bool TerminalNetworkConnection = false;
 
-        
+        Initialise();
         await MonitorCLIAsync();
         //"await" "async" and "task" is part of asynchornous programming
         // "async" defines this method as asynchornous
         //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
         // "task" defines that output.
 
+        
 
-        //Create Database
-        Database TerminalDB = new Database();
-        //Mouse Table Column Names
-        String[] MouseColumnnames = { "DateTime", "XLocation", "YLocation" };
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] MouseColumnType = { "DateTime", "Int", "Int" };
-        //Create Table for Mouse Data
-        TerminalDB.CreateTable("MouseMovement", MouseColumnnames, MouseColumnType);
-
-
-        //Keyboard Table Column Names
-        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Focus"};
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] KeyboardColumnType = { "DateTime", "String", "String"};
-
-        //Create DB for Keyboard Data
-        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
-       
-
+        await MonitorMouseMovements();
     }
+
+    
+    static async Task MonitorMouseMovements()
+    {
+        // Set the mouse hook
+        _hookID = SetWindowsHookEx(14, _proc, IntPtr.Zero, 0);
+        Console.WriteLine("Monitoring mouse movements. Press Ctrl+C to exit...");
+
+        // Start asynchronous monitoring
+        await MonitorMouseMovementsAsync();
+    }
+
+    private static async Task MonitorMouseMovementsAsync()
+    {
+        // Continuously run to keep the hook active
+        while (true)
+        {
+            await Task.Delay(100); // Introduce a small delay to prevent high CPU usage
+        }
+    }
+    private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+    {
+        if (nCode >= 0 && (int)wParam == 0x0200) // WM_MOUSEMOVE
+        {
+            // Retrieve mouse coordinates from lParam
+            int x = Marshal.ReadInt32(lParam);
+            int y = Marshal.ReadInt32(lParam, 4);
+            Console.WriteLine($"X = {x}, Y = {y}");
+        }
+        return CallNextHookEx(_hookID, nCode, wParam, lParam);
+    }
+
+
+
 
     static async Task MonitorCLIAsync()
     {
@@ -90,61 +113,12 @@ class Program
         }
     }
 
-    static async Task MonitorCLIkeyboard()
+    static async Task MonitorCLIkeyboardAsync()
     {
         //Monitors and analyses the keyboard inputs into CLI. 
         //This will record inputs and commands. 
 
         //Compare inputs, mark accordingly to a criteria. 
-    }
-
-    static async Task MonitorMouseMovements()
-    {
-        _hookID = SetWindowsHookEx(14, _proc, IntPtr.Zero, 0);
-        Console.WriteLine("Monitoring mouse events. Press Enter to exit...");
-        Console.ReadLine(); // Keeps the application running
-        UnhookWindowsHookEx(_hookID); // Unhook when the application exits
-    }
-
-    private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
-    {
-        if (nCode >= 0)
-        {
-            // Retrieve mouse coordinates directly from lParam without using a struct
-            int x = Marshal.ReadInt32(lParam);
-            int y = Marshal.ReadInt32(lParam, 4);
-
-            // Check the type of mouse event using wParam
-            switch ((int)wParam)
-            {
-                case 0x0200: // WM_MOUSEMOVE
-                    Console.WriteLine($"Mouse moved to: X = {x}, Y = {y}");
-                    break;
-                case 0x0201: // WM_LBUTTONDOWN
-                    Console.WriteLine($"Left button down at: X = {x}, Y = {y}");
-                    break;
-                case 0x0202: // WM_LBUTTONUP
-                    Console.WriteLine($"Left button up at: X = {x}, Y = {y}");
-                    break;
-                case 0x0204: // WM_RBUTTONDOWN
-                    Console.WriteLine($"Right button down at: X = {x}, Y = {y}");
-                    break;
-                case 0x0205: // WM_RBUTTONUP
-                    Console.WriteLine($"Right button up at: X = {x}, Y = {y}");
-                    break;
-                case 0x0207: // WM_MBUTTONDOWN
-                    Console.WriteLine($"Middle button down at: X = {x}, Y = {y}");
-                    break;
-                case 0x0208: // WM_MBUTTONUP
-                    Console.WriteLine($"Middle button up at: X = {x}, Y = {y}");
-                    break;
-                case 0x020A: // WM_MOUSEWHEEL
-                    short delta = (short)((Marshal.ReadInt32(lParam) >> 16) & 0xffff);
-                    Console.WriteLine($"Mouse wheel moved at: X = {x}, Y = {y} with delta = {delta}");
-                    break;
-            }
-        }
-        return CallNextHookEx(_hookID, nCode, wParam, lParam);
     }
 
 
@@ -170,5 +144,30 @@ class Program
     }
    
     
-    
+    static void Initialise()
+    {
+        //Create Database
+        Database TerminalDB = new Database();
+        //Mouse Table Column Names
+        String[] MouseColumnnames = { "DateTime", "XLocation", "YLocation" };
+        //Mouse Table Column Data Types
+        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
+        String[] MouseColumnType = { "DateTime", "Int", "Int" };
+        //Create Table for Mouse Data
+        TerminalDB.CreateTable("MouseMovement", MouseColumnnames, MouseColumnType);
+
+        //Keyboard Table Column Names
+        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Focus" };
+        //Mouse Table Column Data Types
+        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
+        String[] KeyboardColumnType = { "DateTime", "String", "String" };
+
+        //Create DB for Keyboard Data
+        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
+
+       
+
+
+    }
+
 }
