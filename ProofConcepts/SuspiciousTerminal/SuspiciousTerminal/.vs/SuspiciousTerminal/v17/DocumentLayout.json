@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|c:\\users\\tloh1\\onedrive\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\suspiciousterminal\\suspiciousterminal\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0C0E90F-49CC-4BBB-AAD7-C6541AD5EBBA}|SuspiciousTerminal.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainProgram.cs",
+              "DocumentMoniker": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\MainProgram.cs",
+              "RelativeDocumentMoniker": "MainProgram.cs",
+              "ToolTip": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\MainProgram.cs*",
+              "RelativeToolTip": "MainProgram.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEEAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T01:15:12.498Z",
+              "EditorCaption": ""
             }
           ]
         }
