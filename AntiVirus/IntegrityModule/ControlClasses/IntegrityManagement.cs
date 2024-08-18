@@ -20,7 +20,7 @@ namespace IntegrityModule.ControlClasses
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             _integrityCycler = new IntegrityCycler(integrityIntermediary);
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
-            //_reactiveControl.Initialize(); (Uncomment when ready)
+            _reactiveControl.Initialize(); //(Uncomment when ready)
         }
 
         // Alert Handler to be placed here at later date.
