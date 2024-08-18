@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**************************************************************************
+ * Author:      Timothy Loh
+ * Description: Main monitoring of CLI inputs. 
+ * - Behaviour of keyboard inputs
+ * - Behaviour of mouse movements
+ * Last Modified: 11/08/24
+ **************************************************************************/
+
+
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,14 +16,21 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        await MonitorCmdAndPowershellAsync();
+
+        
+        await MonitorCLIAsync();
         //"await" "async" and "task" is part of asynchornous programming
         // "async" defines this method as asynchornous
         //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
         // "task" defines that output.
+
+        
+        //Create database 
+
+     
     }
 
-    static async Task MonitorCmdAndPowershellAsync()
+    static async Task MonitorCLIAsync()
     {
         //Because this is always monitoring, the while loop never ends. Thanks to async programming, this does not hold up the rest of the code.
         while (true)
@@ -33,6 +49,21 @@ class Program
         }
     }
 
+    static async Task MonitorCLIkeyboard()
+    {
+        //Monitors and analyses the keyboard inputs into CLI. 
+        //This will record inputs and commands. 
+
+        //Compare inputs, mark accordingly to a criteria. 
+    }
+
+    static async Task MonitorMouseMovements()
+    {
+        //Monitors the mouse movements. 
+        //Catalogs mousemovements with any paste commands to determine suspiciousness.
+    }
+
+
     static void DetectedTerminalisRunning(Process process)
     {
         // This method describes what the program does when it detects a cmd or powershell running
@@ -40,6 +71,20 @@ class Program
         Console.WriteLine($"Suspicious activity detected in process: {process.ProcessName}, PID: {process.Id}, Start Time: {process.StartTime}");
     }
 
+    static void CheckDatabases ()
+    {
+        //This method runs to check databases do exist. Mainly used on initialisation.
 
 
+    }
+ 
+    static void CheckRemoteConnections ()
+    {
+        // This method will check and record any remote sessions, SSH, Telnet etc.
+        // Alert if network connection found. 
+        //If time, offer option to block remote connection.
+    }
+   
+    
+    
 }
