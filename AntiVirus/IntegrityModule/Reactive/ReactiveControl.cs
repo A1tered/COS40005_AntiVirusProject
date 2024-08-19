@@ -59,6 +59,10 @@ namespace IntegrityModule.Reactive
         public void Add(string path)
         {
             List<string> pathsToAdd = FileInfoRequester.PathCollector(path);
+            foreach (string pathItem in pathsToAdd)
+            {
+                SetUpFileWatcher(pathItem);
+            }
         }
     }
 }

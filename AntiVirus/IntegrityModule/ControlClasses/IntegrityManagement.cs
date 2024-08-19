@@ -20,7 +20,11 @@ namespace IntegrityModule.ControlClasses
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             _integrityCycler = new IntegrityCycler(integrityIntermediary);
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
-            _reactiveControl.Initialize(); //(Uncomment when ready)
+        }
+
+        public void StartReactiveControl()
+        {
+            _reactiveControl.Initialize();
         }
 
         // Alert Handler to be placed here at later date.
@@ -53,7 +57,13 @@ namespace IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool AddBaseline(string path, bool debug = false)
         {
-           return _integrityConfigurator.AddIntegrityDirectory(path, debug);
+           bool success = _integrityConfigurator.AddIntegrityDirectory(path, debug);
+            if (success)
+            {
+                // If integrity items were successfully added, then add to reactive control. (As it was not initialized with the database).
+                _reactiveControl.Add(path);
+            }
+            return success;
         }
 
         /// <summary>

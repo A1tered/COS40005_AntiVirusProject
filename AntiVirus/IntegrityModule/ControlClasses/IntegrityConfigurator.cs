@@ -43,6 +43,10 @@ namespace IntegrityModule.ControlClasses
                 Console.WriteLine($"AmountPerSet: {amountPerSet}");
                 Console.WriteLine($"Directory adding process duration: {timer.Elapsed}");
                 Console.ResetColor();
+                if (returnItem == false)
+                {
+                    Console.WriteLine("Duration timing invalid, as addition to database was cancelled");
+                }
                 timer.Stop();
             }
             return returnItem;

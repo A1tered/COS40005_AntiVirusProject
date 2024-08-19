@@ -51,6 +51,7 @@ namespace IntegrityModule.IntegrityComparison
             Task.WaitAll(taskList.ToArray());
             foreach (Task<List<IntegrityViolation>> taskItem in taskList)
             {
+                // May have to consider adding some sort of alert event here.
                 taskItem.Result.ForEach(summaryViolation.Add);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
