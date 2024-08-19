@@ -50,12 +50,19 @@ namespace IntegrityModule.IntegrityComparison
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
                 taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
             }
-            // Note to self to add asynchronous support, and to immediately emit alerts rather than holding onto them.
-            Task.WaitAll(taskList.ToArray());
-            foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+            while (taskList.Exists(x => x.IsCompleted == false))
             {
-                // May have to consider adding some sort of alert event here.
-                taskItem.Result.ForEach(summaryViolation.Add);
+                Task.WaitAny(taskList.ToArray());
+                foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+                {
+                    if (taskItem.IsCompleted)
+                    {
+                        taskItem.Result.ForEach(summaryViolation.Add);
+                        // For each violation, send to violation handler
+                        taskItem.Result.ForEach(_violationHandler.ViolationAlert);
+                    }
+                }
+                taskList.RemoveAll(x => x.IsCompleted);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
         }

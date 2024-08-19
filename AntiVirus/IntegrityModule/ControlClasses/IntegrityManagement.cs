@@ -1,5 +1,6 @@
 ﻿using DatabaseFoundations;
 using IntegrityModule.Alerts;
+using IntegrityModule.DataTypes;
 using IntegrityModule.IntegrityComparison;
 using IntegrityModule.Reactive;
 using System;
@@ -20,6 +21,7 @@ namespace IntegrityModule.ControlClasses
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             ViolationHandler tempHandler = new();
+            tempHandler.AlertFlag += AlertHandler;
             _integrityCycler = new IntegrityCycler(integrityIntermediary, tempHandler);
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
         }
@@ -29,10 +31,11 @@ namespace IntegrityModule.ControlClasses
             _reactiveControl.Initialize();
         }
 
-        private void AlertHandler(EventArgs alertInfo)
+        private void AlertHandler(object sender, AlertArgs alertInfo)
         {
-
+            Console.WriteLine("Alert Handler Event Triggered Successfully");
         }
+
 
         // Alert Handler to be placed here at later date.
 

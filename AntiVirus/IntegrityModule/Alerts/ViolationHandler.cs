@@ -11,7 +11,7 @@ namespace IntegrityModule.Alerts
 
     public class ViolationHandler
     {
-        public event EventHandler AlertFlag;
+        public event EventHandler<AlertArgs> AlertFlag;
         public void ViolationAlert(List<IntegrityViolation> integViolation)
         {
             foreach (IntegrityViolation compVio in integViolation)
@@ -55,7 +55,10 @@ namespace IntegrityModule.Alerts
                 alertCreate.SuggestedAction = "Check for potential compromise of computer";
                 // File Missing (High Severity)
             }
+            AlertArgs argument = new();
+            argument.AlertSet = alertCreate;
+            AlertFlag?.Invoke(this, argument);
         }
-        
+
     }
 }
