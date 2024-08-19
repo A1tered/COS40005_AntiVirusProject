@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace IntegrityModule.IntegrityComparison
         // How many data sets does 1 thread undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
-        public IntegrityCycler(IntegrityDatabaseIntermediary database)
+        private ViolationHandler _violationHandler;
+        public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
         {
             _database = database;
+            _violationHandler = violationHandler;
             _amountPerSet = 100;
         }
 

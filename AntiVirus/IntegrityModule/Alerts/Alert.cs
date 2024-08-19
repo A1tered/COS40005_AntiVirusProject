@@ -13,7 +13,7 @@ namespace IntegrityModule.Alerts
 
         private string _component;
 
-        private string _severityLevel;
+        private int _severityLevel;
 
         private string _message;
 
@@ -22,7 +22,6 @@ namespace IntegrityModule.Alerts
         public Alert()
         {
             _component = "";
-            _severityLevel = "";
             _message = "";
             _suggestedAction = "";
         }
@@ -52,7 +51,7 @@ namespace IntegrityModule.Alerts
             }
         }
 
-        public string SeverityLevel
+        public int SeverityLevel
         {
             get
             {

@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using IntegrityModule.Alerts;
 using IntegrityModule.IntegrityComparison;
 using IntegrityModule.Reactive;
 using System;
@@ -18,13 +19,19 @@ namespace IntegrityModule.ControlClasses
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
-            _integrityCycler = new IntegrityCycler(integrityIntermediary);
+            ViolationHandler tempHandler = new();
+            _integrityCycler = new IntegrityCycler(integrityIntermediary, tempHandler);
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
         }
 
         public void StartReactiveControl()
         {
             _reactiveControl.Initialize();
+        }
+
+        private void AlertHandler(EventArgs alertInfo)
+        {
+
         }
 
         // Alert Handler to be placed here at later date.
