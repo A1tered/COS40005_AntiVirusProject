@@ -24,7 +24,6 @@ namespace IntegrityModule.Reactive
 
         public bool Initialize()
         {
-            List<string> directoriesMonitor = new();
             Console.WriteLine("Reactive Control Initialization");
             long amountEntry = _intermediaryDB.QueryAmount();
             decimal divison = (decimal)amountEntry / 100;

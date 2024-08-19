@@ -10,6 +10,7 @@
 using DatabaseFoundations;
 using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.ControlClasses;
+using Microsoft.Data.Sqlite;
 
 namespace IntegrityModule;
 
@@ -17,11 +18,26 @@ class Program
 {
     public static void Main(string[] args)
     {
-        IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("IntegrityDatabase", false));
-        //integrityModule.ClearDatabase();
-        //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
-        integrityModule.Scan(true);
-        //integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
-        Console.ReadLine(); // Remove when merging
+        IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
+        IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
+        integrityModule.ClearDatabase();
+        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
+        //integrityModule.Scan(true);
+        SqliteCommand customSqliteCommand = new();
+        customSqliteCommand.CommandText = "SELECT * FROM IntegrityTrack";
+        List<List<string>> returnItem = (databaseIntermediary.QueryReaderAsText(customSqliteCommand));
+        foreach (List<string> row in returnItem)
+        {
+            Console.WriteLine("\n");
+            foreach (string itemD in row)
+            {
+                Console.WriteLine($"{itemD}|");
+            }
+
+        }
+        ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
+        //Console.ReadLine(); // Remove when merging
+        
+        
     }
 }

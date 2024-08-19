@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntegrityModule")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e28975e4a487202eba94327007e9d87341c5c073")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+848f9b1d688087d28cfbd581da418ac3da7e1df8")]
 [assembly: System.Reflection.AssemblyProductAttribute("IntegrityModule")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IntegrityModule")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
