@@ -8,6 +8,7 @@
 
 
 using DatabaseFoundations;
+using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.ControlClasses;
 
 namespace IntegrityModule;
