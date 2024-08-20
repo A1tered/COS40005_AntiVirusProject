@@ -26,7 +26,7 @@ namespace IntegrityModule.IntegrityComparison
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
         /// </summary>
         /// <remarks>One of the most important functions.</remarks>
-        public void InitiateScan()
+        public async Task InitiateScan()
         {
             List<IntegrityDataPooler> dataPoolerList = new();
             List<Task<List<IntegrityViolation>>> taskList = new();
@@ -48,11 +48,12 @@ namespace IntegrityModule.IntegrityComparison
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
-                taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
+                //taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
+                taskList.Add(poolerObject.CheckIntegrity());
             }
             while (taskList.Exists(x => x.IsCompleted == false))
             {
-                Task.WaitAny(taskList.ToArray());
+                await Task.WhenAll(taskList.ToArray());
                 foreach (Task<List<IntegrityViolation>> taskItem in taskList)
                 {
                     if (taskItem.IsCompleted)
@@ -71,10 +72,10 @@ namespace IntegrityModule.IntegrityComparison
         /// Similar to InitiateScan, except it only scans 1 file.
         /// </summary>
         /// <param name="path">Windows File Path</param>
-        public void InitiateSingleScan(string path)
+        public async Task InitiateSingleScan(string path)
         {
             IntegrityDataPooler singlePooler = new(_database, path);
-            IntegrityViolation violation = singlePooler.CheckIntegrityFile();
+            IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();

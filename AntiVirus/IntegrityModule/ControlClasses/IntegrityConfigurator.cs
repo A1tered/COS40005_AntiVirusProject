@@ -23,7 +23,7 @@ namespace IntegrityModule.ControlClasses
         /// <param name="path">Windows directory.</param>
         /// <param name="debug">Whether console information is shown</param>
         /// <returns></returns>
-        public bool AddIntegrityDirectory(string path, bool debug = false)
+        public async Task<bool> AddIntegrityDirectory(string path, bool debug = false)
         {
             // This parameter affects adding baseline performance, especially for adding huge folders.
             // Higher the value, slower it is.
@@ -36,7 +36,7 @@ namespace IntegrityModule.ControlClasses
             {
                 timer.Start();
             }
-            bool returnItem = _database.AddEntry(path, amountPerSet);
+            bool returnItem = await _database.AddEntry(path, amountPerSet);
             if (debug)
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;

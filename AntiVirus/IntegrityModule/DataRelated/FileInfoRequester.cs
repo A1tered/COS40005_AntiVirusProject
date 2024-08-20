@@ -30,16 +30,16 @@ namespace DatabaseFoundations.IntegrityRelated
         /// </summary>
         /// <param name="directory">File Directory</param>
         /// <returns>SHA1 Hash of file</returns>
-        public static string HashFile(string directory)
+        public static async Task<string> HashFile(string directory)
         {
             if (Path.Exists(directory))
             {
                 StringBuilder hashReturn = new();
                 try
                 {
-                    using (FileStream openFile = File.Open(directory, FileMode.Open, FileAccess.Read))
+                    using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
                     {
-                        byte[] returnByteSet = SHA1.HashData(openFile);
+                        byte[] returnByteSet = await SHA1.HashDataAsync(openFile);
                         foreach (byte individualByte in returnByteSet)
                         {
                             hashReturn.Append(individualByte.ToString("X2"));
