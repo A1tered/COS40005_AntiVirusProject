@@ -17,6 +17,27 @@ namespace FindTheHash
 
         }
 
+        public static FileStream OpenFile()
+        {
+            Console.WriteLine("File Selection\n");
+            Console.WriteLine("Please enter the path of the file: ");
+            string path = Console.ReadLine();
+            if (path != "")
+            {
+                try
+                {
+                    FileStream currentFile = File.Open(path, FileMode.Open, FileAccess.Read);
+                    return currentFile;
+                }
+                catch (IOException error)
+                {
+                    return null;
+                }
+            }
+            Console.Clear();
+            return null;
+        }
+
         public string OpenHashFile(string directory)
         {
             try
@@ -63,7 +84,7 @@ namespace FindTheHash
             {
                 stringBuild.Append(byteRep.ToString("X2"));
             }
-            return stringBuild.ToString();
+            return stringBuild.ToString().ToLower();
         }
         
     }
