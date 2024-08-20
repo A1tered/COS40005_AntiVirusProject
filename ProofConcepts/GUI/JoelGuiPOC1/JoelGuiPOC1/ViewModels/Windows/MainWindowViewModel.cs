@@ -14,7 +14,7 @@ namespace JoelGuiPOC1.ViewModels.Windows
             new NavigationViewItem()
             {
                 Content = "Home",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Home20},
                 TargetPageType = typeof(Views.Pages.DashboardPage)
             },
 
@@ -28,22 +28,22 @@ namespace JoelGuiPOC1.ViewModels.Windows
             new NavigationViewItem()
             {
                 Content = "Protection History",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.ReceiptSearch20},
+                Icon = new SymbolIcon { Symbol = SymbolRegular.History20},
                 TargetPageType = typeof(Views.Pages.ProtectionHistoryPage)
             },
 
             new NavigationViewItem()
             {
                 Content = "Quarantined Items",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.TextBulletListSquareShield20},
                 TargetPageType = typeof(Views.Pages.QuarantinedItemsPage),
-                Visibility = Visibility.Collapsed
             },
 
             new NavigationViewItem()
             {
                 Content = "Mark as Malicious",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.WarningShield20},
                 TargetPageType = typeof(Views.Pages.BlacklistPage),
-                Visibility = Visibility.Collapsed
             }
         };
 
