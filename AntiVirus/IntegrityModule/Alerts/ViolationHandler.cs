@@ -20,6 +20,7 @@ namespace IntegrityModule.Alerts
             }
         }
 
+        // Convert violation data structure to Alert and then notify via event.
         public void ViolationAlert(IntegrityViolation violation)
         {
             Alert alertCreate = new();

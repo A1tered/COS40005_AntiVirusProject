@@ -10,6 +10,7 @@
 using DatabaseFoundations;
 using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.ControlClasses;
+using IntegrityModule.Debug;
 using Microsoft.Data.Sqlite;
 
 namespace IntegrityModule;
@@ -26,15 +27,7 @@ class Program
         SqliteCommand customSqliteCommand = new();
         customSqliteCommand.CommandText = "SELECT * FROM IntegrityTrack";
         List<List<string>> returnItem = (databaseIntermediary.QueryReaderAsText(customSqliteCommand));
-        foreach (List<string> row in returnItem)
-        {
-            Console.WriteLine("\n");
-            foreach (string itemD in row)
-            {
-                Console.WriteLine($"{itemD}|");
-            }
-
-        }
+        Console.WriteLine(DebugAssist.StringListToStringDisplay(returnItem));
         ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
         //Console.ReadLine(); // Remove when merging
         
