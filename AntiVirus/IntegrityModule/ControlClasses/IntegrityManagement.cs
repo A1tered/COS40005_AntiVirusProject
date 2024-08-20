@@ -1,4 +1,6 @@
 ﻿using DatabaseFoundations;
+using IntegrityModule.Alerts;
+using IntegrityModule.DataTypes;
 using IntegrityModule.IntegrityComparison;
 using IntegrityModule.Reactive;
 using System;
@@ -18,10 +20,22 @@ namespace IntegrityModule.ControlClasses
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
-            _integrityCycler = new IntegrityCycler(integrityIntermediary);
+            ViolationHandler tempHandler = new();
+            tempHandler.AlertFlag += AlertHandler;
+            _integrityCycler = new IntegrityCycler(integrityIntermediary, tempHandler);
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
-            //_reactiveControl.Initialize(); (Uncomment when ready)
         }
+
+        public void StartReactiveControl()
+        {
+            _reactiveControl.Initialize();
+        }
+
+        private void AlertHandler(object sender, AlertArgs alertInfo)
+        {
+            Console.WriteLine("Alert Handler Event Triggered Successfully");
+        }
+
 
         // Alert Handler to be placed here at later date.
 
@@ -53,7 +67,13 @@ namespace IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool AddBaseline(string path, bool debug = false)
         {
-           return _integrityConfigurator.AddIntegrityDirectory(path, debug);
+           bool success = _integrityConfigurator.AddIntegrityDirectory(path, debug);
+            if (success)
+            {
+                // If integrity items were successfully added, then add to reactive control. (As it was not initialized with the database).
+                _reactiveControl.Add(path);
+            }
+            return success;
         }
 
         /// <summary>

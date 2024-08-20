@@ -24,7 +24,6 @@ namespace IntegrityModule.Reactive
 
         public bool Initialize()
         {
-            List<string> directoriesMonitor = new();
             Console.WriteLine("Reactive Control Initialization");
             long amountEntry = _intermediaryDB.QueryAmount();
             decimal divison = (decimal)amountEntry / 100;
@@ -59,6 +58,10 @@ namespace IntegrityModule.Reactive
         public void Add(string path)
         {
             List<string> pathsToAdd = FileInfoRequester.PathCollector(path);
+            foreach (string pathItem in pathsToAdd)
+            {
+                SetUpFileWatcher(pathItem);
+            }
         }
     }
 }
