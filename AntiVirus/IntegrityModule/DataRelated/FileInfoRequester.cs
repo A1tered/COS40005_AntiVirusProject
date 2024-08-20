@@ -10,6 +10,21 @@ namespace DatabaseFoundations.IntegrityRelated
 {
     public static class FileInfoRequester
     {
+
+
+        public static string SizeValueToLabel(long bytes)
+        {
+            float byteChange = bytes;
+            int counter = 0;
+            string[] label = { "B", "KB", "MB", "GB", "TB" };
+            while (byteChange / 1024 >= 1)
+            {
+                byteChange /= 1024;
+                counter++;
+            }
+            return $"{byteChange}{label[counter]}";
+        }
+
         /// <summary>
         /// Hash File via SHA1
         /// </summary>

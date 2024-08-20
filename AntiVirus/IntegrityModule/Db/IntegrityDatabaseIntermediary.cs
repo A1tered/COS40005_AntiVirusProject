@@ -139,7 +139,7 @@ namespace DatabaseFoundations
                     {
                         Task.WaitAny(taskManager.ToArray());
                     }
-                    catch (OperationCanceledException)
+                    catch (OperationCanceledException e)
                     {
                         Console.WriteLine("operation cancelled");
                     }
@@ -148,6 +148,10 @@ namespace DatabaseFoundations
                         // Add each failed path to list.
                         if (taskItem.IsCompleted)
                         {
+                            if (taskItem.IsCanceled)
+                            {
+                                break;
+                            }
                             if (taskItem.Result == false)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;

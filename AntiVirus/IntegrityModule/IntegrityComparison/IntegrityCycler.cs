@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace IntegrityModule.IntegrityComparison
         // How many data sets does 1 thread undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
-        public IntegrityCycler(IntegrityDatabaseIntermediary database)
+        private ViolationHandler _violationHandler;
+        public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
         {
             _database = database;
+            _violationHandler = violationHandler;
             _amountPerSet = 100;
         }
 
@@ -47,11 +50,19 @@ namespace IntegrityModule.IntegrityComparison
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
                 taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
             }
-            // Note to self to add asynchronous support, and to immediately emit alerts rather than holding onto them.
-            Task.WaitAll(taskList.ToArray());
-            foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+            while (taskList.Exists(x => x.IsCompleted == false))
             {
-                taskItem.Result.ForEach(summaryViolation.Add);
+                Task.WaitAny(taskList.ToArray());
+                foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+                {
+                    if (taskItem.IsCompleted)
+                    {
+                        taskItem.Result.ForEach(summaryViolation.Add);
+                        // For each violation, send to violation handler
+                        taskItem.Result.ForEach(_violationHandler.ViolationAlert);
+                    }
+                }
+                taskList.RemoveAll(x => x.IsCompleted);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
         }
