@@ -14,6 +14,7 @@ namespace FindTheHash
         private List<Task> _taskUnits;
         private string _databaseDirectory;
         private int _directoriesSearched;
+        private int _filesScanned;
 
         /// <summary>
         /// The start of the directory unpacking process.
@@ -23,7 +24,7 @@ namespace FindTheHash
         /// 
         /// </summary>
         /// <param name="databaseDirectory"></param>
-        public SplitProcess(string databaseDirectory)
+        public SplitProcess(string databaseDirectory, int filesScanned)
         {
             _directoryViolations = new();
             _directoryRemnants = new();
@@ -34,9 +35,10 @@ namespace FindTheHash
 
             // Statistics
             _directoriesSearched = 0;
+            _filesScanned = filesScanned;
         }
 
-        public void SearchDirectory(bool asynchronousOperation = false) // Attempt to utilise events for alert maybe, this attempts to demonstrate Asynchronous Abilities.
+        public async Task<int> SearchDirectory()
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)
@@ -44,71 +46,61 @@ namespace FindTheHash
             int hunterCreationLimit = 500;
             // (ms millisecond time) How long to wait for asynchronous tasks, will keep tasks in next cycle if going over.
             // default 1000
-            int taskWaitTime = 1000; 
+            int taskWaitTime = 1000;
             // temp vars
             int removedTasks;
             int totalTasks;
             Console.WriteLine("SplitProcess has started splitting directories to hunters.");
-            Console.WriteLine($"Asynchronous Mode: {asynchronousOperation}");
             while (_directoryRemnants.Count > 0 || _taskUnits.Count > 0)
             {
                 // Max at hunter units - task units.
-                for (int i = 0; i < Math.Min(_directoryRemnants.Count, hunterCreationLimit - _taskUnits.Count()); i++) 
+                for (int i = 0; i < Math.Min(_directoryRemnants.Count, hunterCreationLimit - _taskUnits.Count()); i++)
                 {
-                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory, asynchronousOperation));
+                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory, _filesScanned));
                 }
                 // Remove items from directory remnants (based on how many hunters)
                 Console.WriteLine($"Hunter Units in Use: {_hunterUnits.Count}");
                 foreach (Hunter hunter in _hunterUnits)
                 {
-                    if (asynchronousOperation)
-                    {
-                        _taskUnits.Add(Task.Run(() => hunter.SearchDirectory()));
-                    }
-                    else
-                    {
-                        // Stack ensures the directories further down are unpacked first.;
-                        Tuple<string[], string[]> tupleReturn = hunter.SearchDirectory(); 
-                        _directoriesSearched++;
-                        UnpackTuple(tupleReturn);
-                    }
+                    _taskUnits.Add(Task.Run(() => hunter.SearchDirectory()));
                 }
                 Console.WriteLine($"Hunter units destroyed, directoryRemnants: {_directoryRemnants.Count}");
                 _hunterUnits.Clear();
                 totalTasks = _taskUnits.Count();
                 // wait all thing here, they should return more directories
-                if (asynchronousOperation)
+                Task.WaitAll(_taskUnits.ToArray(), taskWaitTime);
+                foreach (Task<(string[], string[], int)> task in _taskUnits)
                 {
-                    // Wait for asynchronous results, for 1 seconds.
-                    Task.WaitAll(_taskUnits.ToArray(), taskWaitTime); 
-                    foreach (Task<Tuple<string[], string[]>> task in _taskUnits)
+                    if (task.IsCompleted)
                     {
-                        if (task.IsCompleted)
-                        {
-                            _directoriesSearched++;
-                            UnpackTuple(task.Result);
-                        }
+                        _directoriesSearched++;
+                        await Unpack(task.Result.Item1, task.Result.Item2, task.Result.Item3);
                     }
-                    // Remove all completed tasks
-                    removedTasks = _taskUnits.RemoveAll(task => task.IsCompleted == true); 
-                    Console.WriteLine($"Removed {removedTasks} tasks, {totalTasks - removedTasks} tasks are ongoing... ");
                 }
+                // Remove all completed tasks
+                removedTasks = _taskUnits.RemoveAll(task => task.IsCompleted == true);
+                Console.WriteLine($"Removed {removedTasks} tasks, {totalTasks - removedTasks} tasks are ongoing... ");
             }
-            Console.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
+                Console.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
+            return _filesScanned;
         }
 
-        private void UnpackTuple(Tuple<string[], string[]> tuple)
+        private async Task Unpack(string[] Violations, string[] DirectoryRemnants, int FilesScanned)
         {
             // Hunters have new directories to search and any violations they've found via tuple.
-            Array.ForEach<string>(tuple.Item1, _directoryViolations.Add);
-            Array.ForEach<string>(tuple.Item2, _directoryRemnants.Push);
+            await Task.Run(() =>
+            {
+                Array.ForEach<string>(Violations, _directoryViolations.Add);
+                Array.ForEach<string>(DirectoryRemnants, _directoryRemnants.Push);
+                _filesScanned += FilesScanned;
+            });
         }
 
         // Initial function, to find the initial directories. This is not called other than in the initial process.
-        public void fillUpSearch(string directory)
+        public async Task fillUpSearch(string directory)
         {
-            Tuple<string[], string[]> tupleItem = new Hunter(directory, _databaseDirectory).SearchDirectory();
-            UnpackTuple(tupleItem);
+            (string[] violations, string[] directoryRemnants, int filesScanned) = await new Hunter(directory, _databaseDirectory, _filesScanned).SearchDirectory();
+            await Unpack(violations, directoryRemnants, filesScanned);
         }
 
         public int DirectoriesSearched
@@ -118,5 +110,7 @@ namespace FindTheHash
                 return _directoriesSearched;
             }
         }
+
+
     }
 }

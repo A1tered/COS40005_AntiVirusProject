@@ -9,23 +9,58 @@ namespace FindTheHash
     /// <summary>
     /// Hunter Class
     /// Responsibilities: Given a directory, is responsible for hashing items and comparing to database.
-    /// It will also find directories and pass them back up to the "SplitProcess" class.
     /// </summary>
+    /// 
     public class Hunter
     {
-        // Directory that the hunter is responsible for.
-        private string _directoryRepresentation;
-        private List<string> _directoryTracker;
+        private string _directoryToScan;
         private DatabaseConnector _databaseConnection;
-        private Hasher _hasher;
-        private bool _asyncOperation;
-        public Hunter(string directoryRepresentation, string databaseDirectory, bool asyncOperation = false)
+        public Hasher _hasher;
+        private string _databaseDirectory;
+        private int _filesScanned;
+
+        public Hunter(string directoryToScan, string databaseDirectory, int filesScanned)
         {
-            _directoryRepresentation = directoryRepresentation;
-            _directoryTracker = new();
+            _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
             _hasher = new Hasher();
-            _asyncOperation = asyncOperation;
+            _filesScanned = filesScanned;
+        }
+
+        public async Task<(string[] Violations, string[] DirectoryRemnants, int FilesScanned)> SearchDirectory()
+        {
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    string[] files = Directory.GetFiles(_directoryToScan);
+                    string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
+                    List<string> violationsList = new List<string>();
+                    foreach (string file in files)
+                    {
+                        if (CompareCycle(file))
+                        {
+                            _filesScanned++;
+                            Console.WriteLine($"Files scanned: {_filesScanned}");
+                            violationsList.Add(file);
+                            Violation(file);
+                        }
+                    }
+                    return (violationsList.ToArray(), directoryRemnants, _filesScanned);
+                }
+                catch (Exception exception)
+                {
+                    if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
+                    {
+                        return (Array.Empty<string>(), Array.Empty<string>(), 0);
+                    }
+                    throw;
+                }
+                finally
+                {
+                    _databaseConnection.CleanUp();
+                }
+            });
         }
 
         private void Violation(string fileDirectory)
@@ -33,49 +68,6 @@ namespace FindTheHash
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Violation found: {fileDirectory}");
             Console.ForegroundColor = ConsoleColor.White;
-
-        }
-        public Tuple<string[], string[]> SearchDirectory()
-        {
-            try
-            {
-                int[] asyncIndexHolder;
-                string[] fileCycle = Directory.GetFiles(_directoryRepresentation);
-                string[] directoryRemnants = Directory.GetDirectories(_directoryRepresentation);
-                List<string> violationsList = new List<string>();
-                if (_asyncOperation)
-                {
-                    asyncIndexHolder = CompareCycleBatch(fileCycle);
-                    foreach (int index in asyncIndexHolder)
-                    {
-                        violationsList.Add(fileCycle[index]);
-                    }
-                }
-                else
-                {
-                    foreach (string fileDirEach in fileCycle)
-                    {
-                        if (CompareCycle(fileDirEach))
-                        {
-                            violationsList.Add(fileDirEach);
-                            Violation(fileDirEach);
-                        }
-                    }
-                }
-                return new Tuple<string[], string[]>(violationsList.ToArray(), directoryRemnants);
-            }
-            catch (Exception exception)
-            {
-                if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
-                {
-                    return new Tuple<string[], string[]>(Array.Empty<string>(), Array.Empty<string>());
-                }
-                throw;
-            }
-            finally
-            {
-                _databaseConnection.CleanUp();
-            }
         }
 
         public bool CompareCycle(string fileDirectory)
@@ -94,6 +86,5 @@ namespace FindTheHash
             int[] indexDetections = _databaseConnection.QueryHashBatch(hashGetArray);
             return indexDetections;
         }
-
     }
 }
