@@ -78,11 +78,10 @@ namespace FindTheHash
                 Console.WriteLine($"Database Directory Found: {databaseDirectory}");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 List<string> directories = new List<string>();
-                int filesScanned = 0;
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\Program Files", "C:\\Program Files (x86)", "C:\\ProgramData", "C:\\Users\\Default\\AppData", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"), "C:\\Windows"]);
+                    directories.AddRange([$"C:\\Program Files\\TestDirectory"]);
                 }
                 else if (scanType == "full")
                 {
@@ -98,17 +97,18 @@ namespace FindTheHash
                 }
                 foreach (string directorySearch in directories)
                 {
-                    // Print the current database directory and 
+                    // State the directory that the search is beginning in 
                     Console.WriteLine($"Starting search in directory: {directorySearch}");
                     Console.ForegroundColor = ConsoleColor.White;
-                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, filesScanned);
+
+                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory);
                     await splitprocessInstance.fillUpSearch(directorySearch);
                     Stopwatch stopwatch = new();
                     stopwatch.Start();
                     await splitprocessInstance.SearchDirectory();
                     stopwatch.Stop();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"It took {stopwatch.Elapsed} to search the directory provided. Total items scanned: {filesScanned}");
+                    Console.WriteLine($"It took {stopwatch.Elapsed} to search the directory provided. Total items scanned: <Placeholder>");
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
             });

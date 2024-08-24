@@ -17,17 +17,16 @@ namespace FindTheHash
         private DatabaseConnector _databaseConnection;
         public Hasher _hasher;
         private string _databaseDirectory;
-        private int _filesScanned;
 
-        public Hunter(string directoryToScan, string databaseDirectory, int filesScanned)
+        public Hunter(string directoryToScan, string databaseDirectory)
         {
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
             _hasher = new Hasher();
-            _filesScanned = filesScanned;
+
         }
 
-        public async Task<(string[] Violations, string[] DirectoryRemnants, int FilesScanned)> SearchDirectory()
+        public async Task<Tuple<string[], string[]>> SearchDirectory()
         {
             return await Task.Run(() =>
             {
@@ -40,19 +39,18 @@ namespace FindTheHash
                     {
                         if (CompareCycle(file))
                         {
-                            _filesScanned++;
-                            Console.WriteLine($"Files scanned: {_filesScanned}");
                             violationsList.Add(file);
                             Violation(file);
                         }
                     }
-                    return (violationsList.ToArray(), directoryRemnants, _filesScanned);
+                    return Tuple.Create(violationsList.ToArray(), directoryRemnants);
                 }
                 catch (Exception exception)
                 {
                     if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
                     {
-                        return (Array.Empty<string>(), Array.Empty<string>(), 0);
+                        Console.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
+                        return Tuple.Create(Array.Empty<string>(), Array.Empty<string>());
                     }
                     throw;
                 }

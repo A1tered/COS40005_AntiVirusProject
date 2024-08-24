@@ -14,7 +14,6 @@ namespace FindTheHash
         private List<Task> _taskUnits;
         private string _databaseDirectory;
         private int _directoriesSearched;
-        private int _filesScanned;
 
         /// <summary>
         /// The start of the directory unpacking process.
@@ -24,7 +23,7 @@ namespace FindTheHash
         /// 
         /// </summary>
         /// <param name="databaseDirectory"></param>
-        public SplitProcess(string databaseDirectory, int filesScanned)
+        public SplitProcess(string databaseDirectory)
         {
             _directoryViolations = new();
             _directoryRemnants = new();
@@ -35,10 +34,9 @@ namespace FindTheHash
 
             // Statistics
             _directoriesSearched = 0;
-            _filesScanned = filesScanned;
         }
 
-        public async Task<int> SearchDirectory()
+        public async Task SearchDirectory()
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)
@@ -56,7 +54,7 @@ namespace FindTheHash
                 // Max at hunter units - task units.
                 for (int i = 0; i < Math.Min(_directoryRemnants.Count, hunterCreationLimit - _taskUnits.Count()); i++)
                 {
-                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory, _filesScanned));
+                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory));
                 }
                 // Remove items from directory remnants (based on how many hunters)
                 Console.WriteLine($"Hunter Units in Use: {_hunterUnits.Count}");
@@ -69,12 +67,12 @@ namespace FindTheHash
                 totalTasks = _taskUnits.Count();
                 // wait all thing here, they should return more directories
                 Task.WaitAll(_taskUnits.ToArray(), taskWaitTime);
-                foreach (Task<(string[], string[], int)> task in _taskUnits)
+                foreach (Task<Tuple<string[], string[]>> task in _taskUnits)
                 {
                     if (task.IsCompleted)
                     {
                         _directoriesSearched++;
-                        await Unpack(task.Result.Item1, task.Result.Item2, task.Result.Item3);
+                        await UnpackTuple(task.Result);
                     }
                 }
                 // Remove all completed tasks
@@ -82,25 +80,24 @@ namespace FindTheHash
                 Console.WriteLine($"Removed {removedTasks} tasks, {totalTasks - removedTasks} tasks are ongoing... ");
             }
                 Console.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
-            return _filesScanned;
         }
 
-        private async Task Unpack(string[] Violations, string[] DirectoryRemnants, int FilesScanned)
+        private async Task UnpackTuple(Tuple<string[], string[]> tuple)
         {
             // Hunters have new directories to search and any violations they've found via tuple.
             await Task.Run(() =>
             {
-                Array.ForEach<string>(Violations, _directoryViolations.Add);
-                Array.ForEach<string>(DirectoryRemnants, _directoryRemnants.Push);
-                _filesScanned += FilesScanned;
+                Array.ForEach<string>(tuple.Item1, _directoryViolations.Add);
+                Array.ForEach<string>(tuple.Item2, _directoryRemnants.Push);
             });
         }
 
         // Initial function, to find the initial directories. This is not called other than in the initial process.
         public async Task fillUpSearch(string directory)
         {
-            (string[] violations, string[] directoryRemnants, int filesScanned) = await new Hunter(directory, _databaseDirectory, _filesScanned).SearchDirectory();
-            await Unpack(violations, directoryRemnants, filesScanned);
+            Hunter hunter = new Hunter(directory, _databaseDirectory);
+            Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory();
+            await UnpackTuple(tupleItem);
         }
 
         public int DirectoriesSearched
@@ -110,7 +107,5 @@ namespace FindTheHash
                 return _directoriesSearched;
             }
         }
-
-
     }
 }
