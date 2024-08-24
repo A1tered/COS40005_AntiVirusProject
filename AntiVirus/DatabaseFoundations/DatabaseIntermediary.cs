@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.IO;
+using DatabaseFoundations.IntegrityRelated;
 namespace DatabaseFoundations
 {
   
@@ -30,7 +31,7 @@ namespace DatabaseFoundations
         public DatabaseIntermediary(string databaseName, bool makeDatabase = false, string defaultTable = "")
         {
             // Find database folder
-            string returnedDirectoryDatabase = FileDirectorySearcher(AppDomain.CurrentDomain.BaseDirectory, "Databases");
+            string returnedDirectoryDatabase = FileInfoRequester.FileDirectorySearcher(AppDomain.CurrentDomain.BaseDirectory, "Databases");
             string databaseSpecificPath;
             _defaultTable = defaultTable;
             // If database folder does not exist, make one.
@@ -39,7 +40,7 @@ namespace DatabaseFoundations
                 returnedDirectoryDatabase = Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases")).FullName;
             }
             // Does the database exist within Database folder?
-            databaseSpecificPath = FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
+            databaseSpecificPath = FileInfoRequester.FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
             if (databaseSpecificPath != null || makeDatabase)
             {
                 // Make database.
@@ -53,6 +54,10 @@ namespace DatabaseFoundations
                 connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
+                SqliteCommand commandPragma = new();
+                commandPragma.CommandText = "PRAGMA journal_mode=WAL";
+                QueryNoReader(commandPragma);
+
             }
             else
             {
@@ -64,27 +69,6 @@ namespace DatabaseFoundations
         ~DatabaseIntermediary()
         {
             _databaseConnection.Close();
-        }
-
-        /// <summary>
-        /// Private function that finds files/directories with certain names, within the provided directory.
-        /// </summary>
-        /// <param name="startDirectory">Name of database SQLite file</param>\
-        /// <param name="term">Search term for what the desired file path should have</param>
-        private string FileDirectorySearcher(string startDirectory, string term)
-        {
-            string[] filePaths = Directory.GetFiles(startDirectory).Concat(Directory.GetDirectories(startDirectory)).ToArray();
-
-            string databasePath = null;
-            // Find path that contains database.
-            foreach (string path in filePaths)
-            {
-                if (Path.GetFileNameWithoutExtension(path).Contains(term))
-                {
-                    return path;
-                }
-            }
-            return null;
         }
 
         /// <summary>

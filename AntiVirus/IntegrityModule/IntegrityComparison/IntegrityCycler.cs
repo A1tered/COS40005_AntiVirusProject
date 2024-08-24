@@ -51,7 +51,7 @@ namespace IntegrityModule.IntegrityComparison
                 //taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
                 taskList.Add(poolerObject.CheckIntegrity());
             }
-            while (taskList.Exists(x => x.IsCompleted == false))
+            while (taskList.Count() > 0)
             {
                 await Task.WhenAll(taskList.ToArray());
                 foreach (Task<List<IntegrityViolation>> taskItem in taskList)
