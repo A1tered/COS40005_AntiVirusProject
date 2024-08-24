@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AlertsPoC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1951a0b9f24bdfa0bf9ee98621116cb4ea8c6d8f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91fd4daa9253e10adc3a4080648821e5fe8dbd13")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlertsPoC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlertsPoC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
