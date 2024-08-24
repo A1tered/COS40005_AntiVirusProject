@@ -63,7 +63,7 @@ namespace FindTheHash
             {
                 stringBuild.Append(byteRep.ToString("X2"));
             }
-            return stringBuild.ToString().ToLower();
+            return stringBuild.ToString();
         }
         
     }

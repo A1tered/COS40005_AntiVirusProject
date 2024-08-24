@@ -60,13 +60,13 @@ namespace FindTheHash
                 Console.WriteLine($"Hunter Units in Use: {_hunterUnits.Count}");
                 foreach (Hunter hunter in _hunterUnits)
                 {
-                    _taskUnits.Add(Task.Run(() => hunter.SearchDirectory()));
+                    _taskUnits.Add(hunter.SearchDirectory());
                 }
                 Console.WriteLine($"Hunter units destroyed, directoryRemnants: {_directoryRemnants.Count}");
                 _hunterUnits.Clear();
                 totalTasks = _taskUnits.Count();
                 // wait all thing here, they should return more directories
-                Task.WaitAll(_taskUnits.ToArray(), taskWaitTime);
+                await Task.WhenAll(_taskUnits);
                 foreach (Task<Tuple<string[], string[]>> task in _taskUnits)
                 {
                     if (task.IsCompleted)

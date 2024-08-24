@@ -47,9 +47,11 @@ namespace FindTheHash
         {
             if (ConnectionSuccessful())
             {
+                // Scan hash on system (Upper case) -> Hashes in database (lower case)
+                //                                      Lower Case / Upper case
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
-                SELECT * FROM hashSignatures WHERE sigHash = $hash;
+                SELECT * FROM hashSignatures WHERE sigHash = $hash COLLATE NOCASE;
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
                 commandCreation.Parameters.AddWithValue("$hash", hash);
