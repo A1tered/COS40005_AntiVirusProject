@@ -8,7 +8,10 @@
 
 
 using DatabaseFoundations;
+using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.ControlClasses;
+using IntegrityModule.Debug;
+using Microsoft.Data.Sqlite;
 
 namespace IntegrityModule;
 
@@ -16,11 +19,18 @@ class Program
 {
     public static void Main(string[] args)
     {
-       IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("IntegrityDatabase", false));
+        IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
+        IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
         integrityModule.ClearDatabase();
-        integrityModule.AddBaseline(@"C:\Users\yumcy\AppData\Local", true);
-        integrityModule.Scan(true);
-        //integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
-        Console.ReadLine(); // Remove when merging
+        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
+        //integrityModule.Scan(true);
+        SqliteCommand customSqliteCommand = new();
+        customSqliteCommand.CommandText = "SELECT * FROM IntegrityTrack";
+        List<List<string>> returnItem = (databaseIntermediary.QueryReaderAsText(customSqliteCommand));
+        Console.WriteLine(DebugAssist.StringListToStringDisplay(returnItem));
+        ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
+        //Console.ReadLine(); // Remove when merging
+        
+        
     }
 }
