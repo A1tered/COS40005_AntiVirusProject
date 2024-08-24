@@ -8,6 +8,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 // Add other necessary using directives here
 
 namespace FindTheHash
@@ -17,10 +18,8 @@ namespace FindTheHash
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
-        // True => Enable Asynchronous Search, False => Synchronous Search. 
-        bool enableAsync = true;
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Simple Anti-Virus: File Hash Checker");
             Console.WriteLine("INCOMPLETE: This scanner is for use for development purposes only.");
@@ -32,45 +31,34 @@ namespace FindTheHash
                 Console.WriteLine("You must agree to the terms of use to continue.\n");
             }
             Console.Clear();
-            MainMenu();
+            await MainMenu();
         }
 
-        public static void MainMenu()
+        public static async Task MainMenu()
         {
             Console.WriteLine("Simple Anti-Virus: File Hash Checker");
             Console.WriteLine("Please choose an option\n");
-            Console.WriteLine("1. Get File Hash");
-            Console.WriteLine("2. Scan");
-            Console.WriteLine("3. Quit");
+            Console.WriteLine("1. Quick Scan");
+            Console.WriteLine("2. Full Scan");
+            Console.WriteLine("3. Custom Scan");
+            Console.WriteLine("4. Quit");
             Console.WriteLine("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
             {
                 case "1":
-                    Hasher _hasher = new Hasher();
                     Console.Clear();
-                    FileStream path = Hasher.OpenFile();
-                    if (path != null)
-                    {
-                        // Get hash
-                        string hash = _hasher.HashFile(path);
-                        string file = Path.GetFileName(path.Name);
-                        Console.Clear();
-                        Console.WriteLine($"The hash of '{file}' is: {hash}\n");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Error: Invalid or no file selected.\r\n");
-                    }
-                    MainMenu();
+                    await Scan("quick");
                     break;
                 case "2":
                     Console.Clear();
-                    Console.WriteLine("Scan");
-                    ChooseScan();
+                    await Scan("full");;
                     break;
                 case "3":
+                    Console.Clear();
+                    await Scan("custom");
+                    break;
+                case "4":
                     Console.WriteLine("Program exiting.");
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
@@ -78,87 +66,57 @@ namespace FindTheHash
                 default:
                     Console.Clear();
                     Console.WriteLine("Error: No option selected.");
-                    MainMenu();
+                    await MainMenu();
                     break;
             }
         }
 
-        private static void ChooseScan()
+        private static async Task Scan(string scanType)
         {
-            Console.WriteLine("Please choose the type of scan you wish to perform");
-            Console.WriteLine("1. Quick scan");
-            Console.WriteLine("2. Full scan");
-            Console.WriteLine("3. Custom scan");
-            Console.WriteLine("4. Back");
-            Console.WriteLine("\r\nSelect an option: ");
+            await Task.Run(async () =>
+            {
+                Console.WriteLine($"Database Directory Found: {databaseDirectory}");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                List<string> directories = new List<string>();
 
-            switch (Console.ReadLine())
-            {
-                case "1":
-                    Console.Clear();
-                    Scan("quick");
-                    break;
-                case "2":
-                    Console.Clear();
-                    Scan("full");
-                    break;
-                case "3":
-                    Console.Clear();
-                    Scan("custom");
-                    break;
-                case "4":
-                    Console.Clear();
-                    MainMenu();
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Error: No option selected.");
-                    ChooseScan();
-                    break;
-            }
-        }
-
-        private static void Scan(string scanType)
-        {
-
-            Console.WriteLine($"Database Directory Found: {databaseDirectory}");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            List<string> directories = new List<string>();
-            
-            if (scanType == "quick")
-            {
-                directories.AddRange([$"C:\\Program Files", "C:\\Program Files (x86)", "C:\\ProgramData", "C:\\Users\\Default\\AppData", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"), "C:\\Windows"]);
-            }
-            else if (scanType == "full")
-            {
-                directories.Add("C:\\");
-            }
-            else if (scanType == "custom")
-            {
-                Console.WriteLine("Not implemented");
-            }
+                if (scanType == "quick")
+                {
+                    directories.AddRange([$"C:\\Program Files\\TestDirectory"]);
+                }
+                else if (scanType == "full")
+                {
+                    string[] drives = Environment.GetLogicalDrives();
+                    foreach (string drive in drives)
+                    {
+                        directories.Add(drive);
+                    }
+                }
+                else if (scanType == "custom")
+                {
+                    Console.WriteLine("Not implemented");
+                }
                 foreach (string directorySearch in directories)
                 {
-                    // Print the current database directory and 
+                    // State the directory that the search is beginning in 
                     Console.WriteLine($"Starting search in directory: {directorySearch}");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory);
-                    splitprocessInstance.fillUpSearch(directorySearch);
-                    // Simply creates the initial directories to unpack.
+                    await splitprocessInstance.fillUpSearch(directorySearch);
                     Stopwatch stopwatch = new();
                     stopwatch.Start();
-                    splitprocessInstance.SearchDirectory(true);
+                    await splitprocessInstance.SearchDirectory();
                     stopwatch.Stop();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"It took {stopwatch.Elapsed} to search the directory provided");
+                    Console.WriteLine($"It took {stopwatch.Elapsed} to search the directory provided. Total items scanned: <Placeholder>");
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
-            Console.ForegroundColor= ConsoleColor.White;
+            });
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();
-            MainMenu();
+            await MainMenu();
         }          
     }
 }
