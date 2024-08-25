@@ -18,7 +18,32 @@
 
     <StackPanel>
         <ui:TextBlock TextWrapping="Wrap" Text="Scanning..." FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" Margin="0,70,0,20"/>
-        <ui:ProgressRing />
+        <ui:ProgressRing RenderTransformOrigin="0.5,0.5">
+            <ui:ProgressRing.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform x:Name="rotateRing" Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ui:ProgressRing.RenderTransform>
+
+            <ui:ProgressRing.Triggers>
+                <EventTrigger RoutedEvent="ui:ProgressRing.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="rotateRing"
+                                Storyboard.TargetProperty="Angle"
+                                From="0"
+                                To="360"
+                                Duration="0:0:1"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ui:ProgressRing.Triggers>
+        </ui:ProgressRing>
         <ui:TextBlock TextWrapping="Wrap" Text="Scan in progress... Please wait" FontSize="24" HorizontalAlignment="Center"/>
         <ProgressBar Height="14" Width="258" Margin="0,10,0,0"/>
         <ui:TextBlock TextWrapping="Wrap" Text="X% complete" FontSize="24" HorizontalAlignment="Center"/>
