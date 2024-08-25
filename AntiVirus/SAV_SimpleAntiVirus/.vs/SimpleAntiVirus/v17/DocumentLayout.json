@@ -1,0 +1,278 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\pages\\scanningpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\pages\\scanningpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\viewmodels\\pages\\scanningviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\viewmodels\\pages\\scanningviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\pages\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\pages\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\services\\applicationhostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\services\\applicationhostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\helpers\\enumtobooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\helpers\\enumtobooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\pages\\scanningpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\pages\\scanningpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\viewmodels\\pages\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\viewmodels\\pages\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\viewmodels\\windows\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\viewmodels\\windows\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\viewmodels\\pages\\protectionhistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\viewmodels\\pages\\protectionhistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\pages\\protectionhistorypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\pages\\protectionhistorypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\pages\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\pages\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\views\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\views\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\joelguipoc1\\joelguipoc1\\viewmodels\\pages\\quarantinedviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC93873-D6BF-44A6-9848-3DC8E797D0B8}|JoelGuiPOC1\\Application.csproj|solutionrelative:joelguipoc1\\viewmodels\\pages\\quarantinedviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 112,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ScanningViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\ScanningViewModel.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\ViewModels\\Pages\\ScanningViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\ScanningViewModel.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\ViewModels\\Pages\\ScanningViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T04:09:47.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationHostService.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Services\\ApplicationHostService.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Services\\ApplicationHostService.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Services\\ApplicationHostService.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Services\\ApplicationHostService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAhwCwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T04:07:20.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnumToBooleanConverter.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Helpers\\EnumToBooleanConverter.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Helpers\\EnumToBooleanConverter.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Helpers\\EnumToBooleanConverter.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Helpers\\EnumToBooleanConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T04:06:14.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScanningPage.xaml",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-20T07:48:44.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ScanningPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Pages\\ScanningPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:43:14.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\ViewModels\\Pages\\SettingsViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\SettingsViewModel.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\ViewModels\\Pages\\SettingsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:48:26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SettingsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T15:09:26.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Application.csproj",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Application.csproj",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Application.csproj",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Application.csproj",
+              "RelativeToolTip": "JoelGuiPOC1\\Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-25T04:07:55.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Windows\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\ViewModels\\Windows\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Windows\\MainWindowViewModel.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\ViewModels\\Windows\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAABRwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:46:06.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProtectionHistoryViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\ProtectionHistoryViewModel.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\ViewModels\\Pages\\ProtectionHistoryViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\ProtectionHistoryViewModel.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\ViewModels\\Pages\\ProtectionHistoryViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:48:24.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProtectionHistoryPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ProtectionHistoryPage.xaml.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Pages\\ProtectionHistoryPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\ProtectionHistoryPage.xaml.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Pages\\ProtectionHistoryPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T08:00:22.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SettingsPage.xaml",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Pages\\SettingsPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-20T07:45:34.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-20T06:19:00.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\Views\\Windows\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:46:29.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "QuarantinedViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "RelativeDocumentMoniker": "JoelGuiPOC1\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\JoelGuiPOC1\\JoelGuiPOC1\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "RelativeToolTip": "JoelGuiPOC1\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T05:48:19.744Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 288,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
