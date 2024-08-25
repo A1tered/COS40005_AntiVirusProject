@@ -118,10 +118,13 @@ namespace TestAntiVirusInput.NUnitTests
         [Test]
         public void FilePathSanitisationTest_DangerousCharacters()
         {
+            // Create a file path that includes dangerous characters in the file path and filename 
             string DirectoryPath = @"D:\#?PathIsRooted\*DummyFile.txt";
 
+            // Use FilePathSanitisation method to create the actual result
             string output_FilePath = InputValSan.FilePathSanitisation(DirectoryPath);
 
+            // What is "expected" and what the actual result is will be checked to see if the are of equal value
             Assert.AreEqual(@"D:\PathIsRooted\DummyFile.txt", output_FilePath);
         }
 
