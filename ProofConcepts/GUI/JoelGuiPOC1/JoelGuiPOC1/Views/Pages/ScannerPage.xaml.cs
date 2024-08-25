@@ -1,8 +1,8 @@
-﻿using JoelGuiPOC1.ViewModels.Pages;
-using JoelGuiPOC1.Views.Windows;
+﻿using GUIApplication.ViewModels.Pages;
+using GUIApplication.Views.Windows;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.Views.Pages
+namespace GUIApplication.Views.Pages
 {
     public partial class ScannerPage : INavigableView<ScannerViewModel>
     {

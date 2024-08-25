@@ -1,6 +1,6 @@
 using Wpf.Ui;
 
-namespace JoelGuiPOC1.Services
+namespace GUIApplication.Services
 {
     /// <summary>
     /// Service that provides pages for navigation.

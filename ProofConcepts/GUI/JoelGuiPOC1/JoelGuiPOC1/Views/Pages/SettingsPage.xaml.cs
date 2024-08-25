@@ -1,9 +1,9 @@
-﻿using JoelGuiPOC1.ViewModels.Pages;
-using JoelGuiPOC1.ViewModels.Windows;
+﻿using GUIApplication.ViewModels.Pages;
+using GUIApplication.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.Views.Pages
+namespace GUIApplication.Views.Pages
 {
     public partial class SettingsPage : INavigableView<SettingsViewModel>
     {

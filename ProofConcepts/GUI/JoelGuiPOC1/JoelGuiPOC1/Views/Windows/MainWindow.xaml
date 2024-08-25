@@ -1,9 +1,9 @@
 ﻿<ui:FluentWindow
-    x:Class="JoelGuiPOC1.Views.Windows.MainWindow"
+    x:Class="GUIApplication.Views.Windows.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:JoelGuiPOC1.Views.Windows"
+    xmlns:local="clr-namespace:GUIApplication.Views.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"

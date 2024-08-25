@@ -1,7 +1,7 @@
-﻿using JoelGuiPOC1.ViewModels.Pages;
+﻿using GUIApplication.ViewModels.Pages;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.Views.Pages
+namespace GUIApplication.Views.Pages
 {
     public partial class ProtectionHistoryPage : INavigableView<ProtectionHistoryViewModel>
     {

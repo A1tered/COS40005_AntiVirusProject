@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using Wpf.Ui.Appearance;
 
-namespace JoelGuiPOC1.Helpers
+namespace GUIApplication.Helpers
 {
     internal class EnumToBooleanConverter : IValueConverter
     {

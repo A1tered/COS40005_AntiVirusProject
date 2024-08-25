@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.ViewModels.Windows
+namespace GUIApplication.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {

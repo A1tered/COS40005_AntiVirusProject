@@ -1,4 +1,4 @@
-namespace JoelGuiPOC1.Resources
+namespace GUIApplication.Resources
 {
     public partial class Translations
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace JoelGuiPOC1.Models
+namespace GUIApplication.Models
 {
     public struct DataColor
     {

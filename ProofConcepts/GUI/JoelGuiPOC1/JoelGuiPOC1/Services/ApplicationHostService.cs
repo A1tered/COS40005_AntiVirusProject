@@ -1,10 +1,10 @@
-﻿using JoelGuiPOC1.Views.Pages;
-using JoelGuiPOC1.Views.Windows;
+﻿using GUIApplication.Views.Pages;
+using GUIApplication.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Wpf.Ui;
 
-namespace JoelGuiPOC1.Services
+namespace GUIApplication.Services
 {
     /// <summary>
     /// Managed host of the application.

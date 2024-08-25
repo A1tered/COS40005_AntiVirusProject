@@ -1,7 +1,7 @@
 ﻿using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.ViewModels.Pages
+namespace GUIApplication.ViewModels.Pages
 {
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {

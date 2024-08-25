@@ -1,8 +1,8 @@
-﻿using JoelGuiPOC1.Services;
-using JoelGuiPOC1.ViewModels.Pages;
-using JoelGuiPOC1.ViewModels.Windows;
-using JoelGuiPOC1.Views.Pages;
-using JoelGuiPOC1.Views.Windows;
+﻿using GUIApplication.Services;
+using GUIApplication.ViewModels.Pages;
+using GUIApplication.ViewModels.Windows;
+using GUIApplication.Views.Pages;
+using GUIApplication.Views.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
 
-namespace JoelGuiPOC1
+namespace GUIApplication
 {
     /// <summary>
     /// Interaction logic for App.xaml

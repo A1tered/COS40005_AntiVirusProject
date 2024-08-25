@@ -1,4 +1,4 @@
-﻿namespace JoelGuiPOC1.Models
+﻿namespace GUIApplication.Models
 {
     public class AppConfig
     {

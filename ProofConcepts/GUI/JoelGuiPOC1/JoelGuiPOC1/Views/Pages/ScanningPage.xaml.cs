@@ -1,4 +1,4 @@
-﻿using JoelGuiPOC1.ViewModels.Pages;
+﻿using GUIApplication.ViewModels.Pages;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.Views.Pages
+namespace GUIApplication.Views.Pages
 {
     public partial class ScanningPage : INavigableView<ScanningViewModel>
     {

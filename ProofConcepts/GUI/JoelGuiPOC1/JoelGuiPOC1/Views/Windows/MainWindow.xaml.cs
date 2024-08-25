@@ -1,9 +1,9 @@
-﻿using JoelGuiPOC1.ViewModels.Windows;
+﻿using GUIApplication.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace JoelGuiPOC1.Views.Windows
+namespace GUIApplication.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
