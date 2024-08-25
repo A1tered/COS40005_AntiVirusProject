@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AlertsPoC
-build_property.ProjectDir = C:\Users\tloh1\OneDrive\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\Alerts\AlertsPoC\AlertsPoC\
+build_property.ProjectDir = E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\Alerts\AlertsPoC\AlertsPoC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
