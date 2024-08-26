@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:integritycomparison\\integritydatapooler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\datatypes\\integrityviolation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:datatypes\\integrityviolation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -40,22 +40,9 @@
               "RelativeDocumentMoniker": "IntegrityComparison\\IntegrityCycler.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
               "RelativeToolTip": "IntegrityComparison\\IntegrityCycler.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAYwEEAAAASAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAvwEIAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T00:09:38.457Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FileInfoRequester.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
-              "RelativeDocumentMoniker": "DataRelated\\FileInfoRequester.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
-              "RelativeToolTip": "DataRelated\\FileInfoRequester.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAYwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T00:20:28.202Z",
               "EditorCaption": ""
             },
             {
@@ -66,7 +53,7 @@
               "RelativeDocumentMoniker": "IntegrityComparison\\IntegrityDataPooler.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityDataPooler.cs",
               "RelativeToolTip": "IntegrityComparison\\IntegrityDataPooler.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAgwFAAAAANAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAwwFAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T00:19:03.355Z",
               "EditorCaption": ""
@@ -74,6 +61,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "FileInfoRequester.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
+              "RelativeDocumentMoniker": "DataRelated\\FileInfoRequester.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
+              "RelativeToolTip": "DataRelated\\FileInfoRequester.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAYwEwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T00:20:28.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "IntegrityViolation.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataTypes\\IntegrityViolation.cs",
               "RelativeDocumentMoniker": "DataTypes\\IntegrityViolation.cs",
@@ -92,7 +92,7 @@
               "RelativeDocumentMoniker": "ControlClasses\\IntegrityManagement.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "RelativeToolTip": "ControlClasses\\IntegrityManagement.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAA/wAAAAAAAAAAA",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T00:09:22.492Z",
               "EditorCaption": ""

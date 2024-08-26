@@ -67,6 +67,44 @@ namespace DatabaseFoundations.IntegrityRelated
             return "";
         }
 
+
+        /// <summary>
+        /// Hashes items as a set, with an attempt to get better performance.
+        /// </summary>
+        /// <param name="directorySet"></param>
+        /// <returns></returns>
+        public static async Task<List<string>> HashSet(List<string> directorySet)
+        {
+            List<string> returnedHashes = new();
+            foreach (string directory in directorySet) {
+                StringBuilder hashReturn = new();
+                if (Path.Exists(directory))
+                {
+                    try
+                    {
+                        using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+                        {
+                            byte[] returnByteSet = await SHA1.HashDataAsync(openFile);
+                            foreach (byte individualByte in returnByteSet)
+                            {
+                                hashReturn.Append(individualByte.ToString("X2"));
+                            }
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        Console.WriteLine($"IOException (Likely process use) {directory}");
+                    }
+                    catch (UnauthorizedAccessException e)
+                    {
+                        Console.WriteLine($"Unauthorized access {directory}");
+                    }
+                }
+                returnedHashes.Add(hashReturn.ToString());
+            }
+            return returnedHashes;
+        }
+
         /// <summary>
         /// Get certain file info from file
         /// </summary>

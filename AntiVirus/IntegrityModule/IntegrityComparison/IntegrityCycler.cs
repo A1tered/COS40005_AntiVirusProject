@@ -27,7 +27,7 @@ namespace IntegrityModule.IntegrityComparison
         {
             _database = database;
             _violationHandler = violationHandler;
-            _amountPerSet = 100;
+            _amountPerSet = 500;
         }
 
         /// <summary>

@@ -81,12 +81,7 @@ namespace IntegrityModule.IntegrityComparison
             {
                 Dictionary<string, string> infoSet = _databaseIntermediary.GetSetEntries(_setRepresentation, _setAmount);
                 // We want to async calculate all hashes before cycling across.
-                List<Task<string>> taskHasher = new();
-                foreach (KeyValuePair<string, string> dirHash in infoSet)
-                {
-                    taskHasher.Add(FileInfoRequester.HashFile(dirHash.Key));
-                }
-                string[] stringList = await Task.WhenAll(taskHasher);
+                List<string> stringList = await FileInfoRequester.HashSet(infoSet.Keys.ToList());
                 string tempHash = "";
                 int index = 0;
                 foreach (KeyValuePair<string, string> dirHash in infoSet)
