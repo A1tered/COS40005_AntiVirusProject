@@ -26,7 +26,7 @@ class Program
         IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
         //integrityModule.ClearDatabase();
         //await integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
-        //await integrityModule.Scan(true);
+        await integrityModule.Scan(true);
         ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
 
 

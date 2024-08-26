@@ -10,6 +10,8 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
+using IntegrityModule;
+using IntegrityModule.ControlClasses;
 
 namespace GUISandbox
 {
@@ -49,6 +51,9 @@ namespace GUISandbox
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
+                // Integrity Test
+                //IntegrityManagement integManage = new()
+                services.AddSingleton<IntegrityTestPage>();
                 services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
