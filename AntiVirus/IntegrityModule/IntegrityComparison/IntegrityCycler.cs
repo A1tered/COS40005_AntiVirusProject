@@ -55,11 +55,6 @@ namespace IntegrityModule.IntegrityComparison
             {
                 dataPoolerList.Add(new IntegrityDataPooler(_database, cycle, _amountPerSet));
             }
-            // Now tell those poolers to get a move on.
-
-            // Plan (Split two sets of Pooler Task lists, and then await on them
-
-
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");

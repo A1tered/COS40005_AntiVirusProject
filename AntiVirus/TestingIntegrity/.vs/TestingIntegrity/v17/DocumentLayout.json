@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\testingintegrity\\integritycheckingtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:integritycheckingtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\testingintegrity\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,32 +30,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IntegrityCheckingTest.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\IntegrityCheckingTest.cs",
-              "RelativeDocumentMoniker": "IntegrityCheckingTest.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\IntegrityCheckingTest.cs",
-              "RelativeToolTip": "IntegrityCheckingTest.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAzwBIAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T10:24:00.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "DatabaseTest.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\DatabaseTest.cs",
               "RelativeDocumentMoniker": "DatabaseTest.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\DatabaseTest.cs",
               "RelativeToolTip": "DatabaseTest.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAAAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowDcAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T09:59:49.486Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "DatabaseIntermediary.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
               "RelativeDocumentMoniker": "..\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
@@ -67,12 +50,11 @@
               "RelativeToolTip": "..\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
               "ViewState": "AQIAAG8AAAAAAAAAAAAowHkAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T10:00:01.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T10:00:01.809Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "TestingIntegrity.csproj",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\TestingIntegrity.csproj",
               "RelativeDocumentMoniker": "TestingIntegrity.csproj",
@@ -80,12 +62,11 @@
               "RelativeToolTip": "TestingIntegrity.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-19T09:35:27.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T09:35:27.955Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FileInfoRequesterTest.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\FileInfoRequesterTest.cs",
               "RelativeDocumentMoniker": "FileInfoRequesterTest.cs",
@@ -93,8 +74,7 @@
               "RelativeToolTip": "FileInfoRequesterTest.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAwAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T09:34:29.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T09:34:29.574Z"
             }
           ]
         }
