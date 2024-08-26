@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityManagement.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Initiate scans, provide functions for outer module callers.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using IntegrityModule.IntegrityComparison;

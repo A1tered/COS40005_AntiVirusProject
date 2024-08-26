@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityDataPooler.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Scans a set of database directories and compares them with system documents.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.DataTypes;
 using System;
@@ -72,9 +79,6 @@ namespace IntegrityModule.IntegrityComparison
             List<IntegrityViolation> violationSet = new();
             if (_selectedPath == null)
             {
-
-
-
                 Dictionary<string, string> infoSet = _databaseIntermediary.GetSetEntries(_setRepresentation, _setAmount);
                 // We want to async calculate all hashes before cycling across.
                 List<Task<string>> taskHasher = new();

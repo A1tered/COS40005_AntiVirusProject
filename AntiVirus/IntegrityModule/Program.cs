@@ -17,13 +17,13 @@ namespace IntegrityModule;
 
 class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
         IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
         //integrityModule.ClearDatabase();
-        //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
-        integrityModule.Scan(true);
+        //await integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
+        await integrityModule.Scan(true);
         ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
         Console.ReadLine(); // Remove when merging
         

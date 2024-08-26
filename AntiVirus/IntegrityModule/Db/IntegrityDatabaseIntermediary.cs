@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations.IntegrityRelated;
+﻿/**************************************************************************
+ * File:        IntegrityDatabaseIntermediary.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Interacts with Parent (DatabaseIntermediary), to send function specific database commands.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations.IntegrityRelated;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;

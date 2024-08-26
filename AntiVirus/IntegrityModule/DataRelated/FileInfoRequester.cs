@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        FileInfoRequester.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Provides useful static functions that can be used by other modules, such functions include Hashing, size bytes to Size label, retrieving file info
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
