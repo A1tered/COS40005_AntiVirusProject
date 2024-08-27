@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\integritycheckerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\integritycheckerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IntegrityCheckerStub.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\IntegrityCheckerStub.cs",
+              "RelativeDocumentMoniker": "Alerts\\IntegrityCheckerStub.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\IntegrityCheckerStub.cs",
+              "RelativeToolTip": "Alerts\\IntegrityCheckerStub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:11:12.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MaliciousCodeScannerStub.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\MaliciousCodeScannerStub.cs",
+              "RelativeDocumentMoniker": "Alerts\\MaliciousCodeScannerStub.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\MaliciousCodeScannerStub.cs",
+              "RelativeToolTip": "Alerts\\MaliciousCodeScannerStub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:10:54.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Alert.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs",
+              "RelativeDocumentMoniker": "Alerts\\Alert.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs",
+              "RelativeToolTip": "Alerts\\Alert.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:10:29.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AlertManager.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\AlertManager.cs",
+              "RelativeDocumentMoniker": "Alerts\\AlertManager.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\AlertManager.cs",
+              "RelativeToolTip": "Alerts\\AlertManager.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAwwBUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:10:06.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EventBus.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\EventBus.cs",
+              "RelativeDocumentMoniker": "Alerts\\EventBus.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\EventBus.cs",
+              "RelativeToolTip": "Alerts\\EventBus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:09:38.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Program.cs",
+              "RelativeDocumentMoniker": "Alerts\\Program.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Program.cs",
+              "RelativeToolTip": "Alerts\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T01:06:29.237Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
