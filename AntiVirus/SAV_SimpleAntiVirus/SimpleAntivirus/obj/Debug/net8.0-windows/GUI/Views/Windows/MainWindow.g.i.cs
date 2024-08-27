@@ -97,7 +97,7 @@ namespace SimpleAntivirus.GUI.Views.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SimpleAntivirus;V1.0.0.0;component/gui/views/windows/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SimpleAntivirus;component/gui/views/windows/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\GUI\Views\Windows\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
