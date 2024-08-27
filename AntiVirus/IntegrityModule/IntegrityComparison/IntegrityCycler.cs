@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace IntegrityModule.IntegrityComparison
         // How many data sets does 1 thread undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
-        public IntegrityCycler(IntegrityDatabaseIntermediary database)
+        private ViolationHandler _violationHandler;
+        public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
         {
             _database = database;
+            _violationHandler = violationHandler;
             _amountPerSet = 100;
         }
 
@@ -23,7 +26,7 @@ namespace IntegrityModule.IntegrityComparison
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
         /// </summary>
         /// <remarks>One of the most important functions.</remarks>
-        public void InitiateScan()
+        public async Task InitiateScan()
         {
             List<IntegrityDataPooler> dataPoolerList = new();
             List<Task<List<IntegrityViolation>>> taskList = new();
@@ -45,13 +48,22 @@ namespace IntegrityModule.IntegrityComparison
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
-                taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
+                //taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
+                taskList.Add(poolerObject.CheckIntegrity());
             }
-            // Note to self to add asynchronous support, and to immediately emit alerts rather than holding onto them.
-            Task.WaitAll(taskList.ToArray());
-            foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+            while (taskList.Count() > 0)
             {
-                taskItem.Result.ForEach(summaryViolation.Add);
+                await Task.WhenAll(taskList.ToArray());
+                foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+                {
+                    if (taskItem.IsCompleted)
+                    {
+                        taskItem.Result.ForEach(summaryViolation.Add);
+                        // For each violation, send to violation handler
+                        taskItem.Result.ForEach(_violationHandler.ViolationAlert);
+                    }
+                }
+                taskList.RemoveAll(x => x.IsCompleted);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
         }
@@ -60,10 +72,10 @@ namespace IntegrityModule.IntegrityComparison
         /// Similar to InitiateScan, except it only scans 1 file.
         /// </summary>
         /// <param name="path">Windows File Path</param>
-        public void InitiateSingleScan(string path)
+        public async Task InitiateSingleScan(string path)
         {
             IntegrityDataPooler singlePooler = new(_database, path);
-            IntegrityViolation violation = singlePooler.CheckIntegrityFile();
+            IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();

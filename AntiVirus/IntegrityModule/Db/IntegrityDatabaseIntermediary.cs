@@ -50,11 +50,20 @@ namespace DatabaseFoundations
         /// <param name="id">id provided by AddEntry function.</param>
         /// <param name="trans">SQLiteTransaction reference.</param>
         /// <returns>Path failed to be added.</returns>
-        private bool AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans, CancellationToken cancelToken)
+        private async Task<bool> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans, CancellationToken cancelToken)
         {
             Console.WriteLine($"Started {id}");
             bool noFailure = true;
             string failurePath = "";
+            // Get hashes beforehand
+            List<Task<string>> taskHandlerHash = new();
+            // Get all hashes first.
+            foreach (string cyclePath in givenPaths)
+            {
+                taskHandlerHash.Add(FileInfoRequester.HashFile(cyclePath));
+            }
+            string[] hashSet = await Task.WhenAll(taskHandlerHash);
+            int index = 0;
             foreach (string cyclePath in givenPaths)
             {
                 cancelToken.ThrowIfCancellationRequested();
@@ -62,7 +71,7 @@ namespace DatabaseFoundations
                 SqliteCommand command = new();
                 command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
                 command.Transaction = trans;
-                string getHash = FileInfoRequester.HashFile(cyclePath);
+                string getHash = hashSet[index];
                 Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
                 if (CheckExistence(cyclePath, trans))
                 {
@@ -88,6 +97,7 @@ namespace DatabaseFoundations
                     noFailure = false;
                     failurePath = cyclePath;
                 }
+                index++;
             }
             if (noFailure == false)
             {
@@ -103,7 +113,7 @@ namespace DatabaseFoundations
         /// </summary>
         /// <param name="path">Directory windows (file or directory)</param>
         /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
-        public bool AddEntry(string path, int amountPerSet)
+        public async Task<bool> AddEntry(string path, int amountPerSet)
         {
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
             List<Task<bool>> taskManager = new();
@@ -137,9 +147,9 @@ namespace DatabaseFoundations
                 {
                     try
                     {
-                        Task.WaitAny(taskManager.ToArray());
+                        await Task.WhenAny(taskManager.ToArray());
                     }
-                    catch (OperationCanceledException)
+                    catch (OperationCanceledException e)
                     {
                         Console.WriteLine("operation cancelled");
                     }
@@ -148,6 +158,10 @@ namespace DatabaseFoundations
                         // Add each failed path to list.
                         if (taskItem.IsCompleted)
                         {
+                            if (taskItem.IsCanceled)
+                            {
+                                break;
+                            }
                             if (taskItem.Result == false)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;

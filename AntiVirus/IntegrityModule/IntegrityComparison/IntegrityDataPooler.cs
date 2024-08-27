@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,16 +67,28 @@ namespace IntegrityModule.IntegrityComparison
         /// Retrieving a set of the database, compare with system files.
         /// </summary>
         /// <returns>Violations found via mismatching Hashes.</returns>
-        public List<IntegrityViolation> CheckIntegrity()
+        public async Task<List<IntegrityViolation>> CheckIntegrity()
         {
             List<IntegrityViolation> violationSet = new();
             if (_selectedPath == null)
             {
+
+
+
                 Dictionary<string, string> infoSet = _databaseIntermediary.GetSetEntries(_setRepresentation, _setAmount);
-                string tempHash = "";
+                // We want to async calculate all hashes before cycling across.
+                List<Task<string>> taskHasher = new();
                 foreach (KeyValuePair<string, string> dirHash in infoSet)
                 {
-                    tempHash = FileInfoRequester.HashFile(dirHash.Key);
+                    taskHasher.Add(FileInfoRequester.HashFile(dirHash.Key));
+                }
+                string[] stringList = await Task.WhenAll(taskHasher);
+                string tempHash = "";
+                int index = 0;
+                foreach (KeyValuePair<string, string> dirHash in infoSet)
+                {
+                    tempHash = stringList[index];
+                    index++;
                     if (tempHash != dirHash.Value)
                     {
                         // Database info
@@ -92,9 +105,9 @@ namespace IntegrityModule.IntegrityComparison
         /// Singular comparison between the database and a windows file.
         /// </summary>
         /// <returns>Violation or Null</returns>
-        public IntegrityViolation CheckIntegrityFile()
+        public async Task<IntegrityViolation> CheckIntegrityFile()
         {
-            string hash = FileInfoRequester.HashFile(_selectedPath);
+            string hash = await FileInfoRequester.HashFile(_selectedPath);
             Tuple<string, string, long, long, long> resultTuple = _databaseIntermediary.GetDirectoryInfo(_selectedPath);
             if (hash != resultTuple.Item2)
             {
