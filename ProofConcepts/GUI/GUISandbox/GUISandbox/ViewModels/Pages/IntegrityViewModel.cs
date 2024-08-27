@@ -16,5 +16,8 @@ namespace GUISandbox.ViewModels.Pages
             integHandlerModel = model;
         }
 
+        
+        public string Progress { get; set; } = "PROGRESS";
+
     }
 }
