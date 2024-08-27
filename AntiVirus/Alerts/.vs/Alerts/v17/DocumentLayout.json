@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,19 +23,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AlertManager.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeDocumentMoniker": "AlertManager.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeToolTip": "AlertManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T08:28:03.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T08:27:18.237Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

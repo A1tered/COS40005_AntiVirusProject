@@ -10,7 +10,7 @@ public class AlertManager
     public AlertManager()
     {
         string databasePath = "alerts.db"; // Specify the database path
-        _databaseConnection = new SqliteConnection($"Filename={databasePath}"); // Use Filename instead of Data Source
+        _databaseConnection = new SqliteConnection($"Data Source={databasePath}"); // Use Data Source for the SQLite connection string
         InitializeDatabase();
     }
 
