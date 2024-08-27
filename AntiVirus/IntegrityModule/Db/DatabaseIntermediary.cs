@@ -54,6 +54,10 @@ namespace DatabaseFoundations
                 connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
+                SqliteCommand commandPragma = new();
+                commandPragma.CommandText = "PRAGMA journal_mode=WAL";
+                QueryNoReader(commandPragma);
+
             }
             else
             {
