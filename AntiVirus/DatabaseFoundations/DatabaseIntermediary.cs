@@ -160,6 +160,11 @@ namespace DatabaseFoundations
             {
                 query.Connection = _databaseConnection;
                 SqliteDataReader dataReader = query.ExecuteReader();
+                for (int i = 0; i<dataReader.FieldCount; i++)
+                {
+                    row.Add(dataReader.GetName(i));
+                }
+                output.Add(row);
                 while (dataReader.Read())
                 {
                     row = new();

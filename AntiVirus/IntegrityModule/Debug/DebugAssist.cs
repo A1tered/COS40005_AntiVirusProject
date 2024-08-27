@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        IntegrityConfigurator.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Provides debugging utility, not to be used by end users.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

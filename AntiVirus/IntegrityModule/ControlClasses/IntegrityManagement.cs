@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityManagement.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Initiate scans, provide functions for outer module callers.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using IntegrityModule.IntegrityComparison;
@@ -17,13 +24,17 @@ namespace IntegrityModule.ControlClasses
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;
         private ReactiveControl _reactiveControl;
+        private float _progress;
+        private string _progressInfo;
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             ViolationHandler tempHandler = new();
             tempHandler.AlertFlag += AlertHandler;
             _integrityCycler = new IntegrityCycler(integrityIntermediary, tempHandler);
+            _integrityCycler.ProgressUpdate += ProgressUpdateHandler;
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
+            _progressInfo = "||Load||";
         }
 
         public void StartReactiveControl()
@@ -31,7 +42,7 @@ namespace IntegrityModule.ControlClasses
             _reactiveControl.Initialize();
         }
 
-        private void AlertHandler(object sender, AlertArgs alertInfo)
+        private void AlertHandler(object? sender, AlertArgs alertInfo)
         {
             Console.WriteLine("Alert Handler Event Triggered Successfully");
         }
@@ -103,6 +114,39 @@ namespace IntegrityModule.ControlClasses
         public void ChangeSetAmount(int amount)
         {
             _integrityCycler.AmountSet = amount;
+        }
+
+        private void ProgressUpdateHandler(object? sender, ProgressArgs progressData)
+        {
+            Progress = progressData.Progress;
+            ProgressInfo = progressData.ProgressInfo;
+            //Console.Write($"Progress: {Progress}");
+            //Console.Write("\r");
+        }
+
+        public float Progress
+
+        {
+            get
+            {
+                return _progress;
+            }
+            set
+            {
+                _progress = value;
+            }
+        }
+
+        public string ProgressInfo
+        {
+            get
+            {
+                return _progressInfo;
+            }
+            set
+            {
+                _progressInfo = value;
+            }
         }
     }
 }

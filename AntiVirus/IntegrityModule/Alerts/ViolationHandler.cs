@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations.IntegrityRelated;
+﻿/**************************************************************************
+ * File:        ViolationHandler.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Intakes violation and turns to Alert data structure, does any relevant formatting / message info for an alert.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.DataTypes;
 using System;
 using System.Collections.Generic;
