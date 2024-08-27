@@ -7,14 +7,6 @@
       "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:filehashscanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\splitprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:splitprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,6 +17,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|solutionrelative:directorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0B3D34B-C3DD-45DB-9A22-1F7281A33B34}|FileHashScanning.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\filehashchecking\\filehashscanning\\configurator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,16 +50,16 @@
               "Title": "FileHashScanner.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanner.cs",
               "RelativeDocumentMoniker": "FileHashScanner.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanner.cs",
-              "RelativeToolTip": "FileHashScanner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanner.cs*",
+              "RelativeToolTip": "FileHashScanner.cs*",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEoAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-13T07:41:48.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SplitProcess.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\SplitProcess.cs",
               "RelativeDocumentMoniker": "SplitProcess.cs",
@@ -67,23 +67,25 @@
               "RelativeToolTip": "SplitProcess.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T02:38:25.228Z"
+              "WhenOpened": "2024-08-22T02:38:25.228Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Hunter.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\Hunter.cs",
               "RelativeDocumentMoniker": "Hunter.cs",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\Hunter.cs",
               "RelativeToolTip": "Hunter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T07:37:25.626Z"
+              "WhenOpened": "2024-05-13T07:37:25.626Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "DatabaseConnector.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\DatabaseConnector.cs",
               "RelativeDocumentMoniker": "DatabaseConnector.cs",
@@ -95,19 +97,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Hasher.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\Hasher.cs",
               "RelativeDocumentMoniker": "Hasher.cs",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\Hasher.cs",
               "RelativeToolTip": "Hasher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T06:12:20.092Z"
+              "WhenOpened": "2024-05-05T06:12:20.092Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DirectoryManager.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\DirectoryManager.cs",
               "RelativeDocumentMoniker": "DirectoryManager.cs",

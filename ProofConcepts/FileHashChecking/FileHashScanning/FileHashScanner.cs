@@ -72,7 +72,7 @@ namespace FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory"]);
+                    directories.AddRange([$"C:\\Users\\CardmanOfficial\\Documents"]);
                 }
                 else if (scanType == "full")
                 {

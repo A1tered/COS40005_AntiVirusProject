@@ -31,7 +31,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\Users\\CardmanOfficial\\Documents"]);
+                    directories.AddRange([$"C:\\TestDirectory", "C:\\Users\\CardmanOfficial\\Documents"]);
                 }
                 else if (scanType == "full")
                 {
