@@ -13,6 +13,6 @@ public class MaliciousCodeScannerStub
     {
         // Simulate detecting malicious code
         await Task.Delay(1000); // Simulate some processing time
-        await _eventBus.PublishAsync("MaliciousCodeScanner", "Malicious code detected in file XYZ.");
+        await _eventBus.PublishAsync("MaliciousCodeScanner", "Critical", "Malicious code detected in file XYZ.", "Remove the file immediately.");
     }
 }

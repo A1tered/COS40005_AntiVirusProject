@@ -9,9 +9,9 @@ public class EventBus
         _alertManager = alertManager;
     }
 
-    public async Task PublishAsync(string component, string message)
+    public async Task PublishAsync(string component, string severity, string message, string suggestedAction)
     {
-        var alert = new Alert(component, message);
+        var alert = new Alert(component, severity, message, suggestedAction);
         await _alertManager.LogAndDisplayAlertAsync(alert);
     }
 }

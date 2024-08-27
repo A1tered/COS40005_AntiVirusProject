@@ -28,7 +28,9 @@ public class AlertManager
                     CREATE TABLE Alerts (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Component TEXT NOT NULL,
+                        Severity TEXT NOT NULL,
                         Message TEXT NOT NULL,
+                        SuggestedAction TEXT NOT NULL,
                         Timestamp TEXT NOT NULL
                     )";
 
@@ -47,13 +49,15 @@ public class AlertManager
             await connection.OpenAsync();
 
             string insertQuery = @"
-                INSERT INTO Alerts (Component, Message, Timestamp)
-                VALUES (@Component, @Message, @Timestamp)";
+                INSERT INTO Alerts (Component, Severity, Message, SuggestedAction, Timestamp)
+                VALUES (@Component, @Severity, @Message, @SuggestedAction, @Timestamp)";
 
             using (var command = new SQLiteCommand(insertQuery, connection))
             {
                 command.Parameters.AddWithValue("@Component", alert.Component);
+                command.Parameters.AddWithValue("@Severity", alert.Severity);
                 command.Parameters.AddWithValue("@Message", alert.Message);
+                command.Parameters.AddWithValue("@SuggestedAction", alert.SuggestedAction);
                 command.Parameters.AddWithValue("@Timestamp", alert.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
 
                 await command.ExecuteNonQueryAsync();
@@ -79,7 +83,9 @@ public class AlertManager
                     {
                         var alert = new Alert(
                             reader["Component"].ToString(),
-                            reader["Message"].ToString())
+                            reader["Severity"].ToString(),
+                            reader["Message"].ToString(),
+                            reader["SuggestedAction"].ToString())
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Timestamp = DateTime.Parse(reader["Timestamp"].ToString())
