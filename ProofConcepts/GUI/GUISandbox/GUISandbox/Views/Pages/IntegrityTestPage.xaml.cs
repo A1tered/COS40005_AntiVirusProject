@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DatabaseFoundations;
+using GUISandbox.ViewModels.Pages;
+using IntegrityModule.ControlClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +22,13 @@ namespace GUISandbox.Views.Pages
     /// </summary>
     public partial class IntegrityTestPage : Page
     {
-        public IntegrityTestPage()
+        public IntegrityViewModel ViewModel { get; set; }
+        public IntegrityTestPage(IntegrityViewModel integViewModel)
         {
+            ViewModel = integViewModel;
+            DataContext = integViewModel;
             InitializeComponent();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             InfoProvide.Content = "Hi";
