@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\FileHashScanning.csproj": {}
+    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanning.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\FileHashScanning.csproj": {
+    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanning.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\FileHashScanning.csproj",
+        "projectUniqueName": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanning.csproj",
         "projectName": "FileHashScanning",
-        "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\FileHashScanning.csproj",
+        "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanning.csproj",
         "packagesPath": "C:\\Users\\CardmanOfficial\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\obj\\",
+        "outputPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

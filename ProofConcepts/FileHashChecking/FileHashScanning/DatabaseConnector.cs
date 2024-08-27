@@ -136,6 +136,5 @@ namespace FileHashScanning
             }
             return (tempConnectionState);
         }
-
     }
 }

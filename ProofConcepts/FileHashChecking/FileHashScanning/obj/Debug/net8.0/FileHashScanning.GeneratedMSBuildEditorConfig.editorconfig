@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FileHashScanning
-build_property.ProjectDir = C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\Async\FindTheHash\
+build_property.ProjectDir = C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileHashChecking\FileHashScanning\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
