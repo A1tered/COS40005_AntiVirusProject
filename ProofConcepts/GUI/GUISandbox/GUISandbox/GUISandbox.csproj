@@ -17,12 +17,16 @@
   <ItemGroup>
     <PackageReference Include="WPF-UI" Version="3.0.4" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0 " />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2 "/>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2 " />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\AntiVirus\IntegrityModule\IntegrityModule.csproj" />
   </ItemGroup>
 
   <ItemGroup>
