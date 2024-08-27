@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityConfigurator.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: A simplified interface for the database.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

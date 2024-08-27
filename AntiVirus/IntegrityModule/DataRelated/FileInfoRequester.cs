@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        FileInfoRequester.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Provides useful static functions that can be used by other modules, such functions include Hashing, size bytes to Size label, retrieving file info
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -58,6 +65,44 @@ namespace DatabaseFoundations.IntegrityRelated
 
             }
             return "";
+        }
+
+
+        /// <summary>
+        /// Hashes items as a set, with an attempt to get better performance.
+        /// </summary>
+        /// <param name="directorySet"></param>
+        /// <returns></returns>
+        public static async Task<List<string>> HashSet(List<string> directorySet)
+        {
+            List<string> returnedHashes = new();
+            foreach (string directory in directorySet) {
+                StringBuilder hashReturn = new();
+                if (Path.Exists(directory))
+                {
+                    try
+                    {
+                        using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+                        {
+                            byte[] returnByteSet = await SHA1.HashDataAsync(openFile);
+                            foreach (byte individualByte in returnByteSet)
+                            {
+                                hashReturn.Append(individualByte.ToString("X2"));
+                            }
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        Console.WriteLine($"IOException (Likely process use) {directory}");
+                    }
+                    catch (UnauthorizedAccessException e)
+                    {
+                        Console.WriteLine($"Unauthorized access {directory}");
+                    }
+                }
+                returnedHashes.Add(hashReturn.ToString());
+            }
+            return returnedHashes;
         }
 
         /// <summary>

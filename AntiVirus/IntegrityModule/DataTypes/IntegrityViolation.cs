@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        IntegrityViolation.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Data structure that represents a violation.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

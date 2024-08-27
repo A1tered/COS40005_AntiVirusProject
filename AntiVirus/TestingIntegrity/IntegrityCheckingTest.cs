@@ -1,5 +1,7 @@
 ﻿using DatabaseFoundations;
 using IntegrityModule.ControlClasses;
+using IntegrityModule.DataTypes;
+using IntegrityModule.IntegrityComparison;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +30,29 @@ namespace TestingIntegrity
         }
 
         [Test]
-        public void DeleteAllGetAmount()
+        public async Task DeleteAllGetAmount()
         {
             _integrityManagement.ClearDatabase();
-            _integrityManagement.AddBaseline(_fileProvided);
-            Assert.That(_integDatabase.QueryAmount("IntegrityCheck"), Is.GreaterThanOrEqualTo(1));
+            await _integrityManagement.AddBaseline(_fileProvided);
+            Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.GreaterThanOrEqualTo(1));
             _integDatabase.DeleteAll();
-            Assert.That(_integDatabase.QueryAmount("IntegrityCheck"), Is.EqualTo(0));
+            Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.EqualTo(0));
         }
+
+        [Test]
+        public async Task AddEntryTest()
+        {
+            await _integDatabase.AddEntry(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles\12853b.jpg", 100);
+        }
+
+        //[Test]
+        //public async Task CheckerTest()
+        //{
+        //    _integrityManagement.ClearDatabase();
+        //    await _integrityManagement.AddBaseline(@"C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\COS40006 Computing Technology Project B\\TestingGround\\HundredIntegrityFiles");
+        //    IntegrityDataPooler pooler = new(_integDatabase,0,100);
+        //    List<IntegrityViolation> listItem = await pooler.CheckIntegrity();
+        //    Assert.That(listItem.Count(), Is.EqualTo(1));
+        //}
     }
 }

@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations.IntegrityRelated;
+﻿/**************************************************************************
+ * File:        IntegrityDatabaseIntermediary.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Interacts with Parent (DatabaseIntermediary), to send function specific database commands.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations.IntegrityRelated;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -135,13 +142,13 @@ namespace DatabaseFoundations
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         Console.WriteLine(idTracker);
-                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token), cancelToken.Token));
+                        taskManager.Add((AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token), cancelToken.Token));
+                taskManager.Add((AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {

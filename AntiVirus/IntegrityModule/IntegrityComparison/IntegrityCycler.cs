@@ -1,4 +1,12 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityCycler.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Manages the start of the Integrity Scanning process, deals with returned Violations when it initiates multiple 
+ * Integrity data poolers to scan certain sets of database queries.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using IntegrityModule.Alerts;
 using IntegrityModule.DataTypes;
 using System;
@@ -11,7 +19,7 @@ namespace IntegrityModule.IntegrityComparison
 {
     public class IntegrityCycler
     {
-        // How many data sets does 1 thread undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
+        // How many data sets does 1 task undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
         private ViolationHandler _violationHandler;
@@ -19,8 +27,10 @@ namespace IntegrityModule.IntegrityComparison
         {
             _database = database;
             _violationHandler = violationHandler;
-            _amountPerSet = 100;
+            _amountPerSet = 500;
         }
+
+        public event EventHandler<ProgressArgs> ProgressUpdate;
 
         /// <summary>
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
@@ -28,10 +38,17 @@ namespace IntegrityModule.IntegrityComparison
         /// <remarks>One of the most important functions.</remarks>
         public async Task InitiateScan()
         {
+            ProgressArgs setProgressArg;
+            // Progress Track variables:
+            // List that instantiates all the instances of Datapooler with proper configuration (Does not run them)
             List<IntegrityDataPooler> dataPoolerList = new();
+            // Keep track of the running data poolers.
             List<Task<List<IntegrityViolation>>> taskList = new();
+            // Track all violations that have been reported.
             List<IntegrityViolation> summaryViolation = new();
+            int initialTaskAmount = 0;
             long amountEntry = _database.QueryAmount("IntegrityTrack");
+
             if (amountEntry == 0)
             {
                 Console.WriteLine("No entries to scan");
@@ -44,16 +61,16 @@ namespace IntegrityModule.IntegrityComparison
             {
                 dataPoolerList.Add(new IntegrityDataPooler(_database, cycle, _amountPerSet));
             }
-            // Now tell those poolers to get a move on.
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
                 Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
                 //taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
                 taskList.Add(poolerObject.CheckIntegrity());
             }
+            initialTaskAmount = taskList.Count();
             while (taskList.Count() > 0)
             {
-                await Task.WhenAll(taskList.ToArray());
+                await Task.WhenAny(taskList.ToArray());
                 foreach (Task<List<IntegrityViolation>> taskItem in taskList)
                 {
                     if (taskItem.IsCompleted)
@@ -64,6 +81,14 @@ namespace IntegrityModule.IntegrityComparison
                     }
                 }
                 taskList.RemoveAll(x => x.IsCompleted);
+
+                // 1 - Update task completed / initialTaskAmount
+                // 10 - 4
+                setProgressArg = new();
+                // Percentage of tasks left.
+                setProgressArg.Progress = ((initialTaskAmount - taskList.Count()) / (float)initialTaskAmount) * 100;
+                setProgressArg.ProgressInfo = $"{_amountPerSet * taskList.Count()} Files Left";
+                ProgressUpdate?.Invoke(this, setProgressArg);
             }
             Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
         }
