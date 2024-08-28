@@ -206,7 +206,7 @@ Christopher Thompson - [LinkedIn](https://www.linkedin.com/in/your_username) - e
 
 Joel Parks - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Johann Banaag - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Johann Banaag - [LinkedIn](https://www.linkedin.com/in/johannbanaag) - johannbanaag21@gmail.com
 
 
 Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://github.com/A1tered/COS40005_AntiVirusProject)
