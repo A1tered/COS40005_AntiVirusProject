@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileHashScanning")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e24a3ca1e44ccbadfaefbce62c10941224d8db9f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f826447b45353e727aeaae204caca9ec77974955")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileHashScanning")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileHashScanning")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
