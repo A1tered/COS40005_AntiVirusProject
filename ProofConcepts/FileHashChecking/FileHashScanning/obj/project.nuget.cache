@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HUWhPx90Dos=",
+  "dgSpecHash": "0CMg0cyo1eo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Async\\FindTheHash\\FileHashScanning.csproj",
+  "projectFilePath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\FileHashChecking\\FileHashScanning\\FileHashScanning.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CardmanOfficial\\.nuget\\packages\\microsoft.data.sqlite\\8.0.4\\microsoft.data.sqlite.8.0.4.nupkg.sha512",
     "C:\\Users\\CardmanOfficial\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.4\\microsoft.data.sqlite.core.8.0.4.nupkg.sha512",
