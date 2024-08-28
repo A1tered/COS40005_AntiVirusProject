@@ -202,7 +202,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Timothy Loh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
 
-Zachary Smith - [@zachsmith-zip](www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
+Zachary Smith - [zachsmith-zip](www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
 
 Pawanpreet Singh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
 
