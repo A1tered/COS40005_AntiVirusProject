@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUI_Application", "GUIApplication\GUI_Application.csproj", "{195365CB-9BE1-427D-A69B-6E04149A9002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAntivirus", "SimpleAntivirus\SimpleAntivirus.csproj", "{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{195365CB-9BE1-427D-A69B-6E04149A9002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{195365CB-9BE1-427D-A69B-6E04149A9002}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{195365CB-9BE1-427D-A69B-6E04149A9002}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{195365CB-9BE1-427D-A69B-6E04149A9002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
