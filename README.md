@@ -200,12 +200,18 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Timothy Loh - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Zachary Smith - zachjsmith.zip@gmail.com
-Pawanpreet Singh - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Christopher Thompson - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Joel Parks - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Johann Banaag - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Timothy Loh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+
+Zachary Smith - [@zachsmith-zip](www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
+
+Pawanpreet Singh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+
+Christopher Thompson - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+
+Joel Parks - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+
+Johann Banaag - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+
 
 Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://github.com/A1tered/COS40005_AntiVirusProject)
 
