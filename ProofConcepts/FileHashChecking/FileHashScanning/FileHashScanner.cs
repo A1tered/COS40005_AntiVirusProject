@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace FileHashScanning
 {
-    public class Program
+    public class FileHashScanner
     {
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
