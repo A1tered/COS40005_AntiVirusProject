@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\",
   "Documents": [
     {
+<<<<<<< HEAD
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
       "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\Alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,6 +43,7 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+>>>>>>> Integrity-Checking
     }
   ],
   "DocumentGroupContainers": [
@@ -44,6 +53,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AlertManager.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeDocumentMoniker": "AlertManager.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeToolTip": "AlertManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T08:28:03.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T08:27:18.237Z",
+              "EditorCaption": ""
+=======
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -144,6 +182,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T01:06:29.237Z"
+>>>>>>> Integrity-Checking
             }
           ]
         }
