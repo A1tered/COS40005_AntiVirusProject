@@ -7,6 +7,8 @@
 **************************************************************************/
 
 using SimpleAntivirus.FileHashScanning;
+using SimpleAntivirus.GUI.ViewModels.Pages;
+using SimpleAntivirus.GUI.Views.Pages;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -55,7 +57,6 @@ namespace SimpleAntivirus.FileHashScanning
             });
             stopwatch.Stop();
             Console.WriteLine($"It took {stopwatch.Elapsed} to complete the scan.");
-            // Navigate back to ScannerPage
         }
     }
 }

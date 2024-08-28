@@ -1,4 +1,5 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -22,9 +23,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private void Cancel_Scan(object sender, RoutedEventArgs e)
         {
-            ScannerViewModel _viewModel = new ScannerViewModel();
-            ScannerPage _scannerPage = new ScannerPage(_viewModel);
-            this.NavigationService.Navigate(_scannerPage);
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(ScannerPage));
         }
     }
 }

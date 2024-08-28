@@ -78,6 +78,7 @@ namespace SimpleAntivirus
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
+            NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
         }
 
         /// <summary>
