@@ -30,39 +30,44 @@ namespace IntegrityModule.Alerts
         // Convert violation data structure to Alert and then notify via event.
         public void ViolationAlert(IntegrityViolation violation)
         {
-            Alert alertCreate = new();
             StringBuilder baseMessage = new("Integrity Check Mismatch:");
             baseMessage.Append($"File: {violation.Path}");
+            // Parameter creation
             long sizeDifference = Math.Abs(violation.FileSizeBytes - violation.OriginalSize);
-            alertCreate.TimeOfViolation = violation.TimeOfViolation;
-            alertCreate.Component = "Integrity Checking";
+            DateTime timeViolation = DateTimeOffset.FromUnixTimeSeconds(violation.TimeOfViolation).DateTime;
+            string component = "Integrity Checking";
+            string severity = "";
+            string message = "";
+            string suggestedAction = "";
             //// Determine circumstance
-            if (violation.Missing = false)
+            if (violation.Missing == false)
             {
                 baseMessage.Append($"Hash Change Detected");
                 if (sizeDifference > 1000)
                 {
-                    alertCreate.SeverityLevel = 1;
+                    severity = "Caution";
                     baseMessage.Append($"Detected Changes:");
                     baseMessage.Append($"Size Change: {FileInfoRequester.SizeValueToLabel(sizeDifference)}");
-                    alertCreate.SuggestedAction = "Check contents of file, alert IT";
+                    suggestedAction = "Check contents of file, alert IT";
                     // Major file size changes
                 }
                 else if (violation.Hash == "")
                 {
-                    alertCreate.SeverityLevel = 1;
+                    severity = "Warning";
                     baseMessage.Append($"File cannot be Scanned");
-                    alertCreate.SuggestedAction = "Scan again later, and raise issue with IT";
+                    suggestedAction = "Scan again later, and raise issue with IT";
                     // Could not scan file
                 }
             }
             else
             {
-                alertCreate.SeverityLevel = 2;
+                severity = "Danger";
                 baseMessage.Append($"File Missing");
-                alertCreate.SuggestedAction = "Check for potential compromise of computer";
+                suggestedAction = "Check for potential compromise of computer";
                 // File Missing (High Severity)
             }
+            message = baseMessage.ToString();
+            Alert alertCreate = new(component, severity, message, suggestedAction);
             AlertArgs argument = new();
             argument.AlertSet = alertCreate;
             AlertFlag?.Invoke(this, argument);

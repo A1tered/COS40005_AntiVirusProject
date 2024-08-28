@@ -9,6 +9,6 @@ namespace IntegrityModule.DataTypes
 {
     public class AlertArgs : EventArgs
     {
-        public Alert AlertSet { get; set; } = new();
+        public Alert AlertSet { get; set; }
     }
 }
