@@ -1,0 +1,42 @@
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.exe.config
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.exe
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.pdb
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Microsoft.Data.Sqlite.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.core.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Buffers.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Memory.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Numerics.Vectors.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Microsoft.Data.Sqlite.xml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Buffers.xml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Memory.xml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Numerics.Vectors.xml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.AssemblyReference.cache
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.CoreCompileInputs.cache
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.Up2Date
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.exe
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.pdb
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.exe.config
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.exe
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Alerts.pdb
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Microsoft.Data.Sqlite.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Buffers.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Memory.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\Microsoft.Data.Sqlite.xml
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Buffers.xml
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Memory.xml
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.AssemblyReference.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.CoreCompileInputs.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.csproj.Up2Date
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.exe
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Alerts\Alerts\obj\Debug\Alerts.pdb

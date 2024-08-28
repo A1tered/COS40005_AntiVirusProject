@@ -20,6 +20,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="Integrity Scan" Margin="278,164,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Label x:Name="InfoProvide" Content="Information Here" HorizontalAlignment="Left" Margin="308,62,0,0" VerticalAlignment="Top" Height="50" Width="184" Grid.ColumnSpan="2" Foreground="#9EFFFFFF"/>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="367,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
     </Grid>
 </Page>

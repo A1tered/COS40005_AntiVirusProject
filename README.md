@@ -101,6 +101,24 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 
 
+<!-- Repo Structure -->
+## Repository Structure
+
+The repository is organized into two main folders: AntiVirus and ProofConcepts. Each folder serves a distinct purpose in the development and organization of the Simple Antivirus (SAV) project.
+
+* AntiVirus:
+This folder contains the core of the project, where the final, integrated version of the Simple Antivirus resides. All team members contribute their completed functionalities here, ensuring that the antivirus is cohesive and fully functional. The AntiVirus folder is the central hub where all features, from real-time monitoring to file scanning, come together to form the finished product.
+
+* ProofConcepts:
+The ProofConcepts folder is a dedicated space for experimentation and development of individual functionalities. Here, team members create drafts, prototypes, and test versions of the components before they are finalized. This allows for iterative development and testing of new ideas without affecting the stability of the main project. Once a feature is polished and fully developed, it is then integrated into the main AntiVirus folder.
+
+
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -148,23 +166,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -195,9 +196,20 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Timothy Loh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Zachary Smith - [LinkedIn](https://www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
+
+Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+
+Christopher Thompson - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+
+Joel Parks - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+
+Johann Banaag - [LinkedIn](https://www.linkedin.com/in/johannbanaag) - johannbanaag21@gmail.com
+
+
+Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://github.com/A1tered/COS40005_AntiVirusProject)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -223,10 +235,9 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: images/screenshot.png
-[.NET8.0.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[.NET8.0.js]: https://img.shields.io/badge/.NET%208.0-purple?style=for-the-badge&logo=dotnet&color=purple
 [.NET8.0-url]: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
-[WPFUI.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[WPFUI.js]: https://img.shields.io/badge/WPF%20UI-blue?style=for-the-badge
 [WPFUI-url]: https://wpfui.lepo.co
-[SQLite.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[SQLite.js]: https://img.shields.io/badge/SQLite-%23003B57?style=for-the-badge&logo=sqlite
 [SQLite-url]: https://www.nuget.org/packages/Microsoft.Data.Sqlite/
