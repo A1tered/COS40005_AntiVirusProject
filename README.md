@@ -225,7 +225,7 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [.NET8.0.js]: https://img.shields.io/badge/.NET%208.0-purple?style=for-the-badge&logo=dotnet&color=purple
 [.NET8.0-url]: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
-[WPFUI.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[WPFUI.js]: https://img.shields.io/badge/WPF%20UI-blue?style=for-the-badge
 [WPFUI-url]: https://wpfui.lepo.co
-[SQLite.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[SQLite.js]: https://img.shields.io/badge/SQLite-%23003B57?style=for-the-badge&logo=sqlite
 [SQLite-url]: https://www.nuget.org/packages/Microsoft.Data.Sqlite/
