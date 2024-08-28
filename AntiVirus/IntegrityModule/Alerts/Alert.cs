@@ -1,12 +1,22 @@
-﻿using System;
+﻿/**************************************************************************
+ * File:        Alert.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Alert data structure which is subject to change.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace IntegrityModule.Alerts
 {
+    // Alert data structure, subject to change.
     public class Alert
     {
         private long _timeOfViolation;
