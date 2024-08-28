@@ -166,10 +166,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
-
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -200,17 +196,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Timothy Loh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+Timothy Loh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
 Zachary Smith - [LinkedIn](https://www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
 
-Pawanpreet Singh - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Christopher Thompson - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+Christopher Thompson - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Joel Parks - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+Joel Parks - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Johann Banaag - [@your_Linked](www.linkedin.com/in/your_username) - email@example.com
+Johann Banaag - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
 
 Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://github.com/A1tered/COS40005_AntiVirusProject)
