@@ -1,0 +1,6 @@
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.csproj.AssemblyReference.cache
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.AssemblyInfoInputs.cache
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.AssemblyInfo.cs
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.csproj.CoreCompileInputs.cache
+E:\GitHub\COS40005_AntiVirusProject\ProofConcepts\FileQuarantine\FileQuarantinePoC\obj\Debug\net8.0\FileQuarantinePoC.sourcelink.json
