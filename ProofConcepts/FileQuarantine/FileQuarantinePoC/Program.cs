@@ -12,8 +12,11 @@ class Program
         DatabaseManager databaseManager = new DatabaseManager(databasePath);
         QuarantineManager quarantineManager = new QuarantineManager(fileMover, databaseManager, quarantineDirectory);
 
+        // Simulate another functionality (MaliciousCodeScanner) detecting a dangerous file
+        MaliciousCodeScannerStub scannerStub = new MaliciousCodeScannerStub(quarantineManager);
+
         string filePathToQuarantine = "C:\\Path\\To\\SuspiciousFile.txt";
 
-        await quarantineManager.QuarantineFileAsync(filePathToQuarantine);
+        await scannerStub.ScanAndQuarantineAsync(filePathToQuarantine);
     }
 }
