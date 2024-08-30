@@ -7,6 +7,7 @@ ProofConcepts/Asynchronous/FindTheHashNOTFINISHED/.vs
 ProofConcepts/FileHashChecking/FileHashCheckingPOC1/.vs
 ProofConcepts/Alerts/AlertsPoC/.vs
 ProofConcepts/FileQuarantine/FileQuarantinePoC/.vs
+AntiVirus/Alerts/.vs
 *.v2
 *.vsidx
 *.bin
