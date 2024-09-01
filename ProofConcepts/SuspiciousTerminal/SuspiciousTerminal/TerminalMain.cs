@@ -35,7 +35,7 @@ class Program
     [DllImport("user32.dll", SetLastError = true)]
     private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
-
+   
 
     //-------------------------------------------------------------------------------------------------------------------------
 
@@ -176,7 +176,8 @@ class Program
 
     static void Initialise()
     {
-        //Create Database
+        //Create Database for the entire Suspicious Terminal Monitoring
+        
         Database TerminalDB = new Database();
         //Mouse Table Column Names
         String[] MouseColumnnames = { "DateTime", "XLocation", "YLocation" };
@@ -186,17 +187,24 @@ class Program
         //Create Table for Mouse Data
         TerminalDB.CreateTable("MouseMovement", MouseColumnnames, MouseColumnType);
 
-        //Keyboard Table Column Names
-        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Focus" };
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] KeyboardColumnType = { "DateTime", "String", "String" };
 
-        //Create DB for Keyboard Data
+
+
+        //Keyboard Table Column Names
+        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Session" };
+        //Keyboard Table Column Data Types
+        String[] KeyboardColumnType = { "DateTime", "String", "String" };
+        //Create Table for Keyboard Data
         TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
 
 
 
+        //NetworkConnections Table Column Names
+        String[] NetworkConColumnnames = { "DateTime", "Port", "External IP" };
+        //NetworkConnections Table Column Data Types
+        String[] NetworkConColumnType = { "DateTime", "Int", "String" };
+        //Create Table for Keyboard Data
+        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
 
     }
 
