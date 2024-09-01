@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Uv5zQ5OYoOE=",
+  "dgSpecHash": "uBTxyp9nVfA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tloh1\\OneDrive\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
+  "projectFilePath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tloh1\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",
     "C:\\Users\\tloh1\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",

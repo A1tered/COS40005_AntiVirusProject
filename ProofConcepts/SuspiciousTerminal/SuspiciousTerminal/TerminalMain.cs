@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using DatabaseProofOfConcept;
 using System.Net.NetworkInformation;
-
+using Microsoft.Data.Sqlite;
 
 class Program
 {
