@@ -204,9 +204,9 @@ Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - email
 
 Christopher Thompson - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Joel Parks - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Joel Parks - [LinkedIn](https://www.linkedin.com/in/joel-p-b613a6292) - 103981674@student.swin.edu.au 
 
-Johann Banaag - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Johann Banaag - [LinkedIn](https://www.linkedin.com/in/johannbanaag) - johannbanaag21@gmail.com
 
 
 Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://github.com/A1tered/COS40005_AntiVirusProject)
