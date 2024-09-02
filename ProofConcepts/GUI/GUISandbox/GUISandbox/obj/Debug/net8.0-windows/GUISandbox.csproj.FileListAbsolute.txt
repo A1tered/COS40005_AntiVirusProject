@@ -151,3 +151,5 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\IntegrityModule.dll
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\IntegrityModule.pdb
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\Views\Pages\IntegrityConfigurePage.g.cs
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\Views\Pages\IntegrityConfigurePage.baml

@@ -21,6 +21,16 @@ namespace GUISandbox.Models
             _integManage = integManage;
         }
 
+        public int GetPages()
+        {
+            return _integManage.GetPages();
+        }
+
+        public Dictionary<string, string> GetPageSet(int page)
+        {
+            return _integManage.BaselinePage(page);
+        }
+
         public async Task<int> Scan()
         {
             int returnItem = await _integManage.Scan();

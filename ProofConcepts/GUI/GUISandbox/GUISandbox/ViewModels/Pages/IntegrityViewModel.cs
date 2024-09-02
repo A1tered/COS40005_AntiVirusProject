@@ -12,14 +12,16 @@ namespace GUISandbox.ViewModels.Pages
     public partial class IntegrityViewModel : ObservableObject, INotifyPropertyChanged
     {
 
-        public string _progressDefiner = "PROGRESS i am";
-        public string _progressInfo = "";
+        public string _progressDefiner;
+        public string _progressInfo;
         public IntegrityHandlerModel integHandlerModel { get; set; }
 
         public IntegrityViewModel(IntegrityHandlerModel model)
         {
             integHandlerModel = model;
             integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
+            _progressDefiner = "";
+            _progressInfo = "";
         }
 
         public async Task<int> Scan()
@@ -49,7 +51,7 @@ namespace GUISandbox.ViewModels.Pages
             {
                 _progressDefiner = value;
                 // Lets the view know something has changed.
-                this.PropertyChanged(this, new PropertyChangedEventArgs(""));
+                this.PropertyChanged(this, new PropertyChangedEventArgs("Progress"));
             }
         }
 

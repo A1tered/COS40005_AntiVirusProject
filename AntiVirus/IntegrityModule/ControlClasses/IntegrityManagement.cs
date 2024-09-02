@@ -63,6 +63,18 @@ namespace IntegrityModule.ControlClasses
             return await _integrityCycler.InitiateScan();
         }
 
+        // Get how many pages would exist.
+        public int GetPages()
+        {
+            return _integrityConfigurator.GetPageAmount();
+        }
+
+        // Get a page of entries, to be utilised by GUI. Each page will return about 10 sets. 
+        public Dictionary<string, string> BaselinePage(int page)
+        {
+            return _integrityConfigurator.GetPage(page);
+        }
+
         /// <summary>
         /// Add path to integrity database
         /// </summary>
