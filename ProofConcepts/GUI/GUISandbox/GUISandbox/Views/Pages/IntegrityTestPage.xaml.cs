@@ -28,14 +28,12 @@ namespace GUISandbox.Views.Pages
             ViewModel = integViewModel;
             DataContext = integViewModel;
             InitializeComponent();
-            var bindCreate = new Binding("Property");
-            bindCreate.Mode = BindingMode.OneWay;
-            bindCreate.Source = integViewModel.Progress;
             //BindingOperations.SetBinding(InfoProvide, Label.Content, bindCreate);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InfoProvide.Content = "Hi";
+            // This doesn't automatically changed, EventTrigger required?
+            ViewModel.Progress = "Hello I have changed";
         }
     }
 }

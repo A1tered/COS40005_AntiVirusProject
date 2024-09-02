@@ -20,6 +20,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="Integrity Scan" Margin="278,164,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="367,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="InfoProvide" Content="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="342,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="116" Foreground="#9EFFFFFF" Background="Transparent"/>
     </Grid>
 </Page>
