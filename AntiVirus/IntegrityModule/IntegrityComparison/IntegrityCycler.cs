@@ -36,7 +36,7 @@ namespace IntegrityModule.IntegrityComparison
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
         /// </summary>
         /// <remarks>One of the most important functions.</remarks>
-        public async Task InitiateScan()
+        public async Task<int> InitiateScan()
         {
             ProgressArgs setProgressArg;
             // Progress Track variables:
@@ -52,7 +52,7 @@ namespace IntegrityModule.IntegrityComparison
             if (amountEntry == 0)
             {
                 Console.WriteLine("No entries to scan");
-                return;
+                return 0;
             }
             decimal divison = (decimal)amountEntry / _amountPerSet;
             int sets = Convert.ToInt32(Math.Ceiling(divison));
@@ -63,9 +63,7 @@ namespace IntegrityModule.IntegrityComparison
             }
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
-                Console.WriteLine($"{poolerObject.Set} / {sets} - Pooler Set Started");
-                //taskList.Add(Task.Run(() => poolerObject.CheckIntegrity()));
-                taskList.Add(poolerObject.CheckIntegrity());
+                taskList.Add(Task.Run(poolerObject.CheckIntegrity));
             }
             initialTaskAmount = taskList.Count();
             while (taskList.Count() > 0)
@@ -90,7 +88,7 @@ namespace IntegrityModule.IntegrityComparison
                 setProgressArg.ProgressInfo = $"{_amountPerSet * taskList.Count()} Files Left";
                 ProgressUpdate?.Invoke(this, setProgressArg);
             }
-            Console.WriteLine($"Violations Found: {summaryViolation.Count()}");
+            return summaryViolation.Count();
         }
 
         /// <summary>

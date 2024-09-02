@@ -12,6 +12,7 @@ using IntegrityModule.IntegrityComparison;
 using IntegrityModule.Reactive;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,10 @@ using System.Threading.Tasks;
 
 namespace IntegrityModule.ControlClasses
 {
-    public class IntegrityManagement
+    public class IntegrityManagement : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;
         private ReactiveControl _reactiveControl;
@@ -55,19 +58,9 @@ namespace IntegrityModule.ControlClasses
         /// </summary>
         /// <param name="benchmark">Whether to return debug time taken for scan</param>
         /// <returns></returns>
-        public async Task Scan(bool benchmark = false)
+        public async Task<int> Scan(bool benchmark = false)
         {
-            Stopwatch timer = new();
-            if (benchmark)
-            {
-                timer.Start();
-            }
-            await _integrityCycler.InitiateScan();
-            if (benchmark)
-            {
-                timer.Stop();
-                Console.WriteLine($"Time taken for scan: {timer.Elapsed}");
-            }
+            return await _integrityCycler.InitiateScan();
         }
 
         /// <summary>
@@ -133,6 +126,7 @@ namespace IntegrityModule.ControlClasses
             }
             set
             {
+                this.PropertyChanged(this, new PropertyChangedEventArgs("Progress"));
                 _progress = value;
             }
         }

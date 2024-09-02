@@ -13,13 +13,18 @@ namespace GUISandbox.Models
     {
         public IntegrityDatabaseIntermediary _integDatabase;
         public IntegrityManagement _integManage;
-        // Integrity Test
         public IntegrityHandlerModel()
         {
             IntegrityDatabaseIntermediary integDatabase = new("IntegrityDatabase", false);
             _integDatabase = integDatabase;
             IntegrityManagement integManage = new(integDatabase);
             _integManage = integManage;
+        }
+
+        public async Task<int> Scan()
+        {
+            int returnItem = await _integManage.Scan();
+            return returnItem;
         }
 
         public IntegrityManagement IntegrityManagement
