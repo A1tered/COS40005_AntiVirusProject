@@ -1,6 +1,7 @@
 ﻿using GUISandbox.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -9,44 +10,69 @@ using System.Threading.Tasks;
 
 namespace GUISandbox.ViewModels.Pages
 {
+    public class DataRow
+    {
+        public string Directory { get; set; }
+        public string Hash { get; set; }
+
+        public DataRow(string directory, string hash)
+        {
+            this.Directory = directory;
+            this.Hash = hash;
+        }
+    }
     public partial class IntegrityConfigViewModel : ObservableObject, INotifyPropertyChanged
     {
 
-        private List<DataRow> _datasetDirHash; 
+        private int _pageNumber;
+        private ObservableCollection<DataRow> _datasetDirHash; 
         public IntegrityHandlerModel integHandlerModel { get; set; }
 
+        public int _truncateString;
         public IntegrityConfigViewModel(IntegrityHandlerModel model)
         {
             integHandlerModel = model;
             integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
             _datasetDirHash = new();
+            _truncateString = 40;
+            _pageNumber = 0;
         }
 
-        public List<DataRow> GetEntries(int page)
+        // String is shortened eg. "Hello my name is jack" -> "...is jack"
+        private string TruncateString(string itemCandidate)
         {
-            Dictionary<string, string> dirHash = integHandlerModel.IntegrityManagement.BaselinePage(page);
-            List<DataRow> tempDataRow = new();
+            if (itemCandidate.Length > _truncateString)
+            {
+                string redoString = "...";
+                int startPoint = itemCandidate.Length - _truncateString;
+                redoString = redoString + itemCandidate.Substring(startPoint, _truncateString);
+                return redoString;
+            }
+            return itemCandidate;
+
+        }
+
+        // Add integrity path to model.
+        public async Task<bool> AddIntegrityPath(string path)
+        {
+            return await integHandlerModel.AddPath(path);
+        }
+
+        // Get data entries in Model
+        public ObservableCollection<DataRow> GetEntries()
+        {
+            Dictionary<string, string> dirHash = integHandlerModel.IntegrityManagement.BaselinePage(_pageNumber);
+            ObservableCollection<DataRow> tempDataRow = new();
             foreach (KeyValuePair<string, string> set in dirHash)
             {
-                tempDataRow.Add(new DataRow(set.Key, set.Value));
+                tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value));
             }
             DataEntries = tempDataRow;
             return tempDataRow;
         }
 
-        public class DataRow
-        {
-            string Directory { get; set; }
-            string Hash { get; set; }
 
-            public DataRow(string directory, string hash)
-            {
-                this.Directory = directory;
-                this.Hash = hash;
-            }
-        }
-
-        public List<DataRow> DataEntries
+        public ObservableCollection<DataRow> DataEntries
         {
             get
             {
@@ -56,6 +82,22 @@ namespace GUISandbox.ViewModels.Pages
             {
                 _datasetDirHash = value;
                 //this.PropertyChanged(this, new PropertyChangedEventArgs("DataEntries"));
+            }
+        }
+
+        public int PageNumber
+        {
+            get
+            {
+                return _pageNumber;
+            }
+            set
+            {
+                int t = integHandlerModel.GetPages();
+                if (value + 1 < integHandlerModel.GetPages() && value >= 0)
+                {
+                    _pageNumber = value;
+                }
             }
         }
 

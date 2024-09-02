@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IntegrityConfigurePage"
       Loaded="Page_Loaded">
-        
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,13 +18,22 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" MinWidth="290"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="DataShow" Grid.ColumnSpan="2" Margin="79,203,79,22" Grid.RowSpan="2">
+        <DataGrid x:Name="DataShow" Grid.ColumnSpan="3" Margin="34,29,34,195" Grid.RowSpan="2" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200" SelectionChanged="DataShow_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Directory" Width="*" />
-                <DataGridTextColumn Header="Hash" Width="*" />
+                <DataGridTextColumn Header="Directory" Binding="{Binding Directory}" Width="*" />
+                <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
+        <Label x:Name="PageCount" Content="0" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Margin="0,167,0,0" Foreground="#9EFFFFFF" Width="56" Grid.Column="1" Height="23"/>
+        <Button x:Name="NextButton" Grid.Column="1" HorizontalAlignment="Right" Content=">>" Margin="0,163,0,0" Grid.Row="1" VerticalAlignment="Top" Click="NextButton_Click" FontSize="8" Height="30" Width="112"/>
+        <Button x:Name="PreviousButton" Grid.Column="1" Content="&lt;&lt;" Margin="0,163,0,0" Grid.Row="1" VerticalAlignment="Top" Click="PreviousButton_Click" FontSize="8" Height="30" Width="112"/>
+        <Button Grid.Column="2" Content="Delete" Margin="0,117,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="64"/>
+        <Label x:Name="SelectLabel" Content="No Item Selected" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,121,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="375" Height="23"/>
+        <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,5,0,0" VerticalAlignment="Top" Width="99" Height="32"/>
+        <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Margin="0,5,0,0" Click="AddFolder_Click" VerticalAlignment="Top" Width="97" Height="32"/>
+        <ui:ProgressRing x:Name="ProgressAdd" Grid.Column="1" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="25" Width="24"/>
     </Grid>
 </Page>

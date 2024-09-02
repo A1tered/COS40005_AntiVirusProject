@@ -26,6 +26,11 @@ namespace GUISandbox.Models
             return _integManage.GetPages();
         }
 
+        public async Task<bool> AddPath(string path)
+        {
+            return await _integManage.AddBaseline(path);
+        }
+
         public Dictionary<string, string> GetPageSet(int page)
         {
             return _integManage.BaselinePage(page);

@@ -12,12 +12,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition>
+                
+                
+            </ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Content="Integrity Scan" Margin="278,164,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Grid.ColumnSpan="2"/>
         <Label x:Name="InfoProvide" HorizontalContentAlignment="Center" Content="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="310,54,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="180" Foreground="#9EFFFFFF" Background="Transparent" Height="31" FontSize="18"/>
