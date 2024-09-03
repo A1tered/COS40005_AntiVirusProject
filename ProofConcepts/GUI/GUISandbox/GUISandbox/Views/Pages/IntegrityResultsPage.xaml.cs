@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using GUISandbox.Services;
 using GUISandbox.ViewModels.Pages;
 using IntegrityModule.ControlClasses;
 using Microsoft.Win32;
@@ -18,6 +19,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 namespace GUISandbox.Views.Pages
 {
     /// <summary>
@@ -38,6 +40,11 @@ namespace GUISandbox.Views.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             DataShow.ItemsSource = ViewModel.GetEntries();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityTestPage));
         }
     }
 }

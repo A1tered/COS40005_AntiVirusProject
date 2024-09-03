@@ -42,8 +42,9 @@ namespace GUISandbox.ViewModels.Pages
             List<ResultRow> resultList = new();
             foreach (IntegrityViolation vio in integHandlerModel.RecentViolationList)
             {
-                string dateTimeCreate = DateTimeOffset.FromUnixTimeSeconds(vio.TimeOfSignature).DateTime.ToString();
-                resultList.Add(new ResultRow(vio.Path, vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTimeCreate));
+                long d = vio.TimeOfSignature;
+                DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(vio.TimeOfSignature).DateTime.ToLocalTime();
+                resultList.Add(new ResultRow(IntegrityConfigViewModel.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
             }
             return resultList;
         }

@@ -42,13 +42,14 @@ namespace GUISandbox.ViewModels.Pages
         }
 
         // String is shortened eg. "Hello my name is jack" -> "...is jack"
-        private string TruncateString(string itemCandidate)
+        public static string TruncateString(string itemCandidate)
         {
-            if (itemCandidate.Length > _truncateString)
+            int truncateLength = 40;
+            if (itemCandidate.Length > truncateLength)
             {
                 string redoString = "...";
-                int startPoint = itemCandidate.Length - _truncateString;
-                redoString = redoString + itemCandidate.Substring(startPoint, _truncateString);
+                int startPoint = itemCandidate.Length - truncateLength;
+                redoString = redoString + itemCandidate.Substring(startPoint, truncateLength);
                 return redoString;
             }
             return itemCandidate;

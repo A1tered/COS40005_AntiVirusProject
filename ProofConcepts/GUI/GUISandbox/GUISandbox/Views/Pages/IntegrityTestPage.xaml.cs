@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using GUISandbox.Services;
 using GUISandbox.ViewModels.Pages;
 using IntegrityModule.ControlClasses;
 using System;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 namespace GUISandbox.Views.Pages
 {
     /// <summary>
@@ -38,12 +40,18 @@ namespace GUISandbox.Views.Pages
             {
                 ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
                 ViolationNote.Content = $"Violations Found: {result}";
+                ResultsButton.Visibility = Visibility.Visible;
             }
             else
             {
                 ViolationNote.Foreground = new SolidColorBrush(Colors.White);
                 ViolationNote.Content = "No Violations Found";
             }
+        }
+
+        private void See_Results_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
         }
     }
 }
