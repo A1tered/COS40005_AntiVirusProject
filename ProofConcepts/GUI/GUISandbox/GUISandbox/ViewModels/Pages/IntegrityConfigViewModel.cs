@@ -12,12 +12,15 @@ namespace GUISandbox.ViewModels.Pages
 {
     public class DataRow
     {
-        public string Directory { get; set; }
+        public string DisplayDirectory { get; set; }
+
+        public string HiddenDirectory { get; set; }
         public string Hash { get; set; }
 
-        public DataRow(string directory, string hash)
+        public DataRow(string displayDirectory, string hash, string directory)
         {
-            this.Directory = directory;
+            this.DisplayDirectory = displayDirectory;
+            this.HiddenDirectory = directory;
             this.Hash = hash;
         }
     }
@@ -27,7 +30,7 @@ namespace GUISandbox.ViewModels.Pages
         private int _pageNumber;
         private ObservableCollection<DataRow> _datasetDirHash; 
         public IntegrityHandlerModel integHandlerModel { get; set; }
-
+        public string _pathSelected;
         public int _truncateString;
         public IntegrityConfigViewModel(IntegrityHandlerModel model)
         {
@@ -52,6 +55,25 @@ namespace GUISandbox.ViewModels.Pages
 
         }
 
+        public int DeleteItem()
+        {
+            if (_pathSelected != null)
+            {
+                bool returnInfo = integHandlerModel.DeleteDirectory(_pathSelected);
+                // File not found in database
+                if (returnInfo)
+                {
+                    return 2;
+                }
+                return 1;
+            }
+            else
+            {
+                // No item selected
+                return 0;
+            }
+        }
+
         // Add integrity path to model.
         public async Task<bool> AddIntegrityPath(string path)
         {
@@ -61,17 +83,27 @@ namespace GUISandbox.ViewModels.Pages
         // Get data entries in Model
         public ObservableCollection<DataRow> GetEntries()
         {
-            Dictionary<string, string> dirHash = integHandlerModel.IntegrityManagement.BaselinePage(_pageNumber);
+            Dictionary<string, string> dirHash = integHandlerModel.GetPageSet(_pageNumber);
             ObservableCollection<DataRow> tempDataRow = new();
             foreach (KeyValuePair<string, string> set in dirHash)
             {
-                tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value));
+                tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value, set.Key));
             }
             DataEntries = tempDataRow;
             return tempDataRow;
         }
 
-
+        public string PathSelected
+        {
+            get
+            {
+                return _pathSelected;
+            }
+            set
+            {
+                _pathSelected = value;
+            }
+        }
         public ObservableCollection<DataRow> DataEntries
         {
             get

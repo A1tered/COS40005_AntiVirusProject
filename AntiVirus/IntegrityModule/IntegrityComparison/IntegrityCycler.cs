@@ -36,7 +36,7 @@ namespace IntegrityModule.IntegrityComparison
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
         /// </summary>
         /// <remarks>One of the most important functions.</remarks>
-        public async Task<int> InitiateScan()
+        public async Task<List<IntegrityViolation>> InitiateScan()
         {
             ProgressArgs setProgressArg;
             // Progress Track variables:
@@ -52,7 +52,7 @@ namespace IntegrityModule.IntegrityComparison
             if (amountEntry == 0)
             {
                 Console.WriteLine("No entries to scan");
-                return 0;
+                return summaryViolation;
             }
             decimal divison = (decimal)amountEntry / _amountPerSet;
             int sets = Convert.ToInt32(Math.Ceiling(divison));
@@ -88,7 +88,7 @@ namespace IntegrityModule.IntegrityComparison
                 setProgressArg.ProgressInfo = $"{_amountPerSet * taskList.Count()} Files Left";
                 ProgressUpdate?.Invoke(this, setProgressArg);
             }
-            return summaryViolation.Count();
+            return summaryViolation;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace IntegrityModule.IntegrityComparison
             IntegrityDataPooler singlePooler = new(_database, path);
             IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
+            //Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();
         }
 

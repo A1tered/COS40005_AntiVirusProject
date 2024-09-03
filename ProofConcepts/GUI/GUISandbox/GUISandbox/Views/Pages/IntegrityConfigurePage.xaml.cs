@@ -4,6 +4,7 @@ using IntegrityModule.ControlClasses;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -62,9 +64,13 @@ namespace GUISandbox.Views.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            // 0 > no selection, 1> no item found, 2 -> item deleted
+            int resultInt = ViewModel.DeleteItem();
+            DisplayResultDelete(resultInt);
+            ViewModel.PathSelected = null;
         }
 
+        // Handle message box for addition info
         private void DisplayResultOfAdded(bool success)
         {
             UpdateEntries();
@@ -77,23 +83,74 @@ namespace GUISandbox.Views.Pages
             }
         }
 
+        // Handle message box for addition info
+        private void DisplayResultDelete(int returnId)
+        {
+            UpdateEntries();
+            switch (returnId)
+            {
+                case 0:
+                    MessageBox.Show("No Item Selected", "Selection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case 1:
+                    MessageBox.Show("Data could not be found in Database", "Incorrect Entry", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case 2:
+                    MessageBox.Show("Data removed successfully", "Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
+        }
+
+        private void DisplayLoading(bool start)
+        {
+            Rotator.BeginAnimation(RotateTransform.AngleProperty, null);
+            if (start)
+            {
+                ProgressAdd.Visibility = Visibility.Visible;
+                DoubleAnimation anim = new();
+                anim.From = 0;
+                anim.To = 360;
+                anim.Duration = new Duration(TimeSpan.FromSeconds(2));
+                anim.RepeatBehavior = RepeatBehavior.Forever;
+                Rotator.BeginAnimation(RotateTransform.AngleProperty, anim);
+            }
+            else
+            {
+                ProgressAdd.Visibility = Visibility.Hidden;
+            }
+        }
+
         private async void AddFile_Click(object sender, RoutedEventArgs e)
         {
+            bool result = false;
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
             string fileGet = fileDialog.FileName;
-            bool result = await ViewModel.AddIntegrityPath(fileGet);
+            if (fileGet != null)
+            {
+                result = await ViewModel.AddIntegrityPath(fileGet);
+            }
             DisplayResultOfAdded(result);
         }
+
+
 
         // Button that opens folder dialog to be sent to ViewModel.
         private async void AddFolder_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFolderDialog folderDialog = new Microsoft.Win32.OpenFolderDialog();
-            //folderDialog.ShowDialog();
-            //string folderGet = folderDialog.FolderName;
-            //bool result = await ViewModel.AddIntegrityPath(folderGet);
-            //DisplayResultOfAdded(result);
+            bool result = false;
+            OpenFolderDialog folderDialog = new Microsoft.Win32.OpenFolderDialog();
+            folderDialog.ShowDialog();
+            string folderGet = folderDialog.FolderName;
+            // Start load bar
+            DisplayLoading(true);
+            // Send to view model the path of folder.
+            if (folderGet != null)
+            {
+                result = await ViewModel.AddIntegrityPath(folderGet);
+            }
+            DisplayLoading(false);
+            DisplayResultOfAdded(result);
         }
 
         // This is triggered when the table is selected.
@@ -101,11 +158,15 @@ namespace GUISandbox.Views.Pages
         {
             if (DataShow.SelectedItem != null)
             {
-                SelectLabel.Content = $"Selected: {((DataRow)DataShow.SelectedItem).Directory}";
+                string directory = ((DataRow)DataShow.SelectedItem).DisplayDirectory;
+                string realDirectory = ((DataRow)DataShow.SelectedItem).HiddenDirectory;
+                SelectLabel.Content = $"Selected: {directory}";
+                ViewModel.PathSelected = realDirectory;
             }
             else
             {
                 SelectLabel.Content = "None Selected";
+                ViewModel.PathSelected = null;
             }
         }
     }

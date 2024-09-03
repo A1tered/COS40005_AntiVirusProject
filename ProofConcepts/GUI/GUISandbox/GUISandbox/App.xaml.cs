@@ -61,6 +61,9 @@ namespace GUISandbox
                 // Integrity Configure
                 services.AddSingleton<IntegrityConfigurePage>();
                 services.AddSingleton<IntegrityConfigViewModel>();
+                // Integrity Add
+                services.AddSingleton<IntegrityResultsPage>();
+                services.AddSingleton<IntegrityResultsViewModel>();
                 // Sect
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();

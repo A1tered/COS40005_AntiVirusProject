@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-
+namespace AlertHandler;
 public class IntegrityCheckerStub
 {
     private readonly EventBus _eventBus;

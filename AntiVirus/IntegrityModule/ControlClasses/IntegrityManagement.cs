@@ -17,7 +17,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace IntegrityModule.ControlClasses
 {
     public class IntegrityManagement : INotifyPropertyChanged
@@ -58,7 +57,7 @@ namespace IntegrityModule.ControlClasses
         /// </summary>
         /// <param name="benchmark">Whether to return debug time taken for scan</param>
         /// <returns></returns>
-        public async Task<int> Scan(bool benchmark = false)
+        public async Task<List<IntegrityViolation>> Scan(bool benchmark = false)
         {
             return await _integrityCycler.InitiateScan();
         }

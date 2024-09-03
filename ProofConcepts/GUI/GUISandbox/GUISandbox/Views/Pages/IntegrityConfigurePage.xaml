@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="DataShow" Grid.ColumnSpan="3" Margin="34,29,34,195" Grid.RowSpan="2" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200" SelectionChanged="DataShow_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Directory" Binding="{Binding Directory}" Width="*" />
+                <DataGridTextColumn Header="Directory" Binding="{Binding DisplayDirectory}" Width="*" />
                 <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
@@ -34,6 +34,10 @@
         <Label x:Name="SelectLabel" Content="No Item Selected" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,121,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="375" Height="23"/>
         <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,5,0,0" VerticalAlignment="Top" Width="99" Height="32"/>
         <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Margin="0,5,0,0" Click="AddFolder_Click" VerticalAlignment="Top" Width="97" Height="32"/>
-        <ui:ProgressRing x:Name="ProgressAdd" Grid.Column="1" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="25" Width="24"/>
+        <ui:ProgressRing x:Name="ProgressAdd" Visibility="Hidden" RenderTransformOrigin="0.5,0.5"  Grid.Column="1" HorizontalAlignment="Left" Margin="154,9,0,0" VerticalAlignment="Top" Height="24" Width="24">
+            <ui:ProgressRing.RenderTransform>
+                <RotateTransform x:Name="Rotator" Angle="0"/>
+            </ui:ProgressRing.RenderTransform>
+        </ui:ProgressRing>
     </Grid>
 </Page>

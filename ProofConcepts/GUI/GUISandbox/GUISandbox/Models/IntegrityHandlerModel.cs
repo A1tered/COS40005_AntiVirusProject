@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IntegrityModule;
 using DatabaseFoundations;
 using IntegrityModule.ControlClasses;
+using IntegrityModule.DataTypes;
 namespace GUISandbox.Models
 {
 
@@ -13,17 +14,32 @@ namespace GUISandbox.Models
     {
         public IntegrityDatabaseIntermediary _integDatabase;
         public IntegrityManagement _integManage;
+        private List<IntegrityViolation> _recentViolationList;
         public IntegrityHandlerModel()
         {
             IntegrityDatabaseIntermediary integDatabase = new("IntegrityDatabase", false);
             _integDatabase = integDatabase;
             IntegrityManagement integManage = new(integDatabase);
             _integManage = integManage;
+            _recentViolationList = new();
+        }
+
+        public List<IntegrityViolation> RecentViolationList
+        {
+            get
+            {
+                return _recentViolationList;
+            }
         }
 
         public int GetPages()
         {
             return _integManage.GetPages();
+        }
+
+        public bool DeleteDirectory(string directory)
+        {
+            return _integManage.RemoveBaseline(directory);
         }
 
         public async Task<bool> AddPath(string path)
@@ -38,8 +54,8 @@ namespace GUISandbox.Models
 
         public async Task<int> Scan()
         {
-            int returnItem = await _integManage.Scan();
-            return returnItem;
+            _recentViolationList = await _integManage.Scan();
+            return _recentViolationList.Count();
         }
 
         public IntegrityManagement IntegrityManagement

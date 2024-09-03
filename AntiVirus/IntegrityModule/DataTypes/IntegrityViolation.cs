@@ -20,13 +20,13 @@ namespace IntegrityModule.DataTypes
     public class IntegrityViolation
     {
         public long _timeOfViolation;
+        public long _timeOfSignature;
         public string _path;
         public bool _missing;
         public string _hash;
-        public long _fileSizeBytes;
+        public string _fileSizeBytes;
         public string _userRecent;
         public string _ogHash;
-        public long _ogFileSizeBytes;
 
         public long TimeOfViolation
         {
@@ -37,6 +37,18 @@ namespace IntegrityModule.DataTypes
             set
             {
                 _timeOfViolation = value;
+            }
+        }
+
+        public long TimeOfSignature
+        {
+            get
+            {
+                return _timeOfSignature;
+            }
+            set
+            {
+                _timeOfSignature = value;
             }
         }
 
@@ -76,7 +88,7 @@ namespace IntegrityModule.DataTypes
             }
         }
 
-        public long FileSizeBytes
+        public string FileSizeBytesChange
         {
             get
             {
@@ -109,18 +121,6 @@ namespace IntegrityModule.DataTypes
             set
             {
                 _ogHash = value;
-            }
-        }
-
-        public long OriginalSize
-        {
-            get
-            {
-                return _ogFileSizeBytes;
-            }
-            set
-            {
-                _ogFileSizeBytes = value;
             }
         }
     }

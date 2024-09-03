@@ -1,6 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Threading.Tasks;
-
+namespace AlertHandler;
 class Program
 {
     public static async Task Main(string[] args)
@@ -11,6 +12,9 @@ class Program
         // Simulate receiving alerts from different system components (stubs)
         MaliciousCodeScannerStub maliciousCodeScanner = new MaliciousCodeScannerStub(eventBus);
         IntegrityCheckerStub integrityChecker = new IntegrityCheckerStub(eventBus);
+
+        //IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
+        //IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
 
         // Trigger alerts from stubs
         await maliciousCodeScanner.ScanForMaliciousCodeAsync();

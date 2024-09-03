@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\App.xaml
-6-693092201
+7-1507710842
 1282391436
-251552711480
-2321104185230
-Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\IntegrityConfigurePage.xaml;Views\Pages\IntegrityTestPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
+271827895809
+233-719864586
+Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\IntegrityConfigurePage.xaml;Views\Pages\IntegrityResultsPage.xaml;Views\Pages\IntegrityTestPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
 
-True
+False
 

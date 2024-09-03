@@ -142,13 +142,13 @@ namespace DatabaseFoundations
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         Console.WriteLine(idTracker);
-                        taskManager.Add((AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add((AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {

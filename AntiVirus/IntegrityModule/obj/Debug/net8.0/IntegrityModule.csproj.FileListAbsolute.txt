@@ -80,3 +80,8 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\obj\Debug\net8.0\IntegrityModule.pdb
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\obj\Debug\net8.0\IntegrityModule.genruntimeconfig.cache
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\obj\Debug\net8.0\ref\IntegrityModule.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\bin\Debug\net8.0\Alerts.deps.json
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\bin\Debug\net8.0\Alerts.runtimeconfig.json
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\bin\Debug\net8.0\Alerts.exe
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\bin\Debug\net8.0\Alerts.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\IntegrityModule\bin\Debug\net8.0\Alerts.pdb

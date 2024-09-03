@@ -34,6 +34,12 @@ namespace GUISandbox.ViewModels.Windows
                 Content = "Integrity Configurator",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                 TargetPageType = typeof(Views.Pages.IntegrityConfigurePage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Integrity Results",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
+                TargetPageType = typeof(Views.Pages.IntegrityResultsPage)
             }
         };
 
