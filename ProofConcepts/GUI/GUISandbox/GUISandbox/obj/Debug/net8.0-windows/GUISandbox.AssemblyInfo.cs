@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GUISandbox")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e68939102cca4ada25cda9f93c4df05fbbc4b3b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7361ea3838fd594b6d2a8f854f8b8c6cbfff1110")]
 [assembly: System.Reflection.AssemblyProductAttribute("GUISandbox")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GUISandbox")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

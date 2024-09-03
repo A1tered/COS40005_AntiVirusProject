@@ -27,16 +27,18 @@ namespace IntegrityModule.ControlClasses
         private IntegrityCycler _integrityCycler;
         private ReactiveControl _reactiveControl;
         private float _progress;
+        private float _addProgress;
         private string _progressInfo;
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             ViolationHandler tempHandler = new();
+            integrityIntermediary.DataAddProgress += ProgressUpdateAddHandler;
             tempHandler.AlertFlag += AlertHandler;
             _integrityCycler = new IntegrityCycler(integrityIntermediary, tempHandler);
             _integrityCycler.ProgressUpdate += ProgressUpdateHandler;
             _reactiveControl = new(integrityIntermediary, _integrityCycler);
-            _progressInfo = "||Load||";
+            _progressInfo = "";
         }
 
         public void StartReactiveControl()
@@ -126,6 +128,27 @@ namespace IntegrityModule.ControlClasses
             ProgressInfo = progressData.ProgressInfo;
             //Console.Write($"Progress: {Progress}");
             //Console.Write("\r");
+        }
+
+        private void ProgressUpdateAddHandler(object? sender, ProgressArgs progressData)
+        {
+            AddProgress = progressData.Progress;
+            //Console.Write($"Progress: {Progress}");
+            //Console.Write("\r");
+        }
+
+        public float AddProgress
+
+        {
+            get
+            {
+                return _addProgress;
+            }
+            set
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs("AddProgress"));
+                _addProgress = value;
+            }
         }
 
         public float Progress

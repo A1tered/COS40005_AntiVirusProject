@@ -32,13 +32,15 @@ namespace GUISandbox.ViewModels.Pages
         public IntegrityHandlerModel integHandlerModel { get; set; }
         public string _pathSelected;
         public int _truncateString;
+        private string _addProgress;
         public IntegrityConfigViewModel(IntegrityHandlerModel model)
         {
             integHandlerModel = model;
-            integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
+            integHandlerModel.IntegrityManagement.PropertyChanged += AddProgressHandler;
             _datasetDirHash = new();
             _truncateString = 40;
             _pageNumber = 0;
+            _addProgress = "";
         }
 
         // String is shortened eg. "Hello my name is jack" -> "...is jack"
@@ -134,10 +136,26 @@ namespace GUISandbox.ViewModels.Pages
             }
         }
 
-        // If the Model (IntegrityManagement) sends out an event, handle it and update our properties.
-        void HandleInnerPropertyChange(object? sender, PropertyChangedEventArgs args)
+        // Event updater
+        private void AddProgressHandler(object? sender, PropertyChangedEventArgs args)
         {
+            if (args.PropertyName == "AddProgress")
+            {
+                AddProgress = $"{Math.Round(integHandlerModel.IntegrityManagement.AddProgress, 2)}%";
+            }
+        }
 
+        public string AddProgress
+        {
+            get
+            {
+                return _addProgress;
+            }
+            set
+            {
+                _addProgress = value;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("AddProgress"));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

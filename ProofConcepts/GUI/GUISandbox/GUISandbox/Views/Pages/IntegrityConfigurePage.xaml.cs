@@ -26,24 +26,30 @@ namespace GUISandbox.Views.Pages
     public partial class IntegrityConfigurePage : Page
     {
         public IntegrityConfigViewModel ViewModel { get; set; }
+
+        private bool _adding;
         public IntegrityConfigurePage(IntegrityConfigViewModel integViewModel)
         {
             ViewModel = integViewModel;
             DataContext = integViewModel;
             InitializeComponent();
+            _adding = false;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // What to load...
-            ViewModel.GetEntries();
-            DataShow.ItemsSource = ViewModel.DataEntries;
+            UpdateEntries();
         }
 
         // Updates data to be loaded onto the table.
         private void UpdateEntries()
         {
-            ViewModel.GetEntries();
+            // We do not want to send another command to the database, whilst entries are being added
+            if (!_adding)
+            {
+                ViewModel.GetEntries();
+            }
             DataShow.ItemsSource = ViewModel.DataEntries;
             PageCount.Content = ViewModel.PageNumber;
         }
@@ -106,6 +112,9 @@ namespace GUISandbox.Views.Pages
             Rotator.BeginAnimation(RotateTransform.AngleProperty, null);
             if (start)
             {
+                _adding = true;
+                ViewModel.AddProgress = "";
+                ProgressInfo.Visibility = Visibility.Visible;
                 ProgressAdd.Visibility = Visibility.Visible;
                 DoubleAnimation anim = new();
                 anim.From = 0;
@@ -116,6 +125,8 @@ namespace GUISandbox.Views.Pages
             }
             else
             {
+                _adding = false;
+                ProgressInfo.Visibility = Visibility.Hidden;
                 ProgressAdd.Visibility = Visibility.Hidden;
             }
         }

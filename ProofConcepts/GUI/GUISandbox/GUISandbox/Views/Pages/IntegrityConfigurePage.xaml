@@ -39,5 +39,6 @@
                 <RotateTransform x:Name="Rotator" Angle="0"/>
             </ui:ProgressRing.RenderTransform>
         </ui:ProgressRing>
+        <Label x:Name="ProgressInfo" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="103,6,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

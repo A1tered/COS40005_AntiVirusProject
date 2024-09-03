@@ -19,6 +19,8 @@ namespace GUISandbox.ViewModels.Pages
         public IntegrityViewModel(IntegrityHandlerModel model)
         {
             integHandlerModel = model;
+            // We link the property change event inside the Model, so we can propagate the changes upwards. (Probably not ideal to do
+            // this but I cannot be bothered with a different approach.
             integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
             _progressDefiner = "";
             _progressInfo = "";
@@ -27,6 +29,8 @@ namespace GUISandbox.ViewModels.Pages
         public async Task<int> Scan()
         {
             int result = 0;
+            Progress = "";
+            ProgressInfo = "";
             result = await integHandlerModel.Scan();
             // When finished, set property
             Progress = $"100% Progress";
@@ -37,10 +41,14 @@ namespace GUISandbox.ViewModels.Pages
         // If the Model (IntegrityManagement) sends out an event, handle it and update our properties.
         void HandleInnerPropertyChange(object? sender, PropertyChangedEventArgs args)
         {
-            Progress = $"{integHandlerModel.IntegrityManagement.Progress}% Progress";
-            ProgressInfo = $"{integHandlerModel.IntegrityManagement.ProgressInfo}";
+            if (args.PropertyName == "Progress")
+            {
+                Progress = $"{integHandlerModel.IntegrityManagement.Progress}% Progress";
+                ProgressInfo = $"{integHandlerModel.IntegrityManagement.ProgressInfo}";
+            }
         }
 
+        // Property which is binded to
         public string Progress
         {
             get
@@ -55,6 +63,7 @@ namespace GUISandbox.ViewModels.Pages
             }
         }
 
+        // Property that is binded to
         public string ProgressInfo
         {
             get
@@ -69,6 +78,7 @@ namespace GUISandbox.ViewModels.Pages
             }
         }
 
+        // This event indicates to the binding that value has changed.
         public event PropertyChangedEventHandler PropertyChanged;
 
     }

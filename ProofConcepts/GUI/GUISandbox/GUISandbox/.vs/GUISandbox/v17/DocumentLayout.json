@@ -3,16 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\views\\pages\\integrityresultspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:views\\pages\\integrityresultspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{67829AB1-110F-49F8-B804-BFDD6A36B1BA}|..\\..\\..\\..\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\views\\pages\\integrityresultspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:views\\pages\\integrityresultspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67829AB1-110F-49F8-B804-BFDD6A36B1BA}|..\\..\\..\\..\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\integritymodule\\integritycomparison\\integritycycler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\viewmodels\\pages\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:viewmodels\\pages\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\views\\pages\\integritytestpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:views\\pages\\integritytestpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\views\\pages\\integritytestpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:views\\pages\\integritytestpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\viewmodels\\pages\\integrityviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|solutionrelative:viewmodels\\pages\\integrityviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,40 +32,66 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IntegrityResultsPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\Pages\\IntegrityResultsPage.xaml.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml.cs",
-              "RelativeToolTip": "Views\\Pages\\IntegrityResultsPage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T06:28:15.381Z",
+              "DocumentIndex": 2,
+              "Title": "IntegrityTestPage.xaml",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityTestPage.xaml",
+              "RelativeDocumentMoniker": "Views\\Pages\\IntegrityTestPage.xaml",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityTestPage.xaml",
+              "RelativeToolTip": "Views\\Pages\\IntegrityTestPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-03T23:48:17.625Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IntegrityResultsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml",
-              "RelativeDocumentMoniker": "Views\\Pages\\IntegrityResultsPage.xaml",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml",
-              "RelativeToolTip": "Views\\Pages\\IntegrityResultsPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-03T06:28:14.286Z",
+              "Title": "IntegrityManagement.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwCgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T23:45:41.119Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SettingsViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\SettingsViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Pages\\SettingsViewModel.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\SettingsViewModel.cs",
-              "RelativeToolTip": "ViewModels\\Pages\\SettingsViewModel.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAA5wAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "IntegrityCycler.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T06:26:09.881Z",
+              "WhenOpened": "2024-09-03T23:47:45.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IntegrityViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Pages\\IntegrityViewModel.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityViewModel.cs",
+              "RelativeToolTip": "ViewModels\\Pages\\IntegrityViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T23:36:51.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IntegrityTestPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityTestPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\Pages\\IntegrityTestPage.xaml.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityTestPage.xaml.cs",
+              "RelativeToolTip": "Views\\Pages\\IntegrityTestPage.xaml.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAA1wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T23:44:48.726Z",
               "EditorCaption": ""
             }
           ]

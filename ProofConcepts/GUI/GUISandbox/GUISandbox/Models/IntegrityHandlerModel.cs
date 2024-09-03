@@ -9,7 +9,7 @@ using IntegrityModule.ControlClasses;
 using IntegrityModule.DataTypes;
 namespace GUISandbox.Models
 {
-
+    // Represents the data/business logic of the GUI (IntegrityManagement setup) -> This should be accessible by a range of classes.
     public class IntegrityHandlerModel
     {
         public IntegrityDatabaseIntermediary _integDatabase;
