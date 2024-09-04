@@ -24,12 +24,13 @@ namespace DatabaseFoundations.IntegrityRelated
             float byteChange = bytes;
             int counter = 0;
             string[] label = { "B", "KB", "MB", "GB", "TB" };
-            while (byteChange / 1024 >= 1)
+            while (Math.Abs(byteChange / 1024) >= 1)
             {
                 byteChange /= 1024;
                 counter++;
             }
-            return $"{byteChange}{label[counter]}";
+            double roundChange = Math.Round(byteChange, 2);
+            return $"{roundChange} {label[counter]}";
         }
 
         /// <summary>

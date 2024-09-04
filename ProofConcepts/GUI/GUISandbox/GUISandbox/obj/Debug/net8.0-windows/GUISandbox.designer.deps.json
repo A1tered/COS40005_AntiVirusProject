@@ -14,20 +14,20 @@
           }
         }
       },
-      "Microsoft.Data.Sqlite/8.0.7": {
+      "Microsoft.Data.Sqlite/8.0.8": {
         "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "8.0.7",
+          "Microsoft.Data.Sqlite.Core": "8.0.8",
           "SQLitePCLRaw.bundle_e_sqlite3": "2.1.6"
         }
       },
-      "Microsoft.Data.Sqlite.Core/8.0.7": {
+      "Microsoft.Data.Sqlite.Core/8.0.8": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.6"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Data.Sqlite.dll": {
-            "assemblyVersion": "8.0.7.0",
-            "fileVersion": "8.0.724.31404"
+            "assemblyVersion": "8.0.8.0",
+            "fileVersion": "8.0.824.36704"
           }
         }
       },
@@ -608,19 +608,19 @@
       "path": "communitytoolkit.mvvm/8.2.2",
       "hashPath": "communitytoolkit.mvvm.8.2.2.nupkg.sha512"
     },
-    "Microsoft.Data.Sqlite/8.0.7": {
+    "Microsoft.Data.Sqlite/8.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Dqet4Vluq9E794GS1AzeIKwTLAchn8pbLdMh+8AgqIwNcppD8Fbd3O5IkykxMXNN0VSiLkAum0VARwlwjBsWIw==",
-      "path": "microsoft.data.sqlite/8.0.7",
-      "hashPath": "microsoft.data.sqlite.8.0.7.nupkg.sha512"
+      "sha512": "sha512-Ao+kD9lZpZvvvfLHMR4/UviFGXaWhQ9AVT4fYMl62XWgIPuVIhZqLysmDNiXbsz6Pb87iyyElX2xSfigzKNZNg==",
+      "path": "microsoft.data.sqlite/8.0.8",
+      "hashPath": "microsoft.data.sqlite.8.0.8.nupkg.sha512"
     },
-    "Microsoft.Data.Sqlite.Core/8.0.7": {
+    "Microsoft.Data.Sqlite.Core/8.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3H5ht15zKtw9ma9v092kI0gjV+P45EbJPsmnkk/DNVz/yDPPVYSyCGytSatN2dZQ19ZazLg3gUzoBdsoO5V5JQ==",
-      "path": "microsoft.data.sqlite.core/8.0.7",
-      "hashPath": "microsoft.data.sqlite.core.8.0.7.nupkg.sha512"
+      "sha512": "sha512-qHInO2EvOcPhjgboP0TGnXM7rASdvWXrw6jAH8Yuz5YP82VTje7d/NKiX1i+dVbE3+G3JuW1kqNVB8yLvsqgYA==",
+      "path": "microsoft.data.sqlite.core/8.0.8",
+      "hashPath": "microsoft.data.sqlite.core.8.0.8.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/8.0.0": {
       "type": "package",

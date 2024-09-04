@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "a2G+u2C3uqq7Ptuo80D22LkzxqjSa9fWM60RuYzcBhOLlawQfqDqoP1ED+ss7jrXdwSOqDRF/t5cmI2FoDwcDw==",
+  "dgSpecHash": "mpiqpeY5JuCM1Fv2N/4dqRDwCXcAWVk3uuXUkP0ax2lh18KH1su4Fsk/BMxSARUUjK/p9nETD8NpwpBZCkPuNQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.7\\microsoft.data.sqlite.8.0.7.nupkg.sha512",
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",

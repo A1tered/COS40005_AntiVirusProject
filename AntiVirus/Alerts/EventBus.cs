@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-
+namespace AlertHandler;
 public class EventBus
 {
     private readonly AlertManager _alertManager;
