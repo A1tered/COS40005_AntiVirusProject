@@ -866,24 +866,11 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "Alerts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "8.0.8"
-        },
-        "compile": {
-          "bin/placeholder/Alerts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Alerts.dll": {}
-        }
-      },
       "IntegrityModule/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Alerts": "1.0.0"
+          "Microsoft.Data.Sqlite": "8.0.8"
         },
         "compile": {
           "bin/placeholder/IntegrityModule.dll": {}
@@ -2168,11 +2155,6 @@
         "wpfui.png"
       ]
     },
-    "Alerts/1.0.0": {
-      "type": "project",
-      "path": "../../../../AntiVirus/Alerts/Alerts.csproj",
-      "msbuildProject": "../../../../AntiVirus/Alerts/Alerts.csproj"
-    },
     "IntegrityModule/1.0.0": {
       "type": "project",
       "path": "../../../../AntiVirus/IntegrityModule/IntegrityModule.csproj",
@@ -2189,23 +2171,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yumcy\\.nuget\\packages\\": {},
+    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\GUISandbox.csproj",
+      "projectUniqueName": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\GUISandbox.csproj",
       "projectName": "GUISandbox",
-      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\GUISandbox.csproj",
-      "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\obj\\",
+      "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\GUISandbox.csproj",
+      "packagesPath": "C:\\Users\\CardmanOfficial\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CardmanOfficial\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2220,8 +2202,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj": {
-              "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj"
+            "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj": {
+              "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj"
             }
           }
         }
@@ -2277,7 +2259,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

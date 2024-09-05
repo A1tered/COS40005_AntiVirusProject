@@ -14,6 +14,7 @@ namespace SimpleAntivirus.FileHashScanning
         private List<Hunter> _hunterUnits;
         private List<Task> _taskUnits;
         private string _databaseDirectory;
+        private FileHashScanner _scanner;
         private int _directoriesSearched;
 
         /// <summary>
@@ -24,20 +25,20 @@ namespace SimpleAntivirus.FileHashScanning
         /// 
         /// </summary>
         /// <param name="databaseDirectory"></param>
-        public SplitProcess(string databaseDirectory)
+        public SplitProcess(string databaseDirectory, FileHashScanner scanner)
         {
             _directoryViolations = new();
             _directoryRemnants = new();
             _hunterUnits = new();
             _taskUnits = new();
-
+            _scanner = scanner;
             _databaseDirectory = databaseDirectory;
 
             // Statistics
             _directoriesSearched = 0;
         }
 
-        public async Task SearchDirectory()
+        public async Task SearchDirectory(FileHashScanner fileHashScanner)
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)
@@ -59,7 +60,7 @@ namespace SimpleAntivirus.FileHashScanning
                 // Remove items from directory remnants (based on how many hunters)
                 foreach (Hunter hunter in _hunterUnits)
                 {
-                    _taskUnits.Add(hunter.SearchDirectory());
+                    _taskUnits.Add(hunter.SearchDirectory(_scanner));
                 }
                 _hunterUnits.Clear();
                 totalTasks = _taskUnits.Count();
@@ -93,7 +94,7 @@ namespace SimpleAntivirus.FileHashScanning
         public async Task fillUpSearch(string directory)
         {
             Hunter hunter = new Hunter(directory, _databaseDirectory);
-            Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory();
+            Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory(_scanner);
             await UnpackTuple(tupleItem);
         }
 

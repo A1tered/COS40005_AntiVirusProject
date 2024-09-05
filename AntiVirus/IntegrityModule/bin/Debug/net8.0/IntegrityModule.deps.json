@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "IntegrityModule/1.0.0": {
         "dependencies": {
-          "Alerts": "1.0.0"
+          "Microsoft.Data.Sqlite": "8.0.8"
         },
         "runtime": {
           "IntegrityModule.dll": {}
@@ -169,15 +169,7 @@
           }
         }
       },
-      "System.Memory/4.5.3": {},
-      "Alerts/1.0.0": {
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "8.0.8"
-        },
-        "runtime": {
-          "Alerts.dll": {}
-        }
-      }
+      "System.Memory/4.5.3": {}
     }
   },
   "libraries": {
@@ -234,11 +226,6 @@
       "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "path": "system.memory/4.5.3",
       "hashPath": "system.memory.4.5.3.nupkg.sha512"
-    },
-    "Alerts/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }
