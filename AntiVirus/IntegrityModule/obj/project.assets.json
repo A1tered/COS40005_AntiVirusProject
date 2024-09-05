@@ -170,19 +170,6 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
-      },
-      "Alerts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "8.0.8"
-        },
-        "compile": {
-          "bin/placeholder/Alerts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Alerts.dll": {}
-        }
       }
     }
   },
@@ -329,16 +316,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Alerts/1.0.0": {
-      "type": "project",
-      "path": "../Alerts/Alerts.csproj",
-      "msbuildProject": "../Alerts/Alerts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Alerts >= 1.0.0"
+      "Microsoft.Data.Sqlite >= 8.0.8"
     ]
   },
   "packageFolders": {
@@ -372,11 +354,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj": {
-              "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -393,6 +371,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "Microsoft.Data.Sqlite": {
+            "target": "Package",
+            "version": "[8.0.8, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

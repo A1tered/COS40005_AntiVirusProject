@@ -137,11 +137,11 @@ namespace GUISandbox.Views.Pages
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
             string fileGet = fileDialog.FileName;
-            if (fileGet != null)
+            if (fileGet != "")
             {
                 result = await ViewModel.AddIntegrityPath(fileGet);
+                DisplayResultOfAdded(result);
             }
-            DisplayResultOfAdded(result);
         }
 
 
@@ -154,14 +154,14 @@ namespace GUISandbox.Views.Pages
             folderDialog.ShowDialog();
             string folderGet = folderDialog.FolderName;
             // Start load bar
-            DisplayLoading(true);
             // Send to view model the path of folder.
-            if (folderGet != null)
+            if (folderGet != "")
             {
+                DisplayLoading(true);
                 result = await ViewModel.AddIntegrityPath(folderGet);
+                DisplayLoading(false);
+                DisplayResultOfAdded(result);
             }
-            DisplayLoading(false);
-            DisplayResultOfAdded(result);
         }
 
         // This is triggered when the table is selected.

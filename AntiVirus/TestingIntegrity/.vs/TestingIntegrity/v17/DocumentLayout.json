@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "..\\IntegrityModule\\Program.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\Program.cs",
               "RelativeToolTip": "..\\IntegrityModule\\Program.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABsAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T10:20:22.556Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "..\\IntegrityModule\\DataTypes\\ProgressArgs.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T10:07:30.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T10:07:30.14Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "..\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
               "ViewState": "AQIAAEoAAAAAAAAAAAAowFoAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T10:01:04.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T10:01:04.132Z"
             },
             {
               "$type": "Document",
@@ -73,8 +71,7 @@
               "RelativeToolTip": "..\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "ViewState": "AQIAAGIAAAAAAAAAAAAswHcAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T09:58:18.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T09:58:18.672Z"
             }
           ]
         }
