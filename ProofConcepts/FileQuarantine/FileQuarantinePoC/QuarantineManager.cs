@@ -107,4 +107,36 @@ public class QuarantineManager
             Console.WriteLine($"Error logging quarantined file location: {ex.Message}");
         }
     }
+
+    public async Task UnquarantineFileAsync(int id, string filePath, string originalLocation)
+    {
+        try
+        {
+            // Move the file back to its original location
+            if (File.Exists(filePath))
+            {
+                // Ensure the directory for the original location exists
+                string originalDirectory = Path.GetDirectoryName(originalLocation);
+                if (!Directory.Exists(originalDirectory))
+                {
+                    Directory.CreateDirectory(originalDirectory);
+                    Console.WriteLine($"Created directory: {originalDirectory}");
+                }
+
+                File.Move(filePath, originalLocation);
+                Console.WriteLine($"File unquarantined and moved back to: {originalLocation}");
+
+                // Remove the quarantine entry from the database
+                await _databaseManager.RemoveQuarantineEntryAsync(id);
+            }
+            else
+            {
+                Console.WriteLine($"File not found in quarantine: {filePath}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error during unquarantine process: {ex.Message}");
+        }
+    }
 }

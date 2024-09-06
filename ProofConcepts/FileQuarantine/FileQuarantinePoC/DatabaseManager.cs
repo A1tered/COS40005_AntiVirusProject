@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
@@ -115,8 +116,35 @@ public class DatabaseManager
         }
     }
 
-    public async Task PrintQuarantinedFilesAsync()
+    public async Task RemoveQuarantineEntryAsync(int id)
     {
+        try
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                string deleteQuery = "DELETE FROM QuarantinedFiles WHERE Id = @Id";
+
+                using (var command = new SqliteCommand(deleteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    await command.ExecuteNonQueryAsync();
+                }
+
+                Console.WriteLine($"Quarantine entry with ID {id} has been removed from the database.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error removing quarantine entry: {ex.Message}");
+        }
+    }
+
+    public async Task<Dictionary<int, string>> PrintQuarantinedFilesAsync()
+    {
+        var quarantinedFiles = new Dictionary<int, string>();
+
         try
         {
             using (var connection = new SqliteConnection(_connectionString))
@@ -137,6 +165,7 @@ public class DatabaseManager
                             string quarantineDate = reader.GetString(2);
 
                             Console.WriteLine($"ID: {id}, File Path: {filePath}, Quarantine Date: {quarantineDate}");
+                            quarantinedFiles[id] = filePath;
                         }
                     }
                 }
@@ -146,6 +175,7 @@ public class DatabaseManager
         {
             Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
         }
-    }
 
+        return quarantinedFiles;
+    }
 }

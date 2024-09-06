@@ -44,7 +44,26 @@ class Program
             await scannerStub.ScanAndQuarantineAsync(filePathToQuarantine);
 
             // Output the stored data (quarantined files) to the command line
-            await databaseManager.PrintQuarantinedFilesAsync();
+            var quarantinedFiles = await databaseManager.PrintQuarantinedFilesAsync();
+
+            // Ask user for ID of file to unquarantine
+            Console.WriteLine("\nEnter the ID of the file you want to unquarantine:");
+            if (int.TryParse(Console.ReadLine(), out int id) && quarantinedFiles.ContainsKey(id))
+            {
+                // Prompt the user for the original location of the file (to restore it)
+                Console.WriteLine("Enter the original location where the file should be restored:");
+                string originalLocation = Console.ReadLine();
+
+                // Unquarantine the selected file
+                await quarantineManager.UnquarantineFileAsync(id, quarantinedFiles[id], originalLocation);
+
+                // Output the updated list of quarantined files
+                await databaseManager.PrintQuarantinedFilesAsync();
+            }
+            else
+            {
+                Console.WriteLine("Invalid ID entered.");
+            }
         }
         catch (Exception ex)
         {
