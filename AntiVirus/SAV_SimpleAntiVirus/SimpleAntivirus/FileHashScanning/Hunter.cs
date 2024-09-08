@@ -27,7 +27,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         }
 
-        public async Task<Tuple<string[], string[]>> SearchDirectory()
+        public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)
         {
             return await Task.Run(() =>
             {
@@ -38,8 +38,13 @@ namespace SimpleAntivirus.FileHashScanning
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
                     List<string> violationsList = new List<string>();
+
                     foreach (string file in files)
                     {
+                        FileInfo fileInfo = new FileInfo(file);
+                        scanner.UpdateSize(fileInfo.Length);
+                        scanner.UpdateProgress();
+
                         if (CompareCycle(file))
                         {
                             violationsList.Add(file);

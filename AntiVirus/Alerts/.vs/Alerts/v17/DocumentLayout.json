@@ -3,47 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\integritycheckerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:integritycheckerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\alerts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\Alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Alerts||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Properties\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\Properties\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\IntegrityCheckerStub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\IntegrityCheckerStub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\MaliciousCodeScannerStub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\MaliciousCodeScannerStub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\EventBus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\EventBus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|solutionrelative:Alerts\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79094A6B-6C17-4250-B02F-463413B91BBF}|Alerts\\Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\alerts\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
->>>>>>> Integrity-Checking
+      "AbsoluteMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\alerts\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A39014BA-81F6-4D66-85C3-BF9C38542406}|Alerts.csproj|solutionrelative:alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,136 +34,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AlertManager.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
-              "RelativeDocumentMoniker": "AlertManager.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
-              "RelativeToolTip": "AlertManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T08:28:03.703Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T08:27:18.237Z",
-              "EditorCaption": ""
-=======
           "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Alerts",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alerts.csproj",
-              "RelativeDocumentMoniker": "Alerts\\Alerts.csproj",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alerts.csproj",
-              "RelativeToolTip": "Alerts\\Alerts.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-27T06:14:36.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Properties\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "Alerts\\Properties\\AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Properties\\AssemblyInfo.cs",
-              "RelativeToolTip": "Alerts\\Properties\\AssemblyInfo.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "MaliciousCodeScannerStub.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\MaliciousCodeScannerStub.cs",
+              "RelativeDocumentMoniker": "MaliciousCodeScannerStub.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\MaliciousCodeScannerStub.cs",
+              "RelativeToolTip": "MaliciousCodeScannerStub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T06:11:38.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T00:23:41.095Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IntegrityCheckerStub.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\IntegrityCheckerStub.cs",
-              "RelativeDocumentMoniker": "Alerts\\IntegrityCheckerStub.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\IntegrityCheckerStub.cs",
-              "RelativeToolTip": "Alerts\\IntegrityCheckerStub.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "Title": "AlertManager.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeDocumentMoniker": "AlertManager.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\AlertManager.cs",
+              "RelativeToolTip": "AlertManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:11:12.673Z"
+              "WhenOpened": "2024-09-03T00:23:35.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MaliciousCodeScannerStub.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\MaliciousCodeScannerStub.cs",
-              "RelativeDocumentMoniker": "Alerts\\MaliciousCodeScannerStub.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\MaliciousCodeScannerStub.cs",
-              "RelativeToolTip": "Alerts\\MaliciousCodeScannerStub.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
+              "DocumentIndex": 3,
+              "Title": "EventBus.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\EventBus.cs",
+              "RelativeDocumentMoniker": "EventBus.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\EventBus.cs",
+              "RelativeToolTip": "EventBus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:10:54.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Alert.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs",
-              "RelativeDocumentMoniker": "Alerts\\Alert.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Alert.cs",
-              "RelativeToolTip": "Alerts\\Alert.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:10:29.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T00:12:26.534Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AlertManager.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\AlertManager.cs",
-              "RelativeDocumentMoniker": "Alerts\\AlertManager.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\AlertManager.cs",
-              "RelativeToolTip": "Alerts\\AlertManager.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAnwBQAAAATAAAA",
+              "Title": "IntegrityCheckerStub.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\IntegrityCheckerStub.cs",
+              "RelativeDocumentMoniker": "IntegrityCheckerStub.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\IntegrityCheckerStub.cs",
+              "RelativeToolTip": "IntegrityCheckerStub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:10:06.178Z",
+              "WhenOpened": "2024-09-03T00:12:13.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T00:12:12.439Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EventBus.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\EventBus.cs",
-              "RelativeDocumentMoniker": "Alerts\\EventBus.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\EventBus.cs",
-              "RelativeToolTip": "Alerts\\EventBus.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "Alert.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alert.cs",
+              "RelativeDocumentMoniker": "Alert.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alert.cs",
+              "RelativeToolTip": "Alert.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:09:38.499Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Program.cs",
-              "RelativeDocumentMoniker": "Alerts\\Program.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts\\Program.cs",
-              "RelativeToolTip": "Alerts\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T01:06:29.237Z"
->>>>>>> Integrity-Checking
+              "WhenOpened": "2024-09-03T00:11:59.253Z"
             }
           ]
         }

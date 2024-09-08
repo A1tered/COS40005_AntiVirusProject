@@ -50,7 +50,7 @@ namespace IntegrityModule.IntegrityComparison
             IntegrityViolation violationNew = new();
             violationNew.Path = resultTuple.Item1;
             violationNew.OriginalHash = resultTuple.Item2;
-            violationNew.OriginalSize = resultTuple.Item5;
+            violationNew.TimeOfSignature = resultTuple.Item4;
             if (newHash == "")
             {
                 violationNew.Missing = true;
@@ -65,7 +65,7 @@ namespace IntegrityModule.IntegrityComparison
                 {
                     violationNew.RecentUser = WindowsIdentity.GetCurrent().Name;
                 }
-                violationNew.FileSizeBytes = new FileInfo(resultTuple.Item1).Length;
+                violationNew.FileSizeBytesChange = FileInfoRequester.SizeValueToLabel(resultTuple.Item5 - new FileInfo(resultTuple.Item1).Length);
             }
             return violationNew;
         }
