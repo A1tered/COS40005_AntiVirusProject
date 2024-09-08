@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "ViewModels\\Pages\\IntegrityViewModel.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityViewModel.cs",
               "RelativeToolTip": "ViewModels\\Pages\\IntegrityViewModel.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwCgAAAAfAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAACgAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-05T03:03:39.555Z",
               "EditorCaption": ""
@@ -46,8 +46,7 @@
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityTestPage.xaml",
               "RelativeToolTip": "Views\\Pages\\IntegrityTestPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-05T02:59:32.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-05T02:59:32.713Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Views\\Pages\\IntegrityTestPage.xaml.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAAwCUAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T02:59:30.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-05T02:59:30.959Z"
             }
           ]
         }
