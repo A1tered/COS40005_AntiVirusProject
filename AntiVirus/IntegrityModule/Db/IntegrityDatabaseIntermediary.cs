@@ -6,6 +6,7 @@
  **************************************************************************/
 
 using DatabaseFoundations.IntegrityRelated;
+using IntegrityModule.DataTypes;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace DatabaseFoundations
                 SetupDatabase();
             }
         }
+
+        public event EventHandler<ProgressArgs> DataAddProgress;
 
         /// <summary>
         /// Creates the table, may do other setup tasks.
@@ -125,6 +128,9 @@ namespace DatabaseFoundations
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
             List<Task<bool>> taskManager = new();
             List<string> tempPathCreator = new();
+            // percent calc
+            int completedTasks = 0;
+
             int idTracker = 0;
             int maxIds = pathProcess.Count() / amountPerSet;
             // Cancellation control variables
@@ -142,19 +148,20 @@ namespace DatabaseFoundations
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         Console.WriteLine(idTracker);
-                        taskManager.Add((AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add((AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {
                     try
                     {
                         await Task.WhenAny(taskManager.ToArray());
+                        
                     }
                     catch (OperationCanceledException e)
                     {
@@ -165,11 +172,12 @@ namespace DatabaseFoundations
                         // Add each failed path to list.
                         if (taskItem.IsCompleted)
                         {
+                            completedTasks++;
                             if (taskItem.IsCanceled)
                             {
                                 break;
                             }
-                            if (taskItem.Result == false)
+                            if (await taskItem == false)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Rollbacking Database due to adding directory error");
@@ -180,6 +188,9 @@ namespace DatabaseFoundations
                             }
                         }
                     }
+                    ProgressArgs argCreate = new();
+                    argCreate.Progress = ((float)completedTasks / maxIds) * 100;
+                    DataAddProgress.Invoke(this, argCreate);
                     // Remove all completed tasks;
                     taskManager.RemoveAll(x => x.IsCompleted);
                 }

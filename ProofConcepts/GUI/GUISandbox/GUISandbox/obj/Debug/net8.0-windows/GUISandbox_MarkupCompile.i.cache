@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\
 GUISandbox
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\App.xaml
-51097886239
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\App.xaml
+7-1507710842
 1282391436
-231336481605
-2321104185230
-Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\IntegrityTestPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
+28-1476075929
+232-708703584
+Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\IntegrityConfigurePage.xaml;Views\Pages\IntegrityResultsPage.xaml;Views\Pages\IntegrityTestPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
 
 False
 
