@@ -21,12 +21,12 @@
             <ColumnDefinition Width="Auto" MinWidth="290"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="DataShow" Grid.ColumnSpan="3" Margin="34,64,34,64" Grid.RowSpan="2" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="300">
+        <DataGrid x:Name="DataShow" HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="3" Margin="34,64,34,64" Grid.RowSpan="2" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="300">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Directory" Binding="{Binding DisplayDirectory}" Width="2*" />
-                <DataGridTextColumn Header="Size Change" Binding="{Binding SizeChange}" Width="*" />
-                <DataGridTextColumn Header="Missing" Binding="{Binding Missing}" Width="*" />
-                <DataGridTextColumn Header="SigTime" Binding="{Binding SigTime}" Width="*" />
+                <DataGridTextColumn Header="Directory" Binding="{Binding DisplayDirectory}" />
+                <DataGridTextColumn Header="Size Change" Binding="{Binding SizeChange}" />
+                <DataGridTextColumn Header="Missing" Binding="{Binding Missing}" />
+                <DataGridTextColumn Header="SigTime" Binding="{Binding SigTime}"/>
             </DataGrid.Columns>
         </DataGrid>
         <ui:ProgressRing x:Name="ProgressAdd" Visibility="Hidden" RenderTransformOrigin="0.5,0.5"  Grid.Column="1" HorizontalAlignment="Left" Margin="154,9,0,0" VerticalAlignment="Top" Height="24" Width="24">

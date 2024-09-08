@@ -43,29 +43,14 @@ namespace GUISandbox.Views.Pages
         }
 
         // Updates data to be loaded onto the table.
-        private void UpdateEntries()
+        private void UpdateEntries(string searchTerm = null)
         {
             // We do not want to send another command to the database, whilst entries are being added
             if (!_adding)
             {
-                ViewModel.GetEntries();
+                ViewModel.GetEntries(searchTerm);
             }
             DataShow.ItemsSource = ViewModel.DataEntries;
-            PageCount.Content = ViewModel.PageNumber;
-        }
-
-        // Previous Page button triggers update and changes view model property.
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.PageNumber--;
-            UpdateEntries();
-        }
-
-        // Next Page button triggers update and changes view model property.
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.PageNumber++;
-            UpdateEntries();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -178,6 +163,18 @@ namespace GUISandbox.Views.Pages
             {
                 SelectLabel.Content = "None Selected";
                 ViewModel.PathSelected = null;
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBox.Text.Length <= 0)
+            {
+                UpdateEntries();
+            }
+            else
+            {
+                UpdateEntries(SearchBox.Text);
             }
         }
     }

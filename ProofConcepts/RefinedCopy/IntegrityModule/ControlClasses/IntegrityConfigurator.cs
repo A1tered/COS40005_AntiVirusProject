@@ -71,8 +71,13 @@ namespace IntegrityModule.ControlClasses
             return _database.RemoveEntry(path);
         }
 
+        // If -1, then return all pages.
         public Dictionary<string, string> GetPage(int page)
         {
+            if (page == -1)
+            {
+                return _database.GetSetEntries(page, 65000);
+            }
             return _database.GetSetEntries(page, _displaySet);
         }
 

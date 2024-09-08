@@ -547,24 +547,11 @@
           }
         }
       },
-      "Alerts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "8.0.8"
-        },
-        "compile": {
-          "bin/placeholder/Alerts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Alerts.dll": {}
-        }
-      },
       "IntegrityModule/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Alerts": "1.0.0"
+          "Microsoft.Data.Sqlite": "8.0.8"
         },
         "compile": {
           "bin/placeholder/IntegrityModule.dll": {}
@@ -1308,11 +1295,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Alerts/1.0.0": {
-      "type": "project",
-      "path": "../Alerts/Alerts.csproj",
-      "msbuildProject": "../Alerts/Alerts.csproj"
     },
     "IntegrityModule/1.0.0": {
       "type": "project",
