@@ -33,28 +33,28 @@ namespace GUISandbox.Views.Pages
         }
 
         // Represents scan button in integrity.
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!ViewModel.ScanInUse)
-            {
-                int result = await ViewModel.Scan();
-                if (result > 0)
-                {
-                    ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
-                    ViolationNote.Content = $"Violations Found: {result}";
-                    ResultsButton.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    ViolationNote.Foreground = new SolidColorBrush(Colors.White);
-                    ViolationNote.Content = "No Violations Found";
-                }
-            }
-        }
+        //private async void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (!ViewModel.ScanInUse)
+        //    {
+        //        int result = await ViewModel.Scan();
+        //        if (result > 0)
+        //        {
+        //            ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
+        //            ViolationNote.Content = $"Violations Found: {result}";
+        //            ResultsButton.Visibility = Visibility.Visible;
+        //        }
+        //        else
+        //        {
+        //            ViolationNote.Foreground = new SolidColorBrush(Colors.White);
+        //            ViolationNote.Content = "No Violations Found";
+        //        }
+        //    }
+        //}
 
-        private void See_Results_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
-        }
+        //private void See_Results_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
+        //}
     }
 }

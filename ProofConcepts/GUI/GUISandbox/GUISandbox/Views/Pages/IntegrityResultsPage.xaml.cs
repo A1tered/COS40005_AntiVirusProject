@@ -44,7 +44,7 @@ namespace GUISandbox.Views.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityTestPage));
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityConfigurePage));
         }
     }
 }

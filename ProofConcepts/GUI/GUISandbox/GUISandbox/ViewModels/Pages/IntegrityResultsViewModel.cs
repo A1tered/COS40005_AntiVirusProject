@@ -44,7 +44,7 @@ namespace GUISandbox.ViewModels.Pages
             {
                 long d = vio.TimeOfSignature;
                 DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(vio.TimeOfSignature).DateTime.ToLocalTime();
-                resultList.Add(new ResultRow(IntegrityConfigViewModel.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
+                resultList.Add(new ResultRow(IntegrityViewModel.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
             }
             return resultList;
         }
