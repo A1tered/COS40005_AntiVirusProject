@@ -27,7 +27,6 @@ namespace GUISandbox.ViewModels.Pages
     public partial class IntegrityConfigViewModel : ObservableObject, INotifyPropertyChanged
     {
 
-        private int _pageNumber;
         private ObservableCollection<DataRow> _datasetDirHash; 
         public IntegrityHandlerModel integHandlerModel { get; set; }
         public string _pathSelected;
@@ -39,7 +38,6 @@ namespace GUISandbox.ViewModels.Pages
             integHandlerModel.IntegrityManagement.PropertyChanged += AddProgressHandler;
             _datasetDirHash = new();
             _truncateString = 40;
-            _pageNumber = 0;
             _addProgress = "";
         }
 
@@ -84,13 +82,26 @@ namespace GUISandbox.ViewModels.Pages
         }
 
         // Get data entries in Model
-        public ObservableCollection<DataRow> GetEntries()
+        public ObservableCollection<DataRow> GetEntries(string searchTerm = null)
         {
-            Dictionary<string, string> dirHash = integHandlerModel.GetPageSet(_pageNumber);
+            Dictionary<string, string> dirHash = integHandlerModel.GetPageSet(-1);
             ObservableCollection<DataRow> tempDataRow = new();
+            bool decideAdd = true;
             foreach (KeyValuePair<string, string> set in dirHash)
             {
-                tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value, set.Key));
+                decideAdd = true;
+                if (searchTerm != null)
+                {
+                    if (!set.Key.Contains(searchTerm))
+                    {
+                        // Don't add if it doesn't contain search term.
+                        decideAdd = false;
+                    }
+                }
+                if (decideAdd)
+                {
+                    tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value, set.Key));
+                }
             }
             DataEntries = tempDataRow;
             return tempDataRow;
@@ -117,22 +128,6 @@ namespace GUISandbox.ViewModels.Pages
             {
                 _datasetDirHash = value;
                 //this.PropertyChanged(this, new PropertyChangedEventArgs("DataEntries"));
-            }
-        }
-
-        public int PageNumber
-        {
-            get
-            {
-                return _pageNumber;
-            }
-            set
-            {
-                int t = integHandlerModel.GetPages();
-                if (value + 1 < integHandlerModel.GetPages() && value >= 0)
-                {
-                    _pageNumber = value;
-                }
             }
         }
 

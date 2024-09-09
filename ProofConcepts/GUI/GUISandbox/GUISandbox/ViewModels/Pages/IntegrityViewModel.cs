@@ -14,6 +14,7 @@ namespace GUISandbox.ViewModels.Pages
 
         public string _progressDefiner;
         public string _progressInfo;
+        public bool _scanInUse;
         public IntegrityHandlerModel integHandlerModel { get; set; }
 
         public IntegrityViewModel(IntegrityHandlerModel model)
@@ -24,10 +25,12 @@ namespace GUISandbox.ViewModels.Pages
             integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
             _progressDefiner = "";
             _progressInfo = "";
+            _scanInUse = false;
         }
 
         public async Task<int> Scan()
-        {
+        { // gray the button
+            _scanInUse = true;
             int result = 0;
             Progress = "";
             ProgressInfo = "";
@@ -35,6 +38,7 @@ namespace GUISandbox.ViewModels.Pages
             // When finished, set property
             Progress = $"100% Progress";
             ProgressInfo = "";
+            _scanInUse = false;
             return result;
         }
 
@@ -45,6 +49,18 @@ namespace GUISandbox.ViewModels.Pages
             {
                 Progress = $"{integHandlerModel.IntegrityManagement.Progress}% Progress";
                 ProgressInfo = $"{integHandlerModel.IntegrityManagement.ProgressInfo}";
+            }
+        }
+
+        public bool ScanInUse
+        {
+            get
+            {
+                return _scanInUse;
+            }
+            set
+            {
+                _scanInUse = value;
             }
         }
 
