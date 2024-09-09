@@ -24,7 +24,6 @@ namespace SimpleAntivirus.FileHashScanning
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
             _hasher = new Hasher();
-
         }
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)

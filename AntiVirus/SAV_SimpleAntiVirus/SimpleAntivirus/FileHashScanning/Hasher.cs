@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 namespace SimpleAntivirus.FileHashScanning
 {
     /// <summary>
-    /// Responsible for opening files and hashing their contents. (It is a simple class that is utilised thoroughly)
+    /// Responsible for opening files and hashing their contents.
     /// </summary>
     public class Hasher
     {

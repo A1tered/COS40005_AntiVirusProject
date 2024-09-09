@@ -25,9 +25,12 @@ namespace SimpleAntivirus.FileHashScanning
 {
     public class FileHashScanner
     {
-        private long _totalSize;
-        private long _currentSize;
-        private double _progress;
+        private ProgressTracker _progressTracker;
+
+        public FileHashScanner()
+        {
+
+        }
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
@@ -59,8 +62,6 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     // Console.WriteLine("Not implemented");
                 }
-
-                _totalSize = await CalculateTotalSize(directories);
 
                 foreach (string directorySearch in directories)
                 {
@@ -115,23 +116,26 @@ namespace SimpleAntivirus.FileHashScanning
             }
 
             Debug.WriteLine($"Total Size Calculated: {totalSize} bytes");
+
+            _progressTracker = new ProgressTracker(totalSize);
+
             return await Task.FromResult(totalSize);
         }
 
         public void UpdateSize(long size)
         {
-            _currentSize += size;
-            _progress = (_currentSize / (double)_totalSize) * 100;
-            Debug.WriteLine($"{_progress}% complete");
+            // Update current progress on tracker
+            _progressTracker?.UpdateTracker(size);
         }
 
         public void UpdateProgress()
         {
-            //Application.Current.Dispatcher.Invoke(() =>
-            //{
-            //    _scanningPage.progressBar.Value = _progress;
-            //    _scanningPage.percentComplete.Text = $"{_progress}% complete";
-            //});
+
         }
+        //Application.Current.Dispatcher.Invoke(() =>
+        //{
+        //    _scanningPage.progressBar.Value = _progress;
+        //    _scanningPage.percentComplete.Text = $"{_progress}% complete";
+        //});
     }
 }
