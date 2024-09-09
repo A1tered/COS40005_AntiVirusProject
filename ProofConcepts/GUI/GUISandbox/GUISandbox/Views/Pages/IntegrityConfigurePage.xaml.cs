@@ -156,12 +156,6 @@ namespace GUISandbox.Views.Pages
         // This is triggered when the table is selected.
         private void DataShow_Selected(object sender, RoutedEventArgs e)
         {
-            List <DataGridCellInfo> cells = DataShow.SelectedCells.Cast<DataGridCellInfo>().ToList();
-            foreach (DataGridCellInfo infoItem in cells)
-            {
-                // We need to set up a style and set it.
-                //infoItem.Column.CellStyle;
-            }
             if (DataShow.SelectedItem != null)
             {
                 List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
