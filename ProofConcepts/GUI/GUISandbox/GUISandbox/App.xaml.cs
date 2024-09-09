@@ -55,12 +55,10 @@ namespace GUISandbox
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
                 // Integrity Section
-                services.AddSingleton<IntegrityTestPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
                 // Integrity Configure
                 services.AddSingleton<IntegrityConfigurePage>();
-                services.AddSingleton<IntegrityConfigViewModel>();
                 // Integrity Add
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();

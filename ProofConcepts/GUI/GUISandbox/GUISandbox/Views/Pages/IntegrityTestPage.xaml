@@ -28,6 +28,6 @@
         <Label x:Name="InfoProvide" HorizontalContentAlignment="Center" Content="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="180" Foreground="#9EFFFFFF" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <Label x:Name="InfoProvideDescription" HorizontalContentAlignment="Center" Content="{Binding ProgressInfo, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="180" Foreground="#9EFFFFFF" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <Label x:Name="ViolationNote" HorizontalContentAlignment="Center" Content="Value" HorizontalAlignment="Center" Margin="0,140,0,0" VerticalAlignment="Top" Width="180" Foreground="Transparent" Background="Transparent" Height="19" FontSize="18" FontWeight="Bold" Grid.Column="1"/>
-        <ui:Button x:Name="ResultsButton" Visibility="Hidden" Grid.Column="1" Content="See Results" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Click="See_Results_Click"/>
+        <ui:Button x:Name="ResultsButton" Visibility="Visible" Grid.Column="1" Content="See Results" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Click="See_Results_Click"/>
     </Grid>
 </Page>

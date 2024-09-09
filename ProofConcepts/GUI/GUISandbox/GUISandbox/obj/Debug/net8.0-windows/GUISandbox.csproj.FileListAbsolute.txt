@@ -120,8 +120,6 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\GUISandbox.pdb
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\GUISandbox.genruntimeconfig.cache
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\ref\GUISandbox.dll
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\Views\Pages\IntegrityTestPage.g.cs
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\obj\Debug\net8.0-windows\Views\Pages\IntegrityTestPage.baml
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\IntegrityModule.deps.json
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\IntegrityModule.runtimeconfig.json
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\GUI\GUISandbox\GUISandbox\bin\Debug\net8.0-windows\IntegrityModule.exe

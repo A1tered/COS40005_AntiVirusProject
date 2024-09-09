@@ -25,12 +25,6 @@ namespace GUISandbox.ViewModels.Windows
             },
             new NavigationViewItem()
             {
-                Content = "Integrity Test",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(Views.Pages.IntegrityTestPage)
-            },
-            new NavigationViewItem()
-            {
                 Content = "Integrity Configurator",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                 TargetPageType = typeof(Views.Pages.IntegrityConfigurePage)
