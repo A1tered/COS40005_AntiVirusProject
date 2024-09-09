@@ -49,6 +49,6 @@
         <ui:TextBlock x:Name="percentComplete" TextWrapping="Wrap" Text="0% complete" FontSize="24" HorizontalAlignment="Center"/>
         <ui:TextBlock x:Name="itemsScanned" TextWrapping="Wrap" Text="0 items scanned" FontSize="24" HorizontalAlignment="Center"/>
         <ui:TextBlock x:Name="threatsFound" TextWrapping="Wrap" Text="0 threats found" FontSize="24" HorizontalAlignment="Center"/>
-        <ui:Button Content="Cancel scan" Click="Cancel_Scan" HorizontalAlignment="Center" Margin="0,21,0,0" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold"/>
+        <ui:Button Content="Cancel scan" Click="Cancel_Scan" HorizontalAlignment="Center" Margin="0,21,0,0" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold" MouseOverBackground="#80476EE9"/>
     </StackPanel>
 </Page>

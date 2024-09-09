@@ -15,8 +15,12 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Controls;
-// Add other necessary using directives here
 
+
+/// <summary>
+/// The File Hash Scanner is used to run scans comparing hashes of files in the given scanning directories and searching the hash database for matches.
+/// If a match is found, it is marked as a threat and the file is quarantined and an alert is raised.
+/// </summary>
 namespace SimpleAntivirus.FileHashScanning
 {
     public class FileHashScanner
@@ -70,26 +74,47 @@ namespace SimpleAntivirus.FileHashScanning
         private async Task<long> CalculateTotalSize(List<string> directories)
         {
             long totalSize = 0;
+
             foreach (string directory in directories)
             {
                 try
                 {
-                    string[] files = Directory.GetFiles(directory, "*", SearchOption.AllDirectories);
-                    foreach (string file in files)
+                    // The EnumerationOptions ensure that any files or directories that cannot be accessed 
+                    EnumerationOptions options = new EnumerationOptions
                     {
-                        FileInfo fileInfo = new FileInfo(file);
-                        totalSize += fileInfo.Length;
+                        IgnoreInaccessible = true, // Ignores folders/files that cannot be accessed
+                        RecurseSubdirectories = true, // Recursively access subdirectories
+                        AttributesToSkip = FileAttributes.ReparsePoint // Skip symbolic links/junctions
+                    };
+
+                    foreach (string file in Directory.EnumerateFiles(directory, "*", options))
+                    {
+                        try
+                        {
+                            FileInfo fileInfo = new FileInfo(file);
+                            totalSize += fileInfo.Length;
+                        }
+                        catch (UnauthorizedAccessException uaEx)
+                        {
+                            Debug.WriteLine($"Access denied to file: {file}. Error: {uaEx.Message}");
+                        }
+                        catch (IOException ioEx)
+                        {
+                            Debug.WriteLine($"I/O error with file: {file}. Error: {ioEx.Message}");
+                        }
                     }
                 }
-                catch (UnauthorizedAccessException)
+                catch (UnauthorizedAccessException uaEx)
                 {
-                    
+                    Debug.WriteLine($"Access denied to directory: {directory}. Error: {uaEx.Message}");
                 }
-                catch (IOException)
+                catch (IOException ioEx)
                 {
-                    
+                    Debug.WriteLine($"I/O error with directory: {directory}. Error: {ioEx.Message}");
                 }
             }
+
+            Debug.WriteLine($"Total Size Calculated: {totalSize} bytes");
             return await Task.FromResult(totalSize);
         }
 
@@ -97,6 +122,7 @@ namespace SimpleAntivirus.FileHashScanning
         {
             _currentSize += size;
             _progress = (_currentSize / (double)_totalSize) * 100;
+            Debug.WriteLine($"{_progress}% complete");
         }
 
         public void UpdateProgress()

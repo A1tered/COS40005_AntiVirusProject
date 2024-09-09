@@ -28,8 +28,15 @@ namespace SimpleAntivirus.GUI.ViewModels.Windows
             new NavigationViewItem()
             {
                 Content = "Protection History",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.History20},
+                Icon = new SymbolIcon { Symbol = SymbolRegular.AlertBadge20},
                 TargetPageType = typeof(Views.Pages.ProtectionHistoryPage)
+            },
+
+            new NavigationViewItem()
+            {
+                Content="Integrity Checking",
+                Icon = new SymbolIcon {Symbol = SymbolRegular.DesktopCheckmark20},
+                TargetPageType = typeof(Views.Pages.IntegrityPage)
             },
 
             new NavigationViewItem()

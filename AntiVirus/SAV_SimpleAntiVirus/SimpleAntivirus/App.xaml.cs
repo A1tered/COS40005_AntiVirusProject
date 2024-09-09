@@ -49,6 +49,8 @@ namespace SimpleAntivirus
                 services.AddSingleton<BlacklistViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+                services.AddSingleton<IntegrityPage>();
+                services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<ProtectionHistoryPage>();
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ScannerPage>();
