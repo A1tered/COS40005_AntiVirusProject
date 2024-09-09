@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "1MU2wckxR+9imEVIV+bB8VDtaJ60wcFtvh9rDut7ZrZyMGbL4tmA0hrX2naCxZ2KuljaG5zyLLS71nlgooAtXA==",
+  "dgSpecHash": "ozqjxWFifeRdmsawbXSTUPdIASAZ6PHzvAkNxNFtoXj9gO1Kf/e5dyn9m8MRCEuhyP0jQ98g/SMVhn8zOiWz5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\TestingIntegrity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yumcy\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.7\\microsoft.data.sqlite.8.0.7.nupkg.sha512",
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",

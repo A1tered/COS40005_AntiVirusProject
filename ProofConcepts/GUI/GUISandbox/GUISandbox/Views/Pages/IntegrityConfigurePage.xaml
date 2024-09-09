@@ -27,9 +27,6 @@
                 <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="PageCount" Content="0" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Margin="0,167,0,0" Foreground="#9EFFFFFF" Width="56" Grid.Column="1" Height="23"/>
-        <Button x:Name="NextButton" Grid.Column="1" HorizontalAlignment="Right" Content=">>" Margin="0,163,0,0" Grid.Row="1" VerticalAlignment="Top" Click="NextButton_Click" FontSize="8" Height="30" Width="112"/>
-        <Button x:Name="PreviousButton" Grid.Column="1" Content="&lt;&lt;" Margin="0,163,0,0" Grid.Row="1" VerticalAlignment="Top" Click="PreviousButton_Click" FontSize="8" Height="30" Width="112"/>
         <Button Grid.Column="2" Content="Delete" Margin="0,117,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="64"/>
         <Label x:Name="SelectLabel" Content="No Item Selected" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,121,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="375" Height="23"/>
         <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,5,0,0" VerticalAlignment="Top" Width="99" Height="32"/>
@@ -40,5 +37,6 @@
             </ui:ProgressRing.RenderTransform>
         </ui:ProgressRing>
         <Label x:Name="ProgressInfo" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="103,6,0,0" VerticalAlignment="Top"/>
+        <ui:TextBox x:Name="SearchBox" Grid.Column="1" HorizontalAlignment="Left" Margin="66,1,0,0" TextWrapping="Wrap" Text="" PlaceholderText="Search" VerticalAlignment="Top" Width="120" TextChanged="SearchBox_TextChanged"/>
     </Grid>
 </Page>

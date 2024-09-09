@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUISandbox", "GUISandbox.csproj", "{2AB9F347-A5C8-4F79-BD94-07ABF5135718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrityModule", "..\..\..\..\AntiVirus\IntegrityModule\IntegrityModule.csproj", "{67829AB1-110F-49F8-B804-BFDD6A36B1BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrityModule", "..\..\..\RefinedCopy\IntegrityModule\IntegrityModule.csproj", "{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{2AB9F347-A5C8-4F79-BD94-07ABF5135718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AB9F347-A5C8-4F79-BD94-07ABF5135718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AB9F347-A5C8-4F79-BD94-07ABF5135718}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67829AB1-110F-49F8-B804-BFDD6A36B1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67829AB1-110F-49F8-B804-BFDD6A36B1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67829AB1-110F-49F8-B804-BFDD6A36B1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67829AB1-110F-49F8-B804-BFDD6A36B1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
