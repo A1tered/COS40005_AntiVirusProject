@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using GUISandbox.Services;
 using GUISandbox.ViewModels.Pages;
 using IntegrityModule.ControlClasses;
 using Microsoft.Win32;
@@ -25,10 +26,10 @@ namespace GUISandbox.Views.Pages
     /// </summary>
     public partial class IntegrityConfigurePage : Page
     {
-        public IntegrityConfigViewModel ViewModel { get; set; }
+        public IntegrityViewModel ViewModel { get; set; }
 
         private bool _adding;
-        public IntegrityConfigurePage(IntegrityConfigViewModel integViewModel)
+        public IntegrityConfigurePage(IntegrityViewModel integViewModel)
         {
             ViewModel = integViewModel;
             DataContext = integViewModel;
@@ -88,6 +89,9 @@ namespace GUISandbox.Views.Pages
                     break;
                 case 2:
                     MessageBox.Show("Data removed successfully", "Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 3:
+                    MessageBox.Show("Some data was removed successfully", "Some Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }
         }
@@ -154,10 +158,25 @@ namespace GUISandbox.Views.Pages
         {
             if (DataShow.SelectedItem != null)
             {
-                string directory = ((DataRow)DataShow.SelectedItem).DisplayDirectory;
-                string realDirectory = ((DataRow)DataShow.SelectedItem).HiddenDirectory;
-                SelectLabel.Content = $"Selected: {directory}";
-                ViewModel.PathSelected = realDirectory;
+                List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
+                string infoText = "";
+                List<string> selectedDirectories = new();
+                if (selectedItems.Count() == 1)
+                {
+                    infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                }
+                else
+                {
+                    infoText = $"Selected: {selectedItems.Count()} Items";
+                }
+                foreach (DataRow datarowItem in selectedItems)
+                {
+                    selectedDirectories.Add(datarowItem.HiddenDirectory);
+                }
+                // Remove final comma.
+                infoText.Remove(infoText.Length - 1, 1);
+                SelectLabel.Content = infoText;
+                ViewModel.PathSelected = selectedDirectories;
             }
             else
             {
@@ -176,6 +195,31 @@ namespace GUISandbox.Views.Pages
             {
                 UpdateEntries(SearchBox.Text);
             }
+        }
+
+        // Integrity Scanning Section
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ViewModel.ScanInUse)
+            {
+                int result = await ViewModel.Scan();
+                if (result > 0)
+                {
+                    ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
+                    ViolationNote.Content = $"Violations Found: {result}";
+                    ResultsButton.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ViolationNote.Foreground = new SolidColorBrush(Colors.White);
+                    ViolationNote.Content = "No Violations Found";
+                }
+            }
+        }
+
+        private void See_Results_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
         }
     }
 }
