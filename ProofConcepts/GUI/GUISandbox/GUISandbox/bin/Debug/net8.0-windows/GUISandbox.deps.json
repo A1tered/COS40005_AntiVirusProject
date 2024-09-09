@@ -566,7 +566,10 @@
           "Microsoft.Data.Sqlite": "8.0.8"
         },
         "runtime": {
-          "IntegrityModule.dll": {}
+          "IntegrityModule.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
