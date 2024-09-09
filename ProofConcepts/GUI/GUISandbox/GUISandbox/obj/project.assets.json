@@ -2157,8 +2157,8 @@
     },
     "IntegrityModule/1.0.0": {
       "type": "project",
-      "path": "../../../../AntiVirus/IntegrityModule/IntegrityModule.csproj",
-      "msbuildProject": "../../../../AntiVirus/IntegrityModule/IntegrityModule.csproj"
+      "path": "../../../RefinedCopy/IntegrityModule/IntegrityModule.csproj",
+      "msbuildProject": "../../../RefinedCopy/IntegrityModule/IntegrityModule.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2202,8 +2202,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj": {
-              "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityModule.csproj"
+            "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj": {
+              "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj"
             }
           }
         }

@@ -1,4 +1,5 @@
 ﻿using DatabaseFoundations;
+using GUISandbox.Services;
 using GUISandbox.ViewModels.Pages;
 using IntegrityModule.ControlClasses;
 using Microsoft.Win32;
@@ -25,10 +26,10 @@ namespace GUISandbox.Views.Pages
     /// </summary>
     public partial class IntegrityConfigurePage : Page
     {
-        public IntegrityConfigViewModel ViewModel { get; set; }
+        public IntegrityViewModel ViewModel { get; set; }
 
         private bool _adding;
-        public IntegrityConfigurePage(IntegrityConfigViewModel integViewModel)
+        public IntegrityConfigurePage(IntegrityViewModel integViewModel)
         {
             ViewModel = integViewModel;
             DataContext = integViewModel;
@@ -43,29 +44,14 @@ namespace GUISandbox.Views.Pages
         }
 
         // Updates data to be loaded onto the table.
-        private void UpdateEntries()
+        private void UpdateEntries(string searchTerm = null)
         {
             // We do not want to send another command to the database, whilst entries are being added
             if (!_adding)
             {
-                ViewModel.GetEntries();
+                ViewModel.GetEntries(searchTerm);
             }
             DataShow.ItemsSource = ViewModel.DataEntries;
-            PageCount.Content = ViewModel.PageNumber;
-        }
-
-        // Previous Page button triggers update and changes view model property.
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.PageNumber--;
-            UpdateEntries();
-        }
-
-        // Next Page button triggers update and changes view model property.
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.PageNumber++;
-            UpdateEntries();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -104,6 +90,9 @@ namespace GUISandbox.Views.Pages
                 case 2:
                     MessageBox.Show("Data removed successfully", "Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
+                case 3:
+                    MessageBox.Show("Some data was removed successfully", "Some Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
             }
         }
 
@@ -137,11 +126,11 @@ namespace GUISandbox.Views.Pages
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
             string fileGet = fileDialog.FileName;
-            if (fileGet != null)
+            if (fileGet != "")
             {
                 result = await ViewModel.AddIntegrityPath(fileGet);
+                DisplayResultOfAdded(result);
             }
-            DisplayResultOfAdded(result);
         }
 
 
@@ -154,14 +143,14 @@ namespace GUISandbox.Views.Pages
             folderDialog.ShowDialog();
             string folderGet = folderDialog.FolderName;
             // Start load bar
-            DisplayLoading(true);
             // Send to view model the path of folder.
-            if (folderGet != null)
+            if (folderGet != "")
             {
+                DisplayLoading(true);
                 result = await ViewModel.AddIntegrityPath(folderGet);
+                DisplayLoading(false);
+                DisplayResultOfAdded(result);
             }
-            DisplayLoading(false);
-            DisplayResultOfAdded(result);
         }
 
         // This is triggered when the table is selected.
@@ -169,16 +158,68 @@ namespace GUISandbox.Views.Pages
         {
             if (DataShow.SelectedItem != null)
             {
-                string directory = ((DataRow)DataShow.SelectedItem).DisplayDirectory;
-                string realDirectory = ((DataRow)DataShow.SelectedItem).HiddenDirectory;
-                SelectLabel.Content = $"Selected: {directory}";
-                ViewModel.PathSelected = realDirectory;
+                List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
+                string infoText = "";
+                List<string> selectedDirectories = new();
+                if (selectedItems.Count() == 1)
+                {
+                    infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                }
+                else
+                {
+                    infoText = $"Selected: {selectedItems.Count()} Items";
+                }
+                foreach (DataRow datarowItem in selectedItems)
+                {
+                    selectedDirectories.Add(datarowItem.HiddenDirectory);
+                }
+                // Remove final comma.
+                infoText.Remove(infoText.Length - 1, 1);
+                SelectLabel.Content = infoText;
+                ViewModel.PathSelected = selectedDirectories;
             }
             else
             {
                 SelectLabel.Content = "None Selected";
                 ViewModel.PathSelected = null;
             }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBox.Text.Length <= 0)
+            {
+                UpdateEntries();
+            }
+            else
+            {
+                UpdateEntries(SearchBox.Text);
+            }
+        }
+
+        // Integrity Scanning Section
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ViewModel.ScanInUse)
+            {
+                int result = await ViewModel.Scan();
+                if (result > 0)
+                {
+                    ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
+                    ViolationNote.Content = $"Violations Found: {result}";
+                    ResultsButton.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ViolationNote.Foreground = new SolidColorBrush(Colors.White);
+                    ViolationNote.Content = "No Violations Found";
+                }
+            }
+        }
+
+        private void See_Results_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
         }
     }
 }

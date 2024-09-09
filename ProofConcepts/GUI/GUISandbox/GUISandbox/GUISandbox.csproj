@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -9,6 +9,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Pages\IntegrityTestPage.xaml.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="wpfui-icon.ico" />
@@ -27,7 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\AntiVirus\IntegrityModule\IntegrityModule.csproj" />
+    <Page Remove="Views\Pages\IntegrityTestPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RefinedCopy\IntegrityModule\IntegrityModule.csproj" />
   </ItemGroup>
 
   <ItemGroup>
