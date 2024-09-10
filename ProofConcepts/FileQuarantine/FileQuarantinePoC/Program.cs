@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ class Program
         IDatabaseManager databaseManager = new DatabaseManager(databasePath);
         IQuarantineManager quarantineManager = new QuarantineManager(fileMover, databaseManager, quarantineDirectory);
 
-        // Whitelist management
+        // Whitelist management (handled sequentially, can be skipped)
         Console.WriteLine("Do you want to add or remove files from the whitelist? (add/remove/list/skip)");
         string action = Console.ReadLine()?.ToLower();
 
@@ -41,27 +42,30 @@ class Program
             }
         }
 
-        // Path to the suspicious file (provided externally)
-        string filePathToQuarantine = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Path", "To", "SuspiciousFile.txt");
-
-        // Check if the file exists, and if not, create it
-        if (!File.Exists(filePathToQuarantine))
+        // List of files to quarantine (simulating multiple flagged files)
+        var filesToQuarantine = new List<string>
         {
-            // Ensure the directory exists
-            string directory = Path.GetDirectoryName(filePathToQuarantine);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-                Console.WriteLine($"Directory created at {directory}");
-            }
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Path", "To", "SuspiciousFile1.txt"),
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Path", "To", "SuspiciousFile2.txt"),
+        };
 
-            // Create the file
-            await File.WriteAllTextAsync(filePathToQuarantine, "This is a suspicious file.");
-            Console.WriteLine($"Test file created at {filePathToQuarantine}");
+        // Start quarantining files in parallel and track the tasks
+        var quarantineTasks = new List<Task>();
+
+        foreach (var filePath in filesToQuarantine)
+        {
+            quarantineTasks.Add(QuarantineFileWithCheck(filePath, quarantineManager));
         }
 
-        // Simulate scanning and quarantining the detected file
-        await quarantineManager.QuarantineFileAsync(filePathToQuarantine);
+        // Wait for all quarantine tasks to complete
+        try
+        {
+            await Task.WhenAll(quarantineTasks);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error occurred during quarantine: {ex.Message}");
+        }
 
         // Output the stored data (quarantined files) to the command line
         var quarantinedFiles = await quarantineManager.GetQuarantinedFilesAsync();
@@ -80,6 +84,35 @@ class Program
         else
         {
             Console.WriteLine("Invalid ID entered.");
+        }
+    }
+
+    // Function to check if a file exists and quarantine it
+    static async Task QuarantineFileWithCheck(string filePath, IQuarantineManager quarantineManager)
+    {
+        try
+        {
+            // Check if the file exists, and if not, create it
+            if (!File.Exists(filePath))
+            {
+                string directory = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                    Console.WriteLine($"Directory created at {directory}");
+                }
+
+                // Create the file
+                await File.WriteAllTextAsync(filePath, "This is a suspicious file.");
+                Console.WriteLine($"Test file created at {filePath}");
+            }
+
+            // Quarantine the file
+            await quarantineManager.QuarantineFileAsync(filePath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error quarantining file {filePath}: {ex.Message}");
         }
     }
 }
