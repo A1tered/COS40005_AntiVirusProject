@@ -12,6 +12,8 @@ using System.Windows.Threading;
 using Wpf.Ui;
 using SimpleAntivirus.ViewModels.Pages;
 using SimpleAntivirus.Models;
+using SimpleAntivirus.Alerts;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace SimpleAntivirus
 {
@@ -66,6 +68,8 @@ namespace SimpleAntivirus
                 services.AddSingleton<SettingsViewModel>();
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
+                services.AddSingleton<AlertManager>();
+                services.AddSingleton<EventBus>();
             }).Build();
 
         /// <summary>
@@ -94,7 +98,7 @@ namespace SimpleAntivirus
         private async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
-
+            ToastNotificationManagerCompat.History.Clear();
             _host.Dispose();
         }
 

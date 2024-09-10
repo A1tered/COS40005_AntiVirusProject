@@ -36,7 +36,7 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
         public bool Initialize()
         {
             _reactiveInitialized = true;
-            Console.WriteLine("Reactive Control Initialization");
+            System.Diagnostics.Debug.WriteLine("Reactive Control Initialization");
             long amountEntry = _intermediaryDB.QueryAmount();
             decimal divison = (decimal)amountEntry / 100;
             int sets = Convert.ToInt32(Math.Ceiling(divison));
@@ -56,7 +56,7 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
         {
             if (_reactiveInitialized)
             {
-                Console.WriteLine($"Attempted Event Connection: {path}");
+                System.Diagnostics.Debug.WriteLine($"Attempted Event Connection: {path}");
                 FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
                 fileWatcherTemp.EnableRaisingEvents = true;
                 fileWatcherTemp.Changed += IndividualScanEventHandler;
@@ -66,7 +66,7 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
 
         private void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
         {
-            Console.WriteLine($"Item changed {eventArguments.FullPath}");
+            System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
             _integrityCycler.InitiateSingleScan(eventArguments.FullPath);
         }
 

@@ -3,19 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\debug\\debugassist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\alerts\\violationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\alerts\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\datatypes\\alertargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\debug\\debugassist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C474E80-4C65-41BE-8E73-44DBA2ECCDEF}|..\\..\\..\\RefinedCopy\\IntegrityModule\\IntegrityModule.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\refinedcopy\\integritymodule\\alerts\\violationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2AB9F347-A5C8-4F79-BD94-07ABF5135718}|GUISandbox.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\gui\\guisandbox\\guisandbox\\views\\pages\\integrityresultspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,37 +76,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 112,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DebugAssist.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
-              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T07:46:01.232Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IntegrityManagement.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T07:41:22.02Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -120,20 +97,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ViolationHandler.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAwAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs*",
+              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Alerts\\ViolationHandler.cs*",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAEoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-09T07:28:55.147Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AlertArgs.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\DataTypes\\AlertArgs.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\DataTypes\\AlertArgs.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\DataTypes\\AlertArgs.cs",
+              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\DataTypes\\AlertArgs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-10T04:22:53.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "DebugAssist.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
+              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Debug\\DebugAssist.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T07:46:01.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IntegrityManagement.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-09T07:41:22.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\RefinedCopy\\IntegrityModule\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Program.cs",
@@ -141,12 +156,11 @@
               "RelativeToolTip": "..\\..\\..\\RefinedCopy\\IntegrityModule\\Program.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T07:30:57.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T07:30:57.316Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IntegrityResultsPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Pages\\IntegrityResultsPage.xaml.cs",
@@ -154,36 +168,33 @@
               "RelativeToolTip": "Views\\Pages\\IntegrityResultsPage.xaml.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T07:17:06.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T07:17:06.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IntegrityResultsPage.xaml",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml",
               "RelativeDocumentMoniker": "Views\\Pages\\IntegrityResultsPage.xaml",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityResultsPage.xaml",
               "RelativeToolTip": "Views\\Pages\\IntegrityResultsPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-09T07:17:03.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T07:17:03.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IntegrityConfigurePage.xaml",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityConfigurePage.xaml",
               "RelativeDocumentMoniker": "Views\\Pages\\IntegrityConfigurePage.xaml",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityConfigurePage.xaml",
               "RelativeToolTip": "Views\\Pages\\IntegrityConfigurePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-09T05:15:05.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:15:05.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IntegrityConfigurePage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Views\\Pages\\IntegrityConfigurePage.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Pages\\IntegrityConfigurePage.xaml.cs",
@@ -191,12 +202,11 @@
               "RelativeToolTip": "Views\\Pages\\IntegrityConfigurePage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:15:03.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:15:03.96Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Windows\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Windows\\MainWindowViewModel.cs",
@@ -204,12 +214,11 @@
               "RelativeToolTip": "ViewModels\\Windows\\MainWindowViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:53:01.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:53:01.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IntegrityResultsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityResultsViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Pages\\IntegrityResultsViewModel.cs",
@@ -217,12 +226,11 @@
               "RelativeToolTip": "ViewModels\\Pages\\IntegrityResultsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:48:38.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:48:38.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "NavigationServiceIntermediary.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Services\\NavigationServiceIntermediary.cs",
               "RelativeDocumentMoniker": "Services\\NavigationServiceIntermediary.cs",
@@ -230,12 +238,11 @@
               "RelativeToolTip": "Services\\NavigationServiceIntermediary.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:51:41.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:51:41.411Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "IntegrityHandlerModel.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Models\\IntegrityHandlerModel.cs",
               "RelativeDocumentMoniker": "Models\\IntegrityHandlerModel.cs",
@@ -243,12 +250,11 @@
               "RelativeToolTip": "Models\\IntegrityHandlerModel.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAIwEQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:23:19.831Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:23:19.831Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "DataColor.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Models\\DataColor.cs",
               "RelativeDocumentMoniker": "Models\\DataColor.cs",
@@ -256,12 +262,11 @@
               "RelativeToolTip": "Models\\DataColor.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:49:31.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:49:31.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AppConfig.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\Models\\AppConfig.cs",
               "RelativeDocumentMoniker": "Models\\AppConfig.cs",
@@ -269,12 +274,11 @@
               "RelativeToolTip": "Models\\AppConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:49:29.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:49:29.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "IntegrityViewModel.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Pages\\IntegrityViewModel.cs",
@@ -282,12 +286,11 @@
               "RelativeToolTip": "ViewModels\\Pages\\IntegrityViewModel.cs",
               "ViewState": "AgIAANAAAAAAAAAAAAAgwPcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T05:17:32.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T05:17:32.283Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "IntegrityConfigViewModel.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\ViewModels\\Pages\\IntegrityConfigViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Pages\\IntegrityConfigViewModel.cs",
@@ -295,8 +298,7 @@
               "RelativeToolTip": "ViewModels\\Pages\\IntegrityConfigViewModel.cs",
               "ViewState": "AgIAAIcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T06:48:33.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-09T06:48:33.086Z"
             }
           ]
         },

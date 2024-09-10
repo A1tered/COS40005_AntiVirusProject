@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -18,12 +19,16 @@ namespace SimpleAntivirus.FileHashScanning
         private DatabaseConnector _databaseConnection;
         public Hasher _hasher;
         private string _databaseDirectory;
+        private readonly EventBus _eventBus;
+        private readonly AlertManager _alertManager;
 
-        public Hunter(string directoryToScan, string databaseDirectory)
+        public Hunter(string directoryToScan, string databaseDirectory, AlertManager alertManager, EventBus eventBus)
         {
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
             _hasher = new Hasher();
+            _eventBus = eventBus;
+            _alertManager = alertManager;
         }
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)
@@ -32,7 +37,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 try
                 {
-                    // Console.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
+                    // Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
 
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
@@ -56,7 +61,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
                     {
-                        // Console.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
+                        // Debug.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
                         return Tuple.Create(Array.Empty<string>(), Array.Empty<string>());
                     }
                     throw;
@@ -70,6 +75,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         private void Violation(string fileDirectory)
         {
+
             // Alert: Violation found in directory {fileDirectory}
             // Call Quarantine for fileDirectory
         }

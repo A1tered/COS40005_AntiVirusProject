@@ -95,3 +95,4 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SA
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows\GUI\Views\Pages\IntegrityPage.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows\GUI\Views\Pages\IntegrityResultsPage.g.cs
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows\GUI\Views\Pages\IntegrityResultsPage.baml
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows\Microsoft.Toolkit.Uwp.Notifications.dll

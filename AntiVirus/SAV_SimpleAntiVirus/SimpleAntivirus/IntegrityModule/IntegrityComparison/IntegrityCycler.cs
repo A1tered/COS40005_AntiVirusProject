@@ -51,7 +51,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 
             if (amountEntry == 0)
             {
-                Console.WriteLine("No entries to scan");
+                System.Diagnostics.Debug.WriteLine("No entries to scan");
                 return summaryViolation;
             }
             decimal divison = (decimal)amountEntry / _amountPerSet;
@@ -100,7 +100,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             IntegrityDataPooler singlePooler = new(_database, path);
             IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
             Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
+            //Debug.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();
         }
 

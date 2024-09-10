@@ -60,7 +60,7 @@ namespace SimpleAntivirus.FileHashScanning
                 }
                 else if (scanType == "custom")
                 {
-                    // Console.WriteLine("Not implemented");
+                    Debug.WriteLine("Not implemented");
                 }
 
                 foreach (string directorySearch in directories)

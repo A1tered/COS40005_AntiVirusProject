@@ -49,7 +49,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
 
         private void AlertHandler(object? sender, AlertArgs alertInfo)
         {
-            Console.WriteLine("Alert Handler Event Triggered Successfully");
+            System.Diagnostics.Debug.WriteLine("Alert Handler Event Triggered Successfully");
         }
 
 
