@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
-public class DatabaseManager
+public class DatabaseManager : IDatabaseManager
 {
     private readonly string _connectionString;
 
     public DatabaseManager(string databasePath)
     {
-        // Ensure the directory for the database exists
-        string databaseDirectory = Path.GetDirectoryName(databasePath);
-        if (!Directory.Exists(databaseDirectory))
-        {
-            Directory.CreateDirectory(databaseDirectory);
-            Console.WriteLine($"Created directory for database at: {databaseDirectory}");
-        }
-
         _connectionString = $"Data Source={databasePath}";
         InitializeDatabase();
     }
@@ -27,7 +19,7 @@ public class DatabaseManager
         {
             using (var connection = new SqliteConnection(_connectionString))
             {
-                connection.Open(); // Open the connection
+                connection.Open();
 
                 // Commented out the drop table command to preserve data
                 // string dropQuarantinedFilesTable = "DROP TABLE IF EXISTS QuarantinedFiles";
@@ -109,7 +101,6 @@ public class DatabaseManager
         catch (Exception ex)
         {
             Console.WriteLine($"Error initializing database: {ex.Message}");
-            Console.WriteLine($"Stack Trace: {ex.StackTrace}");
         }
     }
 
@@ -193,9 +184,46 @@ public class DatabaseManager
         }
     }
 
+<<<<<<< Updated upstream
     public async Task<Dictionary<int, (string QuarantinedFilePath, string OriginalFilePath)>> PrintQuarantinedFilesAsync()
     {
         var quarantinedFiles = new Dictionary<int, (string QuarantinedFilePath, string OriginalFilePath)>();
+=======
+    public async Task<(string QuarantinedFilePath, string OriginalFilePath)?> GetQuarantinedFileByIdAsync(int id)
+    {
+        try
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                string query = "SELECT FilePath, OriginalFilePath FROM QuarantinedFiles WHERE Id = @Id";
+
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return (reader.GetString(0), reader.GetString(1));
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving quarantined file: {ex.Message}");
+        }
+
+        return null;
+    }
+
+    public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync()
+    {
+        var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath)>();
+>>>>>>> Stashed changes
 
         try
         {
@@ -203,22 +231,30 @@ public class DatabaseManager
             {
                 await connection.OpenAsync();
 
+<<<<<<< Updated upstream
                 string query = "SELECT * FROM QuarantinedFiles";
+=======
+                string query = "SELECT Id, FilePath, OriginalFilePath FROM QuarantinedFiles";
+>>>>>>> Stashed changes
 
                 using (var command = new SqliteCommand(query, connection))
                 {
                     using (var reader = await command.ExecuteReaderAsync())
                     {
-                        Console.WriteLine("\nList of Quarantined Files:");
                         while (await reader.ReadAsync())
                         {
                             int id = reader.GetInt32(0);
                             string quarantinedFilePath = reader.GetString(1);
                             string originalFilePath = reader.GetString(2);
+<<<<<<< Updated upstream
                             string quarantineDate = reader.GetString(3);
 
                             Console.WriteLine($"ID: {id}, Quarantined File: {quarantinedFilePath}, Original File: {originalFilePath}, Quarantine Date: {quarantineDate}");
                             quarantinedFiles[id] = (quarantinedFilePath, originalFilePath);
+=======
+
+                            quarantinedFiles.Add((id, quarantinedFilePath, originalFilePath));
+>>>>>>> Stashed changes
                         }
                     }
                 }
