@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;
-
+namespace AlertHandler;
 public class AlertManager
 {
     protected SqliteConnection _databaseConnection;

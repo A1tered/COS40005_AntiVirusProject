@@ -55,9 +55,13 @@ namespace GUISandbox
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
                 // Integrity Section
-                services.AddSingleton<IntegrityTestPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
+                // Integrity Configure
+                services.AddSingleton<IntegrityConfigurePage>();
+                // Integrity Add
+                services.AddSingleton<IntegrityResultsPage>();
+                services.AddSingleton<IntegrityResultsViewModel>();
                 // Sect
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
@@ -80,6 +84,7 @@ namespace GUISandbox
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
+            NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
         }
 
         /// <summary>
