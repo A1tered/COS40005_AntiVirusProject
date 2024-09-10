@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 public class QuarantineManager : IQuarantineManager
 {
@@ -25,7 +20,6 @@ public class QuarantineManager : IQuarantineManager
         }
     }
 
-    // Quarantine a file and remove its permissions
     public async Task QuarantineFileAsync(string filePath)
     {
         try
@@ -33,7 +27,7 @@ public class QuarantineManager : IQuarantineManager
             // Check if the file is already whitelisted
             if (await _databaseManager.IsWhitelistedAsync(filePath))
             {
-                Console.WriteLine("File is whitelisted and will not be quarantined.");
+                Console.WriteLine($"File or folder is whitelisted and will not be quarantined: {filePath}");
                 return;
             }
 
@@ -55,52 +49,7 @@ public class QuarantineManager : IQuarantineManager
         }
     }
 
-<<<<<<< Updated upstream
-    // Restore file permissions before unquarantining
-    private void RestoreFilePermissionsUsingPowerShell(string filePath)
-    {
-        try
-        {
-            string command = $"icacls \"{filePath}\" /grant Everyone:F";
-
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "powershell.exe",
-                    Arguments = $"-Command \"{command}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
-
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-            process.WaitForExit();
-
-            if (process.ExitCode == 0)
-            {
-                Console.WriteLine($"Permissions restored for {filePath} using PowerShell.");
-            }
-            else
-            {
-                Console.WriteLine($"Failed to restore permissions for {filePath}. Error: {error}");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error restoring file permissions: {ex.Message}");
-        }
-    }
-
-    // Remove file permissions using PowerShell
-    private void RemoveFilePermissionsUsingPowerShell(string filePath)
-=======
     public async Task UnquarantineFileAsync(int id)
->>>>>>> Stashed changes
     {
         try
         {
@@ -120,7 +69,6 @@ public class QuarantineManager : IQuarantineManager
             // Move the file back to its original location
             if (File.Exists(quarantinedFilePath))
             {
-                // Ensure the directory for the original location exists
                 string originalDirectory = Path.GetDirectoryName(originalFilePath);
                 if (!Directory.Exists(originalDirectory))
                 {
@@ -157,7 +105,6 @@ public class QuarantineManager : IQuarantineManager
             string logFilePath = Path.Combine(_quarantineDirectory, "quarantine_log.txt");
             string logEntry = $"[{DateTime.Now}] Quarantined file located at: {filePath}";
 
-            // Use asynchronous file logging
             await File.AppendAllTextAsync(logFilePath, logEntry + Environment.NewLine);
             Console.WriteLine("Quarantined file location logged securely.");
         }
@@ -213,64 +160,7 @@ public class QuarantineManager : IQuarantineManager
         }
         catch (Exception ex)
         {
-<<<<<<< Updated upstream
-            Console.WriteLine($"Error removing file permissions: {ex.Message}");
-        }
-    }
-
-    // Unquarantine the file and restore its permissions before moving it
-    public async Task UnquarantineFileAsync(int id, string quarantinedFilePath, string originalFilePath)
-    {
-        try
-        {
-            // Restore the file permissions before attempting to move it
-            RestoreFilePermissionsUsingPowerShell(quarantinedFilePath);
-
-            // Move the file back to its original location
-            if (File.Exists(quarantinedFilePath))
-            {
-                // Ensure the directory for the original location exists
-                string originalDirectory = Path.GetDirectoryName(originalFilePath);
-                if (!Directory.Exists(originalDirectory))
-                {
-                    Directory.CreateDirectory(originalDirectory);
-                    Console.WriteLine($"Created directory: {originalDirectory}");
-                }
-
-                File.Move(quarantinedFilePath, originalFilePath);
-                Console.WriteLine($"File unquarantined and moved back to: {originalFilePath}");
-
-                // Remove the quarantine entry from the database
-                await _databaseManager.RemoveQuarantineEntryAsync(id);
-            }
-            else
-            {
-                Console.WriteLine($"File not found in quarantine: {quarantinedFilePath}");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error during unquarantine process: {ex.Message}");
-        }
-    }
-
-    private void LogQuarantinedFileLocation(string filePath)
-    {
-        try
-        {
-            string logFilePath = Path.Combine(_quarantineDirectory, "quarantine_log.txt");
-            string logEntry = $"[{DateTime.Now}] Quarantined file located at: {filePath}";
-
-            // Log the file location securely
-            File.AppendAllText(logFilePath, logEntry + Environment.NewLine);
-            Console.WriteLine("Quarantined file location logged securely.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error logging quarantined file location: {ex.Message}");
-=======
             Console.WriteLine($"Error executing PowerShell command: {ex.Message}");
->>>>>>> Stashed changes
         }
     }
 }
