@@ -93,6 +93,7 @@ namespace DatabaseFoundations
         /// <returns>Int (The amount of rows changed)</returns>
         public int QueryNoReader(SqliteCommand query)
         {
+            
             if (DatabaseUsable())
             {
                 query.Connection = _databaseConnection;

@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using DatabaseProofOfConcept;
 using System.Net.NetworkInformation;
 using Microsoft.Data.Sqlite;
-
+using DatabaseFoundations;
 class Program
 {
     public delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
@@ -57,6 +57,7 @@ class Program
         // "async" defines this method as asynchornous
         //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
         // "task" defines that output.
+       
 
         while (true)
         {
@@ -152,7 +153,7 @@ class Program
         var ActiveTcpConnections = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections();
         //Get all active TCP Connections, store each object  in an array. 
 
-        int[] PortsOfInterest = { 22, 23 };
+        int[] PortsOfInterest = { 22, 23};
         //Used later to tell the checker, which ports to monitor. We are only monitoring ssh and tcp connections. Most common ports being 22 and 23.
 
         var remoteConnections = ActiveTcpConnections.Where(connection => PortsOfInterest.Contains(connection.RemoteEndPoint.Port) && connection.State == TcpState.Established).ToList();
@@ -176,35 +177,10 @@ class Program
 
     static void Initialise()
     {
-        //Create Database for the entire Suspicious Terminal Monitoring
-        
-        Database TerminalDB = new Database();
-        //Mouse Table Column Names
-        String[] MouseColumnnames = { "DateTime", "XLocation", "YLocation" };
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] MouseColumnType = { "DateTime", "Int", "Int" };
-        //Create Table for Mouse Data
-        TerminalDB.CreateTable("MouseMovement", MouseColumnnames, MouseColumnType);
+        SuspiciousTerminalDatabaseIntermediary suspiciousTerminalDatabaseIntermediary = new SuspiciousTerminalDatabaseIntermediary("SusTerminalDB", true);
+        //Creates new database intermediary instance
 
 
-
-
-        //Keyboard Table Column Names
-        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Session" };
-        //Keyboard Table Column Data Types
-        String[] KeyboardColumnType = { "DateTime", "String", "String" };
-        //Create Table for Keyboard Data
-        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
-
-
-
-        //NetworkConnections Table Column Names
-        String[] NetworkConColumnnames = { "DateTime", "Port", "External IP" };
-        //NetworkConnections Table Column Data Types
-        String[] NetworkConColumnType = { "DateTime", "Int", "String" };
-        //Create Table for Keyboard Data
-        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
 
     }
 

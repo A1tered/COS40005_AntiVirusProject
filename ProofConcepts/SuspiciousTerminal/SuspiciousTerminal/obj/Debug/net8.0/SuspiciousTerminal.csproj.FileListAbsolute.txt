@@ -54,3 +54,12 @@ C:\Users\tloh1\OneDrive\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts
 C:\Users\tloh1\OneDrive\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\tloh1\OneDrive\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.csproj.AssemblyReference.cache
 C:\Users\tloh1\OneDrive\Documents\GitHub\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\Suspicio.714C0FCE.Up2Date
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.csproj.AssemblyReference.cache
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.AssemblyInfoInputs.cache
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.AssemblyInfo.cs
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.csproj.CoreCompileInputs.cache
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.sourcelink.json
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.dll
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\refint\SuspiciousTerminal.dll
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.pdb

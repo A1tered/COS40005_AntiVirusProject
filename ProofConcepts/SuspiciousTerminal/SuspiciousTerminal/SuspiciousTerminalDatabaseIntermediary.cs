@@ -10,7 +10,9 @@ using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +20,7 @@ namespace DatabaseFoundations
 {
     public class SuspiciousTerminalDatabaseIntermediary : DatabaseIntermediary
     {
-        public SuspiciousTerminalDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
+        public SuspiciousTerminalDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "")
         {
             // AntiTampering will need to ensure that this is only run at initialisation!!!
             if (firstRun)
@@ -35,7 +37,9 @@ namespace DatabaseFoundations
         {
             SqliteCommand command = new();
             command.CommandText = @$"CREATE TABLE IF NOT EXISTS
-            {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
+            [_defaultTable](directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
+            //^ above hardcode table creation 
+
             return QueryNoReader(command) > 0;
         }
 
@@ -57,62 +61,19 @@ namespace DatabaseFoundations
         /// <param name="id">id provided by AddEntry function.</param>
         /// <param name="trans">SQLiteTransaction reference.</param>
         /// <returns>Path failed to be added.</returns>
-        private async Task<bool> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans, CancellationToken cancelToken)
+        private void Add()
         {
             Console.WriteLine($"Started {id}");
-            bool noFailure = true;
-            string failurePath = "";
-            // Get hashes beforehand
-            List<Task<string>> taskHandlerHash = new();
-            // Get all hashes first.
-            foreach (string cyclePath in givenPaths)
-            {
-                taskHandlerHash.Add(FileInfoRequester.HashFile(cyclePath));
-            }
-            string[] hashSet = await Task.WhenAll(taskHandlerHash);
-            int index = 0;
-            foreach (string cyclePath in givenPaths)
-            {
-                cancelToken.ThrowIfCancellationRequested();
-                //Console.WriteLine($"ADD: {cyclePath}");
-                SqliteCommand command = new();
-                command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
-                command.Transaction = trans;
-                string getHash = hashSet[index];
-                Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
-                if (CheckExistence(cyclePath, trans))
-                {
-                    Console.WriteLine("Warning, replacing existing entry");
-                }
-                if (getHash != "")
-                {
-                    command.Parameters.AddWithValue("$path", cyclePath);
-                    command.Parameters.AddWithValue("$hash", getHash);
-                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    if (QueryNoReader(command) <= 0)
-                    {
-                        // Failure detected
-                        noFailure = false;
-                        failurePath = cyclePath;
-                        break;
-                    }
-                }
-                else
-                {
-                    noFailure = false;
-                    failurePath = cyclePath;
-                }
-                index++;
-            }
-            if (noFailure == false)
-            {
-                Console.WriteLine($"Failure to add {failurePath}, changes will be reverted.");
-                return false;
-            }
-            Console.WriteLine($"Completed add set - {id}");
-            return true;
+            //Console.WriteLine($"ADD: {cyclePath}");
+            SqliteCommand command = new();
+            command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
+            command.Parameters.AddWithValue("$path", cyclePath);
+            command.Parameters.AddWithValue("$hash", getHash);
+            command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+            command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+            command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+            //change to match table columns
+            QueryNoReader(command);
         }
 
         /// <summary>
