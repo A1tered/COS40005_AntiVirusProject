@@ -29,10 +29,15 @@ public class DatabaseManager
             {
                 connection.Open(); // Open the connection
 
+                // Commented out the drop table command to preserve data
+                // string dropQuarantinedFilesTable = "DROP TABLE IF EXISTS QuarantinedFiles";
+
+                // Updated table schema to include OriginalFilePath
                 string createQuarantinedFilesTable = @"
                     CREATE TABLE IF NOT EXISTS QuarantinedFiles (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         FilePath TEXT NOT NULL,
+                        OriginalFilePath TEXT NOT NULL,
                         QuarantineDate TEXT NOT NULL
                     );";
 
@@ -41,6 +46,52 @@ public class DatabaseManager
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         FilePath TEXT NOT NULL
                     );";
+
+                // Ensure the QuarantinedFiles table has the correct schema
+                // If the table doesn't exist, it will be created with the correct schema
+                // If it already exists but doesn't have the OriginalFilePath column, it needs to be altered
+
+                // Adding the column if it doesn't exist
+                try
+                {
+                    string checkForOriginalFilePath = @"
+                        PRAGMA table_info(QuarantinedFiles);";
+
+                    bool columnExists = false;
+
+                    using (var command = new SqliteCommand(checkForOriginalFilePath, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string columnName = reader.GetString(1); // The second column is the name
+                                if (columnName == "OriginalFilePath")
+                                {
+                                    columnExists = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!columnExists)
+                    {
+                        // Add the OriginalFilePath column if it doesn't exist
+                        string addOriginalFilePathColumn = @"
+                            ALTER TABLE QuarantinedFiles ADD COLUMN OriginalFilePath TEXT";
+
+                        using (var command = new SqliteCommand(addOriginalFilePathColumn, connection))
+                        {
+                            command.ExecuteNonQuery();
+                            Console.WriteLine("OriginalFilePath column added to QuarantinedFiles table.");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error adding OriginalFilePath column: {e.Message}");
+                }
 
                 using (var command = new SqliteCommand(createQuarantinedFilesTable, connection))
                 {
@@ -87,7 +138,7 @@ public class DatabaseManager
         }
     }
 
-    public async Task StoreQuarantineInfoAsync(string filePath)
+    public async Task StoreQuarantineInfoAsync(string quarantinedFilePath, string originalFilePath)
     {
         try
         {
@@ -96,12 +147,13 @@ public class DatabaseManager
                 await connection.OpenAsync();
 
                 string insertQuery = @"
-                    INSERT INTO QuarantinedFiles (FilePath, QuarantineDate)
-                    VALUES (@FilePath, @QuarantineDate)";
+                    INSERT INTO QuarantinedFiles (FilePath, OriginalFilePath, QuarantineDate)
+                    VALUES (@FilePath, @OriginalFilePath, @QuarantineDate)";
 
                 using (var command = new SqliteCommand(insertQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@FilePath", filePath);
+                    command.Parameters.AddWithValue("@FilePath", quarantinedFilePath);
+                    command.Parameters.AddWithValue("@OriginalFilePath", originalFilePath);
                     command.Parameters.AddWithValue("@QuarantineDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                     await command.ExecuteNonQueryAsync();
@@ -141,9 +193,9 @@ public class DatabaseManager
         }
     }
 
-    public async Task<Dictionary<int, string>> PrintQuarantinedFilesAsync()
+    public async Task<Dictionary<int, (string QuarantinedFilePath, string OriginalFilePath)>> PrintQuarantinedFilesAsync()
     {
-        var quarantinedFiles = new Dictionary<int, string>();
+        var quarantinedFiles = new Dictionary<int, (string QuarantinedFilePath, string OriginalFilePath)>();
 
         try
         {
@@ -161,11 +213,12 @@ public class DatabaseManager
                         while (await reader.ReadAsync())
                         {
                             int id = reader.GetInt32(0);
-                            string filePath = reader.GetString(1);
-                            string quarantineDate = reader.GetString(2);
+                            string quarantinedFilePath = reader.GetString(1);
+                            string originalFilePath = reader.GetString(2);
+                            string quarantineDate = reader.GetString(3);
 
-                            Console.WriteLine($"ID: {id}, File Path: {filePath}, Quarantine Date: {quarantineDate}");
-                            quarantinedFiles[id] = filePath;
+                            Console.WriteLine($"ID: {id}, Quarantined File: {quarantinedFilePath}, Original File: {originalFilePath}, Quarantine Date: {quarantineDate}");
+                            quarantinedFiles[id] = (quarantinedFilePath, originalFilePath);
                         }
                     }
                 }

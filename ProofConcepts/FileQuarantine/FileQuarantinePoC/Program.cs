@@ -50,12 +50,9 @@ class Program
             Console.WriteLine("\nEnter the ID of the file you want to unquarantine:");
             if (int.TryParse(Console.ReadLine(), out int id) && quarantinedFiles.ContainsKey(id))
             {
-                // Prompt the user for the original location of the file (to restore it)
-                Console.WriteLine("Enter the original location where the file should be restored:");
-                string originalLocation = Console.ReadLine();
-
-                // Unquarantine the selected file
-                await quarantineManager.UnquarantineFileAsync(id, quarantinedFiles[id], originalLocation);
+                // Unquarantine the selected file using the stored original location
+                var fileData = quarantinedFiles[id];
+                await quarantineManager.UnquarantineFileAsync(id, fileData.QuarantinedFilePath, fileData.OriginalFilePath);
 
                 // Output the updated list of quarantined files
                 await databaseManager.PrintQuarantinedFilesAsync();
