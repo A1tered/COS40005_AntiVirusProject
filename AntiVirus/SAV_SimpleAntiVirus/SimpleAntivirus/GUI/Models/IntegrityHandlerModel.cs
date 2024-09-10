@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleAntivirus.Alerts;
 using SimpleAntivirus.IntegrityModule;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
@@ -15,13 +17,14 @@ namespace SimpleAntivirus.Models
         public IntegrityDatabaseIntermediary _integDatabase;
         public IntegrityManagement _integManage;
         private List<IntegrityViolation> _recentViolationList;
-        public IntegrityHandlerModel()
+        public IntegrityHandlerModel(EventBus eventbus)
         {
             IntegrityDatabaseIntermediary integDatabase = new("IntegrityDatabase", false);
             _integDatabase = integDatabase;
             IntegrityManagement integManage = new(integDatabase);
             _integManage = integManage;
             _recentViolationList = new();
+            _integManage.EventSocket = eventbus;
         }
 
         public List<IntegrityViolation> RecentViolationList

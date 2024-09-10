@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.Alerts;
+using System.Security.AccessControl;
 
 namespace SimpleAntivirus.IntegrityModule.Alerts
 {
@@ -68,7 +69,10 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             message = baseMessage.ToString();
             Alert alertCreate = new(component, severity, message, suggestedAction);
             AlertArgs argument = new();
-            argument.AlertSet = alertCreate;
+            argument.Component = component;
+            argument.Severity = severity;
+            argument.Message = message;
+            argument.SuggestedAction = suggestedAction;
             AlertFlag?.Invoke(this, argument);
         }
     }
