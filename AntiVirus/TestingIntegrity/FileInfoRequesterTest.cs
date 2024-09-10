@@ -23,7 +23,7 @@ namespace TestingIntegrity
         [Test]
         public void RetrieveFileInfo()
         {
-            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.Not.Null);
+            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.EqualTo(new Tuple<long, long>(1724060395, 17)));
         }
     }
 }
