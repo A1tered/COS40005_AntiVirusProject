@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\testingintegrity\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\testingintegrity\\fileinforequestertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:fileinforequestertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,19 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DatabaseTest.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\DatabaseTest.cs",
+              "RelativeDocumentMoniker": "DatabaseTest.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\DatabaseTest.cs",
+              "RelativeToolTip": "DatabaseTest.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAASwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-10T01:43:06.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FileInfoRequesterTest.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\FileInfoRequesterTest.cs",
               "RelativeDocumentMoniker": "FileInfoRequesterTest.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\TestingIntegrity\\FileInfoRequesterTest.cs",
               "RelativeToolTip": "FileInfoRequesterTest.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAgwA4AAAAOAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAowBkAAAB1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-08T07:11:18.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\Program.cs",
               "RelativeDocumentMoniker": "..\\IntegrityModule\\Program.cs",
@@ -51,12 +68,11 @@
               "RelativeToolTip": "..\\IntegrityModule\\Program.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAowBsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T10:20:22.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T10:20:22.556Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ProgressArgs.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\DataTypes\\ProgressArgs.cs",
               "RelativeDocumentMoniker": "..\\IntegrityModule\\DataTypes\\ProgressArgs.cs",
@@ -68,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IntegrityCycler.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
               "RelativeDocumentMoniker": "..\\IntegrityModule\\IntegrityComparison\\IntegrityCycler.cs",
@@ -80,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IntegrityManagement.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "RelativeDocumentMoniker": "..\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
