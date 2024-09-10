@@ -324,23 +324,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zach\\.nuget\\packages\\": {},
-    "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages": {}
+    "C:\\Users\\yumcy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj",
+      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj",
       "projectName": "Alerts",
-      "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj",
-      "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-      "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\obj\\",
+      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\Alerts.csproj",
+      "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Alerts\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -393,7 +393,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

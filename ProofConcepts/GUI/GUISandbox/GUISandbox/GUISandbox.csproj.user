@@ -7,18 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Pages\IntegrityTestPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="Views\Pages\DashboardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\DataPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\IntegrityTestPage.xaml">
+    <Page Update="Views\Pages\IntegrityResultsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\IntegrityConfigurePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\SettingsPage.xaml">
