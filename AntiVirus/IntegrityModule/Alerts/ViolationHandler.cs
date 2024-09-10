@@ -33,7 +33,6 @@ namespace IntegrityModule.Alerts
             StringBuilder baseMessage = new("Integrity Check Mismatch:");
             baseMessage.Append($"File: {violation.Path}");
             // Parameter creation
-            long sizeDifference = Math.Abs(violation.FileSizeBytes - violation.OriginalSize);
             DateTime timeViolation = DateTimeOffset.FromUnixTimeSeconds(violation.TimeOfViolation).DateTime;
             string component = "Integrity Checking";
             string severity = "";
@@ -43,11 +42,11 @@ namespace IntegrityModule.Alerts
             if (violation.Missing == false)
             {
                 baseMessage.Append($"Hash Change Detected");
-                if (sizeDifference > 1000)
+                if (violation.FileSizeBytesChange != "")
                 {
                     severity = "Caution";
                     baseMessage.Append($"Detected Changes:");
-                    baseMessage.Append($"Size Change: {FileInfoRequester.SizeValueToLabel(sizeDifference)}");
+                    baseMessage.Append($"Size Change: {violation.FileSizeBytesChange}");
                     suggestedAction = "Check contents of file, alert IT";
                     // Major file size changes
                 }
