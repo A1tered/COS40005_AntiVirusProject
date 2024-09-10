@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileQuarantinePoC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e34f759c83fbd9b0dd251c95537446c793020b12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd1e45773e75b06f60602b1e07b01a323bccc56c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileQuarantinePoC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileQuarantinePoC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

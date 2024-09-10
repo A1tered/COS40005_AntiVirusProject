@@ -6,13 +6,17 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        // Use a writable directory for testing, such as the user's Documents folder
+        // Define directories and paths
         string quarantineDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Quarantine");
-        string databasePath = Path.Combine(quarantineDirectory, "quarantine.db");
+        string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db");
 
+        // Initialize managers
         FileMover fileMover = new FileMover();
-        DatabaseManager databaseManager = new DatabaseManager(databasePath);
-        QuarantineManager quarantineManager = new QuarantineManager(fileMover, databaseManager, quarantineDirectory);
+        IDatabaseManager databaseManager = new DatabaseManager(databasePath);
+        IQuarantineManager quarantineManager = new QuarantineManager(fileMover, databaseManager, quarantineDirectory);
+
+        // Create the MaliciousCodeScannerStub and scan for files
+        MaliciousCodeScannerStub scannerStub = new MaliciousCodeScannerStub(quarantineManager);
 
         // Path to the suspicious file (provided externally)
         string filePathToQuarantine = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Path", "To", "SuspiciousFile.txt");
@@ -34,17 +38,43 @@ class Program
                 await File.WriteAllTextAsync(filePathToQuarantine, "This is a suspicious file.");
                 Console.WriteLine($"Test file created at {filePathToQuarantine}");
             }
-            else
-            {
-                Console.WriteLine($"Test file already exists at {filePathToQuarantine}");
-            }
 
-            // Simulate another functionality (MaliciousCodeScanner) detecting a dangerous file
-            MaliciousCodeScannerStub scannerStub = new MaliciousCodeScannerStub(quarantineManager);
+            // Simulate scanning and quarantining the detected file
             await scannerStub.ScanAndQuarantineAsync(filePathToQuarantine);
 
             // Output the stored data (quarantined files) to the command line
-            await databaseManager.PrintQuarantinedFilesAsync();
+<<<<<<< Updated upstream
+            var quarantinedFiles = await databaseManager.PrintQuarantinedFilesAsync();
+
+            // Ask user for ID of file to unquarantine
+            Console.WriteLine("\nEnter the ID of the file you want to unquarantine:");
+            if (int.TryParse(Console.ReadLine(), out int id) && quarantinedFiles.ContainsKey(id))
+            {
+                // Unquarantine the selected file using the stored original location
+                var fileData = quarantinedFiles[id];
+                await quarantineManager.UnquarantineFileAsync(id, fileData.QuarantinedFilePath, fileData.OriginalFilePath);
+
+                // Output the updated list of quarantined files
+                await databaseManager.PrintQuarantinedFilesAsync();
+=======
+            var quarantinedFiles = await quarantineManager.GetQuarantinedFilesAsync();
+            Console.WriteLine("\nQuarantined Files:");
+            foreach (var file in quarantinedFiles)
+            {
+                Console.WriteLine($"ID: {file.Id}, Quarantined File: {file.QuarantinedFilePath}, Original Location: {file.OriginalFilePath}");
+            }
+
+            // Prompt to unquarantine a file
+            Console.WriteLine("\nEnter the ID of the file you want to unquarantine:");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                await quarantineManager.UnquarantineFileAsync(id);
+>>>>>>> Stashed changes
+            }
+            else
+            {
+                Console.WriteLine("Invalid ID entered.");
+            }
         }
         catch (Exception ex)
         {
