@@ -17,6 +17,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
         }
 
+
         private void DarkModeChange(ToggleSwitch toggle)
         {
             toggle.Content = "Dark theme enabled";
@@ -56,6 +57,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         }
 
+        // On page loaded, determine the current theme and check if Dark mode is already enabled.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (ViewModel.CurrentTheme == Wpf.Ui.Appearance.ApplicationTheme.Dark)
