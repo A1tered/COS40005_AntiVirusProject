@@ -17,14 +17,25 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
         }
 
+        private void DarkModeChange(ToggleSwitch toggle)
+        {
+            toggle.Content = "Dark theme enabled";
+            ViewModel.OnChangeTheme("theme_dark");
+        }
+
+        private void LightModeChange(ToggleSwitch toggle)
+        {
+            toggle.Content = "Light theme enabled";
+            ViewModel.OnChangeTheme("theme_light");
+        }
+
         private void DarkModeEnabled(object sender, RoutedEventArgs e)
         {
             SettingsViewModel viewModel = new SettingsViewModel();
 
             if (sender is ToggleSwitch toggleSwitch)
             {
-                toggleSwitch.Content = "Dark theme enabled";
-                viewModel.OnChangeTheme("theme_dark");
+                DarkModeChange(toggleSwitch);
             }
         }
 
@@ -34,14 +45,28 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
             if (sender is ToggleSwitch toggleSwitch)
             {
-                toggleSwitch.Content = "Light theme enabled";
-                viewModel.OnChangeTheme("theme_light");
+                LightModeChange(toggleSwitch);
             }
         }
+
+
 
         private void ToggleSwitch_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.CurrentTheme == Wpf.Ui.Appearance.ApplicationTheme.Dark)
+            {
+                DarkModeChange(ThemeSwitch);
+                ThemeSwitch.IsChecked = true;
+            }
+            else
+            {
+                LightModeChange(ThemeSwitch);
+            }
         }
     }
 }
