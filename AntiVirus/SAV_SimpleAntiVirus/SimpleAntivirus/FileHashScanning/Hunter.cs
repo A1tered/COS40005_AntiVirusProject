@@ -22,13 +22,11 @@ namespace SimpleAntivirus.FileHashScanning
         private readonly EventBus _eventBus;
         private readonly AlertManager _alertManager;
 
-        public Hunter(string directoryToScan, string databaseDirectory, AlertManager alertManager, EventBus eventBus)
+        public Hunter(string directoryToScan, string databaseDirectory)
         {
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
             _hasher = new Hasher();
-            _eventBus = eventBus;
-            _alertManager = alertManager;
         }
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)

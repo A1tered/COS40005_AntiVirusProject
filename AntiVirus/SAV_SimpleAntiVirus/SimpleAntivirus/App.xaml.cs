@@ -14,6 +14,7 @@ using SimpleAntivirus.ViewModels.Pages;
 using SimpleAntivirus.Models;
 using SimpleAntivirus.Alerts;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Wpf.Ui.Appearance;
 
 namespace SimpleAntivirus
 {
@@ -90,6 +91,10 @@ namespace SimpleAntivirus
         {
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
+
+            // Rough fix to theme irregularity copied from other theme window.
+            ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
+            ApplicationThemeManager.Apply(CurrentTheme);
         }
 
         /// <summary>

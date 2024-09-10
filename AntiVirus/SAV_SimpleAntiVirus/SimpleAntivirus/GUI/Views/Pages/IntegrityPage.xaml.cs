@@ -176,12 +176,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 // Remove final comma.
                 infoText.Remove(infoText.Length - 1, 1);
-                SelectLabel.Content = infoText;
+                SelectLabel.Text = infoText;
                 ViewModel.PathSelected = selectedDirectories;
             }
             else
             {
-                SelectLabel.Content = "None Selected";
+                SelectLabel.Text = "None Selected";
                 ViewModel.PathSelected = null;
             }
         }
@@ -207,13 +207,13 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 if (result > 0)
                 {
                     ViolationNote.Foreground = new SolidColorBrush(Colors.Red);
-                    ViolationNote.Content = $"Violations Found: {result}";
+                    ViolationNote.Text = $"Violations Found: {result}";
                     ResultsButton.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    ViolationNote.Foreground = new SolidColorBrush(Colors.White);
-                    ViolationNote.Content = "No Violations Found";
+                    ViolationNote.Foreground = null;
+                    ViolationNote.Text = "No Violations Found";
                 }
             }
         }
