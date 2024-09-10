@@ -2,25 +2,31 @@
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.Alerts;
 using Wpf.Ui.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
     public partial class ScannerPage : INavigableView<ScannerViewModel>
     {
+        private readonly AlertManager _alertManager;
+        private readonly EventBus _eventBus;
+
         public ScannerViewModel ViewModel { get; }
 
-        public ScannerPage(ScannerViewModel viewModel)
+        public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
             ViewModel = viewModel;
             DataContext = this;
+            _alertManager = alertManager;
+            _eventBus = eventBus;
 
             InitializeComponent();
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            FileHashScanner _fileHashScanner = new FileHashScanner();
+            FileHashScanner _fileHashScanner = new FileHashScanner(_alertManager, _eventBus);
 
             if (QuickScanButton.IsChecked == true)
             {
