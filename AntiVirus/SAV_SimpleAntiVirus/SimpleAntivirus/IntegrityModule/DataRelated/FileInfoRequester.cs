@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.IntegrityModule.DataRelated
 {
@@ -57,11 +58,11 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                 }
                 catch (IOException e )
                 {
-                    Console.WriteLine($"IOException (Likely process use) {directory}");
+                    System.Diagnostics.Debug.WriteLine($"IOException (Likely process use) {directory}");
                 }
                 catch (UnauthorizedAccessException e)
                 {
-                    Console.WriteLine($"Unauthorized access {directory}");
+                    System.Diagnostics.Debug.WriteLine($"Unauthorized access {directory}");
                 }
 
             }
@@ -94,11 +95,11 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                     }
                     catch (IOException e)
                     {
-                        Console.WriteLine($"IOException (Likely process use) {directory}");
+                        System.Diagnostics.Debug.WriteLine($"IOException (Likely process use) {directory}");
                     }
                     catch (UnauthorizedAccessException e)
                     {
-                        Console.WriteLine($"Unauthorized access {directory}");
+                        System.Diagnostics.Debug.WriteLine($"Unauthorized access {directory}");
                     }
                 }
                 returnedHashes.Add(hashReturn.ToString());
@@ -150,7 +151,7 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                     }
                     catch (UnauthorizedAccessException e)
                     {
-                        Console.WriteLine($"Unauthorized Permission Warning: {tempPathUnpack}");
+                        System.Diagnostics.Debug.WriteLine($"Unauthorized Permission Warning: {tempPathUnpack}");
                     }
                 }
             }

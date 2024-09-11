@@ -24,11 +24,13 @@ class Program
     {
         IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
         IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
-        ////integrityModule.ClearDatabase();
-        ////await integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
-        await integrityModule.Scan(true);
-        ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
 
+        
+        integrityModule.ClearDatabase();
+        await integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\TenThousandTest", true);
+        //await integrityModule.Scan(true);
+        ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
+        Console.WriteLine("Scan");
 
         //integrityModule.ClearDatabase();
         //await integrityModule.AddBaseline(@"C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\COS40006 Computing Technology Project B\\TestingGround\\HundredIntegrityFiles");
@@ -40,11 +42,11 @@ class Program
         //ReactiveControl reactiveControl = new(databaseIntermediary, new IntegrityCycler(databaseIntermediary, new Alerts.ViolationHandler()));
         ////Console.WriteLine(itemReturn);
         //reactiveControl.Initialize();
-        //SqliteCommand commandTest = new();
-        //commandTest.CommandText = "SELECT * FROM IntegrityTrack";
-        //string output = DebugAssist.StringListToStringDisplay(databaseIntermediary.QueryReaderAsText(commandTest));
-        ////Console.WriteLine(output);
-        //Console.ReadLine(); // Remove when merging
+        SqliteCommand commandTest = new();
+        commandTest.CommandText = "SELECT * FROM IntegrityTrack";
+        string output = DebugAssist.StringListToStringDisplay(databaseIntermediary.QueryReaderAsText(commandTest));
+        Console.WriteLine(output);
+        Console.ReadLine(); // Remove when merging
 
 
     }

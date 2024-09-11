@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
+using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.IntegrityModule.ControlClasses
 {
@@ -30,6 +31,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         private float _progress;
         private float _addProgress;
         private string _progressInfo;
+        private EventBus _eventbus;
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
@@ -47,9 +49,10 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             _reactiveControl.Initialize();
         }
 
-        private void AlertHandler(object? sender, AlertArgs alertInfo)
+        private async void AlertHandler(object? sender, AlertArgs alertInfo)
         {
-            Console.WriteLine("Alert Handler Event Triggered Successfully");
+            System.Diagnostics.Debug.WriteLine("Alert Handler Event Triggered Successfully");
+            await _eventbus.PublishAsync(alertInfo.Component, alertInfo.Severity, alertInfo.Message, alertInfo.SuggestedAction);
         }
 
 
@@ -175,6 +178,18 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             set
             {
                 _progressInfo = value;
+            }
+        }
+
+        public EventBus EventSocket
+        {
+            get
+            {
+                return _eventbus;
+            }
+            set
+            {
+                _eventbus = value;
             }
         }
     }

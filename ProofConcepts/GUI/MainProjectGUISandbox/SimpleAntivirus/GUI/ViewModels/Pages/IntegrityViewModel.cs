@@ -181,7 +181,7 @@ namespace SimpleAntivirus.ViewModels.Pages
                 decideAdd = true;
                 if (searchTerm != null)
                 {
-                    if (!set.Key.Contains(searchTerm))
+                    if (!set.Key.ToLower().Contains(searchTerm.ToLower()))
                     {
                         // Don't add if it doesn't contain search term.
                         decideAdd = false;

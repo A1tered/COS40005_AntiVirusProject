@@ -16,9 +16,8 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <StackPanel>
-        <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
-            <Run Language="en-au" Text="View reports of previous scans as well as any active or quarantined threats "/>
-        </ui:TextBlock>
+        <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="View information about past security events related to your computer."/>
         <ui:DataGrid Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <ui:Button Content="Send Test Alert" Click="Send_Alert" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold" MouseOverBackground="#80476EE9" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
     </StackPanel>
 </Page>

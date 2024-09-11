@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Controls;
+using SimpleAntivirus.Alerts;
 
 
 /// <summary>
@@ -26,10 +27,13 @@ namespace SimpleAntivirus.FileHashScanning
     public class FileHashScanner
     {
         private ProgressTracker _progressTracker;
+        public AlertManager AlertManager;
+        public EventBus EventBus;
 
-        public FileHashScanner()
+        public FileHashScanner(AlertManager alertManager ,EventBus eventBus)
         {
-
+            EventBus = eventBus;
+            AlertManager = alertManager;
         }
 
         static DirectoryManager directoryManager = new DirectoryManager();
@@ -48,7 +52,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory", "C:\\Users\\CardmanOfficial\\Documents"]);
+                    directories.AddRange([$"C:\\TestDirectory"]);
                 }
                 else if (scanType == "full")
                 {
@@ -60,7 +64,7 @@ namespace SimpleAntivirus.FileHashScanning
                 }
                 else if (scanType == "custom")
                 {
-                    // Console.WriteLine("Not implemented");
+                    Debug.WriteLine("Not implemented");
                 }
 
                 foreach (string directorySearch in directories)

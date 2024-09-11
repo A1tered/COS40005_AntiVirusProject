@@ -49,7 +49,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                     databaseSpecificPath = Path.Combine(returnedDirectoryDatabase, databaseName);
                 }
                 SqliteConnectionStringBuilder connectionBuild = new();
-                Console.WriteLine(databaseSpecificPath);
+                System.Diagnostics.Debug.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
                 connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
