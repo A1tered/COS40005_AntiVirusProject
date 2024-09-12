@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {
@@ -49,9 +50,15 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             int initialTaskAmount = 0;
             long amountEntry = _database.QueryAmount("IntegrityTrack");
 
+            // TaskAmountComplete
+            int taskAmountComplete = 0;
+
+            // Task Items to delete
+            List<Task<List<IntegrityViolation>>> taskToDelete = new();
+
             if (amountEntry == 0)
             {
-                Console.WriteLine("No entries to scan");
+                System.Diagnostics.Debug.WriteLine("No entries to scan");
                 return summaryViolation;
             }
             decimal divison = (decimal)amountEntry / _amountPerSet;
@@ -66,28 +73,41 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                 taskList.Add(Task.Run(poolerObject.CheckIntegrity));
             }
             initialTaskAmount = taskList.Count();
+            Debug.WriteLine($"Task Initial Amount:{taskList.Count()}");
             while (taskList.Count() > 0)
             {
+                taskToDelete.Clear();
                 await Task.WhenAny(taskList.ToArray());
                 foreach (Task<List<IntegrityViolation>> taskItem in taskList)
                 {
                     if (taskItem.IsCompleted)
                     {
-                        taskItem.Result.ForEach(summaryViolation.Add);
-                        // For each violation, send to violation handler
-                        taskItem.Result.ForEach(_violationHandler.ViolationAlert);
+                        taskToDelete.Add(taskItem);
+                        taskAmountComplete++;
+                        foreach (IntegrityViolation violationComponent in taskItem.Result)
+                        {
+                            summaryViolation.Add(violationComponent);
+                            // For each violation, send to violation handler
+                            await _violationHandler.ViolationAlert(violationComponent);
+
+                            // Progress calculation here
+                            setProgressArg = new();
+                            // Percentage of tasks left.
+                            setProgressArg.Progress = ((taskAmountComplete) / (float)initialTaskAmount) * 100;
+                            setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
+                            ProgressUpdate?.Invoke(this, setProgressArg);
+                        }
                     }
                 }
-                taskList.RemoveAll(x => x.IsCompleted);
+                Debug.WriteLine($"Tasks marked complete in total {taskAmountComplete}");
+                // Delete all marked for deletion
+                taskToDelete.ForEach(x => taskList.Remove(x));
 
                 // 1 - Update task completed / initialTaskAmount
                 // 10 - 4
-                setProgressArg = new();
-                // Percentage of tasks left.
-                setProgressArg.Progress = ((initialTaskAmount - taskList.Count()) / (float)initialTaskAmount) * 100;
-                setProgressArg.ProgressInfo = $"{_amountPerSet * taskList.Count()} Files Left";
-                ProgressUpdate?.Invoke(this, setProgressArg);
             }
+            Debug.WriteLine($"Violation Amount: {summaryViolation.Count()}");
+            Debug.WriteLine($"Tasks Left: {taskList.Count()}");
             return summaryViolation;
         }
 
@@ -100,7 +120,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             IntegrityDataPooler singlePooler = new(_database, path);
             IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
             Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
+            //Debug.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();
         }
 

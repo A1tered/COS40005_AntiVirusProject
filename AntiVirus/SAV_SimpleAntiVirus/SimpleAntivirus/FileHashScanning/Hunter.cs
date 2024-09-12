@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SimpleAntivirus.Alerts;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -18,6 +20,8 @@ namespace SimpleAntivirus.FileHashScanning
         private DatabaseConnector _databaseConnection;
         public Hasher _hasher;
         private string _databaseDirectory;
+        private readonly EventBus _eventBus;
+        private readonly AlertManager _alertManager;
 
         public Hunter(string directoryToScan, string databaseDirectory)
         {
@@ -32,7 +36,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 try
                 {
-                    // Console.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
+                    // Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
 
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
@@ -40,6 +44,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                     foreach (string file in files)
                     {
+                        Debug.WriteLine($"Current file: {file}");
                         FileInfo fileInfo = new FileInfo(file);
                         scanner.UpdateSize(fileInfo.Length);
                         scanner.UpdateProgress();
@@ -47,7 +52,7 @@ namespace SimpleAntivirus.FileHashScanning
                         if (CompareCycle(file))
                         {
                             violationsList.Add(file);
-                            Violation(file);
+                            Violation(scanner,file);
                         }
                     }
                     return Tuple.Create(violationsList.ToArray(), directoryRemnants);
@@ -56,7 +61,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
                     {
-                        // Console.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
+                        // Debug.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
                         return Tuple.Create(Array.Empty<string>(), Array.Empty<string>());
                     }
                     throw;
@@ -68,9 +73,9 @@ namespace SimpleAntivirus.FileHashScanning
             });
         }
 
-        private void Violation(string fileDirectory)
+        private async void Violation(FileHashScanner scanner, string fileDirectory)
         {
-            // Alert: Violation found in directory {fileDirectory}
+            await scanner.EventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {fileDirectory} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
             // Call Quarantine for fileDirectory
         }
 

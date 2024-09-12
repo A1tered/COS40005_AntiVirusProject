@@ -16,7 +16,6 @@ public class FileMover
                 Console.WriteLine("File already exists in quarantine. Overwriting...");
             }
 
-            // Ensure the quarantine directory exists
             if (!Directory.Exists(quarantineDirectory))
             {
                 Directory.CreateDirectory(quarantineDirectory);

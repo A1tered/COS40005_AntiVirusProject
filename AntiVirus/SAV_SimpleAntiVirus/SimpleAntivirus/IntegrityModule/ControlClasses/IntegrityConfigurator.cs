@@ -49,12 +49,12 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             if (debug)
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.WriteLine($"AmountPerSet: {amountPerSet}");
-                Console.WriteLine($"Directory adding process duration: {timer.Elapsed}");
+                System.Diagnostics.Debug.WriteLine($"AmountPerSet: {amountPerSet}");
+                System.Diagnostics.Debug.WriteLine($"Directory adding process duration: {timer.Elapsed}");
                 Console.ResetColor();
                 if (returnItem == false)
                 {
-                    Console.WriteLine("Duration timing invalid, as addition to database was cancelled");
+                    System.Diagnostics.Debug.WriteLine("Duration timing invalid, as addition to database was cancelled");
                 }
                 timer.Stop();
             }

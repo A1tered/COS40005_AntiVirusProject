@@ -9,7 +9,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IntegrityResultsPage"
       Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <Style BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="ui:Button">
+            <Setter Property="Background" Value="#FF2C05F2"/>
+            <Setter Property="Foreground" Value="#E4FFFFFF"/>
+            <Setter Property="MouseOverBackground" Value="#80476EE9"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
