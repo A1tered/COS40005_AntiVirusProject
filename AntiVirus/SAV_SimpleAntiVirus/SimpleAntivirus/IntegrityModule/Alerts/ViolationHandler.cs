@@ -29,7 +29,7 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
         }
 
         // Convert violation data structure to Alert and then notify via event.
-        public void ViolationAlert(IntegrityViolation violation)
+        public async Task ViolationAlert(IntegrityViolation violation)
         {
             StringBuilder baseMessage = new("Integrity Check Mismatch:");
             baseMessage.Append($"File: {violation.Path}");
@@ -73,7 +73,8 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             argument.Severity = severity;
             argument.Message = message;
             argument.SuggestedAction = suggestedAction;
-            AlertFlag?.Invoke(this, argument);
+            // Cheap and dirty solution, may not be ideal, and plan to change later on.
+            await Task.Run(() => AlertFlag?.Invoke(this, argument));
         }
     }
 }

@@ -40,12 +40,8 @@ namespace SimpleAntivirus.FileHashScanning
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        static ScanningViewModel _viewModel = new();
-        ScanningPage _scanningPage = new ScanningPage(_viewModel);
-
         public async Task Scan(string scanType)
         {
-            _scanningPage.percentComplete.Text = $"10% complete";
             await Task.Run(async () =>
             {
                 List<string> directories = new List<string>();

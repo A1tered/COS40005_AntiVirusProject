@@ -51,6 +51,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
 
         private async void AlertHandler(object? sender, AlertArgs alertInfo)
         {
+   
             System.Diagnostics.Debug.WriteLine("Alert Handler Event Triggered Successfully");
             await _eventbus.PublishAsync(alertInfo.Component, alertInfo.Severity, alertInfo.Message, alertInfo.SuggestedAction);
         }
