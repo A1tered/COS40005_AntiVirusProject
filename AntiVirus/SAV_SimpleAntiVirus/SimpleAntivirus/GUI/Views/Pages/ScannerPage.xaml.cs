@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using Microsoft.Win32;
+using System.ComponentModel;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -18,14 +19,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private readonly EventBus _eventBus;
 
         public ScannerViewModel ViewModel { get; }
-
         public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
+
+            DataContext = viewModel;
             InitializeComponent();
-
-            DataContext = ViewModel;
             ViewModel = viewModel;
-
             _alertManager = alertManager;
             _eventBus = eventBus;
         }

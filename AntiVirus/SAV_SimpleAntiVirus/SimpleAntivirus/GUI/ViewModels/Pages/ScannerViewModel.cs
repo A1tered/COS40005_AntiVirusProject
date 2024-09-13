@@ -1,6 +1,9 @@
-﻿namespace SimpleAntivirus.GUI.ViewModels.Pages
+﻿using System.ComponentModel;
+using System.Diagnostics;
+
+namespace SimpleAntivirus.GUI.ViewModels.Pages
 {
-    public partial class ScannerViewModel : ObservableObject
+    public partial class ScannerViewModel : ObservableObject, INotifyPropertyChanged
     {
         private bool _isScanRunning;
         private bool _isAddFolderButtonVisible;
@@ -15,13 +18,23 @@
         public bool IsAddFolderButtonVisible
         {
             get => _isAddFolderButtonVisible;
-            set => SetProperty(ref _isAddFolderButtonVisible, value);
+            set
+            {
+                _isAddFolderButtonVisible = value;
+                Debug.WriteLine($"invoke {value}");
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsAddFolderButtonVisible"));
+            }
         }
 
         public bool IsAddFileButtonVisible
         {
             get => _isAddFileButtonVisible;
-            set => SetProperty(ref _isAddFolderButtonVisible, value);
+            set
+            {
+                _isAddFileButtonVisible = value;
+                Debug.WriteLine($"invoke {value}");
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsAddFileButtonVisible"));
+            }
         }
 
         public ScannerViewModel()
@@ -29,5 +42,7 @@
             IsAddFolderButtonVisible = false;
             IsAddFileButtonVisible = false;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
     }
 }

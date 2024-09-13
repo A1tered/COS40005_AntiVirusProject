@@ -34,7 +34,7 @@
                 <!-- Auto width for buttons -->
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Left" Content="Add File" Click="AddFile_Click" VerticalAlignment="Top" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="0,0,0,10" Visibility="{Binding IsAddFolderButtonVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Left" Content="Add File" Click="AddFile_Click" VerticalAlignment="Top" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="0,0,0,10" Visibility="{Binding IsAddFileButtonVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
             <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Click="AddFolder_Click" VerticalAlignment="Top" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="103,0,0,0" Visibility="{Binding IsAddFolderButtonVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </Grid>
         <ui:Button Content="Scan now!" Click="ScanButton_Click" Margin="0,50,10,0" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" />

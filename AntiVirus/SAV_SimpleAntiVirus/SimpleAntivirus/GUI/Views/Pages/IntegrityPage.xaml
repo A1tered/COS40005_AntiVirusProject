@@ -32,8 +32,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ui:Button Content="Integrity Scan" Margin="0,143,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Height="32" Grid.Column="1" HorizontalAlignment="Center" />
-        <ui:TextBlock x:Name="InfoProvide" TextAlignment="Center" Text="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
-        <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
+        <ui:TextBlock x:Name="InfoProvide" TextAlignment="Center" Text="{Binding Progress, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
+        <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="ViolationNote" TextAlignment="Center" Text="Value" HorizontalAlignment="Center" Margin="0,119,0,0" VerticalAlignment="Top" Width="180" Foreground="Transparent" Background="Transparent" Height="19" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
         <ui:Button x:Name="ResultsButton" Visibility="Hidden" Content="See Results" Margin="0,214,0,0" VerticalAlignment="Top" Click="See_Results_Click" Grid.Column="1" HorizontalAlignment="Center" Height="32" Width="94"/>
         <ui:CardExpander Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2">
@@ -64,7 +64,7 @@
                         <RotateTransform x:Name="Rotator" Angle="0"/>
                     </ui:ProgressRing.RenderTransform>
                 </ui:ProgressRing>
-                <Label x:Name="ProgressInfo" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,71,20,0" VerticalAlignment="Top" Height="24" Width="50"/>
+                <Label x:Name="ProgressInfo" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,71,20,0" VerticalAlignment="Top" Height="24" Width="50"/>
                 <ui:TextBox x:Name="SearchBox" Grid.Column="0" HorizontalAlignment="Right" Margin="0,64,0,0" TextWrapping="Wrap" Text="" PlaceholderText="Search                           " VerticalAlignment="Top" Width="200" TextChanged="SearchBox_TextChanged" Height="36"/>
             </Grid>
         </ui:CardExpander>

@@ -31,6 +31,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private bool _adding;
         public IntegrityPage(IntegrityViewModel integViewModel)
         {
+
             ViewModel = integViewModel;
             DataContext = integViewModel;
             InitializeComponent();
