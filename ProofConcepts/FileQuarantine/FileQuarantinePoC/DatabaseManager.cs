@@ -7,12 +7,14 @@ public class DatabaseManager : IDatabaseManager
 {
     private readonly string _connectionString;
 
+    // Constructor initializes the database connection string and ensures tables are created
     public DatabaseManager(string databasePath)
     {
         _connectionString = $"Data Source={databasePath}";
         InitializeDatabase();
     }
 
+    // Ensures the quarantine and whitelist tables are created in the database
     private void InitializeDatabase()
     {
         try
@@ -21,6 +23,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 connection.Open();
 
+                // Create the QuarantinedFiles table if it does not exist
                 string createQuarantinedFilesTable = @"
                     CREATE TABLE IF NOT EXISTS QuarantinedFiles (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +32,7 @@ public class DatabaseManager : IDatabaseManager
                         QuarantineDate TEXT NOT NULL
                     );";
 
+                // Create the WhitelistedFiles table if it does not exist
                 string createWhitelistedFilesTable = @"
                     CREATE TABLE IF NOT EXISTS WhitelistedFiles (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -50,10 +54,12 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle any database initialization errors
             Console.WriteLine($"Error initializing database: {ex.Message}");
         }
     }
 
+    // Checks if a file is whitelisted by querying the database
     public async Task<bool> IsWhitelistedAsync(string filePath)
     {
         try
@@ -62,6 +68,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Check if the file exists in the whitelist
                 string query = "SELECT COUNT(*) FROM WhitelistedFiles WHERE FilePath = @FilePath";
 
                 using (var command = new SqliteCommand(query, connection))
@@ -74,11 +81,13 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while checking whitelist status
             Console.WriteLine($"Error checking whitelist status: {ex.Message}");
             return false;
         }
     }
 
+    // Adds a file to the whitelist by inserting its path into the database
     public async Task AddToWhitelistAsync(string filePath)
     {
         try
@@ -87,6 +96,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Insert the file path into the whitelist table
                 string insertQuery = "INSERT INTO WhitelistedFiles (FilePath) VALUES (@FilePath)";
 
                 using (var command = new SqliteCommand(insertQuery, connection))
@@ -100,10 +110,12 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while adding to the whitelist
             Console.WriteLine($"Error adding to whitelist: {ex.Message}");
         }
     }
 
+    // Removes a file from the whitelist by deleting its path from the database
     public async Task RemoveFromWhitelistAsync(string filePath)
     {
         try
@@ -112,6 +124,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Remove the file path from the whitelist table
                 string deleteQuery = "DELETE FROM WhitelistedFiles WHERE FilePath = @FilePath";
 
                 using (var command = new SqliteCommand(deleteQuery, connection))
@@ -125,10 +138,12 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while removing from the whitelist
             Console.WriteLine($"Error removing from whitelist: {ex.Message}");
         }
     }
 
+    // Retrieves all whitelisted files from the database
     public async Task<IEnumerable<string>> GetWhitelistAsync()
     {
         var whitelist = new List<string>();
@@ -139,6 +154,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Retrieve all file paths from the whitelist table
                 string query = "SELECT FilePath FROM WhitelistedFiles";
 
                 using (var command = new SqliteCommand(query, connection))
@@ -156,12 +172,14 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while retrieving whitelist
             Console.WriteLine($"Error retrieving whitelist: {ex.Message}");
         }
 
         return whitelist;
     }
 
+    // Stores information about a quarantined file in the database
     public async Task StoreQuarantineInfoAsync(string quarantinedFilePath, string originalFilePath)
     {
         try
@@ -170,6 +188,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Insert quarantine information into the QuarantinedFiles table
                 string insertQuery = @"
                     INSERT INTO QuarantinedFiles (FilePath, OriginalFilePath, QuarantineDate)
                     VALUES (@FilePath, @OriginalFilePath, @QuarantineDate)";
@@ -188,10 +207,12 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while storing quarantine information
             Console.WriteLine($"Error storing quarantine information: {ex.Message}");
         }
     }
 
+    // Removes a quarantine entry from the database by its ID
     public async Task RemoveQuarantineEntryAsync(int id)
     {
         try
@@ -200,6 +221,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Delete the quarantine entry from the QuarantinedFiles table
                 string deleteQuery = "DELETE FROM QuarantinedFiles WHERE Id = @Id";
 
                 using (var command = new SqliteCommand(deleteQuery, connection))
@@ -213,10 +235,12 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while removing quarantine entry
             Console.WriteLine($"Error removing quarantine entry: {ex.Message}");
         }
     }
 
+    // Retrieves a quarantined file by its ID from the database
     public async Task<(string QuarantinedFilePath, string OriginalFilePath)?> GetQuarantinedFileByIdAsync(int id)
     {
         try
@@ -225,6 +249,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Query the database for the quarantined file information by ID
                 string query = "SELECT FilePath, OriginalFilePath FROM QuarantinedFiles WHERE Id = @Id";
 
                 using (var command = new SqliteCommand(query, connection))
@@ -242,12 +267,14 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while retrieving quarantined file information
             Console.WriteLine($"Error retrieving quarantined file: {ex.Message}");
         }
 
         return null;
     }
 
+    // Retrieves all quarantined files from the database
     public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync()
     {
         var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath)>();
@@ -258,6 +285,7 @@ public class DatabaseManager : IDatabaseManager
             {
                 await connection.OpenAsync();
 
+                // Query the database for all quarantined files
                 string query = "SELECT Id, FilePath, OriginalFilePath FROM QuarantinedFiles";
 
                 using (var command = new SqliteCommand(query, connection))
@@ -278,6 +306,7 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
+            // Handle errors while retrieving all quarantined files
             Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
         }
 
