@@ -21,7 +21,7 @@ namespace IntegrityModule.ControlClasses
 {
     public class IntegrityManagement : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;

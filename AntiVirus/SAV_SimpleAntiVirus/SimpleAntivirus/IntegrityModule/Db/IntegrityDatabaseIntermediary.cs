@@ -62,7 +62,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Path failed to be added.</returns>
         private async Task<bool> AsyncAdd(string[] givenPaths, int id, SqliteTransaction trans, CancellationToken cancelToken)
         {
-            Console.WriteLine($"Started {id}");
+            System.Diagnostics.Debug.WriteLine($"Started {id}");
             bool noFailure = true;
             string failurePath = "";
             // Get hashes beforehand
@@ -77,7 +77,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
             foreach (string cyclePath in givenPaths)
             {
                 cancelToken.ThrowIfCancellationRequested();
-                //Console.WriteLine($"ADD: {cyclePath}");
+                //Debug.WriteLine($"ADD: {cyclePath}");
                 SqliteCommand command = new();
                 command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
                 command.Transaction = trans;
@@ -85,7 +85,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
                 if (CheckExistence(cyclePath, trans))
                 {
-                    Console.WriteLine("Warning, replacing existing entry");
+                    System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
                 }
                 if (getHash != "")
                 {
@@ -111,10 +111,10 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
             if (noFailure == false)
             {
-                Console.WriteLine($"Failure to add {failurePath}, changes will be reverted.");
+                System.Diagnostics.Debug.WriteLine($"Failure to add {failurePath}, changes will be reverted.");
                 return false;
             }
-            Console.WriteLine($"Completed add set - {id}");
+            System.Diagnostics.Debug.WriteLine($"Completed add set - {id}");
             return true;
         }
 
@@ -136,18 +136,18 @@ namespace SimpleAntivirus.IntegrityModule.Db
             // Cancellation control variables
             bool forceFailure = false;
             CancellationTokenSource cancelToken = new();
-            Console.WriteLine($"Sets required: {maxIds}");
+            System.Diagnostics.Debug.WriteLine($"Sets required: {maxIds}");
             using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
             { // remove if not good
                 for (int v = 0; v < pathProcess.Count(); v++)
                 {
                     tempPathCreator.Add(pathProcess[v]);
-                    //Console.WriteLine($"AddEntry: {pathProcess[v]}");
+                    //Debug.WriteLine($"AddEntry: {pathProcess[v]}");
                     if (v % amountPerSet == 0 && v != 0)
                     {
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
-                        Console.WriteLine(idTracker);
+                        System.Diagnostics.Debug.WriteLine(idTracker);
                         taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
                         tempPathCreator.Clear();
                         idTracker++;
@@ -165,7 +165,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                     }
                     catch (OperationCanceledException e)
                     {
-                        Console.WriteLine("operation cancelled");
+                        System.Diagnostics.Debug.WriteLine("operation cancelled");
                     }
                     foreach (Task<bool> taskItem in taskManager)
                     {
@@ -180,7 +180,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                             if (await taskItem == false)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Rollbacking Database due to adding directory error");
+                                System.Diagnostics.Debug.WriteLine("Rollbacking Database due to adding directory error");
                                 Console.ResetColor();
                                 forceFailure = true;
                                 cancelToken.Cancel();
@@ -202,7 +202,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                     return false;
                 }
                 transactionCreate.Commit();
-                Console.WriteLine("Completed");
+                System.Diagnostics.Debug.WriteLine("Completed");
                 return true;
             }
         }

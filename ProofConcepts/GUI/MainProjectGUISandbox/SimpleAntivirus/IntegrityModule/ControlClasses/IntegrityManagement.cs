@@ -133,7 +133,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
 
         private void ProgressUpdateAddHandler(object? sender, ProgressArgs progressData)
         {
-            AddProgress = progressData.Progress;
+            AddProgress = Math.Min(progressData.Progress, 100);
             //Console.Write($"Progress: {Progress}");
             //Console.Write("\r");
         }

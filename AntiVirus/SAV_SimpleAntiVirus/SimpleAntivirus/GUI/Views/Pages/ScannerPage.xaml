@@ -15,14 +15,28 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-    <StackPanel>
-        <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" Text="Run either a quick scan, full scan or custom scan with the options below." VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+
+    <StackPanel Margin="0,0,0,10">
+        <ui:TextBlock Margin="0,10,0,20" TextWrapping="Wrap" Text="Run either a quick scan, full scan or custom scan with the options below." VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
         <RadioButton x:Name="QuickScanButton" Content="Quick scan" HorizontalAlignment="Left" IsChecked="True"/>
         <ui:TextBlock TextWrapping="Wrap" Text="Scans folders where threats are most commonly found." Margin="0,0,0,7"/>
         <RadioButton x:Name="FullScanButton" Content="Full scan" />
         <ui:TextBlock TextWrapping="Wrap" Text="Scans all files and programs on this PC. Depending on your system, this scan may take several hours." Margin="0,0,0,10"/>
-        <RadioButton x:Name="CustomScanButton" Content="Custom scan" />
+        <RadioButton x:Name="CustomScanButton" Content="Custom scan" Checked="CustomScanButton_Checked" Unchecked="CustomScanButton_Unchecked" />
         <ui:TextBlock TextWrapping="Wrap" Text="Choose specific files or folders to scan." Margin="0,0,0,10"/>
-        <ui:Button Content="Scan now!" Click="ScanButton_Click" Margin="0,0,10,0" Background="#FF2204B8" Height="30" FontSize="11" FontWeight="Bold" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Auto width for buttons -->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Left" Content="Add File" Click="AddFile_Click" VerticalAlignment="Top" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="0,0,0,10" Visibility="{Binding IsAddFolderButtonVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Click="AddFolder_Click" VerticalAlignment="Top" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="103,0,0,0" Visibility="{Binding IsAddFolderButtonVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        </Grid>
+        <ui:Button Content="Scan now!" Click="ScanButton_Click" Margin="0,50,10,0" Height="30" FontSize="11" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" />
     </StackPanel>
 </Page>

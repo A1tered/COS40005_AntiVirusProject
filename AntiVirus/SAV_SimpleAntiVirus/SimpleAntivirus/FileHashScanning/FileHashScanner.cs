@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Controls;
+using SimpleAntivirus.Alerts;
 
 
 /// <summary>
@@ -26,29 +27,28 @@ namespace SimpleAntivirus.FileHashScanning
     public class FileHashScanner
     {
         private ProgressTracker _progressTracker;
+        public AlertManager AlertManager;
+        public EventBus EventBus;
 
-        public FileHashScanner()
+        public FileHashScanner(AlertManager alertManager ,EventBus eventBus)
         {
-
+            EventBus = eventBus;
+            AlertManager = alertManager;
         }
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        static ScanningViewModel _viewModel = new();
-        ScanningPage _scanningPage = new ScanningPage(_viewModel);
-
         public async Task Scan(string scanType)
         {
-            _scanningPage.percentComplete.Text = $"10% complete";
             await Task.Run(async () =>
             {
                 List<string> directories = new List<string>();
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory", "C:\\Users\\CardmanOfficial\\Documents"]);
+                    directories.AddRange([$"C:\\TestDirectory"]);
                 }
                 else if (scanType == "full")
                 {
@@ -60,7 +60,7 @@ namespace SimpleAntivirus.FileHashScanning
                 }
                 else if (scanType == "custom")
                 {
-                    // Console.WriteLine("Not implemented");
+                    Debug.WriteLine("Not implemented");
                 }
 
                 foreach (string directorySearch in directories)
