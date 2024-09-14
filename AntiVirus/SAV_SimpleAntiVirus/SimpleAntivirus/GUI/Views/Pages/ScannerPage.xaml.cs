@@ -17,8 +17,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
     {
         private readonly AlertManager _alertManager;
         private readonly EventBus _eventBus;
-
+        private FileHashScanner _fileHashScanner;
+        private CancellationTokenSource _cancellationTokenSource;
         public ScannerViewModel ViewModel { get; }
+
         public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
 
@@ -35,19 +37,20 @@ namespace SimpleAntivirus.GUI.Views.Pages
             try
             {
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
-                FileHashScanner _fileHashScanner = new FileHashScanner(_alertManager, _eventBus);
+                _cancellationTokenSource = new CancellationTokenSource();
+                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus);
 
                 if (QuickScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("quick");
+                    await _fileHashScanner.Scan("quick", _cancellationTokenSource.Token);
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("full");
+                    await _fileHashScanner.Scan("full", _cancellationTokenSource.Token);
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("custom");
+                    await _fileHashScanner.Scan("custom", _cancellationTokenSource.Token);
                 }
                 else
                 {
@@ -58,6 +61,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
             {
                 ViewModel.IsScanRunning = false;
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
+            }
+        }
+
+        private async void CancelScanButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.IsScanRunning = false;
+            Debug.WriteLine("Cancelling scan");
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
             }
         }
 
@@ -81,6 +94,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             string fileGet = fileDialog.FileName;
             if (fileGet != "")
             {
+                
                 System.Windows.MessageBox.Show($"File {fileGet} selected.", "Custom scan", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             }
         }

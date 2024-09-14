@@ -40,7 +40,7 @@ namespace SimpleAntivirus.FileHashScanning
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        public async Task Scan(string scanType)
+        public async Task Scan(string scanType, CancellationToken cancellationToken)
         {
             await Task.Run(async () =>
             {

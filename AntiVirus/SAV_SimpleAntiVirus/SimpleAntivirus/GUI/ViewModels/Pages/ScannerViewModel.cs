@@ -12,7 +12,12 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
         public bool IsScanRunning
         {
             get => _isScanRunning;
-            set => SetProperty(ref _isScanRunning, value);
+            set
+            {
+                _isScanRunning = value;
+                Debug.WriteLine($"invoke {value}");
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsScanRunning"));
+            }
         }
 
         public bool IsAddFolderButtonVisible
