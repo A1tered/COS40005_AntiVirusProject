@@ -42,7 +42,7 @@ namespace SimpleAntivirus.FileHashScanning
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        public async Task Scan(string scanType)
+        public async Task Scan(string scanType, List<string> customScanDirs)
         {
             await Task.Run(async () =>
             {
@@ -50,7 +50,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory"]);
+                    directories.AddRange([$"C:\\TestDirectory","C:\\Users\\CardmanOfficial\\AppData"]);
                 }
                 else if (scanType == "full")
                 {
@@ -62,7 +62,18 @@ namespace SimpleAntivirus.FileHashScanning
                 }
                 else if (scanType == "custom")
                 {
-                    Debug.WriteLine("Not implemented");
+                    if (customScanDirs != null && customScanDirs.Count > 0)
+                    {
+                        foreach(string dir in customScanDirs)
+                        {
+                            Debug.WriteLine($"Currently added dir: {dir}");
+                            directories.Add(dir);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
 
                 foreach (string directorySearch in directories)
