@@ -10,6 +10,10 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
+using IntegrityModule;
+using IntegrityModule.ControlClasses;
+using DatabaseFoundations;
+using GUISandbox.Models;
 
 namespace GUISandbox
 {
@@ -50,6 +54,15 @@ namespace GUISandbox
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
+                // Integrity Section
+                services.AddSingleton<IntegrityViewModel>();
+                services.AddSingleton<IntegrityHandlerModel>();
+                // Integrity Configure
+                services.AddSingleton<IntegrityConfigurePage>();
+                // Integrity Add
+                services.AddSingleton<IntegrityResultsPage>();
+                services.AddSingleton<IntegrityResultsViewModel>();
+                // Sect
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
             }).Build();
@@ -71,6 +84,7 @@ namespace GUISandbox
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
+            NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
         }
 
         /// <summary>

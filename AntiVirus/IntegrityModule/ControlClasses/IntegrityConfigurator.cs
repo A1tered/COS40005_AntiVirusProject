@@ -1,4 +1,11 @@
-﻿using DatabaseFoundations;
+﻿/**************************************************************************
+ * File:        IntegrityConfigurator.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: A simplified interface for the database.
+ * Last Modified: 26/08/2024
+ **************************************************************************/
+
+using DatabaseFoundations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,9 +19,11 @@ namespace IntegrityModule.ControlClasses
     public class IntegrityConfigurator
     {
         private IntegrityDatabaseIntermediary _database;
+        private int _displaySet;
         public IntegrityConfigurator(IntegrityDatabaseIntermediary integrityDatabase)
         {
             _database = integrityDatabase;
+            _displaySet = 10;
         }
 
         /// <summary>
@@ -23,7 +32,7 @@ namespace IntegrityModule.ControlClasses
         /// <param name="path">Windows directory.</param>
         /// <param name="debug">Whether console information is shown</param>
         /// <returns></returns>
-        public bool AddIntegrityDirectory(string path, bool debug = false)
+        public async Task<bool> AddIntegrityDirectory(string path, bool debug = false)
         {
             // This parameter affects adding baseline performance, especially for adding huge folders.
             // Higher the value, slower it is.
@@ -36,7 +45,7 @@ namespace IntegrityModule.ControlClasses
             {
                 timer.Start();
             }
-            bool returnItem = _database.AddEntry(path, amountPerSet);
+            bool returnItem = await _database.AddEntry(path, amountPerSet);
             if (debug)
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -60,6 +69,16 @@ namespace IntegrityModule.ControlClasses
         public bool RemoveIntegrityDirectory(string path)
         {
             return _database.RemoveEntry(path);
+        }
+
+        public Dictionary<string, string> GetPage(int page)
+        {
+            return _database.GetSetEntries(page, _displaySet);
+        }
+
+        public int GetPageAmount()
+        {
+            return  Convert.ToInt32((_database.QueryAmount() / _displaySet));
         }
 
         /// <summary>

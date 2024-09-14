@@ -10,27 +10,44 @@
 using DatabaseFoundations;
 using DatabaseFoundations.IntegrityRelated;
 using IntegrityModule.ControlClasses;
+using IntegrityModule.DataTypes;
 using IntegrityModule.Debug;
+using IntegrityModule.IntegrityComparison;
+using IntegrityModule.Reactive;
 using Microsoft.Data.Sqlite;
 
 namespace IntegrityModule;
 
 class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         IntegrityDatabaseIntermediary databaseIntermediary = new("IntegrityDatabase", false);
         IntegrityManagement integrityModule = new IntegrityManagement(databaseIntermediary);
+
+        
         integrityModule.ClearDatabase();
-        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
-        //integrityModule.Scan(true);
-        SqliteCommand customSqliteCommand = new();
-        customSqliteCommand.CommandText = "SELECT * FROM IntegrityTrack";
-        List<List<string>> returnItem = (databaseIntermediary.QueryReaderAsText(customSqliteCommand));
-        Console.WriteLine(DebugAssist.StringListToStringDisplay(returnItem));
+        await integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\TenThousandTest", true);
+        //await integrityModule.Scan(true);
         ////integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
-        //Console.ReadLine(); // Remove when merging
-        
-        
+        Console.WriteLine("Scan");
+
+        //integrityModule.ClearDatabase();
+        //await integrityModule.AddBaseline(@"C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\COS40006 Computing Technology Project B\\TestingGround\\HundredIntegrityFiles");
+
+        // Test Start
+        //integrityModule.ClearDatabase();
+        ////bool TestCheck = await databaseIntermediary.AddEntry(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", 100);
+        ////Console.WriteLine(TestCheck);
+        //ReactiveControl reactiveControl = new(databaseIntermediary, new IntegrityCycler(databaseIntermediary, new Alerts.ViolationHandler()));
+        ////Console.WriteLine(itemReturn);
+        //reactiveControl.Initialize();
+        SqliteCommand commandTest = new();
+        commandTest.CommandText = "SELECT * FROM IntegrityTrack";
+        string output = DebugAssist.StringListToStringDisplay(databaseIntermediary.QueryReaderAsText(commandTest));
+        Console.WriteLine(output);
+        Console.ReadLine(); // Remove when merging
+
+
     }
 }

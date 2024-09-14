@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "u3PBOEKqGoo=",
+  "dgSpecHash": "bE0VqVgdAgc=",
   "success": true,
   "projectFilePath": "E:\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Alerts\\AlertsPoC\\AlertsPoC\\AlertsPoC.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Zach\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\Zach\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512"
+  ],
   "logs": []
 }
