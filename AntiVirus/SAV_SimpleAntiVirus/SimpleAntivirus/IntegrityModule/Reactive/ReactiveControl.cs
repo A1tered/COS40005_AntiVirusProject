@@ -62,10 +62,13 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             if (_reactiveInitialized)
             {
                 System.Diagnostics.Debug.WriteLine($"Attempted Event Connection: {path}");
-                FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
-                fileWatcherTemp.EnableRaisingEvents = true;
-                fileWatcherTemp.Changed += IndividualScanEventHandler;
-                _fileWatcherList.Add(fileWatcherTemp);
+                if (Path.Exists(path))
+                {
+                    FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
+                    fileWatcherTemp.EnableRaisingEvents = true;
+                    fileWatcherTemp.Changed += IndividualScanEventHandler;
+                    _fileWatcherList.Add(fileWatcherTemp);
+                }
             }
         }
 
