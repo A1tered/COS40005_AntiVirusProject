@@ -93,7 +93,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                             // Progress calculation here
                             setProgressArg = new();
                             // Percentage of tasks left.
-                            setProgressArg.Progress = ((taskAmountComplete) / (float)initialTaskAmount) * 100;
+                            setProgressArg.Progress = Math.Round(((taskAmountComplete) / (float)initialTaskAmount) * 100, 2);
                             setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
                             ProgressUpdate?.Invoke(this, setProgressArg);
                         }
@@ -119,6 +119,10 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         {
             IntegrityDataPooler singlePooler = new(_database, path);
             IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
+            if (violation != null)
+            {
+                await _violationHandler.ViolationAlert(violation);
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             //Debug.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();
