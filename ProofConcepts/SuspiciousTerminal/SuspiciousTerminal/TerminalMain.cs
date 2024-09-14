@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Net.NetworkInformation;
 using Microsoft.Data.Sqlite;
 using DatabaseFoundations;
+using System.Threading;
 class Program
 {
 
@@ -22,14 +23,13 @@ class Program
     //-------------------------------------------------------------------------------------------------------------------------
 
 
-    static Task Main(string[] args)
+    static void Main(string[] args)
     {
-
-        //Initialise();
 
         while (true)
         {
             CheckRemoteConnections();
+            Thread.Sleep(10);
         }
 
       
@@ -53,33 +53,15 @@ class Program
 
     static void CheckRemoteConnections()
     {
-        // This method will check and record any remote sessions, SSH, Telnet etc.
-        // Alert if network connection found. 
-        //If time, offer option to block remote connection.
+        var activeTcpConnections = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections();
 
-        var ActiveTcpConnections = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections();
-        //Get all active TCP Connections, store each object  in an array. 
-
-        int[] PortsOfInterest = { 22, 23};
-        //Used later to tell the checker, which ports to monitor. We are only monitoring ssh and tcp connections. Most common ports being 22 and 23.
-
-        var remoteConnections = ActiveTcpConnections.Where(connection => PortsOfInterest.Contains(connection.RemoteEndPoint.Port) && connection.State == TcpState.Established).ToList();
-        //Checks each connection object, imports ports to monitor via "PortsOfInterest", compares those values to the connection object port value. Adds objects that match to the list variable "RemoteConnections"
-
-
-        if (remoteConnections.Any())
+        Console.WriteLine("All active TCP connections:");
+        foreach (var connection in activeTcpConnections)
         {
-            Console.WriteLine("Remote connections detected:");
-            foreach (var connection in remoteConnections)
-            {
-                Console.WriteLine($"Remote Address: {connection.RemoteEndPoint.Address}, Port: {connection.RemoteEndPoint.Port}");
-            }
-        }
-        else
-        {
-            Console.WriteLine("No remote SSH or Telnet connections detected.");
+            Console.WriteLine($"Local: {connection.LocalEndPoint.Address}:{connection.LocalEndPoint.Port} -> Remote: {connection.RemoteEndPoint.Address}:{connection.RemoteEndPoint.Port}, State: {connection.State}");
         }
     }
+
 
 
     static void Initialise()
