@@ -29,18 +29,20 @@ namespace SimpleAntivirus.FileHashScanning
         private ProgressTracker _progressTracker;
         public AlertManager AlertManager;
         public EventBus EventBus;
+        public CancellationToken Token;
 
-        public FileHashScanner(AlertManager alertManager ,EventBus eventBus)
+        public FileHashScanner(AlertManager alertManager, EventBus eventBus, CancellationToken token)
         {
             EventBus = eventBus;
             AlertManager = alertManager;
+            Token = token;
         }
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        public async Task Scan(string scanType, CancellationToken cancellationToken)
+        public async Task Scan(string scanType)
         {
             await Task.Run(async () =>
             {
@@ -65,7 +67,8 @@ namespace SimpleAntivirus.FileHashScanning
 
                 foreach (string directorySearch in directories)
                 {
-                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this);
+                    Token.ThrowIfCancellationRequested();
+                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
                     await splitprocessInstance.fillUpSearch(directorySearch);
                     await splitprocessInstance.SearchDirectory(this);
                 }

@@ -17,6 +17,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
     {
         private readonly AlertManager _alertManager;
         private readonly EventBus _eventBus;
+        private readonly CancellationToken _token;
         private FileHashScanner _fileHashScanner;
         private CancellationTokenSource _cancellationTokenSource;
         public ScannerViewModel ViewModel { get; }
@@ -38,24 +39,32 @@ namespace SimpleAntivirus.GUI.Views.Pages
             {
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
                 _cancellationTokenSource = new CancellationTokenSource();
-                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus);
+                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus, _cancellationTokenSource.Token);
 
                 if (QuickScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("quick", _cancellationTokenSource.Token);
+                    await _fileHashScanner.Scan("quick");
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("full", _cancellationTokenSource.Token);
+                    await _fileHashScanner.Scan("full");
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("custom", _cancellationTokenSource.Token);
+                    await _fileHashScanner.Scan("custom");
                 }
                 else
                 {
                     // No scan option selected.
                 }
+            }
+            catch (OperationCanceledException)
+            {
+                System.Windows.MessageBox.Show("Scan cancelled.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"An error occurred: {ex.Message}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

@@ -22,11 +22,13 @@ namespace SimpleAntivirus.FileHashScanning
         private string _databaseDirectory;
         private readonly EventBus _eventBus;
         private readonly AlertManager _alertManager;
+        private readonly CancellationToken _token;
 
-        public Hunter(string directoryToScan, string databaseDirectory)
+        public Hunter(string directoryToScan, string databaseDirectory, CancellationToken token)
         {
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
+            _token = token;
             _hasher = new Hasher();
         }
 
@@ -44,6 +46,10 @@ namespace SimpleAntivirus.FileHashScanning
 
                     foreach (string file in files)
                     {
+                        if (_token.IsCancellationRequested)
+                        {
+                            _token.ThrowIfCancellationRequested();
+                        }
                         Debug.WriteLine($"Current file: {file}");
                         FileInfo fileInfo = new FileInfo(file);
                         scanner.UpdateSize(fileInfo.Length);
@@ -70,7 +76,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     _databaseConnection.CleanUp();
                 }
-            });
+            }, scanner.Token);
         }
 
         private async void Violation(FileHashScanner scanner, string fileDirectory)
