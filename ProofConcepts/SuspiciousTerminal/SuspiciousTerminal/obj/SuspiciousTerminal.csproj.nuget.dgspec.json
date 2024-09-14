@@ -52,6 +52,10 @@
             "Microsoft.Diagnostics.Tracing.TraceEvent": {
               "target": "Package",
               "version": "[3.1.15, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

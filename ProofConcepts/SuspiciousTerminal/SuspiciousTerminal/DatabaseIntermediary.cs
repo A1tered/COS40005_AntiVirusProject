@@ -4,7 +4,7 @@
  * Description: The parent class for all database readers, provides infrastructure to maintain a connection along with queries.
  * Last Modified: 6/08/2024
  * Libraries:   [Location Libraries / Dependencies]
- **************************************************************************/
+ **************************************************************************
 
 
 using System;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.IO;
-using DatabaseFoundations.IntegrityRelated;
+//using DatabaseFoundations.IntegrityRelated;
 
 namespace DatabaseFoundations
 {
@@ -190,3 +190,4 @@ namespace DatabaseFoundations
         }
     }
 }
+*/
