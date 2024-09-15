@@ -25,8 +25,13 @@ namespace SimpleAntivirus.Models
             _integManage = integManage;
             _recentViolationList = new();
             _integManage.EventSocket = eventbus;
+            // What starts the reactive part of IntegrityManagement
         }
 
+        public async Task<bool> StartReactiveControl()
+        {
+           return await _integManage.StartReactiveControl();
+        }
         public List<IntegrityViolation> RecentViolationList
         {
             get
@@ -48,6 +53,11 @@ namespace SimpleAntivirus.Models
         public async Task<bool> AddPath(string path)
         {
             return await _integManage.AddBaseline(path);
+        }
+
+        public bool ClearDatabase()
+        {
+            return _integManage.ClearDatabase();
         }
 
         public Dictionary<string, string> GetPageSet(int page)

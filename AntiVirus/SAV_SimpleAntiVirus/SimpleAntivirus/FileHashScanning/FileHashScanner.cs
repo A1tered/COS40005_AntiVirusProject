@@ -29,18 +29,20 @@ namespace SimpleAntivirus.FileHashScanning
         private ProgressTracker _progressTracker;
         public AlertManager AlertManager;
         public EventBus EventBus;
+        public CancellationToken Token;
 
-        public FileHashScanner(AlertManager alertManager ,EventBus eventBus)
+        public FileHashScanner(AlertManager alertManager, EventBus eventBus, CancellationToken token)
         {
             EventBus = eventBus;
             AlertManager = alertManager;
+            Token = token;
         }
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
         static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
 
-        public async Task Scan(string scanType)
+        public async Task Scan(string scanType, List<string> customScanDirs)
         {
             await Task.Run(async () =>
             {
@@ -48,7 +50,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory"]);
+                    directories.AddRange([$"C:\\TestDirectory","C:\\Users\\CardmanOfficial\\AppData"]);
                 }
                 else if (scanType == "full")
                 {
@@ -60,12 +62,24 @@ namespace SimpleAntivirus.FileHashScanning
                 }
                 else if (scanType == "custom")
                 {
-                    Debug.WriteLine("Not implemented");
+                    if (customScanDirs != null && customScanDirs.Count > 0)
+                    {
+                        foreach(string dir in customScanDirs)
+                        {
+                            Debug.WriteLine($"Currently added dir: {dir}");
+                            directories.Add(dir);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
 
                 foreach (string directorySearch in directories)
                 {
-                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this);
+                    Token.ThrowIfCancellationRequested();
+                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
                     await splitprocessInstance.fillUpSearch(directorySearch);
                     await splitprocessInstance.SearchDirectory(this);
                 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace SimpleAntivirus.Alerts;
 public class AlertManager
@@ -15,8 +16,8 @@ public class AlertManager
     private long _violationAmountTimeTracker;
     // How long to supress violations.
     private long _violationTimeFrame;
-    Dictionary<string, int> _violationIncidents;
-    Dictionary<string, long> _aggregateViolationTimeSent;
+    ConcurrentDictionary<string, int> _violationIncidents;
+    ConcurrentDictionary<string, long> _aggregateViolationTimeSent;
     public AlertManager()
     {
         _violationAmountTimeFrame = 60;

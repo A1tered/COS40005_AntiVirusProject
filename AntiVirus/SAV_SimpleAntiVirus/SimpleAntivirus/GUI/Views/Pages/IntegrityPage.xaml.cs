@@ -31,16 +31,20 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private bool _adding;
         public IntegrityPage(IntegrityViewModel integViewModel)
         {
+
             ViewModel = integViewModel;
             DataContext = integViewModel;
             InitializeComponent();
             _adding = false;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // What to load...
             UpdateEntries();
+            // TODO: Move this into an initialisation section of some kind.
+            // Ideally we want to call this when the program starts, will need to investigate
+            bool returnResult = await ViewModel.ReactiveStart();
         }
 
         // Updates data to be loaded onto the table.
@@ -160,24 +164,34 @@ namespace SimpleAntivirus.GUI.Views.Pages
             if (DataShow.SelectedItem != null)
             {
                 List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
+                int allItemCount = DataShow.Items.Count;
                 string infoText = "";
-                List<string> selectedDirectories = new();
-                if (selectedItems.Count() == 1)
+                if (!(allItemCount == selectedItems.Count))
                 {
-                    infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                    ViewModel.AllSelected = false;
+                    List<string> selectedDirectories = new();
+                    if (selectedItems.Count() == 1)
+                    {
+                        infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                    }
+                    else
+                    {
+                        infoText = $"Selected: {selectedItems.Count()} Items";
+                    }
+                    foreach (DataRow datarowItem in selectedItems)
+                    {
+                        selectedDirectories.Add(datarowItem.HiddenDirectory);
+                    }
+                    // Remove final comma.
+                    infoText.Remove(infoText.Length - 1, 1);
+                    ViewModel.PathSelected = selectedDirectories;
                 }
                 else
                 {
-                    infoText = $"Selected: {selectedItems.Count()} Items";
+                    infoText = "All Items Selected";
+                    ViewModel.AllSelected = true;
                 }
-                foreach (DataRow datarowItem in selectedItems)
-                {
-                    selectedDirectories.Add(datarowItem.HiddenDirectory);
-                }
-                // Remove final comma.
-                infoText.Remove(infoText.Length - 1, 1);
                 SelectLabel.Text = infoText;
-                ViewModel.PathSelected = selectedDirectories;
             }
             else
             {
@@ -212,7 +226,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else
                 {
-                    ViolationNote.Foreground = null;
+                    ViolationNote.ClearValue(TextBlock.ForegroundProperty);
                     ViolationNote.Text = "No Violations Found";
                 }
             }

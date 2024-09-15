@@ -28,13 +28,15 @@ namespace SimpleAntivirus.ViewModels.Pages
     public partial class IntegrityViewModel : ObservableObject, INotifyPropertyChanged
     {
         public IntegrityHandlerModel integHandlerModel { get; set; }
-        public string _progressDefiner;
-        public string _progressInfo;
-        public bool _scanInUse;
+        private string _progressDefiner;
+        private string _progressInfo;
+        private bool _scanInUse;
         // Config section
         private ObservableCollection<DataRow> _datasetDirHash;
-        public List<string> _pathSelected;
-        public int _truncateString;
+        private List<string> _pathSelected;
+        private bool _allSelected;
+
+        private int _truncateString;
         private string _addProgress;
 
         public IntegrityViewModel(IntegrityHandlerModel model)
@@ -43,11 +45,15 @@ namespace SimpleAntivirus.ViewModels.Pages
             // We link the property change event inside the Model, so we can propagate the changes upwards. (Probably not ideal to do
             // this but I cannot be bothered with a different approach.
             integHandlerModel.IntegrityManagement.PropertyChanged += HandleInnerPropertyChange;
+
             _progressDefiner = "";
             _progressInfo = "";
             _scanInUse = false;
+            // Whether all directories are selected for deletion.
+            _allSelected = false;
             integHandlerModel.IntegrityManagement.PropertyChanged += AddProgressHandler;
             _datasetDirHash = new();
+            // How much to truncate directories.
             _truncateString = 40;
             _addProgress = "";
         }
@@ -132,6 +138,11 @@ namespace SimpleAntivirus.ViewModels.Pages
 
         }
 
+        public async Task<bool> ReactiveStart()
+        {
+            return await integHandlerModel.StartReactiveControl();
+        }
+
         public int DeleteItem()
         {
             // Mishap, has one item failed to be deleted?
@@ -139,23 +150,32 @@ namespace SimpleAntivirus.ViewModels.Pages
             bool returnInfo = false;
             if (_pathSelected != null)
             {
-                foreach (string pathGet in _pathSelected)
+                if (!_allSelected)
                 {
-                    returnInfo = integHandlerModel.DeleteDirectory(pathGet);
-                    if (!returnInfo)
+
+
+                    foreach (string pathGet in _pathSelected)
                     {
-                        mishap = true;
+                        returnInfo = integHandlerModel.DeleteDirectory(pathGet);
+                        if (!returnInfo)
+                        {
+                            mishap = true;
+                        }
                     }
+                    if (returnInfo)
+                    {
+                        if (mishap)
+                        {
+                            return 3;
+                        }
+                        return 2;
+                    }
+                    return 1;
                 }
-                if (returnInfo)
+                else
                 {
-                    if (mishap)
-                    {
-                        return 3;
-                    }
-                    return 2;
+                    return integHandlerModel.ClearDatabase() ? 2 : 1  ;
                 }
-                return 1;
             }
             else
             {
@@ -226,6 +246,18 @@ namespace SimpleAntivirus.ViewModels.Pages
             if (args.PropertyName == "AddProgress")
             {
                 AddProgress = $"{Math.Round(integHandlerModel.IntegrityManagement.AddProgress, 2)}%";
+            }
+        }
+
+        public bool AllSelected
+        {
+            get
+            {
+                return _allSelected;
+            }
+            set
+            {
+                _allSelected = value;
             }
         }
 

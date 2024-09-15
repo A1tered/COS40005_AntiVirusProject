@@ -8,7 +8,7 @@ namespace SimpleAntivirus.IntegrityModule.DataTypes
 {
     public class ProgressArgs : EventArgs
     {
-        public float Progress { get; set; }
+        public double Progress { get; set; }
         public string ProgressInfo { get; set; } = "";
     }
 }

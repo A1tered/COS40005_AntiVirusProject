@@ -28,8 +28,8 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;
         private ReactiveControl _reactiveControl;
-        private float _progress;
-        private float _addProgress;
+        private double _progress;
+        private double _addProgress;
         private string _progressInfo;
         private EventBus _eventbus;
         public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
@@ -44,9 +44,9 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             _progressInfo = "";
         }
 
-        public void StartReactiveControl()
+        public async Task<bool> StartReactiveControl()
         {
-            _reactiveControl.Initialize();
+            return await Task.Run(() => _reactiveControl.Initialize());
         }
 
         private async void AlertHandler(object? sender, AlertArgs alertInfo)
@@ -93,7 +93,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             if (success)
             {
                 // If integrity items were successfully added, then add to reactive control. (As it was not initialized with the database).
-                _reactiveControl.Add(path);
+                await _reactiveControl.Add(path);
             }
             return success;
         }
@@ -105,6 +105,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool RemoveBaseline(string path)
         {
+            _reactiveControl.Remove(path);
             return _integrityConfigurator.RemoveIntegrityDirectory(path);
         }
 
@@ -115,6 +116,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool ClearDatabase()
         {
+            _reactiveControl.RemoveAll();
             return _integrityConfigurator.RemoveAll();
         }
 
@@ -142,7 +144,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             //Console.Write("\r");
         }
 
-        public float AddProgress
+        public double AddProgress
 
         {
             get
@@ -156,7 +158,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             }
         }
 
-        public float Progress
+        public double Progress
 
         {
             get

@@ -35,21 +35,26 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
 
         public bool Initialize()
         {
-            _reactiveInitialized = true;
-            System.Diagnostics.Debug.WriteLine("Reactive Control Initialization");
-            long amountEntry = _intermediaryDB.QueryAmount();
-            decimal divison = (decimal)amountEntry / 100;
-            int sets = Convert.ToInt32(Math.Ceiling(divison));
-            Dictionary<string, string> DirHashDirectory = new();
-            for (int iterator = 0; iterator < sets; iterator++)
+            // Only initialise if havent before
+            if (_reactiveInitialized == false)
             {
-                DirHashDirectory = _intermediaryDB.GetSetEntries(iterator, 100);
-                foreach (KeyValuePair<string, string> dirHash in DirHashDirectory)
+                _reactiveInitialized = true;
+                System.Diagnostics.Debug.WriteLine("Reactive Control Initialization");
+                long amountEntry = _intermediaryDB.QueryAmount();
+                decimal divison = (decimal)amountEntry / 100;
+                int sets = Convert.ToInt32(Math.Ceiling(divison));
+                Dictionary<string, string> DirHashDirectory = new();
+                for (int iterator = 0; iterator < sets; iterator++)
                 {
-                    SetUpFileWatcher(dirHash.Key);
+                    DirHashDirectory = _intermediaryDB.GetSetEntries(iterator, 100);
+                    foreach (KeyValuePair<string, string> dirHash in DirHashDirectory)
+                    {
+                        SetUpFileWatcher(dirHash.Key);
+                    }
                 }
+                return true;
             }
-            return true;
+            return false;
         }
 
         private void SetUpFileWatcher(string path)
@@ -57,26 +62,46 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             if (_reactiveInitialized)
             {
                 System.Diagnostics.Debug.WriteLine($"Attempted Event Connection: {path}");
-                FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
-                fileWatcherTemp.EnableRaisingEvents = true;
-                fileWatcherTemp.Changed += IndividualScanEventHandler;
-                _fileWatcherList.Add(fileWatcherTemp);
+                if (Path.Exists(path))
+                {
+                    FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
+                    fileWatcherTemp.EnableRaisingEvents = true;
+                    fileWatcherTemp.Changed += IndividualScanEventHandler;
+                    _fileWatcherList.Add(fileWatcherTemp);
+                }
             }
         }
 
-        private void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
+        private async void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
         {
-            System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
-            _integrityCycler.InitiateSingleScan(eventArguments.FullPath);
+            //System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
+            await _integrityCycler.InitiateSingleScan(eventArguments.FullPath);
         }
 
-        public void Add(string path)
+        public async Task Add(string path)
         {
             List<string> pathsToAdd = FileInfoRequester.PathCollector(path);
-            foreach (string pathItem in pathsToAdd)
+            await Task.Run(() =>
             {
-                SetUpFileWatcher(pathItem);
+                foreach (string pathItem in pathsToAdd)
+                {
+                    SetUpFileWatcher(pathItem);
+                }
+            });
+        }
+
+        public void Remove(string path)
+        {
+            foreach (FileSystemWatcher fileWatcher in _fileWatcherList)
+            {
+                // Remove all file watchers that equal given path.
+                _fileWatcherList.RemoveAll(x => x.Path == path);
             }
+        }
+
+        public void RemoveAll()
+        {
+            _fileWatcherList.Clear();
         }
     }
 }
