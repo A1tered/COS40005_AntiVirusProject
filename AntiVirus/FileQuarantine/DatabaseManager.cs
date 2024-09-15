@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
@@ -7,14 +8,28 @@ public class DatabaseManager : IDatabaseManager
 {
     private readonly string _connectionString;
 
-    // Constructor initializes the database connection string and ensures tables are created
+    /// <summary>
+    /// Constructor for DatabaseManager. Initializes the database connection string.
+    /// Ensures the database directory and file are created if they do not exist.
+    /// </summary>
+    /// <param name="databasePath">The path to the SQLite database file.</param>
     public DatabaseManager(string databasePath)
     {
+        // Ensure the directory exists before proceeding
+        string directory = Path.GetDirectoryName(databasePath);
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+            Console.WriteLine($"Database directory created at {directory}");
+        }
+
         _connectionString = $"Data Source={databasePath}";
         InitializeDatabase();
     }
 
-    // Ensures the quarantine and whitelist tables are created in the database
+    /// <summary>
+    /// Initializes the SQLite database by creating the necessary tables if they do not exist.
+    /// </summary>
     private void InitializeDatabase()
     {
         try
@@ -54,12 +69,16 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle any database initialization errors
+            // Log any errors encountered during database initialization
             Console.WriteLine($"Error initializing database: {ex.Message}");
         }
     }
 
-    // Checks if a file is whitelisted by querying the database
+    /// <summary>
+    /// Checks if a file is whitelisted by querying the database.
+    /// </summary>
+    /// <param name="filePath">The full path of the file to check.</param>
+    /// <returns>True if the file is whitelisted, otherwise false.</returns>
     public async Task<bool> IsWhitelistedAsync(string filePath)
     {
         try
@@ -81,13 +100,15 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while checking whitelist status
             Console.WriteLine($"Error checking whitelist status: {ex.Message}");
             return false;
         }
     }
 
-    // Adds a file to the whitelist by inserting its path into the database
+    /// <summary>
+    /// Adds a file to the whitelist by inserting its path into the database.
+    /// </summary>
+    /// <param name="filePath">The full path of the file to add to the whitelist.</param>
     public async Task AddToWhitelistAsync(string filePath)
     {
         try
@@ -110,12 +131,14 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while adding to the whitelist
             Console.WriteLine($"Error adding to whitelist: {ex.Message}");
         }
     }
 
-    // Removes a file from the whitelist by deleting its path from the database
+    /// <summary>
+    /// Removes a file from the whitelist by deleting its path from the database.
+    /// </summary>
+    /// <param name="filePath">The full path of the file to remove from the whitelist.</param>
     public async Task RemoveFromWhitelistAsync(string filePath)
     {
         try
@@ -138,12 +161,14 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while removing from the whitelist
             Console.WriteLine($"Error removing from whitelist: {ex.Message}");
         }
     }
 
-    // Retrieves all whitelisted files from the database
+    /// <summary>
+    /// Retrieves all whitelisted files from the database.
+    /// </summary>
+    /// <returns>A list of file paths that are whitelisted.</returns>
     public async Task<IEnumerable<string>> GetWhitelistAsync()
     {
         var whitelist = new List<string>();
@@ -172,14 +197,17 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while retrieving whitelist
             Console.WriteLine($"Error retrieving whitelist: {ex.Message}");
         }
 
         return whitelist;
     }
 
-    // Stores information about a quarantined file in the database
+    /// <summary>
+    /// Stores information about a quarantined file in the database.
+    /// </summary>
+    /// <param name="quarantinedFilePath">The path where the file is quarantined.</param>
+    /// <param name="originalFilePath">The original path of the file before quarantining.</param>
     public async Task StoreQuarantineInfoAsync(string quarantinedFilePath, string originalFilePath)
     {
         try
@@ -207,12 +235,14 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while storing quarantine information
             Console.WriteLine($"Error storing quarantine information: {ex.Message}");
         }
     }
 
-    // Removes a quarantine entry from the database by its ID
+    /// <summary>
+    /// Removes a quarantine entry from the database by its ID.
+    /// </summary>
+    /// <param name="id">The ID of the quarantined file entry to remove.</param>
     public async Task RemoveQuarantineEntryAsync(int id)
     {
         try
@@ -235,12 +265,15 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while removing quarantine entry
             Console.WriteLine($"Error removing quarantine entry: {ex.Message}");
         }
     }
 
-    // Retrieves a quarantined file by its ID from the database
+    /// <summary>
+    /// Retrieves the quarantine details of a file by its ID.
+    /// </summary>
+    /// <param name="id">The ID of the quarantined file.</param>
+    /// <returns>A tuple containing the quarantined file's path and its original location, or null if not found.</returns>
     public async Task<(string QuarantinedFilePath, string OriginalFilePath)?> GetQuarantinedFileByIdAsync(int id)
     {
         try
@@ -267,14 +300,16 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while retrieving quarantined file information
             Console.WriteLine($"Error retrieving quarantined file: {ex.Message}");
         }
 
         return null;
     }
 
-    // Retrieves all quarantined files from the database
+    /// <summary>
+    /// Retrieves all quarantined files from the database.
+    /// </summary>
+    /// <returns>A list of all quarantined files, including their IDs, quarantined paths, and original paths.</returns>
     public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync()
     {
         var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath)>();
@@ -306,7 +341,6 @@ public class DatabaseManager : IDatabaseManager
         }
         catch (Exception ex)
         {
-            // Handle errors while retrieving all quarantined files
             Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
         }
 
