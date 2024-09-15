@@ -1,20 +1,22 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.ViewModels.Pages;
+using SimpleAntivirus.Models;
+using SimpleAntivirus.Alerts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SimpleAntivirus.GUI.Services;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
-using SimpleAntivirus.ViewModels.Pages;
-using SimpleAntivirus.Models;
-using SimpleAntivirus.Alerts;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Wpf.Ui.Appearance;
+using SimpleAntivirus.FileQuarantine;
+using Windows.Devices.WiFiDirect.Services;
 
 namespace SimpleAntivirus
 {

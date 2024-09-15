@@ -3,13 +3,16 @@ using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.FileQuarantine;
 using Wpf.Ui.Controls;
 using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.IO;
 using Microsoft.Win32;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -19,6 +22,9 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private readonly EventBus _eventBus;
         private readonly CancellationToken _token;
         private FileHashScanner _fileHashScanner;
+        private QuarantineManager _quarantineManager;
+        private FileMover _fileMover;
+        private IDatabaseManager _databaseManager;
         private CancellationTokenSource _cancellationTokenSource;
         private List<string> _customList;
         public ScannerViewModel ViewModel { get; }
@@ -31,7 +37,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
             ViewModel = viewModel;
             _alertManager = alertManager;
             _eventBus = eventBus;
+            _fileMover = new FileMover();
+            _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
             _customList = new List<string>();
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\TestQuarantineDirectory");
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
@@ -41,7 +50,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             {
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
                 _cancellationTokenSource = new CancellationTokenSource();
-                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus, _cancellationTokenSource.Token);
+                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus, _cancellationTokenSource.Token, _quarantineManager);
 
                 if (QuickScanButton.IsChecked == true)
                 {

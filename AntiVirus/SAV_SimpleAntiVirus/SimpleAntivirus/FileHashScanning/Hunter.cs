@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.FileQuarantine;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.FileHashScanning
@@ -20,8 +21,6 @@ namespace SimpleAntivirus.FileHashScanning
         private DatabaseConnector _databaseConnection;
         public Hasher _hasher;
         private string _databaseDirectory;
-        private readonly EventBus _eventBus;
-        private readonly AlertManager _alertManager;
         private readonly CancellationToken _token;
 
         public Hunter(string directoryToScan, string databaseDirectory, CancellationToken token)
@@ -67,7 +66,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
                     {
-                        // Debug.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
+                        Debug.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
                         return Tuple.Create(Array.Empty<string>(), Array.Empty<string>());
                     }
                     throw;
@@ -82,7 +81,7 @@ namespace SimpleAntivirus.FileHashScanning
         private async void Violation(FileHashScanner scanner, string fileDirectory)
         {
             await scanner.EventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {fileDirectory} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-            // Call Quarantine for fileDirectory
+            await scanner.QuarantineManager.QuarantineFileAsync(fileDirectory);
         }
 
         public bool CompareCycle(string fileDirectory)
