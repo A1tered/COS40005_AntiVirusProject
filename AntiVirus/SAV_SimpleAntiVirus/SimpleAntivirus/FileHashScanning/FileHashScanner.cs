@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Controls;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.FileQuarantine;
 
 
 /// <summary>
@@ -30,12 +31,14 @@ namespace SimpleAntivirus.FileHashScanning
         public AlertManager AlertManager;
         public EventBus EventBus;
         public CancellationToken Token;
+        public QuarantineManager QuarantineManager;
 
-        public FileHashScanner(AlertManager alertManager, EventBus eventBus, CancellationToken token)
+        public FileHashScanner(AlertManager alertManager, EventBus eventBus, CancellationToken token, QuarantineManager quarantineManager)
         {
             EventBus = eventBus;
             AlertManager = alertManager;
             Token = token;
+            QuarantineManager = quarantineManager;
         }
 
         static DirectoryManager directoryManager = new DirectoryManager();
@@ -50,7 +53,7 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory","C:\\Users\\CardmanOfficial\\AppData"]);
+                    directories.AddRange([$"C:\\TestDirectory"]);
                 }
                 else if (scanType == "full")
                 {
