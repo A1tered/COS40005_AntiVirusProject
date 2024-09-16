@@ -1,173 +1,282 @@
 ﻿/**************************************************************************
  * Author:      Timothy Loh
- * Description: Main monitoring of CLI inputs. 
- * - Behaviour of keyboard inputs
- * - Behaviour of mouse movements
+ * Description: Main monitoring of CLI inputs (Registry read, write, create).
  * Last Modified: 11/08/24
  **************************************************************************/
 
-
 using System;
+using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
-using System.Linq;
+using System.Management;  // Needed for getting the parent PID
+using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using DatabaseProofOfConcept;
-
+using Microsoft.Diagnostics.Tracing;
+using Microsoft.Diagnostics.Tracing.Parsers;
+using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
+using Microsoft.Diagnostics.Tracing.Session;
 
 class Program
 {
-    public delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
+    // ManualResetEvent to keep the application running
+    static ManualResetEvent _quitEvent = new ManualResetEvent(false);
 
-    // The hook ID and the hook procedure callback
-    private static IntPtr _hookID = IntPtr.Zero;
-    private static LowLevelMouseProc _proc = HookCallback;
+    // Variable to keep track of total events checked
+    static int totalEventsChecked = 0;
 
-    // P/Invoke declarations for hook-related functions
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelMouseProc lpfn, IntPtr hMod, uint dwThreadId);
+    // Dictionary to track registry paths and event counts
+    static Dictionary<string, RegistrySummary> registrySummary = new Dictionary<string, RegistrySummary>();
 
-    [DllImport("user32.dll", SetLastError = true)]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+    // Specific PID to monitor (set to 12496 for example)
+    static int targetPid = 12496;
 
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
-
-    
-    
-    //-------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-    static async Task Main(string[] args)
+    static void Main()
     {
-        //Variable will hold the state of any foreign network connections. If checks determine a remote connection is occuring, Value is changed to True.
-       // bool TerminalNetworkConnection = false;
+        Console.WriteLine("Program started.");
 
-        Initialise();
-        await MonitorCLIAsync();
-        //"await" "async" and "task" is part of asynchornous programming
-        // "async" defines this method as asynchornous
-        //"Await" defines the process that is to be waited on. The control goes back to the controller, so whoever called this method. 
-        // "task" defines that output.
+        string sessionName = "RegistryMonitorSession";
+        TraceEventSession session = null;
 
-        
-
-        await MonitorMouseMovements();
-    }
-
-    
-    static async Task MonitorMouseMovements()
-    {
-        // Set the mouse hook
-        _hookID = SetWindowsHookEx(14, _proc, IntPtr.Zero, 0);
-        Console.WriteLine("Monitoring mouse movements. Press Ctrl+C to exit...");
-
-        // Start asynchronous monitoring
-        await MonitorMouseMovementsAsync();
-    }
-
-    private static async Task MonitorMouseMovementsAsync()
-    {
-        // Continuously run to keep the hook active
-        while (true)
+        try
         {
-            await Task.Delay(100); // Introduce a small delay to prevent high CPU usage
-        }
-    }
-    private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
-    {
-        if (nCode >= 0 && (int)wParam == 0x0200) // WM_MOUSEMOVE
-        {
-            // Retrieve mouse coordinates from lParam
-            int x = Marshal.ReadInt32(lParam);
-            int y = Marshal.ReadInt32(lParam, 4);
-            Console.WriteLine($"X = {x}, Y = {y}");
-        }
-        return CallNextHookEx(_hookID, nCode, wParam, lParam);
-    }
-
-
-
-
-    static async Task MonitorCLIAsync()
-    {
-        //Because this is always monitoring, the while loop never ends. Thanks to async programming, this does not hold up the rest of the code.
-        while (true)
-        {
-            // Get all processes that are named "cmd" or "powershell"
-            var processes = Process.GetProcesses()
-                                   .Where(p => p.ProcessName.Equals("cmd", StringComparison.OrdinalIgnoreCase) ||p.ProcessName.Equals("powershell", StringComparison.OrdinalIgnoreCase) ||p.ProcessName.Equals("pwsh", StringComparison.OrdinalIgnoreCase)).ToList();
-
-            foreach (var process in processes)
+            // Create the session without 'using' to control disposal manually
+            session = new TraceEventSession(sessionName)
             {
-                // Log the process details
-                DetectedTerminalisRunning(process);
+                StopOnDispose = true
+            };
+
+            // Enable Kernel Providers for registry-related events
+            session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
+
+            Console.WriteLine($"Kernel providers enabled successfully. Monitoring PID: {targetPid}");
+        }
+        catch (Exception ex)
+        {
+            // If session initialization fails, do not proceed
+            Console.WriteLine($"Error initializing session: {ex.Message}");
+            return;
+        }
+
+        Console.WriteLine("Listening for registry events...");
+
+        // Start continuous task to output the analysis every 5 seconds
+        Task.Run(async () =>
+        {
+            while (!_quitEvent.WaitOne(0))
+            {
+                await Task.Delay(5000);  // Wait for 5 seconds
+                OutputSummary();
+            }
+        });
+
+        // Subscribe only to specific registry events
+        session.Source.Kernel.RegistrySetValue += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Set Value");
+        };
+
+        session.Source.Kernel.RegistryOpen += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Open Key");
+        };
+
+        session.Source.Kernel.RegistryCreate += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Create Key");
+        };
+
+        session.Source.Kernel.RegistryDelete += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Delete Key");
+        };
+
+        session.Source.Kernel.RegistryQueryValue += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Query Value");
+        };
+
+        // Start processing events in a background task
+        Task.Run(() =>
+        {
+            try
+            {
+                Console.WriteLine("Processing events...");
+                session.Source.Process();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in event processing: {ex.Message}");
+            }
+        });
+
+        // Keep the application running until the user presses Ctrl+C
+        Console.CancelKeyPress += (sender, e) =>
+        {
+            e.Cancel = true;
+            _quitEvent.Set();
+        };
+
+        Console.WriteLine("Press Ctrl+C to exit...");
+        _quitEvent.WaitOne();
+
+        // Dispose of the session when done
+        try
+        {
+            session.Dispose();
+        }
+        catch
+        {
+            // Suppress any disposal errors
+        }
+
+        Console.WriteLine("Program exiting.");
+    }
+
+    static void TrackRegistryEvent(RegistryTraceData data, string action)
+    {
+        try
+        {
+            // Increment the total events checked
+            Interlocked.Increment(ref totalEventsChecked);
+
+            // Get the process name by PID
+            string processName = GetProcessNameById(data.ProcessID);
+
+            // Filter events by target process name (powershell, cmd, pwsh)
+            if (!IsRelevantProcess(processName))
+            {
+                return;  // Ignore events not related to PowerShell or CMD
             }
 
-            await Task.Delay(5000); // Wait for 5 seconds before checking again. Delay needed to reduce hardware usage while maintaining performance
+            // Get the registry path
+            string registryPath = data.KeyName;
+
+            // If the path is already tracked, update the existing entry
+            if (registrySummary.ContainsKey(registryPath))
+            {
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+            }
+            else
+            {
+                // Add new registry path with the current action
+                registrySummary[registryPath] = new RegistrySummary(registryPath, processName);
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Suppress any errors but log them if needed for debugging
+            Console.WriteLine($"Error tracking registry event: {ex.Message}");
         }
     }
 
-    static async Task MonitorCLIkeyboardAsync()
+    // Output a summary of the events and clear the dictionary after output
+    static void OutputSummary()
     {
-        //Monitors and analyses the keyboard inputs into CLI. 
-        //This will record inputs and commands. 
+        if (registrySummary.Count > 0)
+        {
+            Console.WriteLine("\nRegistry Path Access Summary:");
+            foreach (var entry in registrySummary)
+            {
+                // Pass the targetPid when calling GetHighLevelSummary
+                Console.WriteLine(entry.Value.GetHighLevelSummary(targetPid));
+            }
 
-        //Compare inputs, mark accordingly to a criteria. 
+            // Clear the registry summary after outputting to ensure only new events are tracked
+            registrySummary.Clear();
+        }
+        else
+        {
+            Console.WriteLine("No new registry events were captured in the last 5 seconds.");
+        }
     }
 
 
-    static void DetectedTerminalisRunning(Process process)
+    // Filter relevant processes (PowerShell or CMD)
+    static bool IsRelevantProcess(string processName)
     {
-        // This method describes what the program does when it detects a cmd or powershell running
-        // It should immediately deploy windows hooks. For later implementation.
-        Console.WriteLine($"Suspicious activity detected in process: {process.ProcessName}, PID: {process.Id}, Start Time: {process.StartTime}");
+        string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
+        foreach (string relevantProcess in relevantProcesses)
+        {
+            if (processName.ToLower().Contains(relevantProcess))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    static void CheckDatabases ()
+    // Get the name of the process by PID
+    static string GetProcessNameById(int pid)
     {
-        //This method runs to check databases do exist. Mainly used on initialisation.
-
-
+        try
+        {
+            using (Process proc = Process.GetProcessById(pid))
+            {
+                return proc.ProcessName;
+            }
+        }
+        catch
+        {
+            // If the process can't be found, return null silently
+            return "N/A";
+        }
     }
- 
-    static void CheckRemoteConnections ()
+}
+
+// Class to summarize registry operations for each path
+class RegistrySummary
+{
+    public string RegistryPath { get; private set; }
+    public string ProcessName { get; private set; } // Track process name
+    public int SetValueCount { get; private set; }
+    public int OpenKeyCount { get; private set; }
+    public int CreateKeyCount { get; private set; }
+    public int DeleteKeyCount { get; private set; }
+    public int QueryValueCount { get; private set; }
+    public DateTime LastAccessTime { get; private set; } // Track the last access time for the latest event
+
+    public RegistrySummary(string registryPath, string processName)
     {
-        // This method will check and record any remote sessions, SSH, Telnet etc.
-        // Alert if network connection found. 
-        //If time, offer option to block remote connection.
-    }
-   
-    
-    static void Initialise()
-    {
-        //Create Database
-        Database TerminalDB = new Database();
-        //Mouse Table Column Names
-        String[] MouseColumnnames = { "DateTime", "XLocation", "YLocation" };
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] MouseColumnType = { "DateTime", "Int", "Int" };
-        //Create Table for Mouse Data
-        TerminalDB.CreateTable("MouseMovement", MouseColumnnames, MouseColumnType);
-
-        //Keyboard Table Column Names
-        String[] KeyboardColumnnames = { "DateTime", "Key Pressed", "Focus" };
-        //Mouse Table Column Data Types
-        //Windows mouse data from Windows Hook recieved in Point Structure, Made of X int and Y int.
-        String[] KeyboardColumnType = { "DateTime", "String", "String" };
-
-        //Create DB for Keyboard Data
-        TerminalDB.CreateTable("KeyboardEvents", KeyboardColumnnames, KeyboardColumnType);
-
-       
-
-
+        RegistryPath = registryPath;
+        ProcessName = processName;
     }
 
+    // Increment action counters and update last access time
+    public void IncrementAction(string action, DateTime eventTime, string processName)
+    {
+        LastAccessTime = eventTime;  // Update last access time on every action
+        ProcessName = processName;   // Update process name on every action (in case it changes)
+        switch (action)
+        {
+            case "Set Value":
+                SetValueCount++;
+                break;
+            case "Open Key":
+                OpenKeyCount++;
+                break;
+            case "Create Key":
+                CreateKeyCount++;
+                break;
+            case "Delete Key":
+                DeleteKeyCount++;
+                break;
+            case "Query Value":
+                QueryValueCount++;
+                break;
+        }
+    }
+
+    // Get a high-level summary of the registry path's actions
+    public string GetHighLevelSummary(int pid)
+    {
+        // First line: PID, Process Name, and Action Summary
+        string actionSummary = $"PID: {pid}, Process Name: {ProcessName}, Actions: Set Value: {SetValueCount}, Open Key: {OpenKeyCount}, " +
+                               $"Create Key: {CreateKeyCount}, Delete Key: {DeleteKeyCount}, Query Value: {QueryValueCount}";
+
+        // Second line: Time and Registry Key Path
+        string timeAndPath = $"Time: {LastAccessTime}, Registry Path: {RegistryPath}";
+
+        // Return the combined result
+        return $"{actionSummary}\n{timeAndPath}";
+    }
 }
