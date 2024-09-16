@@ -18,18 +18,10 @@
     mc:Ignorable="d">
     <StackPanel>
         <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="View the currently quarantined items and either unquarantine, whitelist or delete them." Margin="0,0,0,20"/>
-        <DataGrid x:Name="QuarantinedItemsDataGrid" Height="319" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="QuarantinedItemsDataGrid" Height="319" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="QuarantinedSelected">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Width="0.05*" Binding="{Binding IsSelected}">
-                    <DataGridCheckBoxColumn.ElementStyle>
-                        <Style TargetType="CheckBox">
-                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridCheckBoxColumn.ElementStyle>
-                </DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Original File Path" Width="*" Binding="{Binding OriginalFilePath}"/>
-                <DataGridTextColumn Header="Date Quarantined" Width="0.3*" Binding="{Binding QuarantineDate}"/>
+                <DataGridTextColumn Header="Date Quarantined" Width="0.2*" Binding="{Binding QuarantineDate}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

@@ -45,7 +45,43 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }).ToList());
 
             QuarantinedItemsDataGrid.ItemsSource = _entries;
+        }
 
+        private void QuarantinedSelected(object sender, RoutedEventArgs e)
+        {
+            if (QuarantinedItemsDataGrid.SelectedItem != null)
+            {
+                List<QuarantinedDataRow> selectedItems = QuarantinedItemsDataGrid.SelectedItems.Cast<QuarantinedDataRow>().ToList();
+                int allItemCount = QuarantinedItemsDataGrid.Items.Count;
+                string infoText = "";
+                if (!(allItemCount == selectedItems.Count) || selectedItems.Count == 1)
+                {
+                    ViewModel.AllSelected = false;
+                    List<string> selectedDirectories = new();
+                    if (selectedItems.Count() == 1)
+                    {
+                        infoText = $"Selected: {selectedItems[0].OriginalDirectory}";
+                    }
+                    else
+                    {
+                        infoText = $"Selected: {selectedItems.Count()} Items";
+                    }
+                    // Remove final comma.
+                    infoText.Remove(infoText.Length - 1, 1);
+                    ViewModel.PathSelected = selectedDirectories;
+                }
+                else
+                {
+                    infoText = $"All Items Selected ({allItemCount} Items)";
+                    ViewModel.AllSelected = true;
+                }
+                //SelectLabel.Text = infoText;
+            }
+            else
+            {
+                //SelectLabel.Text = "None Selected";
+                ViewModel.PathSelected = null;
+            }
         }
     }
 }
