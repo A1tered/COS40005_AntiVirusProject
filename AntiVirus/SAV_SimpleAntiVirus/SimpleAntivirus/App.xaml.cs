@@ -57,21 +57,29 @@ namespace SimpleAntivirus
                 services.AddSingleton<BlacklistViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+
                 services.AddSingleton<IntegrityPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();
-                services.AddSingleton<ProtectionHistoryPage>();
-                services.AddSingleton<ProtectionHistoryViewModel>();
+
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
+
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
+
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
+
                 services.AddSingleton<AlertManager>();
                 services.AddSingleton<EventBus>();
+
+                services.AddSingleton<ProtectionHistoryPage>();
+                services.AddSingleton<ProtectionHistoryViewModel>();
+                services.AddSingleton<ProtectionHistoryModel>();
+                services.AddSingleton<AlertReportPage>();
             }).Build();
 
         /// <summary>
