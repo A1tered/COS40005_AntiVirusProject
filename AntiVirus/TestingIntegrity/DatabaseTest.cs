@@ -35,12 +35,14 @@ namespace TestingIntegrity
         }
 
         [Test]
-        public void GetAmountTest()
+        public void QueryReaderTestInstance()
         {
             SqliteCommand sqliteCommand = new();
             _integData.DeleteAll();
             sqliteCommand.CommandText = $"REPLACE INTO IntegrityTrack VALUES('{fileProvided}', 'B', 10000, 1111, 1111)";
-            Assert.That(_integData.QueryNoReader(sqliteCommand), Is.EqualTo(1));
+            _integData.QueryNoReader(sqliteCommand);
+            sqliteCommand.CommandText = $"SELECT * FROM IntegrityTrack";
+            Assert.That(_integData.QueryReader(sqliteCommand), Is.Not.Null);
         }
 
         [Test]

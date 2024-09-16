@@ -1,5 +1,6 @@
 ﻿using System;
 
+namespace AlertHandler;
 public class Alert
 {
     public int Id { get; set; } // Auto-incremented ID for the database
