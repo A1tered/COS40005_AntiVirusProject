@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleAntivirus.IntegrityModule.DataRelated;
 
 namespace SimpleAntivirus.ViewModels.Pages
 {
@@ -44,7 +45,7 @@ namespace SimpleAntivirus.ViewModels.Pages
             {
                 long d = vio.TimeOfSignature;
                 DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(vio.TimeOfSignature).DateTime.ToLocalTime();
-                resultList.Add(new ResultRow(IntegrityViewModel.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
+                resultList.Add(new ResultRow(FileInfoRequester.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
             }
             return resultList;
         }

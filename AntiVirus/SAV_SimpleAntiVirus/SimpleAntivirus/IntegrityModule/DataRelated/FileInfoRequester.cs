@@ -20,6 +20,19 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
     {
 
 
+        // String is shortened eg. "Hello my name is jack" -> "...is jack"
+        public static string TruncateString(string itemCandidate, int lengthValue = 40)
+        {
+            if (itemCandidate.Length > lengthValue)
+            {
+                string redoString = "...";
+                int startPoint = itemCandidate.Length - lengthValue;
+                redoString = redoString + itemCandidate.Substring(startPoint, lengthValue);
+                return redoString;
+            }
+            return itemCandidate;
+        }
+
         public static string SizeValueToLabel(long bytes)
         {
             float byteChange = bytes;
@@ -42,6 +55,8 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
         /// if error then returns "" (empty string)
         /// if empty file then returns "empty" (notes that a file should be empty)
         /// </returns>
+        /// 
+
         public static async Task<string> HashFile(string directory)
         {
             if (Path.Exists(directory))

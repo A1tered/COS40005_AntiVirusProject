@@ -8,16 +8,31 @@
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="ProtectionHistoryPage"
     d:DataContext="{d:DesignInstance local:ProtectionHistoryPage,
-                                     IsDesignTimeCreatable=False}"
+                                   IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="DataGridCell">
+
+        </Style>
+    </Page.Resources>
     <StackPanel>
         <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="View information about past security events related to your computer."/>
-        <ui:DataGrid Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <ui:Button Content="Send Test Alert" Click="Send_Alert" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold" MouseOverBackground="#80476EE9" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <DataGrid x:Name="ProtectionHistoryDataGrid" Height="234" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataShow_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Component" Binding="{Binding Component}" Width="0.2*"/>
+                <DataGridTextColumn Header="Severity" Binding="{Binding Severity}" Width="0.2*"/>
+                <DataGridTextColumn Header="Message" Binding="{Binding TruncatedMessage}" Width="0.7*"/>
+                <DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}" Width="0.3*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2C05F2" Foreground="#E4FFFFFF" Margin="0,50,0,0" Width="188" Click="DetailsButton_Click"/>
+
+        <ui:Button Visibility="Hidden" Content="Send Test Alert" Click="Send_Alert" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold" MouseOverBackground="#80476EE9" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
     </StackPanel>
 </Page>

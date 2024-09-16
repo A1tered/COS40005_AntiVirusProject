@@ -1,4 +1,5 @@
-﻿using SimpleAntivirus.Models;
+﻿using SimpleAntivirus.IntegrityModule.DataRelated;
+using SimpleAntivirus.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,7 +37,6 @@ namespace SimpleAntivirus.ViewModels.Pages
         private List<string> _pathSelected;
         private bool _allSelected;
 
-        private int _truncateString;
         private string _addProgress;
 
         public IntegrityViewModel(IntegrityHandlerModel model)
@@ -54,7 +54,6 @@ namespace SimpleAntivirus.ViewModels.Pages
             integHandlerModel.IntegrityManagement.PropertyChanged += AddProgressHandler;
             _datasetDirHash = new();
             // How much to truncate directories.
-            _truncateString = 40;
             _addProgress = "";
         }
 
@@ -122,19 +121,6 @@ namespace SimpleAntivirus.ViewModels.Pages
                 // Lets the view know that something has changed.
                 this.PropertyChanged(this, new PropertyChangedEventArgs(""));
             }
-        }
-        // String is shortened eg. "Hello my name is jack" -> "...is jack"
-        public static string TruncateString(string itemCandidate)
-        {
-            int truncateLength = 40;
-            if (itemCandidate.Length > truncateLength)
-            {
-                string redoString = "...";
-                int startPoint = itemCandidate.Length - truncateLength;
-                redoString = redoString + itemCandidate.Substring(startPoint, truncateLength);
-                return redoString;
-            }
-            return itemCandidate;
         }
 
         public async Task<bool> ReactiveStart()
@@ -215,7 +201,7 @@ namespace SimpleAntivirus.ViewModels.Pages
                 }
                 if (decideAdd)
                 {
-                    tempDataRow.Add(new DataRow(TruncateString(set.Key), set.Value, set.Key));
+                    tempDataRow.Add(new DataRow(FileInfoRequester.TruncateString(set.Key), set.Value, set.Key));
                 }
             }
             DataEntries = tempDataRow;

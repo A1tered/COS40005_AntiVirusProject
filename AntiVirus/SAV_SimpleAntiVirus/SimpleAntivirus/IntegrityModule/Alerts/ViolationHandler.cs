@@ -40,21 +40,22 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             string message = "";
             string suggestedAction = "";
             //// Determine circumstance
+            ///
+            baseMessage.Append($"Detected Issues:");
             if (violation.Missing == false)
             {
-                baseMessage.Append($"Hash Change Detected");
+                baseMessage.Append($"\nHash Change Detected");
                 if (violation.FileSizeBytesChange != "")
                 {
                     severity = "Caution";
-                    baseMessage.Append($"Detected Changes:");
-                    baseMessage.Append($"Size Change: {violation.FileSizeBytesChange}");
+                    baseMessage.Append($"\nSize Change: {violation.FileSizeBytesChange}");
                     suggestedAction = "Check contents of file, alert IT";
                     // Major file size changes
                 }
                 else if (violation.Hash == "")
                 {
                     severity = "Warning";
-                    baseMessage.Append($"File cannot be Scanned");
+                    baseMessage.Append($"\nFile cannot be Scanned");
                     suggestedAction = "Scan again later, and raise issue with IT";
                     // Could not scan file
                 }
@@ -62,7 +63,7 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             else
             {
                 severity = "Danger";
-                baseMessage.Append($"File Missing");
+                baseMessage.Append($"\nFile Missing");
                 suggestedAction = "Check for potential compromise of computer";
                 // File Missing (High Severity)
             }
