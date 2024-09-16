@@ -1,6 +1,9 @@
-﻿namespace SimpleAntivirus.GUI.ViewModels.Pages
+﻿using System.ComponentModel;
+
+namespace SimpleAntivirus.GUI.ViewModels.Pages
 {
     public partial class QuarantinedViewModel : ObservableObject
     {
+
     }
 }

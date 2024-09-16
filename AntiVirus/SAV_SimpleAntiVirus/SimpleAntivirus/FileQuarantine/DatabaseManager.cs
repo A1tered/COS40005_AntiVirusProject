@@ -350,5 +350,45 @@ namespace SimpleAntivirus.FileQuarantine
 
             return quarantinedFiles;
         }
+
+        /// <summary>
+        /// Retrieves original file path and date quarantined for all quarantined files from the database.
+        /// </summary>
+        /// <returns>A list of all quarantined files, including their original paths and date quarantined..</returns>
+        public async Task<IEnumerable<(string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        {
+            var quarantinedFiles = new List<(string OriginalFilePath, string QuarantineDate)>();
+
+            try
+            {
+                using (var connection = new SqliteConnection(_connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    // Query the database for all quarantined files
+                    string query = "SELECT OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
+
+                    using (var command = new SqliteCommand(query, connection))
+                    {
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                string originalFilePath = reader.GetString(0);
+                                string quarantineDate = reader.GetString(1);
+
+                                quarantinedFiles.Add((originalFilePath, quarantineDate));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
+            }
+
+            return quarantinedFiles;
+        }
     }
 }

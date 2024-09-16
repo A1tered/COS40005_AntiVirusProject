@@ -135,7 +135,6 @@ namespace SimpleAntivirus.ViewModels.Pages
                 return redoString;
             }
             return itemCandidate;
-
         }
 
         public async Task<bool> ReactiveStart()

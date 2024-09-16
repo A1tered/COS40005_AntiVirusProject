@@ -16,5 +16,9 @@
 
         /// <returns>A list of tuples containing the file ID, quarantined path, and original path of all quarantined files.</returns>
         Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetQuarantinedFilesAsync();
+
+        /// Retrieves a list of all quarantined files, but just the original path and date
+        /// <returns> A list of tuples containing the original path and date quarantined of all quarantined files.</returns>
+        Task<IEnumerable<(string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync();
     }
 }
