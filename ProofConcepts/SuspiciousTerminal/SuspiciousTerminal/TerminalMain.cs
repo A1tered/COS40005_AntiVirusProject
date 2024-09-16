@@ -1,16 +1,18 @@
 ﻿/**************************************************************************
  * Author:      Timothy Loh
- * Description: Main monitoring of CLI inputs.
+ * Description: Main monitoring of CLI inputs (Registry read, write, create).
  * Last Modified: 11/08/24
  **************************************************************************/
 
 using System;
+using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
-using System.Management;
+using System.Management;  // Needed for getting the parent PID
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Parsers;
+using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
 using Microsoft.Diagnostics.Tracing.Session;
 
 class Program
@@ -20,6 +22,12 @@ class Program
 
     // Variable to keep track of total events checked
     static int totalEventsChecked = 0;
+
+    // Dictionary to track registry paths and event counts
+    static Dictionary<string, RegistrySummary> registrySummary = new Dictionary<string, RegistrySummary>();
+
+    // Specific PID to monitor (set to 12496 for example)
+    static int targetPid = 12496;
 
     static void Main()
     {
@@ -36,76 +44,62 @@ class Program
                 StopOnDispose = true
             };
 
-            // Enable the Kernel Registry provider
-            session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);
+            // Enable Kernel Providers for registry-related events
+            session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
 
-            Console.WriteLine("Session enabled successfully.");
+            Console.WriteLine($"Kernel providers enabled successfully. Monitoring PID: {targetPid}");
         }
         catch (Exception ex)
         {
+            // If session initialization fails, do not proceed
             Console.WriteLine($"Error initializing session: {ex.Message}");
             return;
         }
 
         Console.WriteLine("Listening for registry events...");
 
-        // Start a task to output the totalEventsChecked every 5 seconds
+        // Start continuous task to output the analysis every 5 seconds
         Task.Run(async () =>
         {
             while (!_quitEvent.WaitOne(0))
             {
-                Console.WriteLine($"Total events checked: {totalEventsChecked}");
-                await Task.Delay(5000);
+                await Task.Delay(5000);  // Wait for 5 seconds
+                OutputSummary();
             }
         });
 
-        // Subscribe to kernel events
-        session.Source.Kernel.All += (TraceEvent data) =>
+        // Subscribe only to specific registry events
+        session.Source.Kernel.RegistrySetValue += (RegistryTraceData data) =>
         {
-            try
-            {
-                // Increment the total events checked
-                Interlocked.Increment(ref totalEventsChecked);
-
-                // Log only registry events
-                if (data.ProviderName == "Microsoft-Windows-Kernel-Registry")
-                {
-                    // Get the process ID from the event data
-                    int pid = data.ProcessID;
-                    string processName = GetProcessNameById(pid);
-
-                    if (!string.IsNullOrEmpty(processName))
-                    {
-                        // Check if the process is a terminal-related process (cmd, powershell, etc.)
-                        if (IsTerminalProcess(processName))
-                        {
-                            // Log only terminal-related events
-                            Console.WriteLine($"Terminal Registry Event: {data.EventName}, PID: {pid}, Process Name: {processName}");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Skipping non-terminal process: {processName} (PID: {pid})");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Could not retrieve process name for PID {pid}.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in event handler: {ex.Message}");
-            }
+            TrackRegistryEvent(data, "Set Value");
         };
 
+        session.Source.Kernel.RegistryOpen += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Open Key");
+        };
+
+        session.Source.Kernel.RegistryCreate += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Create Key");
+        };
+
+        session.Source.Kernel.RegistryDelete += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Delete Key");
+        };
+
+        session.Source.Kernel.RegistryQueryValue += (RegistryTraceData data) =>
+        {
+            TrackRegistryEvent(data, "Query Value");
+        };
 
         // Start processing events in a background task
         Task.Run(() =>
         {
-            Console.WriteLine("Event processing task started.");
             try
             {
+                Console.WriteLine("Processing events...");
                 session.Source.Process();
             }
             catch (Exception ex)
@@ -125,33 +119,93 @@ class Program
         _quitEvent.WaitOne();
 
         // Dispose of the session when done
-        session.Dispose();
+        try
+        {
+            session.Dispose();
+        }
+        catch
+        {
+            // Suppress any disposal errors
+        }
 
         Console.WriteLine("Program exiting.");
     }
 
-    static bool IsTerminalProcess(string processName)
+    static void TrackRegistryEvent(RegistryTraceData data, string action)
     {
-        if (string.IsNullOrEmpty(processName)) return false;
-
-        // Check if the process name contains terminal-related names like cmd or powershell
-        var terminalProcessNames = new[]
+        try
         {
-        "cmd", "powershell", "pwsh", "windowsterminal"
-    };
+            // Increment the total events checked
+            Interlocked.Increment(ref totalEventsChecked);
 
-        // Ensure the process name contains one of the terminal process names
-        foreach (var name in terminalProcessNames)
+            // Get the process name by PID
+            string processName = GetProcessNameById(data.ProcessID);
+
+            // Filter events by target process name (powershell, cmd, pwsh)
+            if (!IsRelevantProcess(processName))
+            {
+                return;  // Ignore events not related to PowerShell or CMD
+            }
+
+            // Get the registry path
+            string registryPath = data.KeyName;
+
+            // If the path is already tracked, update the existing entry
+            if (registrySummary.ContainsKey(registryPath))
+            {
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+            }
+            else
+            {
+                // Add new registry path with the current action
+                registrySummary[registryPath] = new RegistrySummary(registryPath, processName);
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+            }
+        }
+        catch (Exception ex)
         {
-            if (processName.ToLowerInvariant().Contains(name))
+            // Suppress any errors but log them if needed for debugging
+            Console.WriteLine($"Error tracking registry event: {ex.Message}");
+        }
+    }
+
+    // Output a summary of the events and clear the dictionary after output
+    static void OutputSummary()
+    {
+        if (registrySummary.Count > 0)
+        {
+            Console.WriteLine("\nRegistry Path Access Summary:");
+            foreach (var entry in registrySummary)
+            {
+                // Pass the targetPid when calling GetHighLevelSummary
+                Console.WriteLine(entry.Value.GetHighLevelSummary(targetPid));
+            }
+
+            // Clear the registry summary after outputting to ensure only new events are tracked
+            registrySummary.Clear();
+        }
+        else
+        {
+            Console.WriteLine("No new registry events were captured in the last 5 seconds.");
+        }
+    }
+
+
+    // Filter relevant processes (PowerShell or CMD)
+    static bool IsRelevantProcess(string processName)
+    {
+        string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
+        foreach (string relevantProcess in relevantProcesses)
+        {
+            if (processName.ToLower().Contains(relevantProcess))
             {
                 return true;
             }
         }
-
         return false;
     }
 
+    // Get the name of the process by PID
     static string GetProcessNameById(int pid)
     {
         try
@@ -161,11 +215,68 @@ class Program
                 return proc.ProcessName;
             }
         }
-        catch (Exception ex)
+        catch
         {
-            // Log and return null if process cannot be found
-            Console.WriteLine($"Error retrieving process name for PID {pid}: {ex.Message}");
-            return null;
+            // If the process can't be found, return null silently
+            return "N/A";
         }
+    }
+}
+
+// Class to summarize registry operations for each path
+class RegistrySummary
+{
+    public string RegistryPath { get; private set; }
+    public string ProcessName { get; private set; } // Track process name
+    public int SetValueCount { get; private set; }
+    public int OpenKeyCount { get; private set; }
+    public int CreateKeyCount { get; private set; }
+    public int DeleteKeyCount { get; private set; }
+    public int QueryValueCount { get; private set; }
+    public DateTime LastAccessTime { get; private set; } // Track the last access time for the latest event
+
+    public RegistrySummary(string registryPath, string processName)
+    {
+        RegistryPath = registryPath;
+        ProcessName = processName;
+    }
+
+    // Increment action counters and update last access time
+    public void IncrementAction(string action, DateTime eventTime, string processName)
+    {
+        LastAccessTime = eventTime;  // Update last access time on every action
+        ProcessName = processName;   // Update process name on every action (in case it changes)
+        switch (action)
+        {
+            case "Set Value":
+                SetValueCount++;
+                break;
+            case "Open Key":
+                OpenKeyCount++;
+                break;
+            case "Create Key":
+                CreateKeyCount++;
+                break;
+            case "Delete Key":
+                DeleteKeyCount++;
+                break;
+            case "Query Value":
+                QueryValueCount++;
+                break;
+        }
+    }
+
+    // Get a high-level summary of the registry path's actions
+    public string GetHighLevelSummary(int pid)
+    {
+        // First line: PID, Process Name, and Action Summary
+        string actionSummary = $"PID: {pid}, Process Name: {ProcessName}, Actions: Set Value: {SetValueCount}, Open Key: {OpenKeyCount}, " +
+                               $"Create Key: {CreateKeyCount}, Delete Key: {DeleteKeyCount}, Query Value: {QueryValueCount}";
+
+        // Second line: Time and Registry Key Path
+        string timeAndPath = $"Time: {LastAccessTime}, Registry Path: {RegistryPath}";
+
+        // Return the combined result
+        return $"{actionSummary}\n{timeAndPath}";
     }
 }

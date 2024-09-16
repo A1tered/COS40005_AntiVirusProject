@@ -60,9 +60,6 @@ C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcept
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.AssemblyInfo.cs
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.csproj.CoreCompileInputs.cache
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.sourcelink.json
-C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.dll
-C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\refint\SuspiciousTerminal.dll
-C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.pdb
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\TraceReloggerLib.dll
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\Dia2Lib.dll
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\x86\KernelTraceControl.dll
@@ -114,5 +111,8 @@ C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcept
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Management.dll
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\Suspicio.714C0FCE.Up2Date
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.dll
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\refint\SuspiciousTerminal.dll
+C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.pdb
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\SuspiciousTerminal.genruntimeconfig.cache
 C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\ProofConcepts\SuspiciousTerminal\SuspiciousTerminal\obj\Debug\net8.0\ref\SuspiciousTerminal.dll
