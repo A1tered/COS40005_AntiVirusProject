@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6Jje9DFCa+TQApbr0s17d43q19uaSioqya0AxkZKKaMPd3XdqDk6FgVEYYHVxu75SEy3T/RwUN62PIva2uaIxg==",
+  "dgSpecHash": "PEcViGp2XkCfr1U+c/XcVlQRkegNDpdJIlDI36Zy8ENaVAl9QJwacOuyAW3xx4CYn9Ja25Kb8xof4lSPa4sGnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\GUI\\GUISandbox\\GUISandbox\\GUISandbox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yumcy\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.7\\microsoft.data.sqlite.8.0.7.nupkg.sha512",
-    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.7\\microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",
+    "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\yumcy\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",

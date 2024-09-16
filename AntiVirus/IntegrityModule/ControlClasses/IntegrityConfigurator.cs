@@ -19,9 +19,11 @@ namespace IntegrityModule.ControlClasses
     public class IntegrityConfigurator
     {
         private IntegrityDatabaseIntermediary _database;
+        private int _displaySet;
         public IntegrityConfigurator(IntegrityDatabaseIntermediary integrityDatabase)
         {
             _database = integrityDatabase;
+            _displaySet = 10;
         }
 
         /// <summary>
@@ -67,6 +69,16 @@ namespace IntegrityModule.ControlClasses
         public bool RemoveIntegrityDirectory(string path)
         {
             return _database.RemoveEntry(path);
+        }
+
+        public Dictionary<string, string> GetPage(int page)
+        {
+            return _database.GetSetEntries(page, _displaySet);
+        }
+
+        public int GetPageAmount()
+        {
+            return  Convert.ToInt32((_database.QueryAmount() / _displaySet));
         }
 
         /// <summary>

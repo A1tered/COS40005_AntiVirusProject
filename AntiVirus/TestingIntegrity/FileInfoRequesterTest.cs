@@ -13,17 +13,17 @@ namespace TestingIntegrity
         }
 
         [Test]
-        public void HashFile()
+        public async Task HashFile()
         {
 
             //99709748FD9E3F995FB24E129974FE1A68811217
-            Assert.That(FileInfoRequester.HashFile(fileProvided), Is.EqualTo("99709748FD9E3F995FB24E129974FE1A68811217"));
+            Assert.That(await FileInfoRequester.HashFile(fileProvided), Is.EqualTo("99709748FD9E3F995FB24E129974FE1A68811217"));
         }
 
         [Test]
         public void RetrieveFileInfo()
         {
-            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.Not.Null);
+            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.EqualTo(new Tuple<long, long>(1724060395, 17)));
         }
     }
 }

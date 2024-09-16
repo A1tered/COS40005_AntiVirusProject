@@ -1,15 +1,22 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.ViewModels.Pages;
+using SimpleAntivirus.Models;
+using SimpleAntivirus.Alerts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SimpleAntivirus.GUI.Services;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Wpf.Ui.Appearance;
+using SimpleAntivirus.FileQuarantine;
+using Windows.Devices.WiFiDirect.Services;
 
 namespace SimpleAntivirus
 {
@@ -49,16 +56,21 @@ namespace SimpleAntivirus
                 services.AddSingleton<BlacklistViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+                services.AddSingleton<IntegrityPage>();
+                services.AddSingleton<IntegrityViewModel>();
+                services.AddSingleton<IntegrityHandlerModel>();
+                services.AddSingleton<IntegrityResultsPage>();
+                services.AddSingleton<IntegrityResultsViewModel>();
                 services.AddSingleton<ProtectionHistoryPage>();
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
-                services.AddSingleton<ScanningPage>();
-                services.AddSingleton<ScanningViewModel>(); 
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
+                services.AddSingleton<AlertManager>();
+                services.AddSingleton<EventBus>();
             }).Build();
 
         /// <summary>
@@ -79,6 +91,10 @@ namespace SimpleAntivirus
         {
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
+
+            // Rough fix to theme irregularity copied from other theme window.
+            ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
+            ApplicationThemeManager.Apply(CurrentTheme);
         }
 
         /// <summary>
@@ -87,7 +103,7 @@ namespace SimpleAntivirus
         private async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
-
+            ToastNotificationManagerCompat.History.Clear();
             _host.Dispose();
         }
 

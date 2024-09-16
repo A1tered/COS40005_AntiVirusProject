@@ -13,8 +13,11 @@ namespace SimpleAntivirus.FileHashScanning
         private Stack<string> _directoryRemnants;
         private List<Hunter> _hunterUnits;
         private List<Task> _taskUnits;
-        private string _databaseDirectory;
         private int _directoriesSearched;
+
+        private readonly string _databaseDirectory;
+        private readonly FileHashScanner _scanner;
+        private readonly CancellationToken _token;
 
         /// <summary>
         /// The start of the directory unpacking process.
@@ -24,20 +27,21 @@ namespace SimpleAntivirus.FileHashScanning
         /// 
         /// </summary>
         /// <param name="databaseDirectory"></param>
-        public SplitProcess(string databaseDirectory)
+        public SplitProcess(string databaseDirectory, FileHashScanner scanner, CancellationToken token)
         {
             _directoryViolations = new();
             _directoryRemnants = new();
             _hunterUnits = new();
             _taskUnits = new();
-
+            _scanner = scanner;
             _databaseDirectory = databaseDirectory;
+            _token = token;
 
             // Statistics
             _directoriesSearched = 0;
         }
 
-        public async Task SearchDirectory()
+        public async Task SearchDirectory(FileHashScanner fileHashScanner)
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)
@@ -54,12 +58,12 @@ namespace SimpleAntivirus.FileHashScanning
                 // Max at hunter units - task units.
                 for (int i = 0; i < Math.Min(_directoryRemnants.Count, hunterCreationLimit - _taskUnits.Count()); i++)
                 {
-                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory));
+                    _hunterUnits.Add(new Hunter(_directoryRemnants.Pop(), _databaseDirectory, _token));
                 }
                 // Remove items from directory remnants (based on how many hunters)
                 foreach (Hunter hunter in _hunterUnits)
                 {
-                    _taskUnits.Add(hunter.SearchDirectory());
+                    _taskUnits.Add(hunter.SearchDirectory(_scanner));
                 }
                 _hunterUnits.Clear();
                 totalTasks = _taskUnits.Count();
@@ -76,7 +80,7 @@ namespace SimpleAntivirus.FileHashScanning
                 // Remove all completed tasks
                 removedTasks = _taskUnits.RemoveAll(task => task.IsCompleted == true);
             }
-                // Console.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
+                // Debug.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
         }
 
         private async Task UnpackTuple(Tuple<string[], string[]> tuple)
@@ -92,8 +96,8 @@ namespace SimpleAntivirus.FileHashScanning
         // Initial function, to find the initial directories. This is not called other than in the initial process.
         public async Task fillUpSearch(string directory)
         {
-            Hunter hunter = new Hunter(directory, _databaseDirectory);
-            Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory();
+            Hunter hunter = new Hunter(directory, _databaseDirectory, _token);
+            Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory(_scanner);
             await UnpackTuple(tupleItem);
         }
 
