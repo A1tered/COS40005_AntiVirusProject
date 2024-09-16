@@ -26,9 +26,6 @@ class Program
     // Dictionary to track registry paths and event counts
     static Dictionary<string, RegistrySummary> registrySummary = new Dictionary<string, RegistrySummary>();
 
-    // Specific PID to monitor (set to 12496 for example)
-    static int targetPid = 12496;
-
     static void Main()
     {
         Console.WriteLine("Program started.");
@@ -47,11 +44,10 @@ class Program
             // Enable Kernel Providers for registry-related events
             session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
 
-            Console.WriteLine($"Kernel providers enabled successfully. Monitoring PID: {targetPid}");
+            Console.WriteLine("Kernel providers enabled successfully.");
         }
         catch (Exception ex)
         {
-            // If session initialization fails, do not proceed
             Console.WriteLine($"Error initializing session: {ex.Message}");
             return;
         }
@@ -68,7 +64,7 @@ class Program
             }
         });
 
-        // Subscribe only to specific registry events
+        // Subscribe to specific registry events
         session.Source.Kernel.RegistrySetValue += (RegistryTraceData data) =>
         {
             TrackRegistryEvent(data, "Set Value");
@@ -131,6 +127,15 @@ class Program
         Console.WriteLine("Program exiting.");
     }
 
+
+
+
+
+
+
+
+
+
     static void TrackRegistryEvent(RegistryTraceData data, string action)
     {
         try
@@ -153,13 +158,13 @@ class Program
             // If the path is already tracked, update the existing entry
             if (registrySummary.ContainsKey(registryPath))
             {
-                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName, data.ProcessID);
             }
             else
             {
                 // Add new registry path with the current action
-                registrySummary[registryPath] = new RegistrySummary(registryPath, processName);
-                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName);
+                registrySummary[registryPath] = new RegistrySummary(registryPath, processName, data.ProcessID);
+                registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName, data.ProcessID);
             }
         }
         catch (Exception ex)
@@ -169,6 +174,14 @@ class Program
         }
     }
 
+
+
+
+
+
+
+
+
     // Output a summary of the events and clear the dictionary after output
     static void OutputSummary()
     {
@@ -177,8 +190,7 @@ class Program
             Console.WriteLine("\nRegistry Path Access Summary:");
             foreach (var entry in registrySummary)
             {
-                // Pass the targetPid when calling GetHighLevelSummary
-                Console.WriteLine(entry.Value.GetHighLevelSummary(targetPid));
+                Console.WriteLine(entry.Value.GetHighLevelSummary());
             }
 
             // Clear the registry summary after outputting to ensure only new events are tracked
@@ -189,6 +201,13 @@ class Program
             Console.WriteLine("No new registry events were captured in the last 5 seconds.");
         }
     }
+
+
+
+
+
+
+
 
 
     // Filter relevant processes (PowerShell or CMD)
@@ -223,11 +242,24 @@ class Program
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Class to summarize registry operations for each path
 class RegistrySummary
 {
     public string RegistryPath { get; private set; }
     public string ProcessName { get; private set; } // Track process name
+    public int ProcessID { get; private set; } // Track process ID
     public int SetValueCount { get; private set; }
     public int OpenKeyCount { get; private set; }
     public int CreateKeyCount { get; private set; }
@@ -235,17 +267,19 @@ class RegistrySummary
     public int QueryValueCount { get; private set; }
     public DateTime LastAccessTime { get; private set; } // Track the last access time for the latest event
 
-    public RegistrySummary(string registryPath, string processName)
+    public RegistrySummary(string registryPath, string processName, int processID)
     {
         RegistryPath = registryPath;
         ProcessName = processName;
+        ProcessID = processID;
     }
 
     // Increment action counters and update last access time
-    public void IncrementAction(string action, DateTime eventTime, string processName)
+    public void IncrementAction(string action, DateTime eventTime, string processName, int processID)
     {
         LastAccessTime = eventTime;  // Update last access time on every action
         ProcessName = processName;   // Update process name on every action (in case it changes)
+        ProcessID = processID;       // Update process ID on every action
         switch (action)
         {
             case "Set Value":
@@ -266,12 +300,41 @@ class RegistrySummary
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Get a high-level summary of the registry path's actions
-    public string GetHighLevelSummary(int pid)
+    public string GetHighLevelSummary()
     {
-        // First line: PID, Process Name, and Action Summary
-        string actionSummary = $"PID: {pid}, Process Name: {ProcessName}, Actions: Set Value: {SetValueCount}, Open Key: {OpenKeyCount}, " +
-                               $"Create Key: {CreateKeyCount}, Delete Key: {DeleteKeyCount}, Query Value: {QueryValueCount}";
+        // Build the action summary only for non-zero counts
+        string actionSummary = $"PID: {ProcessID}, Process Name: {ProcessName}, Actions: ";
+        List<string> actions = new List<string>();
+
+        if (SetValueCount > 0) actions.Add($"Set Value: {SetValueCount}");
+        if (OpenKeyCount > 0) actions.Add($"Open Key: {OpenKeyCount}");
+        if (CreateKeyCount > 0) actions.Add($"Create Key: {CreateKeyCount}");
+        if (DeleteKeyCount > 0) actions.Add($"Delete Key: {DeleteKeyCount}");
+        if (QueryValueCount > 0) actions.Add($"Query Value: {QueryValueCount}");
+
+        // If there are no actions, return empty string (no output)
+        if (actions.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        actionSummary += string.Join(", ", actions);
 
         // Second line: Time and Registry Key Path
         string timeAndPath = $"Time: {LastAccessTime}, Registry Path: {RegistryPath}";
