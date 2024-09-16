@@ -31,7 +31,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ui:Button Content="Integrity Scan" Margin="0,143,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Height="32" Grid.Column="1" HorizontalAlignment="Center" />
+        <ui:Button  x:Name="IntegrityScanButton" Content="Integrity Scan" Margin="0,143,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Height="32" Grid.Column="1" HorizontalAlignment="Center" />
         <ui:TextBlock x:Name="InfoProvide" TextAlignment="Center" Text="{Binding Progress, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="ViolationNote" TextAlignment="Center" Text="" HorizontalAlignment="Center" Margin="0,119,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="19" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
@@ -55,7 +55,7 @@
                         <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <ui:Button Grid.Column="2" Content="Delete" Margin="20,251,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="89" Background="#ba1111" MouseOverBackground="LightPink"/>
+                <ui:Button x:Name="DeleteButton" Grid.Column="2" Content="Delete" Margin="20,251,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="89" Background="#ba1111" MouseOverBackground="LightPink"/>
                 <ui:TextBlock x:Name="SelectLabel" Text="No Item Selected" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,255,0,0" Grid.Row="1" VerticalAlignment="Top" Width="375" Height="23" Grid.ColumnSpan="2"/>
                 <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,66,20,0" VerticalAlignment="Top" Width="99" Height="32"/>
                 <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Margin="20,66,0,0" Click="AddFolder_Click" VerticalAlignment="Top" Width="97" Height="32"/>

@@ -187,7 +187,14 @@ namespace SimpleAntivirus.ViewModels.Pages
         // Add integrity path to model.
         public async Task<bool> AddIntegrityPath(string path)
         {
-            return await integHandlerModel.AddPath(path);
+            if (!_scanInUse)
+            {
+                _scanInUse = true;
+                bool returnedBool = await integHandlerModel.AddPath(path);
+                _scanInUse = false;
+                return returnedBool;
+            }
+            return false;
         }
 
         // Get data entries in Model

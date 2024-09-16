@@ -139,6 +139,11 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
 
         private void ProgressUpdateAddHandler(object? sender, ProgressArgs progressData)
         {
+            // Prevent infinity.
+            if (progressData.Progress > 100)
+            {
+                AddProgress = 0;
+            }
             AddProgress = progressData.Progress;
             //Console.Write($"Progress: {Progress}");
             //Console.Write("\r");

@@ -38,6 +38,14 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _adding = false;
         }
 
+        private void EnableButton(bool enabler)
+        {
+            IntegrityScanButton.IsEnabled = enabler;
+            AddFile.IsEnabled = enabler;
+            AddFolder.IsEnabled = enabler;
+            DeleteButton.IsEnabled = enabler;
+        }
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // What to load...
@@ -60,10 +68,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             // 0 > no selection, 1> no item found, 2 -> item deleted
             int resultInt = ViewModel.DeleteItem();
             DisplayResultDelete(resultInt);
             ViewModel.PathSelected = null;
+            EnableButton(true);
         }
 
         // Handle message box for addition info
@@ -76,9 +86,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
             else
             {
-                MessageBox.Show("Data failed to be added to database", "Integrity Add Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Data failed to be added to database\n Most likely cause is that a file was protected / in use, preventing the program from reading its contents", "Integrity Add Failure", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
 
         // Handle message box for addition info
         private void DisplayResultDelete(int returnId)
@@ -127,6 +139,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void AddFile_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             bool result = false;
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
@@ -136,6 +149,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 result = await ViewModel.AddIntegrityPath(fileGet);
                 DisplayResultOfAdded(result);
             }
+            EnableButton(true);
         }
 
 
@@ -143,6 +157,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // Button that opens folder dialog to be sent to ViewModel.
         private async void AddFolder_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             bool result = false;
             OpenFolderDialog folderDialog = new Microsoft.Win32.OpenFolderDialog();
             folderDialog.ShowDialog();
@@ -156,6 +171,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 DisplayLoading(false);
                 DisplayResultOfAdded(result);
             }
+            EnableButton(true);
         }
 
         // This is triggered when the table is selected.
@@ -166,7 +182,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
                 int allItemCount = DataShow.Items.Count;
                 string infoText = "";
-                if (!(allItemCount == selectedItems.Count))
+                if (!(allItemCount == selectedItems.Count) || selectedItems.Count == 1)
                 {
                     ViewModel.AllSelected = false;
                     List<string> selectedDirectories = new();
@@ -188,7 +204,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else
                 {
-                    infoText = "All Items Selected";
+                    infoText = $"All Items Selected ({allItemCount} Items)";
                     ViewModel.AllSelected = true;
                 }
                 SelectLabel.Text = infoText;
@@ -217,6 +233,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             if (!ViewModel.ScanInUse)
             {
+                EnableButton(false);
                 int result = await ViewModel.Scan();
                 if (result > 0)
                 {
@@ -229,6 +246,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     ViolationNote.ClearValue(TextBlock.ForegroundProperty);
                     ViolationNote.Text = "No Violations Found";
                 }
+                EnableButton(true);
             }
         }
 

@@ -48,13 +48,11 @@ public class AlertManager
         {
             command.ExecuteNonQuery();
         }
-
-        _databaseConnection.Close();
     }
 
     public async Task StoreAlertAsync(Alert alert)
     {
-        await _databaseConnection.OpenAsync();
+        //await _databaseConnection.OpenAsync();
 
         string insertQuery = @"
             INSERT INTO Alerts (Component, Severity, Message, SuggestedAction, Timestamp)
@@ -71,7 +69,7 @@ public class AlertManager
             await command.ExecuteNonQueryAsync();
         }
 
-        _databaseConnection.Close();
+       // _databaseConnection.Close();
     }
 
     public async Task<List<Alert>> GetAllAlertsAsync()
@@ -102,8 +100,6 @@ public class AlertManager
                 }
             }
         }
-
-        _databaseConnection.Close();
 
         return alerts;
     }

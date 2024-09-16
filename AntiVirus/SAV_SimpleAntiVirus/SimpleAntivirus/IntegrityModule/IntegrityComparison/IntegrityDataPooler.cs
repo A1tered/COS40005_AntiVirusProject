@@ -24,7 +24,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
     {
         private int _setRepresentation;
         private int _setAmount;
-        private string _selectedPath;
+        private string _selectedDirectory;
         private IntegrityDatabaseIntermediary _databaseIntermediary;
 
         public IntegrityDataPooler(IntegrityDatabaseIntermediary database, int set, int setAmount)
@@ -37,7 +37,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         public IntegrityDataPooler(IntegrityDatabaseIntermediary database, string path)
         {
             _databaseIntermediary = database;
-            _selectedPath = path;
+            _selectedDirectory = path;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         public async Task<List<IntegrityViolation>> CheckIntegrity()
         {
             List<IntegrityViolation> violationSet = new();
-            if (_selectedPath == null)
+            if (_selectedDirectory == null)
             {
                 Dictionary<string, string> infoSet = _databaseIntermediary.GetSetEntries(_setRepresentation, _setAmount);
                 // We want to async calculate all hashes before cycling across.
@@ -105,15 +105,26 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// Singular comparison between the database and a windows file.
         /// </summary>
         /// <returns>Violation or Null</returns>
-        public async Task<IntegrityViolation> CheckIntegrityFile()
+        public async Task<List<IntegrityViolation>> CheckIntegrityDirectory()
         {
-            string hash = await FileInfoRequester.HashFile(_selectedPath);
-            Tuple<string, string, long, long, long> resultTuple = _databaseIntermediary.GetDirectoryInfo(_selectedPath);
-            if (hash != resultTuple.Item2)
+            List<IntegrityViolation> violationSet = new();
+            Dictionary<string, string> returnInfo = _databaseIntermediary.GetSetEntriesDirectory(_selectedDirectory);
+            List<string> stringList = await FileInfoRequester.HashSet(returnInfo.Keys.ToList());
+            int index = 0;
+            string tempHash = "";
+            foreach (KeyValuePair<string, string> dirHash in returnInfo)
             {
-                return CreateViolation(hash, resultTuple);
+                tempHash = stringList[index];
+                index++;
+                if (tempHash != dirHash.Value)
+                {
+                    // Database info
+                    Tuple<string, string, long, long, long> infoTuple = _databaseIntermediary.GetDirectoryInfo(dirHash.Key);
+
+                    violationSet.Add(CreateViolation(tempHash, infoTuple));
+                }
             }
-            return null;
+            return violationSet;
         }
 
         public int Set

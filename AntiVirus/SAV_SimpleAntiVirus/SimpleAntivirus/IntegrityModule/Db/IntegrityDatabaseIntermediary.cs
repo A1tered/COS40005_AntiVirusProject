@@ -68,11 +68,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
             // Get hashes beforehand
             List<Task<string>> taskHandlerHash = new();
             // Get all hashes first.
-            foreach (string cyclePath in givenPaths)
+            List<string> hashSet = await FileInfoRequester.HashSet(givenPaths.ToList());
+            if (hashSet.Contains(""))
             {
-                taskHandlerHash.Add(FileInfoRequester.HashFile(cyclePath));
+                // An item failed to be hashed, so its a failure, return false.
+                return false;
             }
-            string[] hashSet = await Task.WhenAll(taskHandlerHash);
             int index = 0;
             foreach (string cyclePath in givenPaths)
             {
@@ -87,25 +88,17 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 {
                     System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
                 }
-                if (getHash != "")
+                command.Parameters.AddWithValue("$path", cyclePath);
+                command.Parameters.AddWithValue("$hash", getHash);
+                command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+                command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+                command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+                if (QueryNoReader(command) <= 0)
                 {
-                    command.Parameters.AddWithValue("$path", cyclePath);
-                    command.Parameters.AddWithValue("$hash", getHash);
-                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    if (QueryNoReader(command) <= 0)
-                    {
-                        // Failure detected
-                        noFailure = false;
-                        failurePath = cyclePath;
-                        break;
-                    }
-                }
-                else
-                {
+                    // Failure detected
                     noFailure = false;
                     failurePath = cyclePath;
+                    break;
                 }
                 index++;
             }
@@ -286,6 +279,32 @@ namespace SimpleAntivirus.IntegrityModule.Db
             int setUp = set + 1;
             command.Parameters.AddWithValue("$limit", amountHandledPerSet);
             command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
+            SqliteDataReader dataReader = QueryReader(command);
+            int amount = 0;
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    // Directory -> Hash
+                    returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
+                    amount++;
+                }
+            }
+            return returnDictionary;
+        }
+
+        /// <summary>
+        /// Get a set of data from the database that bear resemblance to the directory provided.
+        /// </summary>
+        /// <param name="directory">Finds entries that contain relevance to the directory provided</param>
+        /// <example>C:/user5 would return all entries in that folder, and C:/user5/user2</example>
+        /// <returns>Dictionary, hash pairs.</returns>
+        public Dictionary<string, string> GetSetEntriesDirectory(string directory)
+        {
+            SqliteCommand command = new();
+            Dictionary<string, string> returnDictionary = new();
+            command.CommandText = @$"SELECT * FROM {_defaultTable} WHERE directory LIKE $like";
+            command.Parameters.AddWithValue("$like", directory);
             SqliteDataReader dataReader = QueryReader(command);
             int amount = 0;
             if (dataReader != null)

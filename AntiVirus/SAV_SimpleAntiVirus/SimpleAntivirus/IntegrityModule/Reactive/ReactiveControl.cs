@@ -25,10 +25,14 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
         private IntegrityDatabaseIntermediary _intermediaryDB;
         private IntegrityCycler _integrityCycler;
         private bool _reactiveInitialized;
+        private List<string> _directoryTracker;
+        // Prevent overlap (may result in detection failures, but better than alert failures)
+        private bool _eventCallInProgress = false;
         public ReactiveControl(IntegrityDatabaseIntermediary intermediary, IntegrityCycler cycler)
         {
             _reactiveInitialized = false;
             _fileWatcherList = new();
+            _directoryTracker = new();
             _intermediaryDB = intermediary;
             _integrityCycler = cycler;
         }
@@ -39,7 +43,9 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             if (_reactiveInitialized == false)
             {
                 _reactiveInitialized = true;
+                System.Diagnostics.Debug.WriteLine("\n");
                 System.Diagnostics.Debug.WriteLine("Reactive Control Initialization");
+                System.Diagnostics.Debug.WriteLine("\n");
                 long amountEntry = _intermediaryDB.QueryAmount();
                 decimal divison = (decimal)amountEntry / 100;
                 int sets = Convert.ToInt32(Math.Ceiling(divison));
@@ -61,21 +67,36 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
         {
             if (_reactiveInitialized)
             {
-                System.Diagnostics.Debug.WriteLine($"Attempted Event Connection: {path}");
                 if (Path.Exists(path))
                 {
-                    FileSystemWatcher fileWatcherTemp = new(Path.GetDirectoryName(path), Path.GetFileName(path));
-                    fileWatcherTemp.EnableRaisingEvents = true;
-                    fileWatcherTemp.Changed += IndividualScanEventHandler;
-                    _fileWatcherList.Add(fileWatcherTemp);
+                    string getDirectoryPath;
+                    getDirectoryPath = Path.GetDirectoryName(path);
+                    if (getDirectoryPath != null)
+                    {
+                        // Make sure the directory hasnt already been connected to a filewatcher.
+                        if (!_directoryTracker.Exists(x => x == getDirectoryPath))
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Attempted Event Connection: {getDirectoryPath}");
+                            FileSystemWatcher fileWatcherTemp = new(getDirectoryPath);
+                            fileWatcherTemp.EnableRaisingEvents = true;
+                            fileWatcherTemp.Changed += IndividualScanEventHandler;
+                            _fileWatcherList.Add(fileWatcherTemp);
+                            _directoryTracker.Add(getDirectoryPath);
+                        }
+                    }
                 }
             }
         }
 
         private async void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
         {
-            //System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
-            await _integrityCycler.InitiateSingleScan(eventArguments.FullPath);
+            if (!_eventCallInProgress)
+            {
+                _eventCallInProgress = true;
+                System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
+                await _integrityCycler.InitiateDirectoryScan(eventArguments.FullPath);
+                _eventCallInProgress = false;
+            }
         }
 
         public async Task Add(string path)

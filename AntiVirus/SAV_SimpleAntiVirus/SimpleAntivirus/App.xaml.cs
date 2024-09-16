@@ -17,6 +17,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using Wpf.Ui.Appearance;
 using SimpleAntivirus.FileQuarantine;
 using Windows.Devices.WiFiDirect.Services;
+using Windows.UI.ViewManagement;
 
 namespace SimpleAntivirus
 {
@@ -87,7 +88,7 @@ namespace SimpleAntivirus
         /// <summary>
         /// Occurs when the application is loading.
         /// </summary>
-        private void OnStartup(object sender, StartupEventArgs e)
+        private async void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
@@ -95,6 +96,9 @@ namespace SimpleAntivirus
             // Rough fix to theme irregularity copied from other theme window.
             ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
             ApplicationThemeManager.Apply(CurrentTheme);
+            // Concern about async in this, however will only replace if this causes issues.
+            await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
+            
         }
 
         /// <summary>

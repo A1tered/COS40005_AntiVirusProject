@@ -88,7 +88,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                         {
                             summaryViolation.Add(violationComponent);
                             // For each violation, send to violation handler
-                            await _violationHandler.ViolationAlert(violationComponent);
+                            await Task.Run(() => _violationHandler.ViolationAlert(violationComponent));
 
                             // Progress calculation here
                             setProgressArg = new();
@@ -112,16 +112,20 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         }
 
         /// <summary>
-        /// Similar to InitiateScan, except it only scans 1 file.
+        /// Similar to InitiateScan, except it only scans given directory in database.
         /// </summary>
         /// <param name="path">Windows File Path</param>
-        public async Task InitiateSingleScan(string path)
+        public async Task InitiateDirectoryScan(string directoryPath)
         {
-            IntegrityDataPooler singlePooler = new(_database, path);
-            IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
-            if (violation != null)
-            {
-                await _violationHandler.ViolationAlert(violation);
+            IntegrityDataPooler singlePooler = new(_database, directoryPath);
+            List<IntegrityViolation> violationSet = await singlePooler.CheckIntegrityDirectory();
+            if (violationSet.Count > 0)
+            {             
+                foreach (IntegrityViolation violation in violationSet)
+                {
+                    await Task.Run(() => _violationHandler.ViolationAlert(violation));
+                }
+
             }
             Console.ForegroundColor = ConsoleColor.Red;
             //Debug.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
