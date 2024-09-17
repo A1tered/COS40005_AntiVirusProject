@@ -1,1 +1,3 @@
 
+[17/09/2024 7:03:21 PM] Quarantined file located at: C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Quarantine\testfile.txt
+[17/09/2024 7:06:23 PM] Quarantined file located at: C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Quarantine\testfile.txt
