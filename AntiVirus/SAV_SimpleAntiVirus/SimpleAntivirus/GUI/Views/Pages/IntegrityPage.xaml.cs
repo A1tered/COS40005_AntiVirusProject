@@ -1,24 +1,9 @@
 ﻿using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.IntegrityModule.ControlClasses;
 using Microsoft.Win32;
 using SimpleAntivirus.ViewModels.Pages;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 namespace SimpleAntivirus.GUI.Views.Pages
 {
     /// <summary>
@@ -38,6 +23,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _adding = false;
         }
 
+        // Whether to enable or disable buttons to prevent multiple operations at once.
         private void EnableButton(bool enabler)
         {
             IntegrityScanButton.IsEnabled = enabler;
@@ -50,9 +36,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             // What to load...
             UpdateEntries();
-            // TODO: Move this into an initialisation section of some kind.
-            // Ideally we want to call this when the program starts, will need to investigate
-            bool returnResult = await ViewModel.ReactiveStart();
         }
 
         // Updates data to be loaded onto the table.

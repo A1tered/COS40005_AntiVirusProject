@@ -23,15 +23,17 @@
     </Page.Resources>
     <StackPanel>
         <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="View information about past security events related to your computer."/>
-        <DataGrid x:Name="ProtectionHistoryDataGrid" Height="234" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataShow_Selected">
+        <ui:Button Margin="0,0,20,10" HorizontalAlignment="Right" Content="Clear Alerts" Background="#ba1111" MouseOverBackground="LightPink" Foreground="#E4FFFFFF" Click="DeleteButton_Click"/>
+        <ui:TextBlock x:Name="ItemAmount" Margin="10,0,0,0" Text="0 Items" FontStyle="Italic"/>
+        <DataGrid x:Name="ProtectionHistoryDataGrid" Height="256" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataShow_Selected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Component" Binding="{Binding Component}" Width="0.2*"/>
                 <DataGridTextColumn Header="Severity" Binding="{Binding Severity}" Width="0.2*"/>
                 <DataGridTextColumn Header="Message" Binding="{Binding TruncatedMessage}" Width="0.7*"/>
-                <DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}" Width="0.3*" />
+                <DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}"  Width="0.3*" />
             </DataGrid.Columns>
         </DataGrid>
-        <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2C05F2" Foreground="#E4FFFFFF" Margin="0,50,0,0" Width="188" Click="DetailsButton_Click"/>
+        <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2C05F2" Foreground="#E4FFFFFF" Margin="0,20,0,0" Width="188" Click="DetailsButton_Click"/>
 
         <ui:Button Visibility="Hidden" Content="Send Test Alert" Click="Send_Alert" Background="#FF2C05F2" Foreground="#E4FFFFFF" FontWeight="Bold" MouseOverBackground="#80476EE9" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
     </StackPanel>

@@ -31,8 +31,8 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
         // Convert violation data structure to Alert and then notify via event.
         public void ViolationAlert(IntegrityViolation violation)
         {
-            StringBuilder baseMessage = new("Integrity Check Mismatch:");
-            baseMessage.Append($"File: {violation.Path}");
+            StringBuilder baseMessage = new("Integrity Check Mismatch");
+            baseMessage.Append($"\nFile: {violation.Path}");
             // Parameter creation
             DateTime timeViolation = DateTimeOffset.FromUnixTimeSeconds(violation.TimeOfViolation).DateTime;
             string component = "Integrity Checking";
@@ -41,7 +41,7 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             string suggestedAction = "";
             //// Determine circumstance
             ///
-            baseMessage.Append($"Detected Issues:");
+            baseMessage.Append($"\nDetected Issues:");
             if (violation.Missing == false)
             {
                 baseMessage.Append($"\nHash Change Detected");

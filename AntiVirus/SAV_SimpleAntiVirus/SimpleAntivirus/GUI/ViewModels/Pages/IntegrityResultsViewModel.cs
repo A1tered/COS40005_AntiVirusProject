@@ -38,6 +38,7 @@ namespace SimpleAntivirus.ViewModels.Pages
             integHandlerModel = model;
         }
 
+        // Update contents of datagrid.
         public List<ResultRow> GetEntries()
         {
             List<ResultRow> resultList = new();

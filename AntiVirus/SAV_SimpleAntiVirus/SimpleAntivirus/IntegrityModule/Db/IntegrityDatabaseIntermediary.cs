@@ -304,7 +304,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
             SqliteCommand command = new();
             Dictionary<string, string> returnDictionary = new();
             command.CommandText = @$"SELECT * FROM {_defaultTable} WHERE directory LIKE $like";
-            command.Parameters.AddWithValue("$like", directory);
+            command.Parameters.AddWithValue("$like", $"{directory}%");
             SqliteDataReader dataReader = QueryReader(command);
             int amount = 0;
             if (dataReader != null)

@@ -36,11 +36,14 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
     {
         ProtectionHistoryModel _modelObject;
         AlertRow selectedRow;
+        public event EventHandler AlertPropagate = delegate { };
         public ProtectionHistoryViewModel(ProtectionHistoryModel model)
         {
             _modelObject = model;
+            _modelObject.AlertManager.NewAlert += PropagateAlertUp;
         }
 
+        // Get an updated list of contents from the AlertDatabase, this is utilised by the datagrid.
         public async Task<List<AlertRow>> GetEntries()
         {
             List<Alert> alertList = await _modelObject.GetAlerts();
@@ -49,10 +52,21 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             foreach (Alert alertItem in alertList)
             {
                 // Construct a class to allow for easy binding for the Datagrid.
-                alertCreator = new(alertItem.Id.ToString(), alertItem.Component, alertItem.Severity, FileInfoRequester.TruncateString(alertItem.Message, 40), alertItem.Message, alertItem.SuggestedAction, alertItem.Timestamp.ToString());
+                alertCreator = new(alertItem.Id.ToString(), alertItem.Component, alertItem.Severity, FileInfoRequester.TruncateString(alertItem.Message, 50), alertItem.Message, alertItem.SuggestedAction, alertItem.Timestamp.ToString());
                 alertRowList.Add(alertCreator);
             }
             return alertRowList;
+        }
+
+        // Allow access to Alert, from the Model.
+        public void PropagateAlertUp(object? o, EventArgs e)
+        {
+            AlertPropagate.Invoke(this, new EventArgs());
+        }
+
+        public async Task ClearAlertDatabase()
+        {
+            await _modelObject.ClearDatabase();
         }
 
         public AlertRow SelectedRow

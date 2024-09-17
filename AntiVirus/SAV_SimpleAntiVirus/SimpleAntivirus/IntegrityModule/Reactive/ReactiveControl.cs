@@ -9,11 +9,6 @@
 using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
 using System.IO;
 
@@ -80,6 +75,8 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
                             FileSystemWatcher fileWatcherTemp = new(getDirectoryPath);
                             fileWatcherTemp.EnableRaisingEvents = true;
                             fileWatcherTemp.Changed += IndividualScanEventHandler;
+                            fileWatcherTemp.Deleted += IndividualScanEventHandler;
+                            fileWatcherTemp.Renamed += IndividualScanEventHandler;
                             _fileWatcherList.Add(fileWatcherTemp);
                             _directoryTracker.Add(getDirectoryPath);
                         }
@@ -93,8 +90,12 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             if (!_eventCallInProgress)
             {
                 _eventCallInProgress = true;
-                System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
-                await _integrityCycler.InitiateDirectoryScan(eventArguments.FullPath);
+                string getDirectoryPath = Path.GetDirectoryName(eventArguments.FullPath);
+                if (getDirectoryPath != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Item changed {eventArguments.FullPath}");
+                    await _integrityCycler.InitiateDirectoryScan(getDirectoryPath);
+                }
                 _eventCallInProgress = false;
             }
         }
