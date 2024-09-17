@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -116,6 +117,29 @@ namespace SimpleAntivirus.FileHashScanning
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
                 INSERT INTO hashSignatures VALUES ($sigHash);
+                ");
+                //commandCreation.Parameters.AddWithValue("$table", _tableName);
+                commandCreation.Parameters.AddWithValue("$sigHash", hash);
+                int sqliteDataReader = commandCreation.ExecuteNonQuery();
+                if (sqliteDataReader > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool RemoveHash(string hash)
+        {
+            if (QueryHash(hash))
+            {
+                return false;
+            }
+            if (ConnectionSuccessful())
+            {
+                SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
+                commandCreation.CommandText = (@"
+                DELETE FROM hashSignatures VALUES ($sigHash);
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
                 commandCreation.Parameters.AddWithValue("$sigHash", hash);
