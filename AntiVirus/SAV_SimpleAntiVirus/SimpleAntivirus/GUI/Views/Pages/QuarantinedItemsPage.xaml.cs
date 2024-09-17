@@ -51,7 +51,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             if (QuarantinedItemsDataGrid.SelectedItem != null)
             {
-                List<QuarantinedDataRow> selectedItems = QuarantinedItemsDataGrid.SelectedItems.Cast<QuarantinedDataRow>().ToList();
+                List<Entry> selectedItems = QuarantinedItemsDataGrid.SelectedItems.Cast<Entry>().ToList();
                 int allItemCount = QuarantinedItemsDataGrid.Items.Count;
                 string infoText = "";
                 if (!(allItemCount == selectedItems.Count) || selectedItems.Count == 1)
@@ -60,7 +60,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     List<string> selectedDirectories = new();
                     if (selectedItems.Count() == 1)
                     {
-                        infoText = $"Selected: {selectedItems[0].OriginalDirectory}";
+                        infoText = $"Selected: {selectedItems[0].OriginalFilePath}";
                     }
                     else
                     {
@@ -75,11 +75,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     infoText = $"All Items Selected ({allItemCount} Items)";
                     ViewModel.AllSelected = true;
                 }
-                //SelectLabel.Text = infoText;
+                SelectLabel.Text = infoText;
             }
             else
             {
-                //SelectLabel.Text = "None Selected";
+                SelectLabel.Text = "No Item Selected";
                 ViewModel.PathSelected = null;
             }
         }

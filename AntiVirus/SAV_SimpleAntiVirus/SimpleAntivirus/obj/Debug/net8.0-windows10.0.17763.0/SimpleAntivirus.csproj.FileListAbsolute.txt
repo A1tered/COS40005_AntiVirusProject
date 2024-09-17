@@ -194,3 +194,5 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SA
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.pdb
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.genruntimeconfig.cache
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\ref\SimpleAntivirus.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\AlertReportPage.g.cs
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\AlertReportPage.baml

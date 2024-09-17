@@ -1,14 +1,9 @@
 ﻿using System.ComponentModel;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Converters;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages
 {
-    public class QuarantinedDataRow
-    {
-        public string OriginalDirectory {  get; set; }
-        public string QuarantineDate { get; set; }
-    }
-
     public partial class QuarantinedViewModel : ObservableObject, INotifyPropertyChanged
     {
         private List<string> _pathSelected;
