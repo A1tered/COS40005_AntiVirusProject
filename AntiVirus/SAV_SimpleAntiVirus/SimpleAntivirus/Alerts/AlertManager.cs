@@ -62,6 +62,37 @@ public class AlertManager
     }
 
     /// <summary>
+    /// Fun little function, that gets all the alerts that occured within a second timeframe, eg 60, would get the count of all alerts
+    /// sent in the past minute.
+    /// </summary>
+    /// <param name="timeframeGapSeconds"></param>
+    /// <returns></returns>
+    public async Task<int> GetAlertsWithinPastTimeFrame(int timeframeGapSeconds = 120)
+    {
+        int amountAlert = 0;
+        using (SqliteCommand command = new SqliteCommand("SELECT * FROM Alerts", _databaseConnection))
+        {
+            using (SqliteDataReader dataReader = await command.ExecuteReaderAsync())
+            {
+                while (await dataReader.ReadAsync())
+                {
+                    //DEBUG: System.Diagnostics.Debug.WriteLine($"Reformat and Display: {DateTime.Parse(dataReader["Timestamp"].ToString()).ToString("yyyy-MM-dd HH:mm:ss")}");
+                    DateTime compareFromDatabase = DateTime.Parse(dataReader["Timestamp"].ToString());
+                    long alertTime = Convert.ToInt64(new TimeSpan(compareFromDatabase.Ticks).TotalSeconds);
+                    long currentTime = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+                    // If there is an alert that is identical in the database that has already been sent within the timeframe gap, send out.
+                    if (currentTime - alertTime < timeframeGapSeconds)
+                    {
+                        amountAlert += 1;
+                    }
+                }
+            }
+
+        }
+        return amountAlert;
+    }
+
+    /// <summary>
     /// This checks if the alert already exists in database within a time frame, may help prevent identical alerts being sent
     /// </summary>
     /// <param name="message">Alert object (utilises message and timeframe)</param>
@@ -183,10 +214,10 @@ public class AlertManager
             // If within time frame, then we can send an alert, if not we must wait.
             if (CompareSecoundTime(_aggregateViolationTimeSent[alert.Component]) > _violationTimeFrame)
             {
+                // Erase values
+                _aggregateViolationTimeSent[alert.Component] = Environment.TickCount64;
                 // This is where we can indicate a warning for multiple alerts.
                 alert.DisplayAlert(true, _violationIncidents[alert.Component]);
-                _aggregateViolationTimeSent[alert.Component] = Environment.TickCount64;
-                // Erase values
             }
 
         }

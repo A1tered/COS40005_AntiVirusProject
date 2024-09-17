@@ -87,6 +87,10 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
 
         private async void IndividualScanEventHandler(object sender, FileSystemEventArgs eventArguments)
         {
+            // Dirty fix: Await here, so there is enough time for file explorer to make changes without being evaluated halfway
+            // through resulting in lost information. (Obviously for large operations this would still have issues, but still greatly
+            // improves the information that can get through.
+            await Task.Delay(1000);
             if (!_eventCallInProgress)
             {
                 _eventCallInProgress = true;
@@ -123,6 +127,7 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
                 if (directoryHashDict.Count == 0) {
                     // Remove all file watchers that equal given path.
                     List<FileSystemWatcher> disposedObjects = new();
+                    _directoryTracker.Remove(getDirectoryPath);
                     foreach (FileSystemWatcher fileWatcher in _fileWatcherList)
                     {
                         if (fileWatcher.Path == getDirectoryPath)
@@ -142,6 +147,7 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             System.Diagnostics.Debug.WriteLine($"Attempted All Event Disconnection");
             _fileWatcherList.ForEach(x => x.Dispose());
             _fileWatcherList.Clear();
+            _directoryTracker.Clear();
         }
     }
 }

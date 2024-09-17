@@ -29,11 +29,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // Update datagrid with contents of database.
         private async Task RefreshDatagrid()
         {
-            
+
             // TODO: Fix this! SortDescription effect disappears when page is reloaded!
+            ProtectionHistoryDataGrid.ItemsSource = await ViewModel.GetEntries();
             ProtectionHistoryDataGrid.Items.SortDescriptions.Clear();
             ProtectionHistoryDataGrid.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("TimeStamp", System.ComponentModel.ListSortDirection.Descending));
-            ProtectionHistoryDataGrid.ItemsSource = await ViewModel.GetEntries();
             ViewModel.SelectedRow = null;
             DetailsButton.Visibility = Visibility.Hidden;
             ItemAmount.Text = $"{ProtectionHistoryDataGrid.Items.Count} Items";
