@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Converters;
 using SimpleAntivirus.GUI.Views.Pages;
+using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages
 {
@@ -14,6 +15,8 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
         private QuarantineManager _quarantineManager;
         private FileMover _fileMover;
         private IDatabaseManager _databaseManager;
+        public EventBus EventBus;
+        public AlertManager AlertManager;
 
         public QuarantinedViewModel()
         {
@@ -21,6 +24,8 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
             _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quarantine"));
+            AlertManager = new AlertManager;
+            EventBus = new EventBus(AlertManager);
         }
 
         public List<Entry> PathSelected
