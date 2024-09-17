@@ -113,7 +113,7 @@ namespace SimpleAntivirus.FileQuarantine
         /// Adds a file to the whitelist by inserting its path into the database.
         /// </summary>
         /// <param name="filePath">The full path of the file to add to the whitelist.</param>
-        public async Task AddToWhitelistAsync(string filePath)
+        public async Task<bool> AddToWhitelistAsync(string filePath)
         {
             try
             {
@@ -131,11 +131,13 @@ namespace SimpleAntivirus.FileQuarantine
                     }
 
                     Debug.WriteLine($"Added to whitelist: {filePath}");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error adding to whitelist: {ex.Message}");
+                return false;
             }
         }
 

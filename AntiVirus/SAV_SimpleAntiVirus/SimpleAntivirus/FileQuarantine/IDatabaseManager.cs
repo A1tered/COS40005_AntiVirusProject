@@ -36,7 +36,7 @@
         /// Adds a file to the whitelist in the database.
 
         /// <param name="filePath">The full path of the file to add to the whitelist.</param>
-        Task AddToWhitelistAsync(string filePath);
+        Task<bool> AddToWhitelistAsync(string filePath);
 
         /// Removes a file from the whitelist in the database.
 
