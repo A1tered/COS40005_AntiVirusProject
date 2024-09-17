@@ -56,7 +56,7 @@ namespace SimpleAntivirus.FileQuarantine
         }
 
         // UnquarantineFileAsync restores a quarantined file back to its original location
-        public async Task UnquarantineFileAsync(int id)
+        public async Task<bool> UnquarantineFileAsync(int id)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace SimpleAntivirus.FileQuarantine
                 if (fileData == null)
                 {
                     Debug.WriteLine($"No file found with ID: {id}");
-                    return;
+                    return false;
                 }
 
                 string quarantinedFilePath = fileData.Value.QuarantinedFilePath;
@@ -89,16 +89,19 @@ namespace SimpleAntivirus.FileQuarantine
 
                     // Remove the quarantine entry from the database
                     await _databaseManager.RemoveQuarantineEntryAsync(id);
+                    return true;
                 }
                 else
                 {
                     Debug.WriteLine($"File not found in quarantine: {quarantinedFilePath}");
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 // Handle any errors during the unquarantine process
                 Debug.WriteLine($"Error during unquarantine process: {ex.Message}");
+                return false;
             }
         }
 
@@ -108,7 +111,7 @@ namespace SimpleAntivirus.FileQuarantine
             return await _databaseManager.GetAllQuarantinedFilesAsync();
         }
 
-        public async Task<IEnumerable<(string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
         {
             return await _databaseManager.GetQuarantinedFileDataAsync();
         }
