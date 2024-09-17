@@ -114,15 +114,33 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
 
         public void Remove(string path)
         {
-            foreach (FileSystemWatcher fileWatcher in _fileWatcherList)
+            // Only remove for directory, if, all traces of the directory do not exist in database.
+            string getDirectoryPath = Path.GetDirectoryName(path);
+            if (getDirectoryPath != null)
             {
-                // Remove all file watchers that equal given path.
-                _fileWatcherList.RemoveAll(x => x.Path == path);
+                Dictionary<string, string> directoryHashDict = _intermediaryDB.GetSetEntriesDirectory(getDirectoryPath);
+                System.Diagnostics.Debug.WriteLine($"Debug Count Check: {directoryHashDict.Count}");
+                if (directoryHashDict.Count == 0) {
+                    // Remove all file watchers that equal given path.
+                    List<FileSystemWatcher> disposedObjects = new();
+                    foreach (FileSystemWatcher fileWatcher in _fileWatcherList)
+                    {
+                        if (fileWatcher.Path == getDirectoryPath)
+                        {
+                            disposedObjects.Add(fileWatcher);
+                            System.Diagnostics.Debug.WriteLine($"Attempted Event Disconnection: {fileWatcher.Path}");
+                            fileWatcher.Dispose();
+                        }
+                    }
+                    disposedObjects.ForEach(x => _fileWatcherList.Remove(x));
+                }
             }
         }
 
         public void RemoveAll()
         {
+            System.Diagnostics.Debug.WriteLine($"Attempted All Event Disconnection");
+            _fileWatcherList.ForEach(x => x.Dispose());
             _fileWatcherList.Clear();
         }
     }

@@ -11,7 +11,7 @@ public class AlertManager
     protected SqliteConnection _databaseConnection;
 
     // Intended to raise alert, to notify window to update.
-    public event EventHandler NewAlert;
+    public event EventHandler NewAlert = delegate { };
 
     // Seconds (60 = 1 minute)
     // How long to keep track of the amount of violations
