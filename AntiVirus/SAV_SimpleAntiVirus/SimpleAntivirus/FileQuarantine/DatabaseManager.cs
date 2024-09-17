@@ -355,9 +355,9 @@ namespace SimpleAntivirus.FileQuarantine
         /// Retrieves original file path and date quarantined for all quarantined files from the database.
         /// </summary>
         /// <returns>A list of all quarantined files, including their original paths and date quarantined..</returns>
-        public async Task<IEnumerable<(string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
         {
-            var quarantinedFiles = new List<(string OriginalFilePath, string QuarantineDate)>();
+            var quarantinedFiles = new List<(int Id, string OriginalFilePath, string QuarantineDate)>();
 
             try
             {
@@ -366,7 +366,7 @@ namespace SimpleAntivirus.FileQuarantine
                     await connection.OpenAsync();
 
                     // Query the database for all quarantined files
-                    string query = "SELECT OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
+                    string query = "SELECT Id, OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
 
                     using (var command = new SqliteCommand(query, connection))
                     {
@@ -374,10 +374,11 @@ namespace SimpleAntivirus.FileQuarantine
                         {
                             while (await reader.ReadAsync())
                             {
-                                string originalFilePath = reader.GetString(0);
-                                string quarantineDate = reader.GetString(1);
+                                int id = reader.GetInt32(0);
+                                string originalFilePath = reader.GetString(1);
+                                string quarantineDate = reader.GetString(2);
 
-                                quarantinedFiles.Add((originalFilePath, quarantineDate));
+                                quarantinedFiles.Add((id, originalFilePath, quarantineDate));
                             }
                         }
                     }

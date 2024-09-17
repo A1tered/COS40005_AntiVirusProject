@@ -16,13 +16,37 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="ui:Button">
+            <Setter Property="Background" Value="#FF2C05F2"/>
+            <Setter Property="Foreground" Value="#E4FFFFFF"/>
+            <Setter Property="MouseOverBackground" Value="#80476EE9"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+
+        </Style>
+    </Page.Resources>
+
     <StackPanel>
         <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="View the currently quarantined items and either unquarantine, whitelist or delete them." Margin="0,0,0,20"/>
-        <DataGrid x:Name="QuarantinedItemsDataGrid" Height="319" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="QuarantinedSelected">
+        <DataGrid x:Name="QuarantinedItemsDataGrid" Height="287" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="QuarantinedSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Original File Path" Width="*" Binding="{Binding OriginalFilePath}"/>
-                <DataGridTextColumn Header="Date Quarantined" Width="0.2*" Binding="{Binding QuarantineDate}"/>
+                <DataGridTextColumn Header="Date Quarantined" Width="0.25*" Binding="{Binding QuarantineDate}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <ui:TextBlock TextWrapping="Wrap" x:Name="SelectLabel" Text="No Items Selected" FontSize="14" FontStyle="Italic"/>
+        <Grid Height="100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ui:Button Content="Unquarantine" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Unquarantine_Click"/>
+            <ui:Button Grid.Column="1" Content="Add to Whitelist" Margin="1,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#FF2A5824" Click="Whitelist_Click"/>
+            <ui:Button Grid.Column="2" Content="Delete" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#ba1111" MouseOverBackground="LightPink" Click="Delete_Click" />
+        </Grid>
     </StackPanel>
 </Page>

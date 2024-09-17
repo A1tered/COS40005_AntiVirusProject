@@ -98,10 +98,13 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                 {
                     System.Diagnostics.Debug.WriteLine($"Generic IO exception {directory}");
                     // Potential issue if it is 0 bytes.
-                    if (new FileInfo(directory).Length == 0)
+                    if (Path.Exists(directory))
                     {
-                        System.Diagnostics.Debug.WriteLine($"IO exception dealt with, empty file determined (cannot be hashed)");
-                        return "empty";
+                        if (new FileInfo(directory).Length == 0)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"IO exception dealt with, empty file determined (cannot be hashed)");
+                            return "empty";
+                        }
                     }
                 }
 

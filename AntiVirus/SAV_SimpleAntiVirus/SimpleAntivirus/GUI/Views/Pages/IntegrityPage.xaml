@@ -64,7 +64,7 @@
                         <RotateTransform x:Name="Rotator" Angle="0"/>
                     </ui:ProgressRing.RenderTransform>
                 </ui:ProgressRing>
-                <Label x:Name="ProgressInfo" Visibility="Visible" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay}" HorizontalAlignment="Left" Margin="72,70,0,0" VerticalAlignment="Top" Height="24" Width="50"/>
+                <Label x:Name="ProgressInfo" Visibility="Hidden" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay}" HorizontalAlignment="Left" Margin="72,70,0,0" VerticalAlignment="Top" Height="24" Width="50"/>
                 <ui:TextBox x:Name="SearchBox" Grid.Column="0" HorizontalAlignment="Right" Margin="0,64,0,0" TextWrapping="Wrap" Text="" PlaceholderText="Search                           " VerticalAlignment="Top" Width="200" TextChanged="SearchBox_TextChanged" Height="36"/>
             </Grid>
         </ui:CardExpander>

@@ -12,3 +12,4 @@ AntiVirus/Alerts/.vs
 *.vsidx
 *.bin
 /AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Quarantine
+/AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/quarantine.db

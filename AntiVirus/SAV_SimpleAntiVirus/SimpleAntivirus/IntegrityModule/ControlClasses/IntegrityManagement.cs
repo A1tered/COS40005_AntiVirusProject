@@ -105,8 +105,9 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool RemoveBaseline(string path)
         {
+            bool boolGet = _integrityConfigurator.RemoveIntegrityDirectory(path);
             _reactiveControl.Remove(path);
-            return _integrityConfigurator.RemoveIntegrityDirectory(path);
+            return boolGet;
         }
 
         /// <summary>
