@@ -107,7 +107,7 @@ namespace SimpleAntivirus
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
-            // Begin
+            // Begin SystemTray
             _host.Services.GetService<SystemTrayService>();
 
             // Rough fix to theme irregularity copied from other theme window.
