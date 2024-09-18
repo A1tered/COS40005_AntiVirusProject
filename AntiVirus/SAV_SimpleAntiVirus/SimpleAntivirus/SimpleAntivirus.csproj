@@ -35,6 +35,7 @@
 	  <PackageReference Include="Microsoft.Data.Sqlite">
 	    <Version>8.0.8</Version>
 	  </PackageReference>
+	  <PackageReference Include="WPF-UI.Tray" Version="3.0.4" />
   </ItemGroup>
 
 </Project>

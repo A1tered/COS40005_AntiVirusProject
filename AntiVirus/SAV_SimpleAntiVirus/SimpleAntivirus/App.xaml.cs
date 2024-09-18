@@ -18,6 +18,7 @@ using Wpf.Ui.Appearance;
 using SimpleAntivirus.FileQuarantine;
 using Windows.Devices.WiFiDirect.Services;
 using Windows.UI.ViewManagement;
+using Wpf.Ui.Tray;
 
 namespace SimpleAntivirus
 {
@@ -49,6 +50,11 @@ namespace SimpleAntivirus
 
                 // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
+
+                // NotifyIcon
+                services.AddSingleton<INotifyIconService, NotifyIconService>();
+
+                services.AddSingleton<SystemTrayService>();
 
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
@@ -101,11 +107,16 @@ namespace SimpleAntivirus
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
+            // Begin
+            _host.Services.GetService<SystemTrayService>();
+
             // Rough fix to theme irregularity copied from other theme window.
             ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
+            
+            
             
         }
 
@@ -116,6 +127,8 @@ namespace SimpleAntivirus
         {
             await _host.StopAsync();
             ToastNotificationManagerCompat.History.Clear();
+
+            //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }
 

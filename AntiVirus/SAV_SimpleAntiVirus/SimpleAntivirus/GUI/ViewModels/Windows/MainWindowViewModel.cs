@@ -5,6 +5,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+
         [ObservableProperty]
         private string _applicationTitle = "Simple Antivirus";
 
