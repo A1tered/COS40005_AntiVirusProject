@@ -15,6 +15,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
     public class Entry
     {
         public required int Id { get; set; }
+        public required string QuarantinedFilePath { get; set; }
         public required string OriginalFilePath { get; set; }
         public required string QuarantineDate { get; set; }
     }
@@ -34,7 +35,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quarantine"));
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -44,11 +45,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void UpdateEntries()
         {
-            var entries = await _quarantineManager.GetQuarantinedFileDataAsync();
+            var entries = await _quarantineManager.GetQuarantinedFilesAsync();
             _entries = new ObservableCollection<Entry>(
                 entries.Select(e => new Entry
                 {
                     Id = e.Id,
+                    QuarantinedFilePath = e.QuarantinedFilePath,
                     OriginalFilePath = e.OriginalFilePath,
                     QuarantineDate = e.QuarantineDate,
                 }).ToList());

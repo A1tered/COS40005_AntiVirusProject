@@ -122,14 +122,9 @@ namespace SimpleAntivirus.FileQuarantine
         }
 
         // Retrieves all quarantined files from the database
-        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetQuarantinedFilesAsync()
+        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFilesAsync()
         {
             return await _databaseManager.GetAllQuarantinedFilesAsync();
-        }
-
-        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
-        {
-            return await _databaseManager.GetQuarantinedFileDataAsync();
         }
 
         // Logs the quarantined file's location to a secure log file

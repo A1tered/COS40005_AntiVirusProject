@@ -316,9 +316,9 @@ namespace SimpleAntivirus.FileQuarantine
         /// Retrieves all quarantined files from the database.
         /// </summary>
         /// <returns>A list of all quarantined files, including their IDs, quarantined paths, and original paths.</returns>
-        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync()
+        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetAllQuarantinedFilesAsync()
         {
-            var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath)>();
+            var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>();
 
             try
             {
@@ -327,7 +327,7 @@ namespace SimpleAntivirus.FileQuarantine
                     await connection.OpenAsync();
 
                     // Query the database for all quarantined files
-                    string query = "SELECT Id, FilePath, OriginalFilePath FROM QuarantinedFiles";
+                    string query = "SELECT Id, FilePath, OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
 
                     using (var command = new SqliteCommand(query, connection))
                     {
@@ -338,8 +338,9 @@ namespace SimpleAntivirus.FileQuarantine
                                 int id = reader.GetInt32(0);
                                 string quarantinedFilePath = reader.GetString(1);
                                 string originalFilePath = reader.GetString(2);
+                                string quarantineDate = reader.GetString(3);
 
-                                quarantinedFiles.Add((id, quarantinedFilePath, originalFilePath));
+                                quarantinedFiles.Add((id, quarantinedFilePath, originalFilePath, quarantineDate));
                             }
                         }
                     }

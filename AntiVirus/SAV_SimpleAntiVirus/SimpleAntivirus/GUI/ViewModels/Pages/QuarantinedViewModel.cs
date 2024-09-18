@@ -25,7 +25,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             _allSelected = false;
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quarantine"));
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
             AlertManager = new AlertManager();
             EventBus = new EventBus(AlertManager);
         }
@@ -121,7 +121,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
                 foreach (Entry entry in _pathSelected)
                 {
                     await _databaseManager.RemoveQuarantineEntryAsync(entry.Id);
-                    returnInfo = await _quarantineManager.DeleteFileAsync(entry.OriginalFilePath);
+                    returnInfo = await _quarantineManager.DeleteFileAsync(entry.QuarantinedFilePath);
                     if (!returnInfo)
                     {
                         mishap = true;
