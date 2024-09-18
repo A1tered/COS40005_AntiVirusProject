@@ -149,14 +149,47 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Whitelisgting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Please try whitelisting files again.");
+                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Please try whitelisting files again.");
                     break;
             }
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to delete the selected items? These files will be deleted permanently and will NOT be sent to the Recycle Bin!", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (choice  == System.Windows.MessageBoxResult.OK)
+            {
+                int result = await ViewModel.Delete();
+                UpdateEntries();
+                DisplayResultDelete(result);
+            }
+            DisplayResultDelete(4);
+        }
 
+        private async void DisplayResultDelete(int result)
+        {
+            switch (result)
+            {
+                case 0:
+                    System.Windows.MessageBox.Show("Delete Failed: No Item Selected", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Delete Failed: No item selected", "Select file(s) to delete and try again.");
+                    break;
+                case 1:
+                    System.Windows.MessageBox.Show("Delete Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Delete Failed: Quarantined file not found", "Please try deleting the file again.");
+                    break;
+                case 2:
+                    System.Windows.MessageBox.Show("Quarantined file successfully deleted!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Quarantined file successfully deleted!", "None");
+                    break;
+                case 3:
+                    System.Windows.MessageBox.Show("Delete Partially Successful: Not all items were able to be deleted. Please try again.", "SimpleAntivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Delete Partially Successful: Not all items were able to be deleted. Please try again.", "Please try deleting files again.");
+                    break;
+                case 4:
+                    System.Windows.MessageBox.Show("Delete operation cancelled. The quarantined files are still present on your computer however do not pose a threat while in quarantine. You may choose to delete them at any time.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
+                    break;
+            }
         }
     }
 }

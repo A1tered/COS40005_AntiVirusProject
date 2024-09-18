@@ -49,7 +49,7 @@ public class Alert
              new ToastContentBuilder()
             .AddCustomTimeStamp(Timestamp)
             .AddText($"Alert: {Component} [Severity: {Severity}]")
-            .AddText($"Message: {Component} violations found in {aggregateAmount - 1}+ files")
+            .AddText($"Message: There are {aggregateAmount - 1}+ new alerts for {Component}")
             .AddText("Suggested Action: Review protection history immediately!")
             .Show();
         }

@@ -110,5 +110,34 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
                 return 0;
             }
         }
+
+        public async Task<int> Delete()
+        {
+            // Mishap, has one item failed to be whitelisted?
+            bool mishap = false;
+            bool returnInfo = false;
+            if (_pathSelected != null)
+            {
+                foreach (Entry entry in _pathSelected)
+                {
+                    await _databaseManager.RemoveQuarantineEntryAsync(entry.Id);
+                    returnInfo = await _quarantineManager.DeleteFileAsync(entry.OriginalFilePath);
+                    if (!returnInfo)
+                    {
+                        mishap = true;
+                    }
+                }
+                if (returnInfo)
+                {
+                    return mishap ? 3 : 2;
+                }
+                return 1;
+            }
+            else
+            {
+                // No items selected
+                return 0;
+            }
+        }
     }
 }
