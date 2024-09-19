@@ -80,7 +80,6 @@ namespace SimpleAntivirus.FileHashScanning
                 // Remove all completed tasks
                 removedTasks = _taskUnits.RemoveAll(task => task.IsCompleted == true);
             }
-                // Debug.WriteLine($"Search has finalized, violations detected: {_directoryViolations.Count}");
         }
 
         private async Task UnpackTuple(Tuple<string[], string[]> tuple)
