@@ -52,6 +52,8 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // On page loaded, determine the current theme and check if Dark mode is already enabled.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
+            ThemeSwitch.IsChecked = true;
             if (ViewModel.CurrentTheme == Wpf.Ui.Appearance.ApplicationTheme.Dark)
             {
                 DarkModeChange(ThemeSwitch);
