@@ -40,7 +40,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
             _customList = new List<string>();
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quarantine"));
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)

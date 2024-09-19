@@ -105,15 +105,26 @@ namespace SimpleAntivirus.FileQuarantine
             }
         }
 
-        // Retrieves all quarantined files from the database
-        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetQuarantinedFilesAsync()
+        public async Task<bool> DeleteFileAsync(string filePath)
         {
-            return await _databaseManager.GetAllQuarantinedFilesAsync();
+            try
+            {
+                // Delete the file
+                await DeleteFileUsingPowerShell(filePath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors during the quarantine process
+                Debug.WriteLine($"Error during quarantine process: {ex.Message}");
+                return false;
+            }
         }
 
-        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        // Retrieves all quarantined files from the database
+        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFilesAsync()
         {
-            return await _databaseManager.GetQuarantinedFileDataAsync();
+            return await _databaseManager.GetAllQuarantinedFilesAsync();
         }
 
         // Logs the quarantined file's location to a secure log file
@@ -148,9 +159,16 @@ namespace SimpleAntivirus.FileQuarantine
             string command = $"icacls \"{filePath}\" /grant Everyone:F";
             await RunPowerShellCommandAsync(command);
         }
+        
+        // Uses PowerShell to delete a quarantined file from the computer permanently.
+        private async Task DeleteFileUsingPowerShell(string filePath)
+        {
+            string command = $"Remove-Item \"{filePath}\"";
+            await RunPowerShellCommandAsync(command);
+        }
 
         // Executes a PowerShell command asynchronously
-        private async Task RunPowerShellCommandAsync(string command)
+        private async Task<bool> RunPowerShellCommandAsync(string command)
         {
             try
             {
@@ -177,16 +195,19 @@ namespace SimpleAntivirus.FileQuarantine
                 if (process.ExitCode == 0)
                 {
                     Debug.WriteLine($"Command executed successfully: {output}");
+                    return true;
                 }
                 else
                 {
                     Debug.WriteLine($"Error executing command: {error}");
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 // Handle errors in PowerShell execution
                 Debug.WriteLine($"Error executing PowerShell command: {ex.Message}");
+                return false;
             }
         }
     }

@@ -4,6 +4,7 @@ using SimpleAntivirus.ViewModels.Pages;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using SimpleAntivirus.AntiTampering;
 namespace SimpleAntivirus.GUI.Views.Pages
 {
     /// <summary>
@@ -127,10 +128,15 @@ namespace SimpleAntivirus.GUI.Views.Pages
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
             string fileGet = fileDialog.FileName;
-            if (fileGet != "")
+            // Start AntiTampering Implementation
+            if (InputValSan.FilePathCharLimit(fileGet) && InputValSan.FilePathValidation(fileGet))
             {
-                result = await ViewModel.AddIntegrityPath(fileGet);
-                DisplayResultOfAdded(result);
+                fileGet = InputValSan.FilePathSanitisation(fileGet);
+                if (fileGet != "")
+                {
+                    result = await ViewModel.AddIntegrityPath(fileGet);
+                    DisplayResultOfAdded(result);
+                }
             }
             EnableButton(true);
         }
@@ -145,14 +151,19 @@ namespace SimpleAntivirus.GUI.Views.Pages
             OpenFolderDialog folderDialog = new Microsoft.Win32.OpenFolderDialog();
             folderDialog.ShowDialog();
             string folderGet = folderDialog.FolderName;
-            // Start load bar
-            // Send to view model the path of folder.
-            if (folderGet != "")
+            // Start AntiTampering Implementation
+            if (InputValSan.FilePathCharLimit(folderGet) && InputValSan.FilePathValidation(folderGet))
             {
-                DisplayLoading(true);
-                result = await ViewModel.AddIntegrityPath(folderGet);
-                DisplayLoading(false);
-                DisplayResultOfAdded(result);
+                folderGet = InputValSan.FilePathSanitisation(folderGet);
+                // Start load bar
+                // Send to view model the path of folder.
+                if (folderGet != "")
+                {
+                    DisplayLoading(true);
+                    result = await ViewModel.AddIntegrityPath(folderGet);
+                    DisplayLoading(false);
+                    DisplayResultOfAdded(result);
+                }
             }
             EnableButton(true);
         }

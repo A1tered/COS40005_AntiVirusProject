@@ -28,10 +28,7 @@
         /// Retrieves all quarantined files from the database.
 
         /// <returns>A list of all quarantined files, including their IDs, quarantined paths, and original paths.</returns>
-        Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync();
-
-        /// <returns>A list of all quarantined files, including their original paths and date quarantined</returns>
-        Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync();
+        Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetAllQuarantinedFilesAsync();
 
         /// Adds a file to the whitelist in the database.
 

@@ -7,14 +7,13 @@ using System.DirectoryServices;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileHashScanning;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
     public class Entry
     {
         public required int Id { get; set; }
+        public required string QuarantinedFilePath { get; set; }
         public required string OriginalFilePath { get; set; }
         public required string QuarantineDate { get; set; }
     }
@@ -34,7 +33,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quarantine"));
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -44,11 +43,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void UpdateEntries()
         {
-            var entries = await _quarantineManager.GetQuarantinedFileDataAsync();
+            var entries = await _quarantineManager.GetQuarantinedFilesAsync();
             _entries = new ObservableCollection<Entry>(
                 entries.Select(e => new Entry
                 {
                     Id = e.Id,
+                    QuarantinedFilePath = e.QuarantinedFilePath,
                     OriginalFilePath = e.OriginalFilePath,
                     QuarantineDate = e.QuarantineDate,
                 }).ToList());
@@ -99,25 +99,21 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DisplayResultUnquarantine(result);
         }
 
-        private async void DisplayResultUnquarantine(int result)
+        private void DisplayResultUnquarantine(int result)
         {
             switch (result)
             {
                 case 0:
                     System.Windows.MessageBox.Show("Unquarantine Failed: No item selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Failed: No item selected", "Select file(s) to unquarantine and try again.");
                     break;
                 case 1:
                     System.Windows.MessageBox.Show("Unquarantine Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Failed: Quarantined file not found", "Please try unquarantining the file again.");
                     break;
                 case 2:
                     System.Windows.MessageBox.Show("Unquarantine successful!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Successful!", "Consider whitelisting the file if you do not wish for it to be quarantined again.");
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Unquarantine Partially Successful: Not all items were able to be unquarantined. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Unquarantine Partially Successful: Not all items were able to be unquarantined. Please try again.", "Please try unquarantining files again.");
                     break;
             }
         }
@@ -131,32 +127,58 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DisplayResultWhitelist(result);
         }
 
-        private async void DisplayResultWhitelist(int result)
+        private void DisplayResultWhitelist(int result)
         {
             switch (result)
             {
                 case 0:
                     System.Windows.MessageBox.Show("Whitelisting Failed: No item selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Failed: No item selected", "Select file(s) to whitelist and try again.");
                     break;
                 case 1:
                     System.Windows.MessageBox.Show("Whitelisting Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Failed: Quarantined file not found", "Please try whitelisting the file again.");
                     break;
                 case 2:
                     System.Windows.MessageBox.Show("Whitelisting successful!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Successful!", "None");
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Whitelisgting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Please try whitelisting files again.");
                     break;
             }
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to delete the selected items? These files will be deleted permanently and will NOT be sent to the Recycle Bin!", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (choice  == System.Windows.MessageBoxResult.OK)
+            {
+                int result = await ViewModel.Delete();
+                UpdateEntries();
+                DisplayResultDelete(result);
+                return;
+            }
+            DisplayResultDelete(4);
+        }
 
+        private void DisplayResultDelete(int result)
+        {
+            switch (result)
+            {
+                case 0:
+                    System.Windows.MessageBox.Show("Delete Failed: No Item Selected", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case 1:
+                    System.Windows.MessageBox.Show("Delete Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case 2:
+                    System.Windows.MessageBox.Show("Quarantined file successfully deleted!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 3:
+                    System.Windows.MessageBox.Show("Delete Partially Successful: Not all items were able to be deleted. Please try again.", "SimpleAntivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 4:
+                    System.Windows.MessageBox.Show("Delete operation cancelled. The quarantined files are still present on your computer however do not pose a threat while in quarantine. You may choose to delete them at any time.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
+                    break;
+            }
         }
     }
 }

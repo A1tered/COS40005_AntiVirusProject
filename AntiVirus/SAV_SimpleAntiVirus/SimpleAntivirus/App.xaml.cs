@@ -18,6 +18,7 @@ using Wpf.Ui.Appearance;
 using SimpleAntivirus.FileQuarantine;
 using Windows.Devices.WiFiDirect.Services;
 using Windows.UI.ViewManagement;
+using Wpf.Ui.Tray;
 
 namespace SimpleAntivirus
 {
@@ -50,6 +51,11 @@ namespace SimpleAntivirus
                 // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
 
+                // NotifyIcon
+                services.AddSingleton<INotifyIconService, NotifyIconService>();
+
+                services.AddSingleton<SystemTrayService>();
+
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
@@ -66,9 +72,6 @@ namespace SimpleAntivirus
 
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
-
-                services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
 
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
@@ -101,21 +104,28 @@ namespace SimpleAntivirus
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
+            // Begin SystemTray
+            _host.Services.GetService<SystemTrayService>();
+
             // Rough fix to theme irregularity copied from other theme window.
             ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
             
+            
+            
         }
 
         /// <summary>
         /// Occurs when the application is closing.
         /// </summary>
-        private async void OnExit(object sender, ExitEventArgs e)
+        public async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
             ToastNotificationManagerCompat.History.Clear();
+
+            //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }
 

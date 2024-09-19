@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\App.xaml
-10-1360310765
+9982107622
 1282391436
-622035150659
-235784716288
-GUI\Views\Pages\AlertReportPage.xaml;GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Pages\SettingsPage.xaml;GUI\Views\Windows\MainWindow.xaml;
+62-361210476
+236-1779252178
+GUI\Views\Pages\AlertReportPage.xaml;GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Windows\MainWindow.xaml;
 
 False
 
