@@ -113,7 +113,7 @@ namespace SimpleAntivirus.FileQuarantine
         /// Adds a file to the whitelist by inserting its path into the database.
         /// </summary>
         /// <param name="filePath">The full path of the file to add to the whitelist.</param>
-        public async Task AddToWhitelistAsync(string filePath)
+        public async Task<bool> AddToWhitelistAsync(string filePath)
         {
             try
             {
@@ -131,11 +131,13 @@ namespace SimpleAntivirus.FileQuarantine
                     }
 
                     Debug.WriteLine($"Added to whitelist: {filePath}");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error adding to whitelist: {ex.Message}");
+                return false;
             }
         }
 
@@ -346,6 +348,47 @@ namespace SimpleAntivirus.FileQuarantine
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error retrieving quarantined files: {ex.Message}");
+            }
+
+            return quarantinedFiles;
+        }
+
+        /// <summary>
+        /// Retrieves original file path and date quarantined for all quarantined files from the database.
+        /// </summary>
+        /// <returns>A list of all quarantined files, including their original paths and date quarantined..</returns>
+        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        {
+            var quarantinedFiles = new List<(int Id, string OriginalFilePath, string QuarantineDate)>();
+
+            try
+            {
+                using (var connection = new SqliteConnection(_connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    // Query the database for all quarantined files
+                    string query = "SELECT Id, OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
+
+                    using (var command = new SqliteCommand(query, connection))
+                    {
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                int id = reader.GetInt32(0);
+                                string originalFilePath = reader.GetString(1);
+                                string quarantineDate = reader.GetString(2);
+
+                                quarantinedFiles.Add((id, originalFilePath, quarantineDate));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
             }
 
             return quarantinedFiles;

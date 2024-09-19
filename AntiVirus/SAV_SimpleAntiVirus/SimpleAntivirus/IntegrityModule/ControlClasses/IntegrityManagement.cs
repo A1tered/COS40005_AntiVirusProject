@@ -105,8 +105,9 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         /// <returns></returns>
         public bool RemoveBaseline(string path)
         {
+            bool boolGet = _integrityConfigurator.RemoveIntegrityDirectory(path);
             _reactiveControl.Remove(path);
-            return _integrityConfigurator.RemoveIntegrityDirectory(path);
+            return boolGet;
         }
 
         /// <summary>
@@ -139,6 +140,11 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
 
         private void ProgressUpdateAddHandler(object? sender, ProgressArgs progressData)
         {
+            // Prevent infinity.
+            if (progressData.Progress > 100)
+            {
+                AddProgress = 0;
+            }
             AddProgress = progressData.Progress;
             //Console.Write($"Progress: {Progress}");
             //Console.Write("\r");
