@@ -14,4 +14,8 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d"/>
+    mc:Ignorable="d">
+    <StackPanel>
+        <ui:ToggleSwitch x:Name="ThemeSwitch" Checked="DarkModeEnabled" Unchecked="LightModeEnabled" IsChecked="False" Content="Light theme enabled" Padding="8,6,0,0" Margin="0,0,0,10" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+    </StackPanel>
+</Page>

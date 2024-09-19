@@ -73,9 +73,6 @@ namespace SimpleAntivirus
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
 
-                services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
-
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
 
@@ -123,7 +120,7 @@ namespace SimpleAntivirus
         /// <summary>
         /// Occurs when the application is closing.
         /// </summary>
-        private async void OnExit(object sender, ExitEventArgs e)
+        public async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
             ToastNotificationManagerCompat.History.Clear();

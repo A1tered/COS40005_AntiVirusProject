@@ -7,8 +7,6 @@ using System.DirectoryServices;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileHashScanning;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -101,25 +99,21 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DisplayResultUnquarantine(result);
         }
 
-        private async void DisplayResultUnquarantine(int result)
+        private void DisplayResultUnquarantine(int result)
         {
             switch (result)
             {
                 case 0:
                     System.Windows.MessageBox.Show("Unquarantine Failed: No item selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Failed: No item selected", "Select file(s) to unquarantine and try again.");
                     break;
                 case 1:
                     System.Windows.MessageBox.Show("Unquarantine Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Failed: Quarantined file not found", "Please try unquarantining the file again.");
                     break;
                 case 2:
                     System.Windows.MessageBox.Show("Unquarantine successful!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Unquarantine Successful!", "Consider whitelisting the file if you do not wish for it to be quarantined again.");
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Unquarantine Partially Successful: Not all items were able to be unquarantined. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Unquarantine Partially Successful: Not all items were able to be unquarantined. Please try again.", "Please try unquarantining files again.");
                     break;
             }
         }
@@ -133,25 +127,21 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DisplayResultWhitelist(result);
         }
 
-        private async void DisplayResultWhitelist(int result)
+        private void DisplayResultWhitelist(int result)
         {
             switch (result)
             {
                 case 0:
                     System.Windows.MessageBox.Show("Whitelisting Failed: No item selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Failed: No item selected", "Select file(s) to whitelist and try again.");
                     break;
                 case 1:
                     System.Windows.MessageBox.Show("Whitelisting Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Failed: Quarantined file not found", "Please try whitelisting the file again.");
                     break;
                 case 2:
                     System.Windows.MessageBox.Show("Whitelisting successful!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Whitelisting Successful!", "None");
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Please try whitelisting files again.");
                     break;
             }
         }
@@ -164,29 +154,26 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 int result = await ViewModel.Delete();
                 UpdateEntries();
                 DisplayResultDelete(result);
+                return;
             }
             DisplayResultDelete(4);
         }
 
-        private async void DisplayResultDelete(int result)
+        private void DisplayResultDelete(int result)
         {
             switch (result)
             {
                 case 0:
                     System.Windows.MessageBox.Show("Delete Failed: No Item Selected", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Delete Failed: No item selected", "Select file(s) to delete and try again.");
                     break;
                 case 1:
                     System.Windows.MessageBox.Show("Delete Failed: Quarantined file not found.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Delete Failed: Quarantined file not found", "Please try deleting the file again.");
                     break;
                 case 2:
                     System.Windows.MessageBox.Show("Quarantined file successfully deleted!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Informational", "Quarantined file successfully deleted!", "None");
                     break;
                 case 3:
                     System.Windows.MessageBox.Show("Delete Partially Successful: Not all items were able to be deleted. Please try again.", "SimpleAntivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    await ViewModel.EventBus.PublishAsync("File Quarantine", "Warning", "Delete Partially Successful: Not all items were able to be deleted. Please try again.", "Please try deleting files again.");
                     break;
                 case 4:
                     System.Windows.MessageBox.Show("Delete operation cancelled. The quarantined files are still present on your computer however do not pose a threat while in quarantine. You may choose to delete them at any time.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);

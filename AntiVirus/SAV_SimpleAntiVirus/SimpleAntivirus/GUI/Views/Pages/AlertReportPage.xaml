@@ -37,7 +37,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ui:TextBlock Margin="0,10,0,50" TextWrapping="Wrap" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40">
-            <Run Language="en-au" Text="Threat Report"/>
+            <Run Language="en-au" Text="Alert Details"/>
         </ui:TextBlock>
         <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Margin="0,50,0,0" Width="188"/>
         <ui:Button Content="Back" VerticalAlignment="Top" Grid.Column="0" Margin="20,20,0,0" Width="132" Click="ButtonBack_Click"/>
@@ -54,11 +54,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ui:TextBlock x:Name="TimeStampBlock" Text="11/08/2024 9:21pm" FontSize="10" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
-                <ui:TextBlock x:Name="ThreatType" Text="Threat Type:" FontSize="20" HorizontalAlignment="Center" Grid.Row="2"/>
-                <ui:TextBlock x:Name="Severity" Text="Severity:" FontSize="20" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+                <ui:TextBlock x:Name="TimeStampBlock" Text="11/08/2024 9:21pm" FontSize="20" HorizontalAlignment="Left" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Italic"/>
+                <ui:TextBlock x:Name="ThreatType" Text="Threat Type:" FontSize="20" HorizontalAlignment="Left" Grid.Row="2"/>
+                <ui:TextBlock x:Name="Severity" Text="Severity:" FontSize="20" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"/>
                 <ui:TextBlock x:Name="Message" Text="Message:" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
-                <ui:TextBlock x:Name="SuggestedAction" Text="SuggestedAction:" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="4" Grid.ColumnSpan="2"/>
+                <ui:TextBlock x:Name="SuggestedAction" Text="Suggested Action:" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="4" Grid.ColumnSpan="2"/>
 
             </Grid>
         </ui:Card>
