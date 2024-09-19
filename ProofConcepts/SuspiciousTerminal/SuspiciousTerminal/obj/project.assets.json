@@ -1302,19 +1302,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tloh1\\.nuget\\packages\\": {}
+    "C:\\Users\\yumcy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
+      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
       "projectName": "SuspiciousTerminal",
-      "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
-      "packagesPath": "C:\\Users\\tloh1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\obj\\",
+      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\SuspiciousTerminal.csproj",
+      "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\SuspiciousTerminal\\SuspiciousTerminal\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\tloh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1374,7 +1379,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
