@@ -37,7 +37,7 @@ namespace SimpleAntivirus.GUI.Services
         // Properly close program.
         public void ClickExit(object sender, RoutedEventArgs e)
         {
-             MainWindow window = _naviWindow as MainWindow;
+            MainWindow window = _naviWindow as MainWindow;
             window.CloseWindowForcefully();
         }
 

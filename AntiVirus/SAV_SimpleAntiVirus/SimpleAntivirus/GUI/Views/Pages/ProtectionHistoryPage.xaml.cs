@@ -75,10 +75,15 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // Clear the alert database, and then refresh the datagrid. 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            await ViewModel.ClearAlertDatabase();
-            await RefreshDatagrid();
-            MessageBox.Show("Alerts Cleared", "Protection History", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to clear the alerts log?", "Simple Antivirus", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (choice == System.Windows.MessageBoxResult.Yes)
+            {
+                await ViewModel.ClearAlertDatabase();
+                await RefreshDatagrid();
+                MessageBox.Show("Alerts Cleared", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            System.Windows.MessageBox.Show("Operation cancelled. The alerts log was not cleared.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
         }
     }
 }

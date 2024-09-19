@@ -123,7 +123,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             if (folderGet != "")
             {
                 _customList.Add(folderGet);
-                System.Windows.MessageBox.Show($"Folder {folderGet} selected.", "Custom scan", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             }
         }
     }
