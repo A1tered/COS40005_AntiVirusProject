@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\GitHub\\Malicious Code Detection\\Malicious Detection\\Malicious Detection\\Malicious Detection.csproj": {}
+  },
+  "projects": {
+    "E:\\GitHub\\Malicious Code Detection\\Malicious Detection\\Malicious Detection\\Malicious Detection.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GitHub\\Malicious Code Detection\\Malicious Detection\\Malicious Detection\\Malicious Detection.csproj",
+        "projectName": "Malicious Detection",
+        "projectPath": "E:\\GitHub\\Malicious Code Detection\\Malicious Detection\\Malicious Detection\\Malicious Detection.csproj",
+        "packagesPath": "C:\\Users\\Pawan\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\Malicious Code Detection\\Malicious Detection\\Malicious Detection\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Pawan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.118, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
