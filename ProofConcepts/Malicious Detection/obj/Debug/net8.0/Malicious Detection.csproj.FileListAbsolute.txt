@@ -1,0 +1,54 @@
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.csproj.AssemblyReference.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.AssemblyInfoInputs.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.AssemblyInfo.cs
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.csproj.CoreCompileInputs.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.sourcelink.json
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Malicious Detection.exe
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Malicious Detection.deps.json
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Malicious Detection.runtimeconfig.json
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Malicious Detection.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Malicious Detection.pdb
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\EntityFramework.SqlServer.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\EntityFramework.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\Google.Protobuf.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\itextsharp.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\K4os.Compression.LZ4.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\K4os.Hash.xxHash.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\MySql.Data.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Data.SQLite.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.CodeDom.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Data.SQLite.EF6.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Maliciou.1564096D.Up2Date
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\refint\Malicious Detection.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.pdb
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\Malicious Detection.genruntimeconfig.cache
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\ProofConcepts\Malicious Detection\obj\Debug\net8.0\ref\Malicious Detection.dll

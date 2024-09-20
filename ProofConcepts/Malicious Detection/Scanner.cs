@@ -97,7 +97,7 @@ namespace MaliciousCode
         // Extract file content based on the file type
         private async Task<string> ExtractFileContentAsync(string filePath)
         {
-            string extension = Path.GetExtension(filePath).ToLower();
+            string extension = System.IO.Path.GetExtension(filePath).ToLower();
 
             // Handle .txt and .bat files
             if (extension == ".txt" || extension == ".bat")

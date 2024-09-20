@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Malicious Detection")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eeac3c68eb1825dccd9c0a721c702b0530af7267")]
 [assembly: System.Reflection.AssemblyProductAttribute("Malicious Detection")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Malicious Detection")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
