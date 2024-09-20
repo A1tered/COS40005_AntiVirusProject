@@ -28,6 +28,7 @@ public class CLIMonitor
 
     private EventBus _eventBus;
 
+    private Task _taskTracker;
     public CLIMonitor(EventBus eventBusPass)
     {
         // This will be relied upon to send alerts.
@@ -41,12 +42,11 @@ public class CLIMonitor
 
     }
 
-    private async Task Setup()
+    private void SetupAsync()
     {
         System.Diagnostics.Debug.WriteLine("Attempting to boot CLIMonitoring");
         string sessionName = "RegistryMonitorSession";
         TraceEventSession session = null;
-
         try
         {
             // Create the session without 'using' to control disposal manually
@@ -67,44 +67,46 @@ public class CLIMonitor
         }
 
         // Subscribe to specific registry events
-        session.Source.Kernel.RegistrySetValue += async(RegistryTraceData data) =>
+        session.Source.Kernel.RegistrySetValue += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Set Value");
         };
 
-        session.Source.Kernel.RegistryOpen += async(RegistryTraceData data) =>
+        session.Source.Kernel.RegistryOpen += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Open Key");
         };
 
-        session.Source.Kernel.RegistryCreate += async(RegistryTraceData data) =>
+        session.Source.Kernel.RegistryCreate += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Create Key");
         };
 
-        session.Source.Kernel.RegistryDelete += async(RegistryTraceData data) =>
+        session.Source.Kernel.RegistryDelete += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Delete Key");
         };
 
-        session.Source.Kernel.RegistryQueryValue += async(RegistryTraceData data) =>
+        session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Query Value");
         };
 
         // Start processing events in a background task
-        await Task.Run(() =>
+        try
         {
-            try
-            {
-                Console.WriteLine("Processing events...");
-                session.Source.Process();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in event processing: {ex.Message}");
-            }
-        });
+            Console.WriteLine("Processing events...");
+            session.Source.Process();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in event processing: {ex.Message}");
+        }
+    }
+
+    public void Setup()
+    {
+        _taskTracker = Task.Run(() => SetupAsync());
     }
 
 
@@ -133,7 +135,7 @@ public class CLIMonitor
             // Get the registry path
             string registryPath = data.KeyName;
 
-
+            
             // Send Alert
             await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"{processName} {action} registry {registryPath}", "Lookout for suspicious activity");
 
@@ -197,7 +199,7 @@ public class CLIMonitor
     // Filter relevant processes (PowerShell or CMD)
     private bool IsRelevantProcess(string processName)
     {
-        string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
+        string[] relevantProcesses = { "powershell", "pwsh", "cmd", "windowsterminal" };
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))

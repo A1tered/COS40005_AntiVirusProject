@@ -19,6 +19,7 @@ using SimpleAntivirus.FileQuarantine;
 using Windows.Devices.WiFiDirect.Services;
 using Windows.UI.ViewManagement;
 using Wpf.Ui.Tray;
+using SimpleAntivirus.CLIMonitoring;
 
 namespace SimpleAntivirus
 {
@@ -83,6 +84,8 @@ namespace SimpleAntivirus
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ProtectionHistoryModel>();
                 services.AddSingleton<AlertReportPage>();
+
+                services.AddSingleton<CLIMonitor>();
             }).Build();
 
         /// <summary>
@@ -112,9 +115,9 @@ namespace SimpleAntivirus
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
-            
-            
-            
+            _host.Services.GetService<CLIMonitor>().Setup();
+
+
         }
 
         /// <summary>
