@@ -43,17 +43,17 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private void AddHash_Click(object sender, RoutedEventArgs e)
         {
-            if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-f]{32}$"))
+            if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-F]{32}$"))
             {
                 AddHashTextBox.Clear();
                 System.Windows.MessageBox.Show("The hash entered is an MD5 hash. Please enter a SHA1 hash and try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-f]{64}$"))
+            else if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-F]{64}$"))
             {
                 AddHashTextBox.Clear();
                 System.Windows.MessageBox.Show("The hash entered is a SHA256 hash. Please enter a SHA1 hash and try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-f]{40}$"))
+            else if (Regex.IsMatch(AddHashTextBox.Text, "^[0-9a-fA-F]{40}$"))
             {
                 bool result = ViewModel.BlacklistHash(AddHashTextBox.Text);
                 AddHashTextBox.Clear();

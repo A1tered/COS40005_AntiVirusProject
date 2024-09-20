@@ -115,7 +115,7 @@ namespace SimpleAntivirus
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
-            _host.Services.GetService<CLIMonitor>().Setup();
+            //_host.Services.GetService<CLIMonitor>().Setup();
 
 
         }
