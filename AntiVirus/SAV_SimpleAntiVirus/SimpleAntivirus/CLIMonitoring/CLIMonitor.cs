@@ -5,18 +5,38 @@
  **************************************************************************/
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
 using System.Management;  // Needed for getting the parent PID
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Parsers;
 using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
 using Microsoft.Diagnostics.Tracing.Session;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.GUI.Views.Pages;
 
 namespace SimpleAntivirus.CLIMonitoring;
+
+public class CompleteCopy
+{
+    public int ProcessID { get; set; }
+
+    public DateTime TimeStamp { get; set; }
+
+    public string KeyName { get; set; }
+
+    public CompleteCopy(int processId, DateTime timeStamp, string keyName)
+    {
+        ProcessID = processId;
+        TimeStamp = timeStamp;
+        KeyName = keyName;
+    }
+}
+
 public class CLIMonitor
 {
 
@@ -28,22 +48,60 @@ public class CLIMonitor
 
     private EventBus _eventBus;
 
+    private Dictionary<int, string> _processCache;
+
+    private ConcurrentQueue<CompleteCopy> _copyCreator;
+
+    private DispatcherTimer _dispatcherTimer;
+
     private Task _taskTracker;
     public CLIMonitor(EventBus eventBusPass)
     {
         // This will be relied upon to send alerts.
         _eventBus = eventBusPass;
 
+        _processCache = new();
+
         _registrySummary = new();
 
         _totalEventsChecked = 0;
+
+        _dispatcherTimer = new();
+        _dispatcherTimer.Tick += dispatcherTimerEvent;
+        _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+        
 
         // Keep _quitEvent.set() for cancel maybe?
 
     }
 
+    public void Setup()
+    {
+        _taskTracker = Task.Factory.StartNew(SetupAsync, TaskCreationOptions.LongRunning);
+    }
+
+    private void UpdateProcessCache()
+    {
+        _processCache.Clear();
+        Process[] processArray = Process.GetProcesses();
+
+        foreach (Process process in processArray)
+        {
+            _processCache.Add(process.Id, process.ProcessName);
+        }
+    }
+
+    private void dispatcherTimerEvent(object sender, EventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine("Updating cache");
+        UpdateProcessCache();
+    }
+
     private void SetupAsync()
     {
+
+        UpdateProcessCache();
+        _dispatcherTimer.Start();
         System.Diagnostics.Debug.WriteLine("Attempting to boot CLIMonitoring");
         string sessionName = "RegistryMonitorSession";
         TraceEventSession session = null;
@@ -89,6 +147,8 @@ public class CLIMonitor
 
         session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
         {
+            //CompleteCopy copy = new(data.ProcessID, data.TimeStamp, data.KeyName);
+            //Dispatcher dis = Dispatcher.FromThread(Thread.CurrentThread);
             await TrackRegistryEvent(data, "Query Value");
         };
 
@@ -97,6 +157,7 @@ public class CLIMonitor
         {
             Console.WriteLine("Processing events...");
             session.Source.Process();
+            System.Diagnostics.Debug.WriteLine("CLI MONITORING ENDED HERE");
         }
         catch (Exception ex)
         {
@@ -104,20 +165,10 @@ public class CLIMonitor
         }
     }
 
-    public void Setup()
-    {
-        _taskTracker = Task.Run(() => SetupAsync());
-    }
-
-
-
-
-
-
-
 
     private async Task TrackRegistryEvent(RegistryTraceData data, string action)
     {
+
         try
         {
             // Increment the total events checked
@@ -135,7 +186,7 @@ public class CLIMonitor
             // Get the registry path
             string registryPath = data.KeyName;
 
-            
+
             // Send Alert
             await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"{processName} {action} registry {registryPath}", "Lookout for suspicious activity");
 
@@ -150,7 +201,7 @@ public class CLIMonitor
                 // Add new registry path with the current action
                 _registrySummary[registryPath] = new RegistrySummary(registryPath, processName, data.ProcessID);
                 _registrySummary[registryPath].IncrementAction(action, data.TimeStamp, processName, data.ProcessID);
-                
+
             }
         }
         catch (Exception ex)
@@ -199,7 +250,7 @@ public class CLIMonitor
     // Filter relevant processes (PowerShell or CMD)
     private bool IsRelevantProcess(string processName)
     {
-        string[] relevantProcesses = { "powershell", "pwsh", "cmd", "windowsterminal" };
+        string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))
@@ -215,16 +266,22 @@ public class CLIMonitor
     {
         try
         {
-            using (Process proc = Process.GetProcessById(pid))
+            if (_processCache.ContainsKey(pid))
             {
-                return proc.ProcessName;
+               return _processCache[pid];
             }
+
+            //return "N/A";
+            //using (Process proc = Process.GetProcessById(pid))
+            //{
+            //   return proc.ProcessName;
+            //}
         }
         catch
         {
             // If the process can't be found, return null silently
-            return "N/A";
         }
+        return "N/A";
     }
 }
 

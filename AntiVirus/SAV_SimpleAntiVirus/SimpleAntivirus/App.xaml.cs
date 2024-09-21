@@ -85,7 +85,7 @@ namespace SimpleAntivirus
                 services.AddSingleton<ProtectionHistoryModel>();
                 services.AddSingleton<AlertReportPage>();
 
-                services.AddSingleton<CLIMonitor>();
+                services.AddSingleton<CLIService>();
             }).Build();
 
         /// <summary>
@@ -115,7 +115,9 @@ namespace SimpleAntivirus
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
-            //_host.Services.GetService<CLIMonitor>().Setup();
+            
+            // CLI Monitor Setup (If you encounter lag, check this out)
+            _host.Services.GetService<CLIService>().Setup();
 
 
         }

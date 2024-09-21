@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace SimpleAntivirus.GUI.Services
 {
@@ -14,6 +15,12 @@ namespace SimpleAntivirus.GUI.Services
         public CLIService(EventBus eventbus)
         {
             _cliMonitor = new(eventbus);
+        }
+
+        public void Setup()
+        {
+            //Dispatcher dis = Dispatcher.FromThread(Thread.CurrentThread);
+            _cliMonitor.Setup();
         }
     }
 }
