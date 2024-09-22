@@ -85,7 +85,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
 
                 foreach (string directorySearch in directories)
                 {
-                    
+                    Token.ThrowIfCancellationRequested();
                     await ScanDirectoryAsync(directorySearch);
                 }
             });
@@ -94,12 +94,14 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Scan a directory for supported file types
         public async Task ScanDirectoryAsync(string directoryPath)
         {
+            Token.ThrowIfCancellationRequested();
             try
             {
                 // Recursively scan subdirectories
                 string[] directories = Directory.GetDirectories(directoryPath);
                 foreach (var directory in directories)
                 {
+                    Token.ThrowIfCancellationRequested();
                     await ScanDirectoryAsync(directory);
                 }
 
