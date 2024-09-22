@@ -116,11 +116,11 @@ public class CLIMonitor
             // Enable Kernel Providers for registry-related events
             session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
 
-            Console.WriteLine("Kernel providers enabled successfully.");
+            Debug.WriteLine("Kernel providers enabled successfully.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error initializing session: {ex.Message}");
+            Debug.WriteLine($"Error initializing session: {ex.Message}");
             return;
         }
 
@@ -155,13 +155,13 @@ public class CLIMonitor
         // Start processing events in a background task
         try
         {
-            Console.WriteLine("Processing events...");
+            Debug.WriteLine("Processing events...");
             session.Source.Process();
             System.Diagnostics.Debug.WriteLine("CLI MONITORING ENDED HERE");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error in event processing: {ex.Message}");
+            Debug.WriteLine($"Error in event processing: {ex.Message}");
         }
     }
 
@@ -207,7 +207,7 @@ public class CLIMonitor
         catch (Exception ex)
         {
             // Suppress any errors but log them if needed for debugging
-            Console.WriteLine($"Error tracking registry event: {ex.Message}");
+            Debug.WriteLine($"Error tracking registry event: {ex.Message}");
         }
     }
 
@@ -224,10 +224,10 @@ public class CLIMonitor
     {
         if (_registrySummary.Count > 0)
         {
-            Console.WriteLine("\nRegistry Path Access Summary:");
+            Debug.WriteLine("\nRegistry Path Access Summary:");
             foreach (var entry in _registrySummary)
             {
-                Console.WriteLine(entry.Value.GetHighLevelSummary());
+                Debug.WriteLine(entry.Value.GetHighLevelSummary());
             }
 
             // Clear the registry summary after outputting to ensure only new events are tracked
@@ -235,7 +235,7 @@ public class CLIMonitor
         }
         else
         {
-            Console.WriteLine("No new registry events were captured in the last 5 seconds.");
+            Debug.WriteLine("No new registry events were captured in the last 5 seconds.");
         }
     }
 

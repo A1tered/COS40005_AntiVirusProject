@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.AntiTampering
 {
@@ -21,7 +22,7 @@ namespace SimpleAntivirus.AntiTampering
         
         public static string GetUserInput()
         {
-            Console.WriteLine("Enter a file path:");
+            Debug.WriteLine("Enter a file path:");
             string userInput = Console.ReadLine();
 
             // validate the input (file path given by the user)
@@ -29,15 +30,15 @@ namespace SimpleAntivirus.AntiTampering
             {
                 if(!FilePathCharLimit(userInput))
                 {
-                    Console.WriteLine("File path exceeds character limit of 256. Please Try again.");
+                    Debug.WriteLine("File path exceeds character limit of 256. Please Try again.");
                 }
                 else if (!FilePathValidation(userInput))
                 {
-                    Console.WriteLine("Invalid file path or file path does not exist. Please try again.");
+                    Debug.WriteLine("Invalid file path or file path does not exist. Please try again.");
                 }
                 else if (FileNameValidation(userInput) == null)
                 {
-                    Console.WriteLine("Invalid naming convention used. Please try again.");
+                    Debug.WriteLine("Invalid naming convention used. Please try again.");
                 }
                 userInput = Console.ReadLine();
             }
