@@ -1,24 +1,10 @@
 ﻿using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.IntegrityModule.ControlClasses;
 using Microsoft.Win32;
 using SimpleAntivirus.ViewModels.Pages;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using SimpleAntivirus.AntiTampering;
 namespace SimpleAntivirus.GUI.Views.Pages
 {
     /// <summary>
@@ -31,13 +17,23 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private bool _adding;
         public IntegrityPage(IntegrityViewModel integViewModel)
         {
+
             ViewModel = integViewModel;
             DataContext = integViewModel;
             InitializeComponent();
             _adding = false;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        // Whether to enable or disable buttons to prevent multiple operations at once.
+        private void EnableButton(bool enabler)
+        {
+            IntegrityScanButton.IsEnabled = enabler;
+            AddFile.IsEnabled = enabler;
+            AddFolder.IsEnabled = enabler;
+            DeleteButton.IsEnabled = enabler;
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // What to load...
             UpdateEntries();
@@ -56,10 +52,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             // 0 > no selection, 1> no item found, 2 -> item deleted
             int resultInt = ViewModel.DeleteItem();
             DisplayResultDelete(resultInt);
             ViewModel.PathSelected = null;
+            EnableButton(true);
         }
 
         // Handle message box for addition info
@@ -72,9 +70,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
             else
             {
-                MessageBox.Show("Data failed to be added to database", "Integrity Add Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Data failed to be added to database\n Most likely cause is that a file was protected / in use, preventing the program from reading its contents", "Integrity Add Failure", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
 
         // Handle message box for addition info
         private void DisplayResultDelete(int returnId)
@@ -123,15 +123,22 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void AddFile_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             bool result = false;
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
             string fileGet = fileDialog.FileName;
-            if (fileGet != "")
+            // Start AntiTampering Implementation
+            if (InputValSan.FilePathCharLimit(fileGet) && InputValSan.FilePathValidation(fileGet))
             {
-                result = await ViewModel.AddIntegrityPath(fileGet);
-                DisplayResultOfAdded(result);
+                fileGet = InputValSan.FilePathSanitisation(fileGet);
+                if (fileGet != "")
+                {
+                    result = await ViewModel.AddIntegrityPath(fileGet);
+                    DisplayResultOfAdded(result);
+                }
             }
+            EnableButton(true);
         }
 
 
@@ -139,19 +146,26 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // Button that opens folder dialog to be sent to ViewModel.
         private async void AddFolder_Click(object sender, RoutedEventArgs e)
         {
+            EnableButton(false);
             bool result = false;
             OpenFolderDialog folderDialog = new Microsoft.Win32.OpenFolderDialog();
             folderDialog.ShowDialog();
             string folderGet = folderDialog.FolderName;
-            // Start load bar
-            // Send to view model the path of folder.
-            if (folderGet != "")
+            // Start AntiTampering Implementation
+            if (InputValSan.FilePathCharLimit(folderGet) && InputValSan.FilePathValidation(folderGet))
             {
-                DisplayLoading(true);
-                result = await ViewModel.AddIntegrityPath(folderGet);
-                DisplayLoading(false);
-                DisplayResultOfAdded(result);
+                folderGet = InputValSan.FilePathSanitisation(folderGet);
+                // Start load bar
+                // Send to view model the path of folder.
+                if (folderGet != "")
+                {
+                    DisplayLoading(true);
+                    result = await ViewModel.AddIntegrityPath(folderGet);
+                    DisplayLoading(false);
+                    DisplayResultOfAdded(result);
+                }
             }
+            EnableButton(true);
         }
 
         // This is triggered when the table is selected.
@@ -160,24 +174,34 @@ namespace SimpleAntivirus.GUI.Views.Pages
             if (DataShow.SelectedItem != null)
             {
                 List<DataRow> selectedItems = DataShow.SelectedItems.Cast<DataRow>().ToList();
+                int allItemCount = DataShow.Items.Count;
                 string infoText = "";
-                List<string> selectedDirectories = new();
-                if (selectedItems.Count() == 1)
+                if (!(allItemCount == selectedItems.Count) || selectedItems.Count == 1)
                 {
-                    infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                    ViewModel.AllSelected = false;
+                    List<string> selectedDirectories = new();
+                    if (selectedItems.Count() == 1)
+                    {
+                        infoText = $"Selected: {selectedItems[0].DisplayDirectory}";
+                    }
+                    else
+                    {
+                        infoText = $"Selected: {selectedItems.Count()} Items";
+                    }
+                    foreach (DataRow datarowItem in selectedItems)
+                    {
+                        selectedDirectories.Add(datarowItem.HiddenDirectory);
+                    }
+                    // Remove final comma.
+                    infoText.Remove(infoText.Length - 1, 1);
+                    ViewModel.PathSelected = selectedDirectories;
                 }
                 else
                 {
-                    infoText = $"Selected: {selectedItems.Count()} Items";
+                    infoText = $"All Items Selected ({allItemCount} Items)";
+                    ViewModel.AllSelected = true;
                 }
-                foreach (DataRow datarowItem in selectedItems)
-                {
-                    selectedDirectories.Add(datarowItem.HiddenDirectory);
-                }
-                // Remove final comma.
-                infoText.Remove(infoText.Length - 1, 1);
                 SelectLabel.Text = infoText;
-                ViewModel.PathSelected = selectedDirectories;
             }
             else
             {
@@ -203,6 +227,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             if (!ViewModel.ScanInUse)
             {
+                EnableButton(false);
                 int result = await ViewModel.Scan();
                 if (result > 0)
                 {
@@ -212,9 +237,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else
                 {
-                    ViolationNote.Foreground = null;
+                    ViolationNote.ClearValue(TextBlock.ForegroundProperty);
                     ViolationNote.Text = "No Violations Found";
                 }
+                EnableButton(true);
             }
         }
 

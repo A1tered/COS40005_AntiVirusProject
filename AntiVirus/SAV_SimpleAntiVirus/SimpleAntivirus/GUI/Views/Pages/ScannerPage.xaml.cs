@@ -3,12 +3,16 @@ using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.FileQuarantine;
 using Wpf.Ui.Controls;
 using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.IO;
 using Microsoft.Win32;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -16,18 +20,27 @@ namespace SimpleAntivirus.GUI.Views.Pages
     {
         private readonly AlertManager _alertManager;
         private readonly EventBus _eventBus;
-
+        private readonly CancellationToken _token;
+        private FileHashScanner _fileHashScanner;
+        private QuarantineManager _quarantineManager;
+        private FileMover _fileMover;
+        private IDatabaseManager _databaseManager;
+        private CancellationTokenSource _cancellationTokenSource;
+        private List<string> _customList;
         public ScannerViewModel ViewModel { get; }
 
         public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
+
+            DataContext = viewModel;
             InitializeComponent();
-
-            DataContext = ViewModel;
             ViewModel = viewModel;
-
             _alertManager = alertManager;
             _eventBus = eventBus;
+            _fileMover = new FileMover();
+            _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
+            _customList = new List<string>();
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
@@ -36,29 +49,54 @@ namespace SimpleAntivirus.GUI.Views.Pages
             try
             {
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
-                FileHashScanner _fileHashScanner = new FileHashScanner(_alertManager, _eventBus);
+                _cancellationTokenSource = new CancellationTokenSource();
+                _fileHashScanner = new FileHashScanner(_alertManager, _eventBus, _cancellationTokenSource.Token, _quarantineManager);
 
                 if (QuickScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("quick");
+                    await _fileHashScanner.Scan("quick", null);
+                    System.Windows.MessageBox.Show($"Quick scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("full");
+                    await _fileHashScanner.Scan("full", null);
+                    System.Windows.MessageBox.Show($"Full scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("custom");
+                    await _fileHashScanner.Scan("custom", _customList);
+                    if (_customList != null && _customList.Count > 0)
+                    {
+                        System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    _customList.Clear();
                 }
                 else
                 {
                     // No scan option selected.
                 }
             }
+            catch (OperationCanceledException)
+            {
+                System.Windows.MessageBox.Show("Scan cancelled.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"An error occurred: {ex.Message}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             finally
             {
                 ViewModel.IsScanRunning = false;
-                Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
+            }
+        }
+
+        private async void CancelScanButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.IsScanRunning = false;
+            Debug.WriteLine("Cancelling scan");
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
             }
         }
 
@@ -74,18 +112,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
             ViewModel.IsAddFileButtonVisible= false;
         }
 
-        private void AddFile_Click(object sender, RoutedEventArgs e)
-        {
-            bool result = false;
-            OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
-            fileDialog.ShowDialog();
-            string fileGet = fileDialog.FileName;
-            if (fileGet != "")
-            {
-                System.Windows.MessageBox.Show($"File {fileGet} selected.", "Custom scan", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-            }
-        }
-
         private void AddFolder_Click(object sender, RoutedEventArgs e)
         {
             bool result = false;
@@ -96,6 +122,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Send to view model the path of folder.
             if (folderGet != "")
             {
+                _customList.Add(folderGet);
                 System.Windows.MessageBox.Show($"Folder {folderGet} selected.", "Custom scan", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             }
         }

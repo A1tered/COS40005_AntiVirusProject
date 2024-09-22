@@ -1,20 +1,24 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.ViewModels.Pages;
+using SimpleAntivirus.Models;
+using SimpleAntivirus.Alerts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SimpleAntivirus.GUI.Services;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
-using SimpleAntivirus.ViewModels.Pages;
-using SimpleAntivirus.Models;
-using SimpleAntivirus.Alerts;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Wpf.Ui.Appearance;
+using SimpleAntivirus.FileQuarantine;
+using Windows.Devices.WiFiDirect.Services;
+using Windows.UI.ViewManagement;
+using Wpf.Ui.Tray;
 
 namespace SimpleAntivirus
 {
@@ -47,6 +51,11 @@ namespace SimpleAntivirus
                 // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
 
+                // NotifyIcon
+                services.AddSingleton<INotifyIconService, NotifyIconService>();
+
+                services.AddSingleton<SystemTrayService>();
+
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
@@ -54,21 +63,26 @@ namespace SimpleAntivirus
                 services.AddSingleton<BlacklistViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+
                 services.AddSingleton<IntegrityPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();
-                services.AddSingleton<ProtectionHistoryPage>();
-                services.AddSingleton<ProtectionHistoryViewModel>();
+
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
-                services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
+
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
+
                 services.AddSingleton<AlertManager>();
                 services.AddSingleton<EventBus>();
+
+                services.AddSingleton<ProtectionHistoryPage>();
+                services.AddSingleton<ProtectionHistoryViewModel>();
+                services.AddSingleton<ProtectionHistoryModel>();
+                services.AddSingleton<AlertReportPage>();
             }).Build();
 
         /// <summary>
@@ -85,23 +99,33 @@ namespace SimpleAntivirus
         /// <summary>
         /// Occurs when the application is loading.
         /// </summary>
-        private void OnStartup(object sender, StartupEventArgs e)
+        private async void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
+            // Begin SystemTray
+            _host.Services.GetService<SystemTrayService>();
+
             // Rough fix to theme irregularity copied from other theme window.
             ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
             ApplicationThemeManager.Apply(CurrentTheme);
+            // Concern about async in this, however will only replace if this causes issues.
+            await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
+            
+            
+            
         }
 
         /// <summary>
         /// Occurs when the application is closing.
         /// </summary>
-        private async void OnExit(object sender, ExitEventArgs e)
+        public async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
             ToastNotificationManagerCompat.History.Clear();
+
+            //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }
 
