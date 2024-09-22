@@ -1,4 +1,5 @@
 ﻿using SimpleAntivirus.FileHashScanning;
+using SimpleAntivirus.MaliciousCodeScanning;
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
@@ -18,29 +19,50 @@ namespace SimpleAntivirus.GUI.Views.Pages
 {
     public partial class ScannerPage : INavigableView<ScannerViewModel>
     {
+        // Alerts
         private readonly AlertManager _alertManager;
         private readonly EventBus _eventBus;
+
+        // File hash scanner
+        private CancellationTokenSource _cancellationTokenSource;
         private readonly CancellationToken _token;
         private FileHashScanner _fileHashScanner;
+
+        // Malicious code scanner
+        private MaliciousCodeScanner _maliciousCodeScanner;
+        private DatabaseHandler _databaseHandler;
+        private Detector _detector;
+
+        // File quarantine
         private QuarantineManager _quarantineManager;
         private FileMover _fileMover;
         private IDatabaseManager _databaseManager;
-        private CancellationTokenSource _cancellationTokenSource;
+
+        // ScannerPage GUI
         private List<string> _customList;
         public ScannerViewModel ViewModel { get; }
 
         public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
-
+            // initialise ScannerPage
             DataContext = viewModel;
             InitializeComponent();
             ViewModel = viewModel;
+
+            _customList = new List<string>();
+
+            // Initialise Alerts for page
             _alertManager = alertManager;
             _eventBus = eventBus;
+
+            // Initialise File Quarantine
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _customList = new List<string>();
             _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
+
+            // Initialise Malicious Code
+            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases\\malicious_commands.db"));
+            _detector = new Detector(_databaseHandler);
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
@@ -51,23 +73,34 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
                 _cancellationTokenSource = new CancellationTokenSource();
                 _fileHashScanner = new FileHashScanner(_alertManager, _eventBus, _cancellationTokenSource.Token, _quarantineManager);
+                _maliciousCodeScanner = new MaliciousCodeScanner(_alertManager, _eventBus, _databaseHandler, _detector, _cancellationTokenSource.Token, _quarantineManager);
 
                 if (QuickScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("quick", null);
+                    Task quickScanFileHash = _fileHashScanner.Scan("quick", null);
+                    Task quickScanMalCode = _maliciousCodeScanner.Scan("quick", null);
+                    await Task.WhenAll(quickScanFileHash, quickScanMalCode);
                     System.Windows.MessageBox.Show($"Quick scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("full", null);
+                    Task fullScanFileHash = _fileHashScanner.Scan("full", null);
+                    Task fullScanMalCode = _maliciousCodeScanner.Scan("full", null);
+                    await Task.WhenAll(fullScanFileHash, fullScanMalCode);
                     System.Windows.MessageBox.Show($"Full scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
-                    await _fileHashScanner.Scan("custom", _customList);
+                    Task customscanFileHash = _fileHashScanner.Scan("custom", _customList);
+                    Task customscanMalCode = _maliciousCodeScanner.Scan("custom", _customList);
+                    await Task.WhenAll(customscanFileHash, customscanMalCode);
                     if (_customList != null && _customList.Count > 0)
                     {
                         System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else if (_customList.Count == 0 || _customList == null)
+                    {
+                        System.Windows.MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     _customList.Clear();
                 }
@@ -123,7 +156,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             if (folderGet != "")
             {
                 _customList.Add(folderGet);
-                System.Windows.MessageBox.Show($"Folder {folderGet} selected.", "Custom scan", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             }
         }
     }

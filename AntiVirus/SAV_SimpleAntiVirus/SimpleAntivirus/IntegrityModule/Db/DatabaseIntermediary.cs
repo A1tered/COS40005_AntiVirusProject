@@ -132,13 +132,15 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
             if (DatabaseUsable())
             {
-                SqliteCommand command = _databaseConnection.CreateCommand();
-                // Concerns may arise from inserting tableName like this, however SQLite parameters does not support placement of table names,
-                // do not allow user direct input for this function.
-                command.CommandText = $"SELECT COUNT(*) FROM {insertTable}";
-                SqliteDataReader returnInfo = command.ExecuteReader();
-                returnInfo.Read();
-                return returnInfo.GetInt64(0);
+                using (SqliteCommand command = _databaseConnection.CreateCommand())
+                {
+                    // Concerns may arise from inserting tableName like this, however SQLite parameters does not support placement of table names,
+                    // do not allow user direct input for this function.
+                    command.CommandText = $"SELECT COUNT(*) FROM {insertTable}";
+                    SqliteDataReader returnInfo = command.ExecuteReader();
+                    returnInfo.Read();
+                    return returnInfo.GetInt64(0);
+                }
             }
             return -1;
         }
@@ -183,9 +185,11 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// </summary>
         public void Vacuum()
         {
-            SqliteCommand command = _databaseConnection.CreateCommand();
-            command.CommandText = "VACUUM";
-            QueryNoReader(command);
+            using (SqliteCommand command = _databaseConnection.CreateCommand())
+            {
+                command.CommandText = "VACUUM";
+                QueryNoReader(command);
+            }
         }
     }
 }

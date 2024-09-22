@@ -54,9 +54,17 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             EnableButton(false);
             // 0 > no selection, 1> no item found, 2 -> item deleted
-            int resultInt = ViewModel.DeleteItem();
-            DisplayResultDelete(resultInt);
-            ViewModel.PathSelected = null;
+
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to delete the selected integrity entries?", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (choice == System.Windows.MessageBoxResult.OK)
+            {
+                int resultInt = ViewModel.DeleteItem();
+                DisplayResultDelete(resultInt);
+                ViewModel.PathSelected = null;
+                EnableButton(true);
+                return;
+            }
+            DisplayResultDelete(4);
             EnableButton(true);
         }
 
@@ -66,11 +74,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
             UpdateEntries();
             if (success)
             {
-                MessageBox.Show("Data added to database", "Integrity Add Status", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Integrity Entry Added: File(s) successfully added to integrity checking list.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Data failed to be added to database\n Most likely cause is that a file was protected / in use, preventing the program from reading its contents", "Integrity Add Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Integrity Add Failure: File(s) failed to be added.\n Most likely cause is that a file was protected / in use, preventing the program from reading its contents", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -83,16 +91,19 @@ namespace SimpleAntivirus.GUI.Views.Pages
             switch (returnId)
             {
                 case 0:
-                    MessageBox.Show("No Item Selected", "Selection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Integrity Entry Delete Failed: No Item Selected", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case 1:
-                    MessageBox.Show("Data could not be found in Database", "Incorrect Entry", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Integrity Entry Delete Failed: Entry could not be found in database", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case 2:
-                    MessageBox.Show("Data removed successfully", "Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Integrity Entries removed successfully!", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
                 case 3:
-                    MessageBox.Show("Some data was removed successfully", "Some Data Item Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Integrity Entries Partially Deleted: Some entries were removed successfully.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case 4:
+                    System.Windows.MessageBox.Show("Delete operation cancelled. The selected files will continue to be checked for integrity.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
                     break;
             }
         }

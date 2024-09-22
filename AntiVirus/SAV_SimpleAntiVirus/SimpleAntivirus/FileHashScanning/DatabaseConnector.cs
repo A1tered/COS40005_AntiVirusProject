@@ -21,8 +21,13 @@ namespace SimpleAntivirus.FileHashScanning
         private string _tableName;
         public DatabaseConnector(string databaseDirectory, bool writeAccess = false)
         {
+            Open(databaseDirectory, false);
+        }
+
+        public void Open(string databaseDirectory, bool writeAccess)
+        {
             _tableName = "hashSignatures";
-            
+
             if (!Directory.Exists("Databases"))
             {
                 Directory.CreateDirectory("Databases");

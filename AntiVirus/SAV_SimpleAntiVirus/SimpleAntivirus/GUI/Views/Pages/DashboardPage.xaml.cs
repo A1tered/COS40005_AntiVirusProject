@@ -53,7 +53,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            ThemeSwitch.IsChecked = true;
             if (ViewModel.CurrentTheme == Wpf.Ui.Appearance.ApplicationTheme.Dark)
             {
                 DarkModeChange(ThemeSwitch);

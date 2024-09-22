@@ -68,7 +68,6 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\ProtectionHistoryPage.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\QuarantinedItemsPage.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\ScannerPage.g.cs
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\SettingsPage.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Windows\MainWindow.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\App.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus_Content.g.cs
@@ -82,7 +81,6 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\ProtectionHistoryPage.baml
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\QuarantinedItemsPage.baml
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\ScannerPage.baml
-C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\SettingsPage.baml
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Windows\MainWindow.baml
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.g.resources
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.GeneratedMSBuildEditorConfig.editorconfig
@@ -198,3 +196,47 @@ C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS4000
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\AlertReportPage.g.cs
 C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\AlertReportPage.baml
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Wpf.Ui.Tray.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\TraceReloggerLib.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Dia2Lib.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\KernelTraceControl.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\KernelTraceControl.Win61.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\msdia140.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\amd64\KernelTraceControl.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\amd64\msdia140.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\arm64\KernelTraceControl.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\arm64\msdia140.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.NETCore.Client.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.FastSerialization.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.Tracing.TraceEvent.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\System.Management.dll
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\KernelTraceControl.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\KernelTraceControl.Win61.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\x86\msdia140.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\amd64\KernelTraceControl.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\amd64\msdia140.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\arm64\KernelTraceControl.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\arm64\msdia140.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\TraceReloggerLib.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Dia2Lib.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.NETCore.Client.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.FastSerialization.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\Microsoft.Diagnostics.Tracing.TraceEvent.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\System.Management.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\BouncyCastle.Cryptography.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\EntityFramework.SqlServer.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\EntityFramework.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\itextsharp.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\System.Data.SQLite.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\System.Data.SqlClient.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\System.Data.SQLite.EF6.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win-arm64\native\sni.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win-x64\native\sni.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win-x86\native\sni.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

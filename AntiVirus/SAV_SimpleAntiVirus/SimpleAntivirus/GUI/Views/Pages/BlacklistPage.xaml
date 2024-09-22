@@ -15,5 +15,13 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-    <ui:TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Mark as Malicious" VerticalAlignment="Top"/>
+    <StackPanel>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="20">
+            <Run Language="en-au" Text="Notice something malicious that Simple Antivirus was unable to detect? Add a file or hash here and Simple Antivirus will promptly take action."/>
+        </ui:TextBlock>
+        <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Left" Content="Browse for file" Click="AddFile_Click" Margin="0,66,20,0" Width="133" Height="32" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9"/>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Margin="0,30,0,0" Text="Manually add a file hash"/>
+        <ui:TextBox x:Name="AddHashTextBox" TextWrapping="Wrap" MaxLength="64" HorizontalAlignment="Left" PlaceholderText="Enter an SHA1 hash here (40 character hexadecimal)" Margin="0,5,0,0" />
+        <ui:Button x:Name="AddHash" Content="Add Hash" Click="AddHash_Click" Width="133" Height="32" FontWeight="Bold" Background="#FF2204B8" Foreground="#E4FFFFFF" MouseOverBackground="#80476EE9" Margin="0,20,0,0"/>
+    </StackPanel>
 </Page>

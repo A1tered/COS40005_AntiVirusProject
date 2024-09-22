@@ -27,7 +27,6 @@ namespace SimpleAntivirus.FileHashScanning
 {
     public class FileHashScanner
     {
-        private ProgressTracker _progressTracker;
         public AlertManager AlertManager;
         public EventBus EventBus;
         public CancellationToken Token;
@@ -53,7 +52,21 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
-                    directories.AddRange([$"C:\\TestDirectory"]);
+                    directories.AddRange
+                    ([
+                     $"C:\\Program Files", 
+                     "C:\\Program Files (x86)",
+                     "C:\\ProgramData",
+                     "C:\\Users\\Default\\AppData",
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
+                     "C:\\Windows",
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
+                    ]);
                 }
                 else if (scanType == "full")
                 {
@@ -73,10 +86,6 @@ namespace SimpleAntivirus.FileHashScanning
                             directories.Add(dir);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
                 }
 
                 foreach (string directorySearch in directories)
@@ -88,71 +97,5 @@ namespace SimpleAntivirus.FileHashScanning
                 }
             });
         }
-
-        private async Task<long> CalculateTotalSize(List<string> directories)
-        {
-            long totalSize = 0;
-
-            foreach (string directory in directories)
-            {
-                try
-                {
-                    // The EnumerationOptions ensure that any files or directories that cannot be accessed 
-                    EnumerationOptions options = new EnumerationOptions
-                    {
-                        IgnoreInaccessible = true, // Ignores folders/files that cannot be accessed
-                        RecurseSubdirectories = true, // Recursively access subdirectories
-                        AttributesToSkip = FileAttributes.ReparsePoint // Skip symbolic links/junctions
-                    };
-
-                    foreach (string file in Directory.EnumerateFiles(directory, "*", options))
-                    {
-                        try
-                        {
-                            FileInfo fileInfo = new FileInfo(file);
-                            totalSize += fileInfo.Length;
-                        }
-                        catch (UnauthorizedAccessException uaEx)
-                        {
-                            Debug.WriteLine($"Access denied to file: {file}. Error: {uaEx.Message}");
-                        }
-                        catch (IOException ioEx)
-                        {
-                            Debug.WriteLine($"I/O error with file: {file}. Error: {ioEx.Message}");
-                        }
-                    }
-                }
-                catch (UnauthorizedAccessException uaEx)
-                {
-                    Debug.WriteLine($"Access denied to directory: {directory}. Error: {uaEx.Message}");
-                }
-                catch (IOException ioEx)
-                {
-                    Debug.WriteLine($"I/O error with directory: {directory}. Error: {ioEx.Message}");
-                }
-            }
-
-            Debug.WriteLine($"Total Size Calculated: {totalSize} bytes");
-
-            _progressTracker = new ProgressTracker(totalSize);
-
-            return await Task.FromResult(totalSize);
-        }
-
-        public void UpdateSize(long size)
-        {
-            // Update current progress on tracker
-            _progressTracker?.UpdateTracker(size);
-        }
-
-        public void UpdateProgress()
-        {
-
-        }
-        //Application.Current.Dispatcher.Invoke(() =>
-        //{
-        //    _scanningPage.progressBar.Value = _progress;
-        //    _scanningPage.percentComplete.Text = $"{_progress}% complete";
-        //});
     }
 }

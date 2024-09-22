@@ -36,10 +36,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <remarks>Only to be ran once at initialisation, any more and it will be at risk of easy tampering</remarks>
         public bool SetupDatabase()
         {
-            SqliteCommand command = new();
-            command.CommandText = @$"CREATE TABLE IF NOT EXISTS
+            using (SqliteCommand command = new())
+            {
+                command.CommandText = @$"CREATE TABLE IF NOT EXISTS
             {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
-            return QueryNoReader(command) > 0;
+                return QueryNoReader(command) > 0;
+            }
         }
 
         /// <summary>
@@ -48,9 +50,11 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns></returns>
         public bool DeleteAll()
         {
-            SqliteCommand command = new();
-            command.CommandText = $"DELETE FROM {_defaultTable}";
-            return QueryNoReader(command) > 0;
+            using (SqliteCommand command = new())
+            {
+                command.CommandText = $"DELETE FROM {_defaultTable}";
+                return QueryNoReader(command) > 0;
+            }
         }
 
         /// <summary>
@@ -79,28 +83,30 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {
                 cancelToken.ThrowIfCancellationRequested();
                 //Debug.WriteLine($"ADD: {cyclePath}");
-                SqliteCommand command = new();
-                command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
-                command.Transaction = trans;
-                string getHash = hashSet[index];
-                Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
-                if (CheckExistence(cyclePath, trans))
+                using (SqliteCommand command = new())
                 {
-                    System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
+                    command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
+                    command.Transaction = trans;
+                    string getHash = hashSet[index];
+                    Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
+                    if (CheckExistence(cyclePath, trans))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
+                    }
+                    command.Parameters.AddWithValue("$path", cyclePath);
+                    command.Parameters.AddWithValue("$hash", getHash);
+                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+                    if (QueryNoReader(command) <= 0)
+                    {
+                        // Failure detected
+                        noFailure = false;
+                        failurePath = cyclePath;
+                        break;
+                    }
+                    index++;
                 }
-                command.Parameters.AddWithValue("$path", cyclePath);
-                command.Parameters.AddWithValue("$hash", getHash);
-                command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                if (QueryNoReader(command) <= 0)
-                {
-                    // Failure detected
-                    noFailure = false;
-                    failurePath = cyclePath;
-                    break;
-                }
-                index++;
             }
             if (noFailure == false)
             {
@@ -215,10 +221,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {
                 Console.Write($"\r Deleted {progress}/{maxProgress}");
                 progress++;
-                SqliteCommand command = new();
-                command.CommandText = @$"DELETE FROM {_defaultTable} WHERE directory=$directorySet";
-                command.Parameters.AddWithValue("$directorySet", pathCycle);
-                success = QueryNoReader(command) > 0;
+                using (SqliteCommand command = new())
+                {
+                    command.CommandText = @$"DELETE FROM {_defaultTable} WHERE directory=$directorySet";
+                    command.Parameters.AddWithValue("$directorySet", pathCycle);
+                    success = QueryNoReader(command) > 0;
+                }
             }
             return success;
         }
@@ -230,14 +238,16 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>True/False depending on whether the entry exists within the database</returns>
         public bool CheckExistence(string path, SqliteTransaction trans = null)
         {
-            SqliteCommand command = new();
-            command.CommandText = @$"SELECT directory FROM {_defaultTable} WHERE directory = $directorySet";
-            command.Parameters.AddWithValue("$directorySet", path);
-            command.Transaction = trans;
-            SqliteDataReader reader = QueryReader(command);
-            if (reader != null)
+            using (SqliteCommand command = new())
             {
-                return reader.HasRows;
+                command.CommandText = @$"SELECT directory FROM {_defaultTable} WHERE directory = $directorySet";
+                command.Parameters.AddWithValue("$directorySet", path);
+                command.Transaction = trans;
+                SqliteDataReader reader = QueryReader(command);
+                if (reader != null)
+                {
+                    return reader.HasRows;
+                }
             }
             return false;
         }
@@ -249,18 +259,20 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Directory, Hash, ModificationTime, SignatureCreation, OriginalSizeInBytes</returns>
         public Tuple<string, string, long, long, long> GetDirectoryInfo(string directory)
         {
-            SqliteCommand command = new();
-            command.CommandText = $"SELECT * FROM {_defaultTable} WHERE directory = $directorySet";
-            command.Parameters.AddWithValue("$directorySet", directory);
-            SqliteDataReader dataReader = QueryReader(command);
-            if (dataReader.Read())
+            using (SqliteCommand command = new())
             {
-                // Directory, Hash, ModificationTime, SignatureCreation, OriginalSize
-                return new Tuple<string, string, long, long, long>(dataReader.GetString(0), dataReader.GetString(1), dataReader.GetInt64(2), dataReader.GetInt64(3), dataReader.GetInt64(4));
-            }
-            else
-            {
-                return null;
+                command.CommandText = $"SELECT * FROM {_defaultTable} WHERE directory = $directorySet";
+                command.Parameters.AddWithValue("$directorySet", directory);
+                SqliteDataReader dataReader = QueryReader(command);
+                if (dataReader.Read())
+                {
+                    // Directory, Hash, ModificationTime, SignatureCreation, OriginalSize
+                    return new Tuple<string, string, long, long, long>(dataReader.GetString(0), dataReader.GetString(1), dataReader.GetInt64(2), dataReader.GetInt64(3), dataReader.GetInt64(4));
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -273,24 +285,26 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Dictionary, hash pairs.</returns>
         public Dictionary<string, string> GetSetEntries(int set, int amountHandledPerSet)
         {
-            SqliteCommand command = new();
-            Dictionary<string, string> returnDictionary = new();
-            command.CommandText = @$"SELECT * FROM {_defaultTable} LIMIT $limit OFFSET $offset";
-            int setUp = set + 1;
-            command.Parameters.AddWithValue("$limit", amountHandledPerSet);
-            command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
-            SqliteDataReader dataReader = QueryReader(command);
-            int amount = 0;
-            if (dataReader != null)
+            using (SqliteCommand command = new())
             {
-                while (dataReader.Read())
+                Dictionary<string, string> returnDictionary = new();
+                command.CommandText = @$"SELECT * FROM {_defaultTable} LIMIT $limit OFFSET $offset";
+                int setUp = set + 1;
+                command.Parameters.AddWithValue("$limit", amountHandledPerSet);
+                command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
+                SqliteDataReader dataReader = QueryReader(command);
+                int amount = 0;
+                if (dataReader != null)
                 {
-                    // Directory -> Hash
-                    returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
-                    amount++;
+                    while (dataReader.Read())
+                    {
+                        // Directory -> Hash
+                        returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
+                        amount++;
+                    }
                 }
+                return returnDictionary;
             }
-            return returnDictionary;
         }
 
         /// <summary>
@@ -301,22 +315,24 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Dictionary, hash pairs.</returns>
         public Dictionary<string, string> GetSetEntriesDirectory(string directory)
         {
-            SqliteCommand command = new();
-            Dictionary<string, string> returnDictionary = new();
-            command.CommandText = @$"SELECT * FROM {_defaultTable} WHERE directory LIKE $like";
-            command.Parameters.AddWithValue("$like", $"{directory}%");
-            SqliteDataReader dataReader = QueryReader(command);
-            int amount = 0;
-            if (dataReader != null)
+            using (SqliteCommand command = new())
             {
-                while (dataReader.Read())
+                Dictionary<string, string> returnDictionary = new();
+                command.CommandText = @$"SELECT * FROM {_defaultTable} WHERE directory LIKE $like";
+                command.Parameters.AddWithValue("$like", $"{directory}%");
+                SqliteDataReader dataReader = QueryReader(command);
+                int amount = 0;
+                if (dataReader != null)
                 {
-                    // Directory -> Hash
-                    returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
-                    amount++;
+                    while (dataReader.Read())
+                    {
+                        // Directory -> Hash
+                        returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
+                        amount++;
+                    }
                 }
+                return returnDictionary;
             }
-            return returnDictionary;
         }
 
     }

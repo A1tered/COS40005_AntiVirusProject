@@ -23,6 +23,8 @@ class Program
     // Variable to keep track of total events checked
     static int totalEventsChecked = 0;
 
+    static Dictionary<string, int> _occurances = new();
+
     // Dictionary to track registry paths and event counts
     static Dictionary<string, RegistrySummary> registrySummary = new Dictionary<string, RegistrySummary>();
 
@@ -60,7 +62,7 @@ class Program
             while (!_quitEvent.WaitOne(0))
             {
                 await Task.Delay(5000);  // Wait for 5 seconds
-                OutputSummary();
+                //OutputSummary();
             }
         });
 
@@ -143,10 +145,32 @@ class Program
             // Increment the total events checked
             Interlocked.Increment(ref totalEventsChecked);
 
+
+            // Debug check
+            
+
             // Get the process name by PID
             string processName = GetProcessNameById(data.ProcessID);
 
+
+            // debug check
+            if (!_occurances.ContainsKey(processName))
+            {
+                _occurances[processName] = 1;
+            }
+            else
+            {
+                _occurances[processName] += 1;
+            }
+
+            foreach (KeyValuePair<string, int> keyPair in _occurances)
+            {
+                Console.Write($"\n{keyPair.Key} : {keyPair.Value}");
+            }
+            Console.SetCursorPosition(0, Console.CursorTop - _occurances.Count());
+
             // Filter events by target process name (powershell, cmd, pwsh)
+            //Console.WriteLine(processName);
             if (!IsRelevantProcess(processName))
             {
                 return;  // Ignore events not related to PowerShell or CMD
@@ -154,7 +178,6 @@ class Program
 
             // Get the registry path
             string registryPath = data.KeyName;
-
             // If the path is already tracked, update the existing entry
             if (registrySummary.ContainsKey(registryPath))
             {
@@ -198,7 +221,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("No new registry events were captured in the last 5 seconds.");
+           Console.WriteLine("No new registry events were captured in the last 5 seconds.");
         }
     }
 
@@ -213,7 +236,7 @@ class Program
     // Filter relevant processes (PowerShell or CMD)
     static bool IsRelevantProcess(string processName)
     {
-        string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
+        string[] relevantProcesses = { "powershell", "pwsh", "cmd", "windowsterminal" };
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))
@@ -234,7 +257,7 @@ class Program
                 return proc.ProcessName;
             }
         }
-        catch
+        catch (Exception e)
         {
             // If the process can't be found, return null silently
             return "N/A";

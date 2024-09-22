@@ -389,7 +389,7 @@ namespace SimpleAntivirus.FileQuarantine
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
+                Debug.WriteLine($"Error retrieving quarantined files: {ex.Message}");
             }
 
             return quarantinedFiles;
