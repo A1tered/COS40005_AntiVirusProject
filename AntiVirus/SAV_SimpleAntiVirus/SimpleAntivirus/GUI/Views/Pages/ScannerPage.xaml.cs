@@ -61,7 +61,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
 
             // Initialise Malicious Code
-            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "malicious_commands.db"));
+            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases\\malicious_commands.db"));
             _detector = new Detector(_databaseHandler);
         }
 
