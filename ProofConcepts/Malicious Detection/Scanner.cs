@@ -32,40 +32,48 @@ namespace MaliciousCode
         {
             try
             {
-                string[] files = Directory.GetFiles(directoryPath);
-
-                foreach (var file in files)
-                {
-                    // Create a FileAttributes object to store file metadata
-                    FileAttributes fileAttributes = new FileAttributes();
-
-                    FileInfo fileInfo = new FileInfo(file);
-                    fileAttributes.FileName = fileInfo.Name;
-                    fileAttributes.FileType = fileInfo.Extension;
-                    fileAttributes.FileSize = fileInfo.Length;
-                    fileAttributes.FileHash = await ComputeSHA1Async(file);
-                    fileAttributes.FileContent = await ExtractFileContentAsync(file);
-
-                    // Output file information
-                    Console.WriteLine("File Information:");
-                    Console.WriteLine($"File Name: {fileAttributes.FileName}");
-                    Console.WriteLine($"File Type: {fileAttributes.FileType}");
-                    Console.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
-                    Console.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
-
-                    // Detect malicious commands in the file content
-                    fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
-
-                    // Output whether the file is malicious or safe
-                    Console.WriteLine($"File is {(fileAttributes.ContainsMaliciousCommands ? "Malicious" : "Safe")}");
-                    Console.WriteLine("--------------------------------------------------");
-                }
-
                 // Recursively scan subdirectories
                 string[] directories = Directory.GetDirectories(directoryPath);
                 foreach (var directory in directories)
                 {
                     await ScanDirectoryAsync(directory);
+                }
+
+                string[] files = Directory.GetFiles(directoryPath);
+                foreach (string file in files)
+                {
+                    try
+                    {
+                        // Create a FileAttributes object to store file metadata
+                        FileAttributes fileAttributes = new FileAttributes();
+                        FileInfo fileInfo = new FileInfo(file);
+                        fileAttributes.FileName = fileInfo.Name;
+                        fileAttributes.FileType = fileInfo.Extension;
+                        fileAttributes.FileSize = fileInfo.Length;
+                        fileAttributes.FileHash = await ComputeSHA1Async(file);
+                        fileAttributes.FileContent = await ExtractFileContentAsync(file);
+                        // Output file information
+                        Console.WriteLine("File Information:");
+                        Console.WriteLine($"File Name: {fileAttributes.FileName}");
+                        Console.WriteLine($"File Type: {fileAttributes.FileType}");
+                        Console.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
+                        Console.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
+                        // Detect malicious commands in the file content
+                        fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
+
+                        // Output whether the file is malicious or safe
+                        Console.WriteLine($"File is {(fileAttributes.ContainsMaliciousCommands ? "Malicious" : "Safe")}");
+                        Console.WriteLine("--------------------------------------------------");
+
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        Console.WriteLine($"Access denied to file: {file}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error while scanning file {file}: {ex.Message}");
+                    }
                 }
             }
             catch (UnauthorizedAccessException)

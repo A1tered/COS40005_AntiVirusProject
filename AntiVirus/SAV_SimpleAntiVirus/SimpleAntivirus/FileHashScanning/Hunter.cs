@@ -49,9 +49,6 @@ namespace SimpleAntivirus.FileHashScanning
                         {
                             _token.ThrowIfCancellationRequested();
                         }
-                        FileInfo fileInfo = new FileInfo(file);
-                        scanner.UpdateSize(fileInfo.Length);
-                        scanner.UpdateProgress();
 
                         if (CompareCycle(file))
                         {
