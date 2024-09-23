@@ -93,6 +93,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 {
                     Task customscanFileHash = _fileHashScanner.Scan("custom", _customList);
                     Task customscanMalCode = _maliciousCodeScanner.Scan("custom", _customList);
+                    ViewModel.IsAddFolderButtonVisible = false;
                     await Task.WhenAll(customscanFileHash, customscanMalCode);
                     if (_customList != null && _customList.Count > 0)
                     {
@@ -102,6 +103,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     {
                         System.Windows.MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+                    ViewModel.IsAddFolderButtonVisible = true;
                     _customList.Clear();
                 }
                 else

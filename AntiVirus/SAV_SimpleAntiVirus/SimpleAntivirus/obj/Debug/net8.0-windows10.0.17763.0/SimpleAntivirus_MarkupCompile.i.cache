@@ -16,5 +16,5 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SA
 249-1865816638
 GUI\Views\Pages\AlertReportPage.xaml;GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Windows\MainWindow.xaml;
 
-False
+True
 
