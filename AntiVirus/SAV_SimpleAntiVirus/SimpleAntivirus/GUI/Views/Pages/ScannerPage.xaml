@@ -66,10 +66,6 @@
             </ui:ProgressRing.Triggers>
         </ui:ProgressRing>
         <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="Scanning..." HorizontalAlignment="Center" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}"/>
-        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="0% complete" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Center"/>
-        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="0 items scanned" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Center"/>
-        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="0 threats found" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Center"/>
-        <ProgressBar Height="22" Width="354" HorizontalAlignment="Center" Foreground="#FF2204B8" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,0,0,5"/>
         <ui:Button Content="Cancel" Click="CancelScanButton_Click" Height="30" FontSize="11" FontWeight="Bold"  Background="#ba1111" Foreground ="#E4FFFFFF" MouseOverBackground="LightPink" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
     </StackPanel>
 </Page>
