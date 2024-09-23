@@ -62,7 +62,7 @@ namespace SimpleAntivirus.AntiTampering
 
         // Creating the method to generate an AES key and IV (initialisation vector)
         // Used the 'out' keyword in the parameters to allow this method to return two pieces of information in a single call without needing to create two seperate methods
-        private static void GenerateEncryptionKey(out byte[] AesKey, out byte[] AesIV)
+        public static void GenerateEncryptionKey(out byte[] AesKey, out byte[] AesIV)
         {
             using Aes aes = Aes.Create();
 
@@ -78,7 +78,7 @@ namespace SimpleAntivirus.AntiTampering
             aes.KeySize = 256;
         }
 
-        private static void GenerateDBKey(out byte[] AesKeyDB, out byte[] AesIVDB)
+        public static void GenerateDBKey(out byte[] AesKeyDB, out byte[] AesIVDB)
         {
             using Aes aes = Aes.Create();
 
@@ -92,7 +92,7 @@ namespace SimpleAntivirus.AntiTampering
         }
 
         // Creating the method to use DPAPI to encrypt the AES key and store it in a location
-        private static void EncryptionKeyStorage(byte[] AesKey)
+        public static void EncryptionKeyStorage(byte[] AesKey)
         {
             // We are using a feature of DPAPI to encrypt our key, this is a Windows OS exclusive
             byte[] DPAPIkey = ProtectedData.Protect(AesKey, null, DataProtectionScope.CurrentUser);
@@ -101,7 +101,7 @@ namespace SimpleAntivirus.AntiTampering
             File.WriteAllBytes(@"C:\ProgramData\SimpleAntiVirus\EncryptionKey\aeskey.dat", DPAPIkey);
         }
 
-        private static void EncryptionIVStorage(byte[] AesIV)
+        public static void EncryptionIVStorage(byte[] AesIV)
         {
             byte[] DPAPIiv = ProtectedData.Protect(AesIV, null, DataProtectionScope.CurrentUser);
 
@@ -208,12 +208,12 @@ namespace SimpleAntivirus.AntiTampering
 
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(AesKey, AesIV);
 
-                using (MemoryStream msDecrypt = new())
+                using (MemoryStream msDecrypt = new(EncryptedFileContents))
                 {
                     using (CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
                         byte[] DecryptedFileContents = new byte[EncryptedFileContents.Length];
-                        csDecrypt.Read(DecryptedFileContents, 0, DecryptedFileContents.Length);
+                        csDecrypt.ReadAtLeast(DecryptedFileContents, DecryptedFileContents.Length, false);
                         return DecryptedFileContents;
                     }
                 }
@@ -229,7 +229,9 @@ namespace SimpleAntivirus.AntiTampering
                 aesAlg.Key = AesKey;
                 aesAlg.IV = AesIV;
 
+
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(AesKey, AesIV);
+
 
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {

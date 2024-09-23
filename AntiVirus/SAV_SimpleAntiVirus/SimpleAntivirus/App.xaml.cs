@@ -38,6 +38,7 @@ namespace SimpleAntivirus
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
             .ConfigureServices((context, services) =>
             {
+
                 services.AddHostedService<ApplicationHostService>();
 
                 // Page resolver service
@@ -54,6 +55,9 @@ namespace SimpleAntivirus
 
                 // NotifyIcon
                 services.AddSingleton<INotifyIconService, NotifyIconService>();
+
+                // AntiTampering functions
+                services.AddSingleton<SetupService>();
 
                 services.AddSingleton<SystemTrayService>();
 
@@ -87,7 +91,6 @@ namespace SimpleAntivirus
 
                 services.AddSingleton<CLIService>();
 
-                services.AddSingleton<SetupService>();
             }).Build();
 
         /// <summary>
@@ -121,7 +124,7 @@ namespace SimpleAntivirus
             ApplicationThemeManager.Apply(CurrentTheme);
             // Concern about async in this, however will only replace if this causes issues.
             await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
-            
+
             // CLI Monitor Setup (If you encounter lag, check this out)
             _host.Services.GetService<CLIService>().Setup();
 

@@ -17,9 +17,11 @@ namespace SimpleAntivirus.GUI.Services
     /// </summary>
     public class SetupService
     {
+
+        public bool _firstSetup;
         public SetupService()
         {
-
+            _firstSetup = false;
         }
 
         private void ErrorMessage(string problem)
@@ -44,19 +46,28 @@ namespace SimpleAntivirus.GUI.Services
 
         public async Task<bool> Run()
         {
-            System.Diagnostics.Debug.WriteLine("Startup Routine\n");
-            string configPath = CreateFilePathProgramDataDirectory("config");
+            System.Diagnostics.Debug.WriteLine("Startup Routine\n\n");
+            string configPath = CreateFilePathProgramDataDirectory("config.enc");
             if (Path.Exists(configPath))
             {
                 // Decrypt via set keys.
 
+                // Decrypt config file which is expected to have line "firstRun=1"
                 byte[] configInfo = EncryptionHandler.DecryptIntoMemory(configPath, EncryptionHandler.DecryptionKeyStorage(), EncryptionHandler.DecryptionIVStorage());
 
                 string fileInfo = new(UTF8Encoding.UTF8.GetChars(configInfo));
 
-                System.Diagnostics.Debug.WriteLine(fileInfo);
+                string[] lines = fileInfo.Split("\n");
 
-                GeneralRun();
+                if (lines[1].Contains("firstRun=1"))
+                {
+                    _firstSetup = false;
+                    GeneralRun();
+                }
+                else
+                { // If we decrypt the config file and don't have this string, there is an issue.
+                    ErrorMessage("Configuration file has been tampered with and cannot be read, reinstall program.");
+                }
             }
             else
             {
@@ -77,6 +88,7 @@ namespace SimpleAntivirus.GUI.Services
         /// <returns></returns>
         public async Task<bool> FirstRun()
         {
+            _firstSetup = true;
             string[] CreateFolders =
             {
                             @"C:\ProgramData\SimpleAntiVirus\EncryptionKey",
@@ -110,10 +122,13 @@ namespace SimpleAntivirus.GUI.Services
                 // Setup config.txt file for basic info.
                 using (StreamWriter fileS = new(configPath))
                 {
-                    await fileS.WriteAsync("config_file");
+                    await fileS.WriteAsync("Config_File_SAV");
                     await fileS.WriteAsync("\nfirstRun=1");
                 }
-                EncryptionHandler.InitialEncryptFiles(configPath, EncryptionHandler.DecryptionKeyStorage(), EncryptionHandler.DecryptionIVStorage());
+                EncryptionHandler.GenerateEncryptionKey(out byte[] aesKey, out byte[] aesIV);
+                EncryptionHandler.InitialEncryptFiles(configPath, aesKey, aesIV);
+                EncryptionHandler.EncryptionKeyStorage(aesKey);
+                EncryptionHandler.EncryptionIVStorage(aesIV);
             }
             return true;
         }
@@ -130,7 +145,16 @@ namespace SimpleAntivirus.GUI.Services
                 ErrorMessage("Databases folder does not exist!");
                 return false;
             }
+            //if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\IntegrityDatabase.db"));
             return true;
+        }
+
+        public bool FirstTimeRunning
+        {
+            get
+            {
+                return _firstSetup;
+            }
         }
     }
 }
