@@ -86,6 +86,8 @@ namespace SimpleAntivirus
                 services.AddSingleton<AlertReportPage>();
 
                 services.AddSingleton<CLIService>();
+
+                services.AddSingleton<SetupService>();
             }).Build();
 
         /// <summary>
@@ -107,8 +109,12 @@ namespace SimpleAntivirus
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
+            // Check the program has everything required
+            //_host.Services.GetService<SetupService>().Run();
+
             // Begin SystemTray
             _host.Services.GetService<SystemTrayService>();
+
 
             // Rough fix to theme irregularity copied from other theme window.
             ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
