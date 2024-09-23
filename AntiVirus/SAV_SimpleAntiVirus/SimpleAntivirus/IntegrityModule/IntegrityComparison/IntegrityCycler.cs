@@ -24,14 +24,22 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         private int _amountPerSet;
         private IntegrityDatabaseIntermediary _database;
         private ViolationHandler _violationHandler;
+        private CancellationTokenSource _cancelToken;
         public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
         {
             _database = database;
             _violationHandler = violationHandler;
             _amountPerSet = 500;
+            _cancelToken = new CancellationTokenSource();
         }
 
         public event EventHandler<ProgressArgs> ProgressUpdate;
+
+
+        public async Task CancelScan()
+        {
+            await _cancelToken.CancelAsync();
+        }
 
         /// <summary>
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
@@ -39,6 +47,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// <remarks>One of the most important functions.</remarks>
         public async Task<List<IntegrityViolation>> InitiateScan()
         {
+            _cancelToken = new();
             ProgressArgs setProgressArg;
             // Progress Track variables:
             // List that instantiates all the instances of Datapooler with proper configuration (Does not run them)
@@ -70,7 +79,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             }
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
-                taskList.Add(Task.Run(poolerObject.CheckIntegrity));
+                taskList.Add(Task.Run(() => poolerObject.CheckIntegrity(_cancelToken.Token), _cancelToken.Token));
             }
             initialTaskAmount = taskList.Count();
             Debug.WriteLine($"Task Initial Amount:{taskList.Count()}");
@@ -78,26 +87,34 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             {
                 taskToDelete.Clear();
                 await Task.WhenAny(taskList.ToArray());
-                foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+                try
                 {
-                    if (taskItem.IsCompleted)
+                    foreach (Task<List<IntegrityViolation>> taskItem in taskList)
                     {
-                        taskToDelete.Add(taskItem);
-                        taskAmountComplete++;
-                        foreach (IntegrityViolation violationComponent in taskItem.Result)
+                        if (taskItem.IsCompleted)
                         {
-                            summaryViolation.Add(violationComponent);
-                            // For each violation, send to violation handler
-                            await Task.Run(() => _violationHandler.ViolationAlert(violationComponent));
+                            taskToDelete.Add(taskItem);
+                            taskAmountComplete++;
+                            foreach (IntegrityViolation violationComponent in taskItem.Result)
+                            {
+                                summaryViolation.Add(violationComponent);
+                                // For each violation, send to violation handler
+                                await Task.Run(() => _violationHandler.ViolationAlert(violationComponent));
 
-                            // Progress calculation here
-                            setProgressArg = new();
-                            // Percentage of tasks left.
-                            setProgressArg.Progress = Math.Round(((taskAmountComplete) / (float)initialTaskAmount) * 100, 2);
-                            setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
-                            ProgressUpdate?.Invoke(this, setProgressArg);
+                                // Progress calculation here
+                                setProgressArg = new();
+                                // Percentage of tasks left.
+                                setProgressArg.Progress = Math.Round(((taskAmountComplete) / (float)initialTaskAmount) * 100, 2);
+                                setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
+                                ProgressUpdate?.Invoke(this, setProgressArg);
+                            }
                         }
                     }
+                }
+                catch (OperationCanceledException e)
+                {
+                    // Cancelled.
+                    return summaryViolation;
                 }
                 Debug.WriteLine($"Tasks marked complete in total {taskAmountComplete}");
                 // Delete all marked for deletion

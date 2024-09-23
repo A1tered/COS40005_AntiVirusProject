@@ -130,6 +130,15 @@ namespace SimpleAntivirus
             await _host.StopAsync();
             ToastNotificationManagerCompat.History.Clear();
 
+            // Most of these services being told to cancel / remove, are unnecessary most likely, however we will safely clean up some background
+            // operations, even though theyre disposed automatically.
+            
+            // All ongoing operations are to be cancelled within IntegrityManagement.
+            await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
+
+            // Tell CLIService to stop processing events.
+            _host.Services.GetService<CLIService>().Remove();
+
             //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }

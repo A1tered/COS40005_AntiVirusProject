@@ -80,7 +80,6 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             }
             return _database.GetSetEntries(page, _displaySet);
         }
-
         public int GetPageAmount()
         {
             return  Convert.ToInt32((_database.QueryAmount() / _displaySet));
@@ -93,6 +92,12 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         public bool RemoveAll()
         {
             return _database.DeleteAll();
+        }
+
+        // Cancel ongoing operations (Just adding to database)
+        public async Task CancelOperations()
+        {
+            await _database.CancelOperations();
         }
     }
 }

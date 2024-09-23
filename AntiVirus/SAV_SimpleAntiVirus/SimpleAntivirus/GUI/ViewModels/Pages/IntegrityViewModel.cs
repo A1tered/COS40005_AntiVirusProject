@@ -71,6 +71,11 @@ namespace SimpleAntivirus.ViewModels.Pages
             return result;
         }
 
+        public async Task CancelAllOperations()
+        {
+            await integHandlerModel.CancelAll();
+        }
+
         // If the Model (IntegrityManagement) sends out an event, handle it and update our properties.
         void HandleInnerPropertyChange(object? sender, PropertyChangedEventArgs args)
         {

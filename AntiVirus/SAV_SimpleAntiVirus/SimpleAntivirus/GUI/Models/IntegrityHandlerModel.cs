@@ -65,6 +65,10 @@ namespace SimpleAntivirus.Models
             return _integManage.BaselinePage(page);
         }
 
+        public async Task CancelAll()
+        {
+            await _integManage.CleanUp();
+        }
         public async Task<int> Scan()
         {
             _recentViolationList = await _integManage.Scan();

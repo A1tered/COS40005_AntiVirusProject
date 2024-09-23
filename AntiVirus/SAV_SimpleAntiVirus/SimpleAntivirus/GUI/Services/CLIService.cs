@@ -22,5 +22,10 @@ namespace SimpleAntivirus.GUI.Services
             //Dispatcher dis = Dispatcher.FromThread(Thread.CurrentThread);
             _cliMonitor.Setup();
         }
+
+        public void Remove()
+        {
+            _cliMonitor.Cleanup();
+        }
     }
 }

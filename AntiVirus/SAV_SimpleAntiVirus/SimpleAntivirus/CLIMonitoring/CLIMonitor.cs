@@ -54,6 +54,8 @@ public class CLIMonitor
 
     private DispatcherTimer _dispatcherTimer;
 
+    private TraceEventSession _session;
+
     private Task _taskTracker;
     public CLIMonitor(EventBus eventBusPass)
     {
@@ -69,7 +71,6 @@ public class CLIMonitor
         _dispatcherTimer = new();
         _dispatcherTimer.Tick += dispatcherTimerEvent;
         _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
-        
 
         // Keep _quitEvent.set() for cancel maybe?
 
@@ -78,6 +79,11 @@ public class CLIMonitor
     public void Setup()
     {
         _taskTracker = Task.Factory.StartNew(SetupAsync, TaskCreationOptions.LongRunning);
+    }
+
+    public void Cleanup()
+    {
+        _session.Source.StopProcessing();
     }
 
     private void UpdateProcessCache()
@@ -104,17 +110,17 @@ public class CLIMonitor
         _dispatcherTimer.Start();
         System.Diagnostics.Debug.WriteLine("Attempting to boot CLIMonitoring");
         string sessionName = "RegistryMonitorSession";
-        TraceEventSession session = null;
+        _session = null;
         try
         {
             // Create the session without 'using' to control disposal manually
-            session = new TraceEventSession(sessionName)
+            _session = new TraceEventSession(sessionName)
             {
                 StopOnDispose = true
             };
 
             // Enable Kernel Providers for registry-related events
-            session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
+            _session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
 
             Debug.WriteLine("Kernel providers enabled successfully.");
         }
@@ -125,27 +131,27 @@ public class CLIMonitor
         }
 
         // Subscribe to specific registry events
-        session.Source.Kernel.RegistrySetValue += async (RegistryTraceData data) =>
+        _session.Source.Kernel.RegistrySetValue += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Set Value");
         };
 
-        session.Source.Kernel.RegistryOpen += async (RegistryTraceData data) =>
+        _session.Source.Kernel.RegistryOpen += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Open Key");
         };
 
-        session.Source.Kernel.RegistryCreate += async (RegistryTraceData data) =>
+        _session.Source.Kernel.RegistryCreate += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Create Key");
         };
 
-        session.Source.Kernel.RegistryDelete += async (RegistryTraceData data) =>
+        _session.Source.Kernel.RegistryDelete += async (RegistryTraceData data) =>
         {
             await TrackRegistryEvent(data, "Delete Key");
         };
 
-        session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
+        _session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
         {
             //CompleteCopy copy = new(data.ProcessID, data.TimeStamp, data.KeyName);
             //Dispatcher dis = Dispatcher.FromThread(Thread.CurrentThread);
@@ -156,7 +162,7 @@ public class CLIMonitor
         try
         {
             Debug.WriteLine("Processing events...");
-            session.Source.Process();
+            _session.Source.Process();
             System.Diagnostics.Debug.WriteLine("CLI MONITORING ENDED HERE");
         }
         catch (Exception ex)

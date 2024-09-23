@@ -75,8 +75,9 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// Retrieving a set of the database, compare with system files.
         /// </summary>
         /// <returns>Violations found via mismatching Hashes.</returns>
-        public async Task<List<IntegrityViolation>> CheckIntegrity()
+        public async Task<List<IntegrityViolation>> CheckIntegrity(CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
             List<IntegrityViolation> violationSet = new();
             if (_selectedDirectory == null)
             {
@@ -87,6 +88,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                 int index = 0;
                 foreach (KeyValuePair<string, string> dirHash in infoSet)
                 {
+                    ct.ThrowIfCancellationRequested();
                     tempHash = stringList[index];
                     index++;
                     if (tempHash != dirHash.Value)

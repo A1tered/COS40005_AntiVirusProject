@@ -19,8 +19,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
 {
     public class IntegrityDatabaseIntermediary : DatabaseIntermediary
     {
+
+        private CancellationTokenSource _cancelToken;
         public IntegrityDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
         {
+            _cancelToken = new();
+
             // AntiTampering will need to ensure that this is only run at initialisation!!!
             if (firstRun)
             {
@@ -42,6 +46,11 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
                 return QueryNoReader(command) > 0;
             }
+        }
+
+        public async Task CancelOperations()
+        {
+            await _cancelToken.CancelAsync();
         }
 
         /// <summary>
@@ -124,6 +133,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
         public async Task<bool> AddEntry(string path, int amountPerSet)
         {
+            // Reset cancel token
+            _cancelToken = new();
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
             List<Task<bool>> taskManager = new();
             List<string> tempPathCreator = new();
@@ -134,7 +145,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
             int maxIds = pathProcess.Count() / amountPerSet;
             // Cancellation control variables
             bool forceFailure = false;
-            CancellationTokenSource cancelToken = new();
             System.Diagnostics.Debug.WriteLine($"Sets required: {maxIds}");
             using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
             { // remove if not good
@@ -147,13 +157,13 @@ namespace SimpleAntivirus.IntegrityModule.Db
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         System.Diagnostics.Debug.WriteLine(idTracker);
-                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {
@@ -182,7 +192,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                                 System.Diagnostics.Debug.WriteLine("Rollbacking Database due to adding directory error");
                                 Console.ResetColor();
                                 forceFailure = true;
-                                cancelToken.Cancel();
+                                _cancelToken.Cancel();
                                 break;
                             }
                         }
@@ -197,7 +207,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 {
                     taskManager.Clear();
                     transactionCreate.Rollback();
-                    cancelToken.Dispose();
+                    _cancelToken.Dispose();
                     return false;
                 }
                 transactionCreate.Commit();

@@ -121,6 +121,14 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             return _integrityConfigurator.RemoveAll();
         }
 
+        public async Task CleanUp()
+        {
+            await _integrityConfigurator.CancelOperations();
+            await _integrityCycler.CancelScan();
+            _reactiveControl.RemoveAll();
+            System.Diagnostics.Debug.WriteLine("Integrity Cleanup Finished");
+        }
+
         /// <summary>
         /// Amount of items in each Asynchronous set.
         /// </summary>
