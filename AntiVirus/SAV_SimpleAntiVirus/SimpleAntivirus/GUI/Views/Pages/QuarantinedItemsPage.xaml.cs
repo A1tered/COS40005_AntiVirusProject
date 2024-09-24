@@ -82,6 +82,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 {
                     infoText = $"All Items Selected ({allItemCount} Items)";
                     ViewModel.AllSelected = true;
+                    ViewModel.PathSelected = selectedItems;
                 }
                 SelectLabel.Text = infoText;
             }

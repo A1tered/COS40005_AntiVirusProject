@@ -157,8 +157,15 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Send to view model the path of folder.
             if (folderGet != "")
             {
-                _customList.Add(folderGet);
-                System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                if (_customList.Contains(folderGet))
+                {
+                    System.Windows.MessageBox.Show($"Error adding folder: Folder {folderGet} already in custom scan list.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                }
+                else
+                {
+                    _customList.Add(folderGet);
+                    System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                }
             }
         }
     }

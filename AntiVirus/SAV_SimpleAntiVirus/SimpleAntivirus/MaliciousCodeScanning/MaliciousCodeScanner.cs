@@ -106,14 +106,17 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                 }
 
                 string[] files = Directory.GetFiles(directoryPath);
-                foreach (string file in files)
-                {
-                    if (Token.IsCancellationRequested)
-                    {
-                        Token.ThrowIfCancellationRequested();
-                    }
 
-                    try
+                if (Token.IsCancellationRequested)
+                {
+                    Token.ThrowIfCancellationRequested();
+                }
+
+                try
+                {
+                    List<string> violationsList = new List<string>();
+
+                    foreach (string file in files)
                     {
                         // Create a FileAttributes object to store file metadata
                         FileAttributes fileAttributes = new FileAttributes();
@@ -134,23 +137,27 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         // Detect malicious commands in the file content
                         fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
                         Debug.WriteLine($"Contains Malicious Commands: {fileAttributes.ContainsMaliciousCommands}");
+
                         // Output whether the file is malicious or safe
                         if (fileAttributes.ContainsMaliciousCommands)
                         {
-                            await QuarantineManager.QuarantineFileAsync(file, EventBus, "maliciouscode");
+                            violationsList.Add(file);
                         }
 
                         Debug.WriteLine("--------------------------------------------------");
-
                     }
-                    catch (UnauthorizedAccessException)
+                    foreach (string violation in violationsList)
                     {
-                        Debug.WriteLine($"Access denied to file: {file}");
+                        await QuarantineManager.QuarantineFileAsync(violation, EventBus, "maliciouscode");
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Error while scanning file {file}: {ex.Message}");
-                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    Debug.WriteLine($"Access denied to file");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error while scanning file: {ex.Message}");
                 }
             }
             catch (UnauthorizedAccessException)

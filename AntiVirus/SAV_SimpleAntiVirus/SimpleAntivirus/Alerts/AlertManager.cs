@@ -142,16 +142,14 @@ public class AlertManager
             INSERT INTO Alerts (Component, Severity, Message, SuggestedAction, Timestamp)
             VALUES (@Component, @Severity, @Message, @SuggestedAction, @Timestamp)";
 
-            using (var command = new SqliteCommand(insertQuery, _databaseConnection))
-            {
-                command.Parameters.AddWithValue("@Component", alert.Component);
-                command.Parameters.AddWithValue("@Severity", alert.Severity);
-                command.Parameters.AddWithValue("@Message", alert.Message);
-                command.Parameters.AddWithValue("@SuggestedAction", alert.SuggestedAction);
-                command.Parameters.AddWithValue("@Timestamp", alert.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
+            var command = new SqliteCommand(insertQuery, _databaseConnection);
+            command.Parameters.AddWithValue("@Component", alert.Component);
+            command.Parameters.AddWithValue("@Severity", alert.Severity);
+            command.Parameters.AddWithValue("@Message", alert.Message);
+            command.Parameters.AddWithValue("@SuggestedAction", alert.SuggestedAction);
+            command.Parameters.AddWithValue("@Timestamp", alert.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                await command.ExecuteNonQueryAsync();
-            }
+            await command.ExecuteNonQueryAsync();
         }
 
        // _databaseConnection.Close();

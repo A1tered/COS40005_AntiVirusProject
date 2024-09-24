@@ -33,7 +33,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)
         {
-            return await Task.Run(() =>
+            return await Task.Run(async () =>
             {
                 try
                 {
@@ -53,8 +53,11 @@ namespace SimpleAntivirus.FileHashScanning
                         if (CompareCycle(file))
                         {
                             violationsList.Add(file);
-                            Violation(scanner,file);
                         }
+                    }
+                    foreach (string violation in violationsList)
+                    {
+                        await scanner.QuarantineManager.QuarantineFileAsync(violation, scanner.EventBus, "filehash");
                     }
                     return Tuple.Create(violationsList.ToArray(), directoryRemnants);
                 }
@@ -72,11 +75,6 @@ namespace SimpleAntivirus.FileHashScanning
                     _databaseConnection.CleanUp();
                 }
             }, scanner.Token);
-        }
-
-        private async void Violation(FileHashScanner scanner, string fileDirectory)
-        {
-            await scanner.QuarantineManager.QuarantineFileAsync(fileDirectory, scanner.EventBus, "filehash");
         }
 
         public bool CompareCycle(string fileDirectory)
