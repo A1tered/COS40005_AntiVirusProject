@@ -17,7 +17,7 @@ class Program
     public static void Main(string[] args)
     {
         string testKey = "testKey";
-        IntegrityDatabaseIntermediary inter = new IntegrityDatabaseIntermediary("integrity_database", true, testKey);
+        IntegrityDatabaseIntermediary inter = new IntegrityDatabaseIntermediary("integrity_database", false, testKey);
        IntegrityManagement integrityModule = new IntegrityManagement(inter);
         //integrityModule.ClearDatabase();
         //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
@@ -31,7 +31,6 @@ class Program
                 Console.Write($"{item},");
             }
             Console.Write("\n");
-            break;
         }
         integrityModule.Close();
         Console.ReadLine(); // Remove when merging

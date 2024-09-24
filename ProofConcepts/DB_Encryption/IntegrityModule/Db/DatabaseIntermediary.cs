@@ -22,6 +22,8 @@ namespace DatabaseFoundations
     {
         protected SqliteConnection _databaseConnection;
         protected string _defaultTable;
+        protected string _directoryDatabase;
+        protected string _databaseName;
 
         /// <summary>
         /// Constructor
@@ -30,6 +32,7 @@ namespace DatabaseFoundations
         /// <param name="databaseName">Name of database SQLite file</param>
         public DatabaseIntermediary(string databaseName, bool makeDatabase = false, string defaultTable = "", string key = "")
         {
+            _databaseName = databaseName;
             // Find database folder
             string returnedDirectoryDatabase = FileInfoRequester.FileDirectorySearcher(AppDomain.CurrentDomain.BaseDirectory, "Databases");
             string databaseSpecificPath;
@@ -39,6 +42,7 @@ namespace DatabaseFoundations
             {
                 returnedDirectoryDatabase = Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases")).FullName;
             }
+            _directoryDatabase = returnedDirectoryDatabase;
             // Does the database exist within Database folder?
             databaseSpecificPath = FileInfoRequester.FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
             if (databaseSpecificPath != null || makeDatabase)
@@ -64,22 +68,23 @@ namespace DatabaseFoundations
                 SqliteCommand commandPragma = new();
                 commandPragma.CommandText = "PRAGMA journal_mode=WAL";
                 QueryNoReader(commandPragma);
-
-                // This database is freshly baked, lets fill it with chocolate! (data)
-                if (makingInProcess)
-                {
-                    // database at this point, table wise hasnt been created...
-                    string fillerDatabase = Path.Combine(returnedDirectoryDatabase, "backupSet\\integrity_database_filler");
-                    QueryNoReader(new SqliteCommand($"ATTACH DATABASE '{fillerDatabase}' as 'fillerDatabase' KEY ''"));
-                    QueryNoReader(new SqliteCommand($"INSERT OR IGNORE INTO {databaseName}.IntegrityTrack SELECT * FROM fillerDatabase.IntegrityTrack"));
-                    QueryNoReader(new SqliteCommand($"DETACH fillerDatabase"));
-                }
             }
             else
             {
                 // If the database is not allowed to be created, then return error if it does not exist.
                 throw new Exception("Database non-existent");
             }
+        }
+
+        public void TransferAcross()
+        {
+            // This database is freshly baked, lets fill it with chocolate! (data)
+
+                // database at this point, table wise hasnt been created...
+            string fillerDatabase = Path.Combine(_directoryDatabase, "backupSet\\integrity_database_filler");
+            QueryNoReader(new SqliteCommand($"ATTACH DATABASE '{fillerDatabase}' as 'fillerDatabase' KEY ''"));
+            QueryNoReader(new SqliteCommand($"INSERT OR IGNORE INTO IntegrityTrack SELECT * FROM fillerDatabase.IntegrityTrack"));
+            QueryNoReader(new SqliteCommand($"DETACH fillerDatabase"));
         }
 
         public void CloseDB()

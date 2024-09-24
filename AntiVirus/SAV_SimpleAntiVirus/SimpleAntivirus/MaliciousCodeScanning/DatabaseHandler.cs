@@ -8,7 +8,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
@@ -19,14 +19,14 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Constructor to initialize the connection string
         public DatabaseHandler(string dbPath)
         {
-            connectionString = $"Data Source={dbPath};Version=3;";
+            connectionString = $"Data Source={dbPath}";
             EnsureTableExists();
         }
 
         // Ensure the MaliciousCommands table exists, if not, create it
         private void EnsureTableExists()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
                 string createTableQuery = @"
@@ -35,7 +35,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         command TEXT NOT NULL
                     );";
 
-                using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
+                using (SqliteCommand cmd = new SqliteCommand(createTableQuery, conn))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -47,14 +47,14 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         {
             List<string> maliciousCommands = new List<string>();
 
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
 
                 string query = "SELECT command FROM MaliciousCommands;";
 
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                using (SqliteCommand cmd = new SqliteCommand(query, conn))
+                using (SqliteDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -69,12 +69,12 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Insert malicious commands into the database
         public void InsertMaliciousCommand(string command)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
 
                 string insertQuery = "INSERT INTO MaliciousCommands (command) VALUES (@command);";
-                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
+                using (SqliteCommand cmd = new SqliteCommand(insertQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@command", command);
                     cmd.ExecuteNonQuery();
