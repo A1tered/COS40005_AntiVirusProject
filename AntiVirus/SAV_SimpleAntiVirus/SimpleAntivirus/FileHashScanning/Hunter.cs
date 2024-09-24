@@ -76,8 +76,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         private async void Violation(FileHashScanner scanner, string fileDirectory)
         {
-            await scanner.EventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {fileDirectory} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-            await scanner.QuarantineManager.QuarantineFileAsync(fileDirectory);
+            await scanner.QuarantineManager.QuarantineFileAsync(fileDirectory, scanner.EventBus, "filehash");
         }
 
         public bool CompareCycle(string fileDirectory)

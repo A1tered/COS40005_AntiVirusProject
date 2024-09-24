@@ -44,7 +44,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ui:Button Content="Unquarantine" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Unquarantine_Click"/>
+            <ui:Button Content="Unquarantine" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Unquarantine_Click" Background="#FF2204B8"/>
             <ui:Button Grid.Column="1" Content="Add to Whitelist" Margin="1,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#FF2A5824" Click="Whitelist_Click"/>
             <ui:Button Grid.Column="2" Content="Delete" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#ba1111" MouseOverBackground="LightPink" Click="Delete_Click" />
         </Grid>

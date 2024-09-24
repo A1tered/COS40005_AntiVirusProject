@@ -64,6 +64,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 stringBuild.Append(byteRep.ToString("X2"));
             }
+            fileStream.Close();
             return stringBuild.ToString();
         }
         

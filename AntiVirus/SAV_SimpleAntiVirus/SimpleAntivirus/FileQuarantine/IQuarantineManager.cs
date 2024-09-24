@@ -1,11 +1,13 @@
-﻿namespace SimpleAntivirus.FileQuarantine
+﻿using SimpleAntivirus.Alerts;
+
+namespace SimpleAntivirus.FileQuarantine
 {
     public interface IQuarantineManager
     {
         /// Quarantines a specified file, moves it to a quarantine folder, and stores its details in the database.
 
         /// <param name="filePath">The full path of the file to quarantine.</param>
-        Task QuarantineFileAsync(string filePath);
+        Task QuarantineFileAsync(string filePath, EventBus eventBus, string scanType);
 
         /// Unquarantines a file based on its ID, restores it to its original location, and removes its details from the database.
 

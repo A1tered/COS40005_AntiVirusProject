@@ -137,8 +137,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         // Output whether the file is malicious or safe
                         if (fileAttributes.ContainsMaliciousCommands)
                         {
-                            await EventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! Malicious code has been found in {file} and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-                            await QuarantineManager.QuarantineFileAsync(file);
+                            await QuarantineManager.QuarantineFileAsync(file, EventBus, "maliciouscode");
                         }
 
                         Debug.WriteLine("--------------------------------------------------");

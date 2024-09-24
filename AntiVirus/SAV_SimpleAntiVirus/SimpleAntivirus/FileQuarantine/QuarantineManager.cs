@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using SimpleAntivirus.Alerts;
+using System.Diagnostics;
 using System.IO;
 
 namespace SimpleAntivirus.FileQuarantine
@@ -25,28 +26,47 @@ namespace SimpleAntivirus.FileQuarantine
         }
 
         // QuarantineFileAsync handles quarantining a file: moving it to quarantine and updating the database
-        public async Task QuarantineFileAsync(string filePath)
+        public async Task QuarantineFileAsync(string filePath, EventBus eventBus, string scanType)
         {
             try
             {
                 // Check if the file is already whitelisted
-                if (await _databaseManager.IsWhitelistedAsync(filePath))
+                if (await _databaseManager.IsWhitelistedAsync(filePath) && scanType == "filehash")
                 {
+                    await eventBus.PublishAsync("File Hash Scanning", "Low", $"Whitelisted threat detected at location: {filePath}", "Ensure only safe files are whitelisted");
                     Debug.WriteLine($"File or folder is whitelisted and will not be quarantined: {filePath}");
                     return;
                 }
+                else if (await _databaseManager.IsWhitelistedAsync(filePath) && scanType == "maliciouscode")
+                {
+                    await eventBus.PublishAsync("Malicious Code Scanning", "Low", $"Whitelisted threat detected at location: {filePath}", "Ensure only safe files are whitelisted");
+                    Debug.WriteLine($"File or folder is whitelisted and will not be quarantined: {filePath}");
+                    return;
+                }
+                else
+                {
+                    // Send alert
+                    if (scanType == "filehash")
+                    {
+                        await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
+                    }
+                    else if (scanType == "maliciouscode")
+                    {
+                        await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
+                    }
 
-                // Move the file to the quarantine directory
-                string quarantinePath = await _fileMover.MoveFileToQuarantineAsync(filePath, _quarantineDirectory);
+                    // Move the file to the quarantine directory
+                    string quarantinePath = await _fileMover.MoveFileToQuarantineAsync(filePath, _quarantineDirectory);
 
-                // Remove file permissions to prevent unauthorized access
-                await RemoveFilePermissionsUsingPowerShell(quarantinePath);
+                    // Remove file permissions to prevent unauthorized access
+                    await RemoveFilePermissionsUsingPowerShell(quarantinePath);
 
-                // Store the quarantine info (path, original location) in the database
-                await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
+                    // Store the quarantine info (path, original location) in the database
+                    await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
 
-                // Log the quarantined file's location securely
-                await LogQuarantinedFileLocationAsync(quarantinePath);
+                    // Log the quarantined file's location securely
+                    await LogQuarantinedFileLocationAsync(quarantinePath);
+                }
             }
             catch (Exception ex)
             {
@@ -164,6 +184,7 @@ namespace SimpleAntivirus.FileQuarantine
         private async Task DeleteFileUsingPowerShell(string filePath)
         {
             string command = $"Remove-Item \"{filePath}\"";
+            Debug.WriteLine(command);
             await RunPowerShellCommandAsync(command);
         }
 
