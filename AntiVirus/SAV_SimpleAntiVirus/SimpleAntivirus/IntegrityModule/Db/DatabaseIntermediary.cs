@@ -18,7 +18,7 @@ using SimpleAntivirus.IntegrityModule.DataRelated;
 namespace SimpleAntivirus.IntegrityModule.Db
 {
   
-    public class DatabaseIntermediary
+    public class DatabaseIntermediary : IDisposable
     {
         protected SqliteConnection _databaseConnection;
         protected string _defaultTable;
@@ -66,7 +66,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
         }
 
-        public void CloseDB()
+        public void Dispose()
         {
             _databaseConnection.Close();
         }

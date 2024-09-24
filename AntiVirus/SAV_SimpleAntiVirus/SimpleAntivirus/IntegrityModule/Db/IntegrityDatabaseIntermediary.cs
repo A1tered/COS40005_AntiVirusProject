@@ -87,11 +87,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 return false;
             }
             int index = 0;
+            SqliteCommand command;
             foreach (string cyclePath in givenPaths)
             {
                 cancelToken.ThrowIfCancellationRequested();
                 //Debug.WriteLine($"ADD: {cyclePath}");
-                SqliteCommand command = new();
+                command = new();
                 command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
                 command.Transaction = trans;
                 string getHash = hashSet[index];
@@ -113,7 +114,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
                     break;
                 }
                 index++;
-
             }
             if (noFailure == false)
             {

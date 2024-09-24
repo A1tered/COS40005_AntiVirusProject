@@ -43,16 +43,18 @@ namespace DatabaseFoundations
             databaseSpecificPath = FileInfoRequester.FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
             if (databaseSpecificPath != null || makeDatabase)
             {
+                bool makingInProcess = false;
                 // Make database.
                 if (databaseSpecificPath == null)
                 {
                     databaseSpecificPath = Path.Combine(returnedDirectoryDatabase, databaseName);
+                    makingInProcess = true;
                 }
                 SqliteConnectionStringBuilder connectionBuild = new();
                 Console.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
-                connectionBuild.Mode = SqliteOpenMode.ReadWrite;
-                // If key exists, apply key.
+                connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
+                //If key exists, apply key.
                 if (key != "")
                 {
                     connectionBuild.Password = key;
@@ -62,6 +64,16 @@ namespace DatabaseFoundations
                 SqliteCommand commandPragma = new();
                 commandPragma.CommandText = "PRAGMA journal_mode=WAL";
                 QueryNoReader(commandPragma);
+
+                // This database is freshly baked, lets fill it with chocolate! (data)
+                if (makingInProcess)
+                {
+                    // database at this point, table wise hasnt been created...
+                    string fillerDatabase = Path.Combine(returnedDirectoryDatabase, "backupSet\\integrity_database_filler");
+                    QueryNoReader(new SqliteCommand($"ATTACH DATABASE '{fillerDatabase}' as 'fillerDatabase' KEY ''"));
+                    QueryNoReader(new SqliteCommand($"INSERT OR IGNORE INTO {databaseName}.IntegrityTrack SELECT * FROM fillerDatabase.IntegrityTrack"));
+                    QueryNoReader(new SqliteCommand($"DETACH fillerDatabase"));
+                }
             }
             else
             {

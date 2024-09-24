@@ -98,7 +98,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         public async Task CancelOperations()
         {
             await _database.CancelOperations();
-            _database.CloseDB();
+            _database.Dispose();
         }
     }
 }

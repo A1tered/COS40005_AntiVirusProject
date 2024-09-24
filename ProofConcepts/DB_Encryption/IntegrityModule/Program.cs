@@ -17,12 +17,23 @@ class Program
     public static void Main(string[] args)
     {
         string testKey = "testKey";
-       IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("integrity_database.db", false, testKey));
-        integrityModule.ClearDatabase();
-        integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
-        integrityModule.Scan(true);
+        IntegrityDatabaseIntermediary inter = new IntegrityDatabaseIntermediary("integrity_database", true, testKey);
+       IntegrityManagement integrityModule = new IntegrityManagement(inter);
+        //integrityModule.ClearDatabase();
+        //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);
+        //integrityModule.Scan(true);
         //integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
-        Console.ReadLine(); // Remove when merging
+        List<List<string>> outGet = inter.QueryReaderAsText(new Microsoft.Data.Sqlite.SqliteCommand("SELECT * FROM IntegrityTrack"));
+        foreach (List<string> lineSet in outGet)
+        {
+            foreach (string item in lineSet)
+            {
+                Console.Write($"{item},");
+            }
+            Console.Write("\n");
+            break;
+        }
         integrityModule.Close();
+        Console.ReadLine(); // Remove when merging
     }
 }
