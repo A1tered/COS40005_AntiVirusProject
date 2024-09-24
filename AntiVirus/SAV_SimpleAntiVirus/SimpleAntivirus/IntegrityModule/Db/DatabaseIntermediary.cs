@@ -66,10 +66,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
         }
 
-        ~DatabaseIntermediary()
+        public void CloseDB()
         {
             _databaseConnection.Close();
         }
+
+
 
         /// <summary>
         /// Private function, determines whether the database can be used.
@@ -96,7 +98,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
             if (DatabaseUsable())
             {
                 query.Connection = _databaseConnection;
-                return query.ExecuteNonQuery();
+                int getResult = query.ExecuteNonQuery();
+                return getResult;
             }
             return 0;
         }
@@ -111,7 +114,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
             if (DatabaseUsable())
             {
                 query.Connection = _databaseConnection;
-                return query.ExecuteReader();
+                SqliteDataReader dataReaderObj = query.ExecuteReader();
+                return dataReaderObj;
             }
             return null;
         }
@@ -189,6 +193,14 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {
                 command.CommandText = "VACUUM";
                 QueryNoReader(command);
+            }
+        }
+
+        public SqliteConnection Connection
+        {
+            get
+            {
+                return _databaseConnection;
             }
         }
     }

@@ -113,7 +113,7 @@ namespace SimpleAntivirus
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
             // Check the program has everything required
-            //_host.Services.GetService<SetupService>().Run();
+            _host.Services.GetService<SetupService>().Run();
 
             // Begin SystemTray
             _host.Services.GetService<SystemTrayService>();
@@ -144,6 +144,8 @@ namespace SimpleAntivirus
             
             // All ongoing operations are to be cancelled within IntegrityManagement.
             await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
+
+
 
             // Tell CLIService to stop processing events.
             _host.Services.GetService<CLIService>().Remove();

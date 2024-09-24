@@ -17,11 +17,12 @@ class Program
     public static void Main(string[] args)
     {
         string testKey = "testKey";
-       IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("IntegrityDatabase", false, testKey));
+       IntegrityManagement integrityModule = new IntegrityManagement(new IntegrityDatabaseIntermediary("integrity_database.db", false, testKey));
         integrityModule.ClearDatabase();
         integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles", true);
         integrityModule.Scan(true);
         //integrityModule.RemoveBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles");
         Console.ReadLine(); // Remove when merging
+        integrityModule.Close();
     }
 }

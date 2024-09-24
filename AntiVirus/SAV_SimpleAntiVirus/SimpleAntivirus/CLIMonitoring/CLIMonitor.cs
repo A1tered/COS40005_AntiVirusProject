@@ -83,7 +83,10 @@ public class CLIMonitor
 
     public void Cleanup()
     {
-        _session.Source.StopProcessing();
+        if (_session != null)
+        {
+            _session.Source.StopProcessing();
+        }
     }
 
     private void UpdateProcessCache()
@@ -99,7 +102,7 @@ public class CLIMonitor
 
     private void dispatcherTimerEvent(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("Updating cache");
+        //System.Diagnostics.Debug.WriteLine("Updating cache");
         UpdateProcessCache();
     }
 

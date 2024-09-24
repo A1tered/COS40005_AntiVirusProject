@@ -51,7 +51,7 @@ namespace DatabaseFoundations
                 SqliteConnectionStringBuilder connectionBuild = new();
                 Console.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
-                connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
+                connectionBuild.Mode = SqliteOpenMode.ReadWrite;
                 // If key exists, apply key.
                 if (key != "")
                 {
@@ -59,6 +59,9 @@ namespace DatabaseFoundations
                 }
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
+                SqliteCommand commandPragma = new();
+                commandPragma.CommandText = "PRAGMA journal_mode=WAL";
+                QueryNoReader(commandPragma);
             }
             else
             {
@@ -67,7 +70,7 @@ namespace DatabaseFoundations
             }
         }
 
-        ~DatabaseIntermediary()
+        public void CloseDB()
         {
             _databaseConnection.Close();
         }

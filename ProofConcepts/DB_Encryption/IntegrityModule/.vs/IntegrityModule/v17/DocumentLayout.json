@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\db\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:db\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\controlclasses\\integrityconfigurator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:controlclasses\\integrityconfigurator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\db\\integritydatabaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:datarelated\\fileinforequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|solutionrelative:controlclasses\\integritymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E502D696-C4BA-479F-897A-0CAD36B06F7E}|IntegrityModule.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\proofconcepts\\db_encryption\\integritymodule\\reactive\\reactivecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,16 +42,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DatabaseIntermediary.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "RelativeDocumentMoniker": "Db\\DatabaseIntermediary.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "RelativeToolTip": "Db\\DatabaseIntermediary.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAawDwAAAAQAAAA",
+              "DocumentIndex": 3,
+              "Title": "IntegrityConfigurator.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
+              "RelativeDocumentMoniker": "ControlClasses\\IntegrityConfigurator.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
+              "RelativeToolTip": "ControlClasses\\IntegrityConfigurator.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwDgAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:16:46.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T00:15:26.287Z"
             },
             {
               "$type": "Document",
@@ -57,27 +60,26 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAdAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABkAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-13T04:15:05.042Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FileInfoRequester.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
-              "RelativeDocumentMoniker": "DataRelated\\FileInfoRequester.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
-              "RelativeToolTip": "DataRelated\\FileInfoRequester.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAswGAAAAAyAAAA",
+              "DocumentIndex": 2,
+              "Title": "DatabaseIntermediary.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
+              "RelativeDocumentMoniker": "Db\\DatabaseIntermediary.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
+              "RelativeToolTip": "Db\\DatabaseIntermediary.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAawEkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T11:51:56.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T04:16:46.197Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "IntegrityDatabaseIntermediary.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Db\\IntegrityDatabaseIntermediary.cs",
               "RelativeDocumentMoniker": "Db\\IntegrityDatabaseIntermediary.cs",
@@ -85,25 +87,35 @@
               "RelativeToolTip": "Db\\IntegrityDatabaseIntermediary.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAACWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:20:33.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T04:20:33.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
+              "Title": "FileInfoRequester.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
+              "RelativeDocumentMoniker": "DataRelated\\FileInfoRequester.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\DataRelated\\FileInfoRequester.cs",
+              "RelativeToolTip": "DataRelated\\FileInfoRequester.cs",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAswGAAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T11:51:56.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "IntegrityManagement.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "RelativeDocumentMoniker": "ControlClasses\\IntegrityManagement.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "RelativeToolTip": "ControlClasses\\IntegrityManagement.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAABDAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAYwEYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:15:10.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T04:15:10.28Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ReactiveControl.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\ProofConcepts\\DB_Encryption\\IntegrityModule\\Reactive\\ReactiveControl.cs",
               "RelativeDocumentMoniker": "Reactive\\ReactiveControl.cs",

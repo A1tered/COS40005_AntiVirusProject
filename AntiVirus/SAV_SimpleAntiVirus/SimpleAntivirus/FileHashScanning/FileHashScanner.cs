@@ -42,7 +42,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
-        static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
+        static string databaseDirectory => directoryManager.getDatabaseDirectory("sighash.db");
 
         public async Task Scan(string scanType, List<string> customScanDirs)
         {

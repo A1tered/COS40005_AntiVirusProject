@@ -11,14 +11,14 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
         public BlacklistViewModel()
         {
             _directoryManager = new DirectoryManager();
-            _databaseConnector = new DatabaseConnector(_directoryManager.getDatabaseDirectory("SigHashDB.db"), true);
+            _databaseConnector = new DatabaseConnector(_directoryManager.getDatabaseDirectory("sighash.db"), true);
             _hasher = new Hasher();
         }
 
         public bool BlacklistFile(string path)
         {
             string hash = _hasher.OpenHashFile(path);
-            _databaseConnector.Open(_directoryManager.getDatabaseDirectory("SigHashDB.db"), true);
+            _databaseConnector.Open(_directoryManager.getDatabaseDirectory("sighash.db"), true);
             bool result = _databaseConnector.AddHash(hash);
             _databaseConnector.CleanUp();
             return result;
@@ -26,7 +26,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
 
         public bool BlacklistHash(string hash)
         {
-            _databaseConnector.Open(_directoryManager.getDatabaseDirectory("SigHashDB.db"), true);
+            _databaseConnector.Open(_directoryManager.getDatabaseDirectory("sighash.db"), true);
             bool result = _databaseConnector.AddHash(hash);
             _databaseConnector.CleanUp();
             return result;

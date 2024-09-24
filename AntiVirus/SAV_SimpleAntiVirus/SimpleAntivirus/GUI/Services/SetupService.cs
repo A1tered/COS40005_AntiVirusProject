@@ -1,4 +1,5 @@
 ﻿using SimpleAntivirus.AntiTampering;
+using SimpleAntivirus.GUI.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf.Ui;
 
 namespace SimpleAntivirus.GUI.Services
 {
@@ -18,15 +20,24 @@ namespace SimpleAntivirus.GUI.Services
     public class SetupService
     {
 
-        public bool _firstSetup;
-        public SetupService()
+        private bool _firstSetup;
+        private INavigationWindow _iNaviWindow;
+        public SetupService(INavigationWindow naviWindow)
         {
             _firstSetup = false;
+            _iNaviWindow = naviWindow;
         }
 
+        /// <summary>
+        /// Display error message and then close program.
+        /// </summary>
+        /// <param name="problem"></param>
         private void ErrorMessage(string problem)
         {
             System.Windows.MessageBox.Show(problem, "Operation Failure", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            // Close program
+            MainWindow window = _iNaviWindow as MainWindow;
+            window.CloseWindowForcefully();
         }
 
 
@@ -129,7 +140,23 @@ namespace SimpleAntivirus.GUI.Services
                 EncryptionHandler.InitialEncryptFiles(configPath, aesKey, aesIV);
                 EncryptionHandler.EncryptionKeyStorage(aesKey);
                 EncryptionHandler.EncryptionIVStorage(aesIV);
+
+
+                // Database Key Management
+                EncryptionHandler.GenerateDBKey(out byte[] aesKeyDb, out byte[] aesIVDb);
+                EncryptionHandler.EncryptionDBKeyStorage(aesKeyDb);
+                EncryptionHandler.EncryptionDBIVStorage(aesIVDb);
+
+
+                // Do advise, from the code... Integrity, Malicious_Cmd_DB, Quarantine are all capable of generating a db is one is not provided.
+                // 
+                // The only issue will be is the transfer of data for signature hash, and malicious cmd db.
+                // Hopefully on setup, we can provide all database files for simplicity, rather than any form of generation...
+
             }
+
+
+            System.Windows.MessageBox.Show("Program has been booted up for the first time\n This message will only show up if no data is found!", "First time booting up", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
             return true;
         }
 
@@ -139,14 +166,38 @@ namespace SimpleAntivirus.GUI.Services
         /// <returns>True - Program cannot detect any issues <para/> False - Program files are missing / tampering detected</returns>
         public bool GeneralRun()
         {
-            // On first run
-            if (!Path.Exists(CreateFilePathInProjectDirectory("Databases")))
+            // On any runs after first run, occur and a database is found to be missing, then this is an issue and alert it.
+            if (Path.Exists(CreateFilePathInProjectDirectory("Databases")))
+            {
+                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\quarantine.db")))
+                {
+                    ErrorMessage("Quarantine DB missing, reinstall program.");
+                }
+                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\malicious_commands.db")))
+                {
+                    ErrorMessage("Malicious CMD DB missing, reinstall program.");
+                }
+                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\integrity_database.db")))
+                {
+                    ErrorMessage("Integrity DB missing, reinstall program.");
+                }
+                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\integrity_database.db")))
+                {
+                    ErrorMessage("Signature DB missing, reinstall program.");
+                }
+            }
+            else
             {
                 ErrorMessage("Databases folder does not exist!");
                 return false;
             }
             //if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\IntegrityDatabase.db"));
             return true;
+        }
+
+        public string DbKey()
+        {
+            return "";
         }
 
         public bool FirstTimeRunning
