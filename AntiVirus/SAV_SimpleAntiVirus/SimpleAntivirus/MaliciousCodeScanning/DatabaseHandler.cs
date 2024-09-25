@@ -8,7 +8,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Data.Sqlite;
+using SimpleAntivirus.GUI.Services;
 
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
@@ -17,14 +19,15 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         private readonly string connectionString;
 
         // Constructor to initialize the connection string
-        public DatabaseHandler(string dbPath)
+        public DatabaseHandler(string dbFolder, SetupService setupService)
         {
-            connectionString = $"Data Source={dbPath}";
-            EnsureTableExists();
+            string dbPath = Path.Combine(dbFolder, "malicious_commands.db");
+            connectionString = $"Data Source={dbPath};Password={setupService.DbKey}";
+            EnsureTableExists(dbFolder, setupService.FirstTimeRunning);
         }
 
         // Ensure the MaliciousCommands table exists, if not, create it
-        private void EnsureTableExists()
+        private void EnsureTableExists(string dbFolder, bool firstTimeRun)
         {
             using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
@@ -38,6 +41,12 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                 using (SqliteCommand cmd = new SqliteCommand(createTableQuery, conn))
                 {
                     cmd.ExecuteNonQuery();
+                }
+
+                // Only initialisation of database, from pre-filled contents if First Time Running.
+                if (firstTimeRun)
+                {
+                    SetupService.TransferContents(conn, dbFolder, "malicious_commands_init.db", "MaliciousCommands");
                 }
             }
         }

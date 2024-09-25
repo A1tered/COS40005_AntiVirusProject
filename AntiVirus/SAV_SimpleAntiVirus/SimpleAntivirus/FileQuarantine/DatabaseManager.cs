@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
+using SimpleAntivirus.GUI.Services;
 
 
 namespace SimpleAntivirus.FileQuarantine

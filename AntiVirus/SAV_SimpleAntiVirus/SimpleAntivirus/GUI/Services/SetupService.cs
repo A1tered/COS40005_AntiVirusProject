@@ -1,4 +1,5 @@
-﻿using SimpleAntivirus.AntiTampering;
+﻿using Microsoft.Data.Sqlite;
+using SimpleAntivirus.AntiTampering;
 using SimpleAntivirus.GUI.Views.Windows;
 using System;
 using System.Collections.Generic;
@@ -195,9 +196,26 @@ namespace SimpleAntivirus.GUI.Services
             return true;
         }
 
+
+        /// <summary>
+        /// Load table from another database, into newly encrypted database.
+        /// </summary>
+        /// <param name="sqliteConnection"> Existing database connection</param>
+        /// <param name="initialisationDatabaseFolder">Where databases are stored</param>
+        /// <param name="fillerDatabaseName">What is the name of the database that is prefilled and not encrypted</param>
+        /// <param name="table">Name of the table to transfer</param>
+        public static void TransferContents(SqliteConnection sqliteConnection, string initialisationDatabaseFolder, string fillerDatabaseName, string table)
+        {
+            string fillerDatabase = Path.Combine(initialisationDatabaseFolder, $"initialisation_databases\\{fillerDatabaseName}");
+            
+            new SqliteCommand($"ATTACH DATABASE '{fillerDatabase}' as 'fillerDatabase' KEY ''", sqliteConnection).ExecuteNonQuery();
+            new SqliteCommand($"INSERT OR IGNORE INTO {table} SELECT * FROM fillerDatabase.{table}", sqliteConnection).ExecuteNonQuery();
+            new SqliteCommand($"DETACH fillerDatabase", sqliteConnection).ExecuteNonQuery();
+        }
+
         public string DbKey()
         {
-            return "";
+            return "test";
         }
 
         public bool FirstTimeRunning

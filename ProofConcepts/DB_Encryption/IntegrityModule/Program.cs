@@ -17,7 +17,7 @@ class Program
     public static void Main(string[] args)
     {
         string testKey = "testKey";
-        IntegrityDatabaseIntermediary inter = new IntegrityDatabaseIntermediary("integrity_database", false, testKey);
+        IntegrityDatabaseIntermediary inter = new IntegrityDatabaseIntermediary("integrity_database.db", true, testKey);
        IntegrityManagement integrityModule = new IntegrityManagement(inter);
         //integrityModule.ClearDatabase();
         //integrityModule.AddBaseline(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\SmallerIntegrityCheckedFiles", true);

@@ -81,7 +81,7 @@ namespace DatabaseFoundations
             // This database is freshly baked, lets fill it with chocolate! (data)
 
                 // database at this point, table wise hasnt been created...
-            string fillerDatabase = Path.Combine(_directoryDatabase, "backupSet\\integrity_database_filler");
+            string fillerDatabase = Path.Combine(_directoryDatabase, "backupSet\\integrity_database_filler.db");
             QueryNoReader(new SqliteCommand($"ATTACH DATABASE '{fillerDatabase}' as 'fillerDatabase' KEY ''"));
             QueryNoReader(new SqliteCommand($"INSERT OR IGNORE INTO IntegrityTrack SELECT * FROM fillerDatabase.IntegrityTrack"));
             QueryNoReader(new SqliteCommand($"DETACH fillerDatabase"));

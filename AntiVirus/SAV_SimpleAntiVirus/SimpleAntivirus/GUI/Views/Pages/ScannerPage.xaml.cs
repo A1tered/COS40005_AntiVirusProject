@@ -42,7 +42,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private List<string> _customList;
         public ScannerViewModel ViewModel { get; }
 
-        public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
+        public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus, SetupService setupService)
         {
             // initialise ScannerPage
             DataContext = viewModel;
@@ -61,7 +61,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
 
             // Initialise Malicious Code
-            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases\\malicious_commands.db"));
+            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases"), setupService);
             _detector = new Detector(_databaseHandler);
         }
 
