@@ -95,8 +95,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void Unquarantine_Click(object sender, RoutedEventArgs e)
         {
+            ViewModel.IsBusy = true;
             int result = await ViewModel.Unquarantine();
             UpdateEntries();
+            ViewModel.IsBusy = false;
             DisplayResultUnquarantine(result);
         }
 
@@ -121,10 +123,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void Whitelist_Click(object sender, RoutedEventArgs e)
         {
+            ViewModel.IsBusy = true;
             await ViewModel.Unquarantine();
-
             int result = await ViewModel.Whitelist();
             UpdateEntries();
+            ViewModel.IsBusy = false;
             DisplayResultWhitelist(result);
         }
 
@@ -149,15 +152,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
+            ViewModel.IsBusy = true;
             System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to delete the selected items? These files will be deleted permanently and will NOT be sent to the Recycle Bin!", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (choice  == System.Windows.MessageBoxResult.OK)
             {
                 int result = await ViewModel.Delete();
                 UpdateEntries();
+                ViewModel.IsBusy = false;
                 DisplayResultDelete(result);
                 return;
             }
             DisplayResultDelete(4);
+            ViewModel.IsBusy = false;
         }
 
         private void DisplayResultDelete(int result)

@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SimpleAntivirus.GUI.Views.Pages"
+    xmlns:helpers="clr-namespace:SimpleAntivirus.GUI.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="QuarantinedItemsPage"
@@ -27,6 +28,10 @@
         <Style TargetType="DataGridCell">
 
         </Style>
+        
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <helpers:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <helpers:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
     </Page.Resources>
 
     <StackPanel>
@@ -44,9 +49,9 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ui:Button Content="Unquarantine" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Unquarantine_Click" Background="#FF2204B8"/>
-            <ui:Button Grid.Column="1" Content="Add to Whitelist" Margin="1,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#FF2A5824" Click="Whitelist_Click"/>
-            <ui:Button Grid.Column="2" Content="Delete" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#ba1111" MouseOverBackground="LightPink" Click="Delete_Click" />
+            <ui:Button Content="Unquarantine" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Unquarantine_Click" Background="#FF2204B8" Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
+            <ui:Button Grid.Column="1" Content="Add to Whitelist" Margin="1,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#FF2A5824" Click="Whitelist_Click" Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+            <ui:Button Grid.Column="2" Content="Delete" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#ba1111" MouseOverBackground="LightPink" Click="Delete_Click" Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
         </Grid>
     </StackPanel>
 </Page>

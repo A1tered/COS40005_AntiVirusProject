@@ -35,6 +35,11 @@ namespace SimpleAntivirus.FileQuarantine
 
                 return quarantinePath;
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                Debug.WriteLine($"Unauthorized Access Exception at file: {ex.Message}");
+                throw;
+            }
             catch (Exception ex)
             {
                 // Handle any errors during file moving

@@ -37,7 +37,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 try
                 {
-                    // Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
+                    Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
 
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
@@ -49,6 +49,8 @@ namespace SimpleAntivirus.FileHashScanning
                         {
                             _token.ThrowIfCancellationRequested();
                         }
+
+                        Debug.WriteLine($"Current file: {file}");
 
                         if (CompareCycle(file))
                         {

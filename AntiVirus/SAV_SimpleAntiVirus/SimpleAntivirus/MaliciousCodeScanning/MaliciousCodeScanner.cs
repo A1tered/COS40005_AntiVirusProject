@@ -118,6 +118,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
 
                     foreach (string file in files)
                     {
+
                         // Create a FileAttributes object to store file metadata
                         FileAttributes fileAttributes = new FileAttributes();
                         FileInfo fileInfo = new FileInfo(file);
@@ -133,6 +134,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         Debug.WriteLine($"File Type: {fileAttributes.FileType}");
                         Debug.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
                         Debug.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
+                        Debug.WriteLine($"File Path: {file}");
 
                         // Detect malicious commands in the file content
                         fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
@@ -173,7 +175,8 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Compute the SHA1 hash for the file
         private async Task<string> ComputeSHA1Async(string filePath)
         {
-            using (FileStream stream = File.OpenRead(filePath))
+            Token.ThrowIfCancellationRequested();
+            using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
             {
                 SHA1 sha1 = SHA1.Create();
                 byte[] hashBytes = await Task.Run(() => sha1.ComputeHash(stream));
@@ -189,6 +192,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Extract file content based on the file type
         private async Task<string> ExtractFileContentAsync(string filePath)
         {
+            Token.ThrowIfCancellationRequested();
             string extension = System.IO.Path.GetExtension(filePath).ToLower();
 
             // Handle .txt and .bat files
@@ -210,6 +214,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Extract text from PDFs using iTextSharp (iText5)
         private string ExtractTextFromPdf(string filePath)
         {
+            Token.ThrowIfCancellationRequested();
             StringBuilder text = new StringBuilder();
 
             try
