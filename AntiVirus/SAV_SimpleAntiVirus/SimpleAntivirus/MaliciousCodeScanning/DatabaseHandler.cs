@@ -19,15 +19,16 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         private readonly string connectionString;
 
         // Constructor to initialize the connection string
-        public DatabaseHandler(string dbFolder, SetupService setupService)
+        public DatabaseHandler(string dbFolder, bool setupCall = false)
         {
+            SetupService setupService = SetupService.GetExistingInstance();
             string dbPath = Path.Combine(dbFolder, "malicious_commands.db");
-            connectionString = $"Data Source={dbPath};Password={setupService.DbKey}";
-            EnsureTableExists(dbFolder, setupService.FirstTimeRunning);
+            connectionString = $"Data Source={dbPath};Password={setupService.DbKey()}";
+            EnsureTableExists(dbFolder, setupCall);
         }
 
         // Ensure the MaliciousCommands table exists, if not, create it
-        private void EnsureTableExists(string dbFolder, bool firstTimeRun)
+        private void EnsureTableExists(string dbFolder, bool setupCall)
         {
             using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
@@ -44,7 +45,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                 }
 
                 // Only initialisation of database, from pre-filled contents if First Time Running.
-                if (firstTimeRun)
+                if (setupCall)
                 {
                     SetupService.TransferContents(conn, dbFolder, "malicious_commands_init.db", "MaliciousCommands");
                 }

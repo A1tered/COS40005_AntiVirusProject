@@ -1,6 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
 using SimpleAntivirus.AntiTampering;
+using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.MaliciousCodeScanning;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,10 +25,48 @@ namespace SimpleAntivirus.GUI.Services
 
         private bool _firstSetup;
         private INavigationWindow _iNaviWindow;
-        public SetupService(INavigationWindow naviWindow)
+        private string _dbFolder;
+
+        private static SetupService _setupService;
+        private static readonly object _lock = new object(); 
+        private SetupService(INavigationWindow naviWindow)
         {
             _firstSetup = false;
             _iNaviWindow = naviWindow;
+            _dbFolder = Path.Combine(AppContext.BaseDirectory, "Databases");
+        }
+
+        /// <summary>
+        /// Singleton pattern.
+        /// </summary>
+        /// <param name="naviWindow"></param>
+        /// <returns></returns>
+        public static SetupService GetInstance(INavigationWindow naviWindow)
+        {
+            if (_setupService == null)
+            {
+                lock (_lock)
+                {
+                    if (_setupService == null)
+                    {
+                        _setupService = new SetupService(naviWindow);
+                    }
+                }
+            }
+            return _setupService;
+        }
+
+        /// <summary>
+        /// Get SetupService without creating a new one.
+        /// </summary>
+        /// <returns></returns>
+        public static SetupService GetExistingInstance()
+        {
+            if (_setupService != null)
+            {
+                return _setupService;
+            }
+            throw new Exception("GetExistingInstance() in SetupService called, despite not GetInstance() not called beforehand.");
         }
 
         /// <summary>
@@ -151,6 +191,21 @@ namespace SimpleAntivirus.GUI.Services
 
                 // Do advise, from the code... Integrity, Malicious_Cmd_DB, Quarantine are all capable of generating a db is one is not provided.
                 // 
+
+
+
+                // Malicious DB Setup
+                DatabaseHandler databaseMalHandler = new(_dbFolder, true);
+
+                DatabaseConnector databaseHashHandler = new(Path.Combine(_dbFolder, "sighash.db"), true, true);
+
+                // Dispose (Messily)
+                databaseMalHandler = null;
+
+                databaseHashHandler = null;
+
+
+
                 // The only issue will be is the transfer of data for signature hash, and malicious cmd db.
                 // Hopefully on setup, we can provide all database files for simplicity, rather than any form of generation...
 

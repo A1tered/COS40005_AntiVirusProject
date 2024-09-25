@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+using SimpleAntivirus.GUI.Services;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -19,13 +20,16 @@ namespace SimpleAntivirus.FileHashScanning
     {
         private SqliteConnection _sqliteConnectionRepresentation;
         private string _tableName;
-        public DatabaseConnector(string databaseDirectory, bool writeAccess = false)
+        public DatabaseConnector(string databaseDirectory, bool writeAccess = false, bool setupRun = false)
         {
-            Open(databaseDirectory, false);
+            Open(databaseDirectory, writeAccess, setupRun);
         }
 
-        public void Open(string databaseDirectory, bool writeAccess)
+        public void Open(string databaseDirectory, bool writeAccess, bool setupRun = false)
         {
+
+            SetupService setupService = SetupService.GetExistingInstance();
+
             _tableName = "hashSignatures";
 
             if (!Directory.Exists("Databases"))
@@ -39,11 +43,18 @@ namespace SimpleAntivirus.FileHashScanning
             }
             else
             {
-                stringBuilder.Add("Mode", SqliteOpenMode.ReadWrite);
+                stringBuilder.Add("Mode", SqliteOpenMode.ReadWriteCreate);
             }
             stringBuilder.Add("Data Source", $"{databaseDirectory}");
+            stringBuilder.Add("Password", setupService.DbKey());
             _sqliteConnectionRepresentation = new SqliteConnection(stringBuilder.ToString());
             _sqliteConnectionRepresentation.Open();
+
+            if (setupRun)
+            {
+                new SqliteCommand($"CREATE TABLE IF NOT EXISTS hashSignatures (sigHash TEXT);", _sqliteConnectionRepresentation).ExecuteNonQuery();
+                SetupService.TransferContents(_sqliteConnectionRepresentation, System.IO.Directory.GetParent(databaseDirectory).ToString(), "sighash_initialisation_init.db", "hashSignatures");
+            }
         }
 
         public void CleanUp()

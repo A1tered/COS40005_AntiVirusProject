@@ -56,9 +56,6 @@ namespace SimpleAntivirus
                 // NotifyIcon
                 services.AddSingleton<INotifyIconService, NotifyIconService>();
 
-                // AntiTampering functions
-                services.AddSingleton<SetupService>();
-
                 services.AddSingleton<SystemTrayService>();
 
                 // Main window with navigation
@@ -112,8 +109,8 @@ namespace SimpleAntivirus
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
-            // Check the program has everything required
-            _host.Services.GetService<SetupService>().Run();
+            // Check the program has everything required, and instantiate the Singleton
+            SetupService.GetInstance(_host.Services.GetService<INavigationWindow>()).Run();
 
             // Begin SystemTray
             _host.Services.GetService<SystemTrayService>();

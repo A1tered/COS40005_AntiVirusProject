@@ -18,8 +18,9 @@ namespace SimpleAntivirus.Models
         public IntegrityDatabaseIntermediary _integDatabase;
         public IntegrityManagement _integManage;
         private List<IntegrityViolation> _recentViolationList;
-        public IntegrityHandlerModel(EventBus eventbus, SetupService setupService)
+        public IntegrityHandlerModel(EventBus eventbus)
         {
+            SetupService setupService = SetupService.GetExistingInstance();
             IntegrityDatabaseIntermediary integDatabase = new("integrity_database.db", setupService.FirstTimeRunning);
             _integDatabase = integDatabase;
             IntegrityManagement integManage = new(integDatabase);
