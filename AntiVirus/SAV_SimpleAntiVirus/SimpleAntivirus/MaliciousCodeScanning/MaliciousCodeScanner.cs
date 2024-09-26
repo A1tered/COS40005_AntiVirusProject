@@ -51,15 +51,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                     ([
                      $"C:\\Program Files",
                      "C:\\Program Files (x86)",
-                     "C:\\ProgramData",
-                     "C:\\Users\\Default\\AppData",
-                     System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
                      "C:\\Windows",
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
-                     System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
                      System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
                     ]);
                 }

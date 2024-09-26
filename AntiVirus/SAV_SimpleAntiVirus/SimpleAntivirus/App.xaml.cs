@@ -33,6 +33,7 @@ namespace SimpleAntivirus
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
         // https://docs.microsoft.com/dotnet/core/extensions/configuration
         // https://docs.microsoft.com/dotnet/core/extensions/logging
+        private static Mutex mutex;
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
@@ -106,6 +107,20 @@ namespace SimpleAntivirus
         /// </summary>
         private async void OnStartup(object sender, StartupEventArgs e)
         {
+            // Mutex setup to ensure that only one instance of the application can run at a time.
+            const string appName = "SimpleAntivirusMutex";
+            bool createdNew;
+
+            mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                // This means another instance is running already
+                System.Windows.MessageBox.Show("Another instance of Simple Antivirus is already running.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
+                Shutdown();
+                return;
+            }
+
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
@@ -124,8 +139,6 @@ namespace SimpleAntivirus
 
             // CLI Monitor Setup (If you encounter lag, check this out)
             _host.Services.GetService<CLIService>().Setup();
-
-
         }
 
         /// <summary>
@@ -141,7 +154,11 @@ namespace SimpleAntivirus
             
             // All ongoing operations are to be cancelled within IntegrityManagement.
             await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
-
+            if (mutex != null)
+            {
+                mutex.ReleaseMutex();
+                mutex.Dispose();
+            }
 
 
             // Tell CLIService to stop processing events.
