@@ -97,20 +97,25 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
+                    ViewModel.IsScanRunning = false;
                     Task customscanFileHash = _fileHashScanner.Scan("custom", _customList);
                     Task customscanMalCode = _maliciousCodeScanner.Scan("custom", _customList);
-                    ViewModel.IsAddFolderButtonVisible = false;
-                    await Task.WhenAll(customscanFileHash, customscanMalCode);
-                    if (_customList != null && _customList.Count > 0 && ViewModel.IsScanRunning)
-                    {
-                        System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else if (_customList.Count == 0 || _customList == null)
+                    if (_customList.Count == 0 || _customList == null)
                     {
                         System.Windows.MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    ViewModel.IsAddFolderButtonVisible = true;
-                    _customList.Clear();
+                    else
+                    {
+                        ViewModel.IsScanRunning = true;
+                        ViewModel.IsAddFolderButtonVisible = false;
+                        await Task.WhenAll(customscanFileHash, customscanMalCode);
+                        if (_customList != null && _customList.Count > 0 && ViewModel.IsScanRunning)
+                        {
+                            System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        ViewModel.IsAddFolderButtonVisible = true;
+                        _customList.Clear();
+                    }
                 }
                 else
                 {

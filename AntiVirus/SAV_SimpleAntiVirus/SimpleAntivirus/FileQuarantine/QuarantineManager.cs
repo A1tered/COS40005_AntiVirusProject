@@ -45,27 +45,41 @@ namespace SimpleAntivirus.FileQuarantine
                 }
                 else
                 {
-                    // Send alert
-                    if (scanType == "filehash")
-                    {
-                        await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-                    }
-                    else if (scanType == "maliciouscode")
-                    {
-                        await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-                    }
-
                     // Move the file to the quarantine directory
                     string quarantinePath = await _fileMover.MoveFileToQuarantineAsync(filePath, _quarantineDirectory);
+                    
+                    if (quarantinePath != null)
+                    {
+                        // Send alert
+                        if (scanType == "filehash")
+                        {
+                            await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found.", "No action is required. You may unquarantine or delete if you choose.");
+                        }
+                        else if (scanType == "maliciouscode")
+                        {
+                            await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found.", "No action is required. You may unquarantine or delete if you choose.");
+                        }
 
-                    // Remove file permissions to prevent unauthorized access
-                    await RemoveFilePermissionsUsingPowerShell(quarantinePath);
+                        // Remove file permissions to prevent unauthorized access
+                        await RemoveFilePermissionsUsingPowerShell(quarantinePath);
 
-                    // Store the quarantine info (path, original location) in the database
-                    await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
+                        // Store the quarantine info (path, original location) in the database
+                        await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
 
-                    // Log the quarantined file's location securely
-                    await LogQuarantinedFileLocationAsync(quarantinePath);
+                        // Log the quarantined file's location securely
+                        await LogQuarantinedFileLocationAsync(quarantinePath);
+                    }
+                    else
+                    {
+                        if (scanType == "filehash")
+                        {
+                            await eventBus.PublishAsync("File Hash Scanning", "Medium", $"File Quarantine Failed. A threat has been found but was unable to be quarantined.", $"Ensure that {filePath} is safe or does not exist. It is likely a protected system file that SAV cannot quarantine.");
+                        }
+                        else if (scanType == "maliciouscode")
+                        {
+                            await eventBus.PublishAsync("Malicious Code Scanning", "Medium", $"File Quarantine Failed. A threat has been found but was unable to be quarantined.", $"Ensure that {filePath} is safe or does not exist. It is likely a protected system file that SAV cannot quarantine.");
+                        }
+                    }
                 }
             }
             catch (Exception ex)

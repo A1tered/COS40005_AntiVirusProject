@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace;
 
 
 namespace SimpleAntivirus.FileQuarantine
@@ -30,7 +31,19 @@ namespace SimpleAntivirus.FileQuarantine
                 }
 
                 // Move the file asynchronously to the quarantine directory
-                await Task.Run(() => File.Move(sourcePath, quarantinePath, overwrite: true));
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        File.Move(sourcePath, quarantinePath, overwrite: true);
+                    }
+                    catch (UnauthorizedAccessException ex)
+                    {
+                        Debug.WriteLine($"Cannot move file {sourcePath} due to an unauthorized access exception. Skipping...");
+                        quarantinePath = null;
+                        return;
+                    }
+                });
                 Debug.WriteLine($"File moved to quarantine: {quarantinePath}");
 
                 return quarantinePath;
@@ -38,7 +51,7 @@ namespace SimpleAntivirus.FileQuarantine
             catch (UnauthorizedAccessException ex)
             {
                 Debug.WriteLine($"Unauthorized Access Exception at file: {ex.Message}");
-                throw;
+                return null;
             }
             catch (Exception ex)
             {
