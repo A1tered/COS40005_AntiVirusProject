@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\maliciouscodescanning\\maliciouscodescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\maliciouscodescanning\\maliciouscodescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,8 +11,24 @@
       "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\views\\pages\\scannerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\viewmodels\\pages\\scannerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\viewmodels\\pages\\scannerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filehashscanning\\filehashscanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filehashscanning\\filehashscanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\maliciouscodescanning\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\maliciouscodescanning\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,44 +46,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "ScannerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\ScannerViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\ScannerViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\ScannerViewModel.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\ScannerViewModel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T01:03:11.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "RelativeToolTip": "SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:52:07.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "QuarantineManager.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs*",
-              "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs*",
-              "ViewState": "AgIAACQAAAAAAAAAAAAwwEsAAABLAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T23:39:55.837Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MaliciousCodeScanner.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs",
-              "RelativeToolTip": "SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs*",
+              "RelativeToolTip": "SimpleAntivirus\\MaliciousCodeScanning\\MaliciousCodeScanner.cs*",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAKsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T23:39:36.785Z"
+              "WhenOpened": "2024-09-25T23:39:36.785Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ScannerPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
               "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAG0AAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAI4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T23:27:12.892Z"
+              "WhenOpened": "2024-09-25T23:27:12.892Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "FileMover.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\FileMover.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\FileQuarantine\\FileMover.cs",
@@ -83,20 +119,20 @@
               "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\FileMover.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T22:30:41.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-25T22:30:41.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "FileHashScanner.cs",
               "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\FileHashScanner.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\FileHashScanning\\FileHashScanner.cs",
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\FileHashScanner.cs",
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\FileHashScanner.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAGEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T22:29:48.507Z"
+              "WhenOpened": "2024-09-25T22:29:48.507Z",
+              "EditorCaption": ""
             }
           ]
         },

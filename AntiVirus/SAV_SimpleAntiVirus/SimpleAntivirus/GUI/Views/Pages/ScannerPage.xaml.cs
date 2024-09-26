@@ -136,9 +136,11 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
         }
 
-        private async void CancelScanButton_Click(object sender, RoutedEventArgs e)
+        private void CancelScanButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.IsScanRunning = false;
+            _customList.Clear();
+            ViewModel.IsAddFolderButtonVisible= true;
             Debug.WriteLine("Cancelling scan");
             if (_cancellationTokenSource != null)
             {

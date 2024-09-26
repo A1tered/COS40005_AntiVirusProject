@@ -46,56 +46,56 @@ namespace SimpleAntivirus.FileHashScanning
 
         public async Task Scan(string scanType, List<string> customScanDirs)
         {
-            //await Task.Run(async () =>
-            //{
-            //    List<string> directories = new List<string>();
+            await Task.Run(async () =>
+            {
+                List<string> directories = new List<string>();
 
-            //    if (scanType == "quick")
-            //    {
-            //        directories.AddRange
-            //        ([
-            //         $"C:\\Program Files",
-            //         "C:\\Program Files (x86)",
-            //         "C:\\ProgramData",
-            //         "C:\\Users\\Default\\AppData",
-            //         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
-            //         "C:\\Windows",
-            //         Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            //         Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-            //         Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-            //         Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
-            //         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
-            //         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
-            //        ]);
-            //    }
-            //    else if (scanType == "full")
-            //    {
-            //        string[] drives = Environment.GetLogicalDrives();
-            //        foreach (string drive in drives)
-            //        {
-            //            directories.Add(drive);
-            //        }
-            //    }
-            //    else if (scanType == "custom")
-            //    {
-            //        if (customScanDirs != null && customScanDirs.Count > 0)
-            //        {
-            //            foreach (string dir in customScanDirs)
-            //            {
-            //                Debug.WriteLine($"Currently added dir: {dir}");
-            //                directories.Add(dir);
-            //            }
-            //        }
-            //    }
+                if (scanType == "quick")
+                {
+                    directories.AddRange
+                    ([
+                     $"C:\\Program Files",
+                     "C:\\Program Files (x86)",
+                     "C:\\ProgramData",
+                     "C:\\Users\\Default\\AppData",
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
+                     "C:\\Windows",
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                     Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
+                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
+                    ]);
+                }
+                else if (scanType == "full")
+                {
+                    string[] drives = Environment.GetLogicalDrives();
+                    foreach (string drive in drives)
+                    {
+                        directories.Add(drive);
+                    }
+                }
+                else if (scanType == "custom")
+                {
+                    if (customScanDirs != null && customScanDirs.Count > 0)
+                    {
+                        foreach (string dir in customScanDirs)
+                        {
+                            Debug.WriteLine($"Currently added dir: {dir}");
+                            directories.Add(dir);
+                        }
+                    }
+                }
 
-            //    foreach (string directorySearch in directories)
-            //    {
-            //        Token.ThrowIfCancellationRequested();
-            //        SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
-            //        await splitprocessInstance.fillUpSearch(directorySearch);
-            //        await splitprocessInstance.SearchDirectory(this);
-            //    }
-            //});
+                foreach (string directorySearch in directories)
+                {
+                    Token.ThrowIfCancellationRequested();
+                    SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
+                    await splitprocessInstance.fillUpSearch(directorySearch);
+                    await splitprocessInstance.SearchDirectory(this);
+                }
+            });
         }
     }
 }
