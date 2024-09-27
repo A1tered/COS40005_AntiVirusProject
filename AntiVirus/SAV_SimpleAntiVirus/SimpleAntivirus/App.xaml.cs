@@ -125,20 +125,27 @@ namespace SimpleAntivirus
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
             // Check the program has everything required, and instantiate the Singleton
-            SetupService.GetInstance(_host.Services.GetService<INavigationWindow>()).Run();
+            await SetupService.GetInstance(_host.Services).Run();
 
-            // Begin SystemTray
-            _host.Services.GetService<SystemTrayService>();
+            // If setup encounters no errors, then continue. 
+            if (!SetupService.GetExistingInstance().ProgramCooked)
+            {
 
 
-            // Rough fix to theme irregularity copied from other theme window.
-            ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            ApplicationThemeManager.Apply(CurrentTheme);
-            // Concern about async in this, however will only replace if this causes issues.
-            await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
 
-            // CLI Monitor Setup (If you encounter lag, check this out)
-            _host.Services.GetService<CLIService>().Setup();
+                // Begin SystemTray
+                _host.Services.GetService<SystemTrayService>();
+
+
+                // Rough fix to theme irregularity copied from other theme window.
+                ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                ApplicationThemeManager.Apply(CurrentTheme);
+                // Concern about async in this, however will only replace if this causes issues.
+                await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
+
+                // CLI Monitor Setup (If you encounter lag, check this out)
+                _host.Services.GetService<CLIService>().Setup();
+            }
         }
 
         /// <summary>
@@ -160,6 +167,8 @@ namespace SimpleAntivirus
                 mutex.Dispose();
             }
 
+            SetupService setupService = SetupService.GetExistingInstance();
+            await setupService.UpdateConfig();
 
             // Tell CLIService to stop processing events.
             _host.Services.GetService<CLIService>().Remove();

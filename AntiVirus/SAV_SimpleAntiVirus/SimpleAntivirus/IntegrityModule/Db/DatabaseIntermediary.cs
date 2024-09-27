@@ -7,14 +7,10 @@
  **************************************************************************/
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using SimpleAntivirus.IntegrityModule.DataRelated;
+using SimpleAntivirus.GUI.Services;
 namespace SimpleAntivirus.IntegrityModule.Db
 {
   
@@ -43,6 +39,9 @@ namespace SimpleAntivirus.IntegrityModule.Db
             databaseSpecificPath = FileInfoRequester.FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
             if (databaseSpecificPath != null || makeDatabase)
             {
+                // Get setup service
+                SetupService setupService = SetupService.GetExistingInstance();
+
                 // Make database.
                 if (databaseSpecificPath == null)
                 {
@@ -52,6 +51,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 System.Diagnostics.Debug.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
                 connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
+                connectionBuild.Password = setupService.DbKey();
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
                 SqliteCommand commandPragma = new();

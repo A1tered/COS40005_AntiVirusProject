@@ -1,16 +1,17 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using iTextSharp.text.pdf;
+using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.DependencyInjection;
 using SimpleAntivirus.AntiTampering;
 using SimpleAntivirus.FileHashScanning;
+using SimpleAntivirus.FileQuarantine;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.MaliciousCodeScanning;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Data.Common;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Wpf.Ui;
+using Wpf.Ui.Appearance;
 
 namespace SimpleAntivirus.GUI.Services
 {
@@ -26,14 +27,36 @@ namespace SimpleAntivirus.GUI.Services
         private bool _firstSetup;
         private INavigationWindow _iNaviWindow;
         private string _dbFolder;
+        private string[] _dbNames;
+        private string _configPath;
+        Dictionary<string, int> _configDictionary;
+        private IServiceProvider _serviceSet;
+
+        // db folders
+        string[] _createFolders;
+
+        // Indicating that decryption stage failed later on, ensure to cancel any saving of config.
+        bool _programCooked;
 
         private static SetupService _setupService;
         private static readonly object _lock = new object(); 
-        private SetupService(INavigationWindow naviWindow)
+
+        private SetupService(IServiceProvider serviceSet)
         {
+            _programCooked = false;
             _firstSetup = false;
-            _iNaviWindow = naviWindow;
+            _iNaviWindow = serviceSet.GetService<INavigationWindow>();
             _dbFolder = Path.Combine(AppContext.BaseDirectory, "Databases");
+            _configPath = CreateFilePathProgramDataDirectory("config.enc");
+            _serviceSet = serviceSet;
+            // Config Dictionary (eg, firstRun=1)
+            _configDictionary = new();
+
+            _dbNames = new string[] { "sighash.db", "alerts.db", "malicious_commands.db", "quarantine.db", "integrity_database.db" };
+
+            // db folers
+            _createFolders = new string[]{@"C:\ProgramData\SimpleAntiVirus\EncryptionKey",
+                            @"C:\ProgramData\SimpleAntiVirus\DatabaseKey"};
         }
 
         /// <summary>
@@ -41,7 +64,7 @@ namespace SimpleAntivirus.GUI.Services
         /// </summary>
         /// <param name="naviWindow"></param>
         /// <returns></returns>
-        public static SetupService GetInstance(INavigationWindow naviWindow)
+        public static SetupService GetInstance(IServiceProvider serviceSet)
         {
             if (_setupService == null)
             {
@@ -49,7 +72,7 @@ namespace SimpleAntivirus.GUI.Services
                 {
                     if (_setupService == null)
                     {
-                        _setupService = new SetupService(naviWindow);
+                        _setupService = new SetupService(serviceSet);
                     }
                 }
             }
@@ -76,7 +99,9 @@ namespace SimpleAntivirus.GUI.Services
         private void ErrorMessage(string problem)
         {
             System.Windows.MessageBox.Show(problem, "Operation Failure", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            _programCooked = true;
             // Close program
+
             MainWindow window = _iNaviWindow as MainWindow;
             window.CloseWindowForcefully();
         }
@@ -95,29 +120,107 @@ namespace SimpleAntivirus.GUI.Services
         }
 
 
+        /// <summary>
+        /// Given a key, save a integer value into config file.
+        /// </summary>
+        /// <param name="key">Key eg "darkMode"</param>
+        /// <param name="value">value eg 1</param>
+        public void AddToConfig(string key, int value)
+        {
+            _configDictionary[key] = value;
+        }
+
+
+        /// <summary>
+        /// Given key, get value from config file, if KEY cannot be found, -1 will be returned.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public int GetFromConfig(string key)
+        {
+            if (_configDictionary.ContainsKey(key))
+            {
+                return _configDictionary[key];
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        private string ReadConfig()
+        {
+            byte[] configInfo = EncryptionHandler.DecryptIntoMemory(_configPath, EncryptionHandler.DecryptionKeyStorage(), EncryptionHandler.DecryptionIVStorage());
+
+            return new string(UTF8Encoding.UTF8.GetChars(configInfo));
+        }
+
+        /// <summary>
+        /// On closure, update config file. Find key, and update value.
+        /// </summary>
+        public async Task UpdateConfig()
+        {
+            if (_programCooked == false)
+            {
+                int valueRepresent;
+                string contents = ReadConfig();
+
+                valueRepresent = ApplicationThemeManager.GetAppTheme() == ApplicationTheme.Dark ? 1 : 0;
+                _configDictionary["darkMode"] = valueRepresent;
+                // Setup config.txt file for basic info.
+                using (StreamWriter fileS = new(_configPath, false))
+                {
+                    await fileS.WriteLineAsync("Config_File_SAV");
+                    foreach (KeyValuePair<string, int> valuePair in _configDictionary)
+                    {
+                        await fileS.WriteLineAsync($"{valuePair.Key}={valuePair.Value}");
+                    }
+                }
+                EncryptionHandler.InitialEncryptFiles(_configPath, EncryptionHandler.DecryptionKeyStorage(), EncryptionHandler.DecryptionIVStorage());
+            }
+        }
+
+
 
         public async Task<bool> Run()
         {
             System.Diagnostics.Debug.WriteLine("Startup Routine\n\n");
-            string configPath = CreateFilePathProgramDataDirectory("config.enc");
+            string configPath = _configPath;
             if (Path.Exists(configPath))
             {
                 // Decrypt via set keys.
 
                 // Decrypt config file which is expected to have line "firstRun=1"
-                byte[] configInfo = EncryptionHandler.DecryptIntoMemory(configPath, EncryptionHandler.DecryptionKeyStorage(), EncryptionHandler.DecryptionIVStorage());
-
-                string fileInfo = new(UTF8Encoding.UTF8.GetChars(configInfo));
-
-                string[] lines = fileInfo.Split("\n");
-
-                if (lines[1].Contains("firstRun=1"))
+                try
                 {
-                    _firstSetup = false;
-                    GeneralRun();
+                    string fileInfo = ReadConfig();
+
+                    System.Diagnostics.Debug.WriteLine($"Read Config Info:\n {fileInfo}");
+                    System.Diagnostics.Debug.WriteLine("\n");
+                    string[] lines = fileInfo.Split("\n");
+                    foreach (string line in lines)
+                    {
+                        string[] commandValue = line.Split("=");
+                        if (commandValue.Count() == 2)
+                        {
+                            _configDictionary[commandValue[0]] = Convert.ToInt32(commandValue[1]);
+                        }
+                    }
+
+
+                    if (_configDictionary.ContainsKey("firstRun"))
+                    {
+                        if (_configDictionary["firstRun"] == 1)
+                        {
+                            _firstSetup = false;
+                            GeneralRun();
+                        }
+                        return true;
+                    }
                 }
-                else
-                { // If we decrypt the config file and don't have this string, there is an issue.
+                catch (KeyNotFoundException e)
+                {
+                    // If we decrypt the config file and don't have this string, there is an issue.
                     ErrorMessage("Configuration file has been tampered with and cannot be read, reinstall program.");
                 }
             }
@@ -141,13 +244,8 @@ namespace SimpleAntivirus.GUI.Services
         public async Task<bool> FirstRun()
         {
             _firstSetup = true;
-            string[] CreateFolders =
-            {
-                            @"C:\ProgramData\SimpleAntiVirus\EncryptionKey",
-                            @"C:\ProgramData\SimpleAntiVirus\DatabaseKey"
-                        };
 
-            foreach (string folders in CreateFolders)
+            foreach (string folders in _createFolders)
             {
                 if (Directory.Exists(folders))
                 {
@@ -155,7 +253,7 @@ namespace SimpleAntivirus.GUI.Services
                 }
             }
 
-            foreach (string folders in CreateFolders)
+            foreach (string folders in _createFolders)
             {
                 try
                 {
@@ -167,18 +265,17 @@ namespace SimpleAntivirus.GUI.Services
                     Console.WriteLine($"Unexpected error creating: {folders}. \nDescription: {errormsg.Message}");
                 }
             }
-
-            string configPath = CreateFilePathProgramDataDirectory("config");
-            if (!Path.Exists(configPath))
+            if (!Path.Exists(_configPath))
             {
+                _configDictionary["firstRun"] = 1;
                 // Setup config.txt file for basic info.
-                using (StreamWriter fileS = new(configPath))
+                using (StreamWriter fileS = new(_configPath))
                 {
                     await fileS.WriteAsync("Config_File_SAV");
                     await fileS.WriteAsync("\nfirstRun=1");
                 }
                 EncryptionHandler.GenerateEncryptionKey(out byte[] aesKey, out byte[] aesIV);
-                EncryptionHandler.InitialEncryptFiles(configPath, aesKey, aesIV);
+                EncryptionHandler.InitialEncryptFiles(_configPath, aesKey, aesIV);
                 EncryptionHandler.EncryptionKeyStorage(aesKey);
                 EncryptionHandler.EncryptionIVStorage(aesIV);
 
@@ -192,17 +289,43 @@ namespace SimpleAntivirus.GUI.Services
                 // Do advise, from the code... Integrity, Malicious_Cmd_DB, Quarantine are all capable of generating a db is one is not provided.
                 // 
 
+                
 
+                // Setup Database folder
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                // If database folder does not exist, create it.
+                if (!Directory.Exists(_dbFolder))
+                {
+
+                    Directory.CreateDirectory(_dbFolder);
+                }
+                else
+                {
+                    foreach (string databaseName in _dbNames)
+                    {
+                        if (Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
+                        {
+                            ErrorMessage($"Database setup failed, unexpected pre-existing databases found");
+                        }
+                    }
+                }
 
                 // Malicious DB Setup
                 DatabaseHandler databaseMalHandler = new(_dbFolder, true);
 
                 DatabaseConnector databaseHashHandler = new(Path.Combine(_dbFolder, "sighash.db"), true, true);
 
+                // DB setup for DBs that dont automatically set up.
+
+                DatabaseManager databaseManager = new(Path.Combine(_dbFolder, "quarantine.db"));
+
                 // Dispose (Messily)
                 databaseMalHandler = null;
 
                 databaseHashHandler = null;
+
+                databaseManager = null;
 
 
 
@@ -222,24 +345,36 @@ namespace SimpleAntivirus.GUI.Services
         /// <returns>True - Program cannot detect any issues <para/> False - Program files are missing / tampering detected</returns>
         public bool GeneralRun()
         {
+            // Read config file to find preferred theme
+            if (_configDictionary.ContainsKey("darkMode")) {
+                if (_configDictionary["darkMode"] == 0)
+                {
+                    ApplicationThemeManager.Apply(ApplicationTheme.Light);
+                }
+                else
+                {
+                    ApplicationThemeManager.Apply(ApplicationTheme.Dark);
+                }
+                _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+            }
+            // Ensure existence of database key folders
+            foreach (string folderSet in _createFolders)
+            {
+                if (!Directory.Exists(folderSet))
+                {
+                    ErrorMessage("Incomplete ProgramData Setup! Reinstall Program!");
+                }
+            }
+
             // On any runs after first run, occur and a database is found to be missing, then this is an issue and alert it.
             if (Path.Exists(CreateFilePathInProjectDirectory("Databases")))
             {
-                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\quarantine.db")))
+                foreach (string databaseName in _dbNames)
                 {
-                    ErrorMessage("Quarantine DB missing, reinstall program.");
-                }
-                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\malicious_commands.db")))
-                {
-                    ErrorMessage("Malicious CMD DB missing, reinstall program.");
-                }
-                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\integrity_database.db")))
-                {
-                    ErrorMessage("Integrity DB missing, reinstall program.");
-                }
-                if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\\integrity_database.db")))
-                {
-                    ErrorMessage("Signature DB missing, reinstall program.");
+                    if (!Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
+                    {
+                        ErrorMessage($"{databaseName} DB missing, reinstall program");
+                    }
                 }
             }
             else
@@ -247,6 +382,26 @@ namespace SimpleAntivirus.GUI.Services
                 ErrorMessage("Databases folder does not exist!");
                 return false;
             }
+
+
+            // Now lets test the database key to ensure its correct. (We'll test on the malicious database handle here)
+            try
+            {
+                DatabaseHandler databaseMalHandler = new(_dbFolder, true);
+                databaseMalHandler = null;
+            }
+            catch (Microsoft.Data.Sqlite.SqliteException e)
+            {
+                if (e.Message.Contains("file is not a database"))
+                {
+                    ErrorMessage("Keys in ProgramData are not the same keys that were utilised to encrypt the database. Reinstall Program.");
+                    return false;
+                }
+
+                ErrorMessage("Database failed to open.");
+            }
+
+
             //if (!Path.Exists(CreateFilePathInProjectDirectory("Databases\IntegrityDatabase.db"));
             return true;
         }
@@ -270,7 +425,16 @@ namespace SimpleAntivirus.GUI.Services
 
         public string DbKey()
         {
-            return "test";
+            try
+            {
+                byte[] byteSet = EncryptionHandler.DecryptionDBKeyStorage();
+                return BitConverter.ToString(byteSet);
+            }
+            catch (System.Security.Cryptography.CryptographicException e)
+            {
+                ErrorMessage("Key for database has been corrupted or mismatch, reinstall program.");
+                return "failure";
+            }
         }
 
         public bool FirstTimeRunning
@@ -278,6 +442,14 @@ namespace SimpleAntivirus.GUI.Services
             get
             {
                 return _firstSetup;
+            }
+        }
+
+        public bool ProgramCooked
+        {
+            get
+            {
+                return _programCooked;
             }
         }
     }

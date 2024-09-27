@@ -4,6 +4,8 @@ using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Concurrent;
+using System.IO;
+using SimpleAntivirus.GUI.Services;
 
 namespace SimpleAntivirus.Alerts;
 public class AlertManager
@@ -23,13 +25,14 @@ public class AlertManager
     ConcurrentDictionary<string, long> _aggregateViolationTimeSent;
     public AlertManager()
     {
+        SetupService setupService = SetupService.GetExistingInstance();
         _violationAmountTimeFrame = 60;
         _violationTimeFrame = 10;
         _violationAmountTimeTracker = 0;
         _violationIncidents = new();
         _aggregateViolationTimeSent = new();
-        string databasePath = "alerts.db"; // Specify the database path
-        _databaseConnection = new SqliteConnection($"Data Source={databasePath}"); // Use Data Source for the SQLite connection string
+        string databasePath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases"), "alerts.db"); // Specify the database path
+        _databaseConnection = new SqliteConnection($"Data Source={databasePath};Password={setupService.DbKey()}"); // Use Data Source for the SQLite connection string
         InitializeDatabase();
     }
 

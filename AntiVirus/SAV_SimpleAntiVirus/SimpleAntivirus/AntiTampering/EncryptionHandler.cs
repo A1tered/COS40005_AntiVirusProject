@@ -191,10 +191,10 @@ namespace SimpleAntivirus.AntiTampering
             }
 
             // The files are now written with a .enc extension
-            File.WriteAllBytes(FilePath + ".enc", EncryptedFileContents);
+            File.WriteAllBytes(FilePath, EncryptedFileContents);
 
-            // We delete the original unencrypted file after encryption to ensure the plaintext files do not remain on disk.
-            File.Delete(FilePath);
+            //// We delete the original unencrypted file after encryption to ensure the plaintext files do not remain on disk.
+            //File.Delete(FilePath);
         }
 
         public static byte[] DecryptIntoMemory(string FilePath, byte[] AesKey, byte[] AesIV)

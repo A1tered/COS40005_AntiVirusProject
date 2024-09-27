@@ -27,8 +27,10 @@ namespace SimpleAntivirus.FileQuarantine
                 Directory.CreateDirectory(directory);
                 Debug.WriteLine($"Database directory created at {directory}");
             }
+            SetupService setupService = SetupService.GetExistingInstance();
 
-            _connectionString = $"Data Source={databasePath}";
+
+            _connectionString = $"Data Source={databasePath};Password={setupService.DbKey()}";
             InitializeDatabase();
         }
 
