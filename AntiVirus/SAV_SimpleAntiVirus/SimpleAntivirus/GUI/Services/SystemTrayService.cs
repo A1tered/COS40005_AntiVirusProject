@@ -89,7 +89,7 @@ namespace SimpleAntivirus.GUI.Services
         public void ClickAlerts(object sender, RoutedEventArgs e)
         {
             ShowWindow();
-            NavigationServiceIntermediary.NavigationService.Navigate(typeof(AlertReportPage));
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(ProtectionHistoryPage));
         }
 
 
