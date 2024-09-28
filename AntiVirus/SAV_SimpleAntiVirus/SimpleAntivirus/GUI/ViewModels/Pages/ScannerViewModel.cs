@@ -7,7 +7,6 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
     {
         private bool _isScanRunning;
         private bool _isAddFolderButtonVisible;
-        private bool _isAddFileButtonVisible;
         
         public bool IsScanRunning
         {
@@ -31,21 +30,9 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             }
         }
 
-        public bool IsAddFileButtonVisible
-        {
-            get => _isAddFileButtonVisible;
-            set
-            {
-                _isAddFileButtonVisible = value;
-                Debug.WriteLine($"invoke {value}");
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsAddFileButtonVisible"));
-            }
-        }
-
         public ScannerViewModel()
         {
             IsAddFolderButtonVisible = false;
-            IsAddFileButtonVisible = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

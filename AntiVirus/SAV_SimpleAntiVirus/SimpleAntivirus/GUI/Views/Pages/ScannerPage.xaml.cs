@@ -14,6 +14,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -151,14 +152,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private void CustomScanButton_Checked(object sender, RoutedEventArgs e)
         {
-            ViewModel.IsAddFileButtonVisible = true;
             ViewModel.IsAddFolderButtonVisible = true;
         }
 
         private void CustomScanButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ViewModel.IsAddFolderButtonVisible= false;
-            ViewModel.IsAddFileButtonVisible= false;
         }
 
         private void AddFolder_Click(object sender, RoutedEventArgs e)
