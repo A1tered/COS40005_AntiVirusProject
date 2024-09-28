@@ -130,9 +130,6 @@ namespace SimpleAntivirus
             // If setup encounters no errors, then continue. 
             if (!SetupService.GetExistingInstance().ProgramCooked)
             {
-
-
-
                 // Begin SystemTray
                 _host.Services.GetService<SystemTrayService>();
 

@@ -97,7 +97,7 @@ namespace SimpleAntivirus.GUI.Services
         public void ClickExit(object sender, RoutedEventArgs e)
         {
             MainWindow window = _naviWindow as MainWindow;
-            window.CloseWindowForcefully();
+            window.CloseWindowGracefully();
         }
 
         // TODO: Implement safer way to dispose this (if required)!

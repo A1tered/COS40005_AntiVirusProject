@@ -45,7 +45,6 @@ namespace SimpleAntivirus.FileQuarantine
                     }
                 });
                 Debug.WriteLine($"File moved to quarantine: {quarantinePath}");
-
                 return quarantinePath;
             }
             catch (UnauthorizedAccessException ex)
