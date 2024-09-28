@@ -244,3 +244,5 @@ C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SA
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\WhitelistPage.g.cs
+C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\GUI\Views\Pages\WhitelistPage.baml

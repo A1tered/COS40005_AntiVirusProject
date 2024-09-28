@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.Alerts;
 

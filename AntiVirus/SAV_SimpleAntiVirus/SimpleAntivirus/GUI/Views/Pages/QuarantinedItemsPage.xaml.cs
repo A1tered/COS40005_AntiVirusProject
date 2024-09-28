@@ -33,7 +33,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\ProgramData\\SimpleAntiVirus\\Quarantine");
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -137,6 +137,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             if (choice == System.Windows.MessageBoxResult.OK)
             {
                 ViewModel.IsBusy = true;
+                await ViewModel.Unquarantine();
                 int result = await ViewModel.Whitelist();
                 UpdateEntries();
                 ViewModel.IsBusy = false;

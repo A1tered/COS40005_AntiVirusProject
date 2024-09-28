@@ -62,8 +62,13 @@ namespace SimpleAntivirus
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+
                 services.AddSingleton<BlacklistPage>();
                 services.AddSingleton<BlacklistViewModel>();
+
+                services.AddSingleton<WhitelistPage>();
+                services.AddSingleton<WhitelistViewModel>();
+
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
 

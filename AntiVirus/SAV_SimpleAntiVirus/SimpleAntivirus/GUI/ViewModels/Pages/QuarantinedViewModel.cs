@@ -27,7 +27,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             _isBusy = false;
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\ProgramData\\SimpleAntiVirus\\Quarantine");
             AlertManager = new AlertManager();
             EventBus = new EventBus(AlertManager);
         }

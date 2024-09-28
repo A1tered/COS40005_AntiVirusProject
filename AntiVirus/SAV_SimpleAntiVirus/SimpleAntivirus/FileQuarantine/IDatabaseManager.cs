@@ -38,7 +38,7 @@
         /// Removes a file from the whitelist in the database.
 
         /// <param name="filePath">The full path of the file to remove from the whitelist.</param>
-        Task RemoveFromWhitelistAsync(string filePath);
+        Task<bool> RemoveFromWhitelistAsync(string filePath);
 
         /// Retrieves all whitelisted files from the database.
 
