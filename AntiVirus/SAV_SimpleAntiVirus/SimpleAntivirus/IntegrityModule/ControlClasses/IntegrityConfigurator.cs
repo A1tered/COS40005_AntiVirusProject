@@ -13,14 +13,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.ControlClasses
 {
-    public class IntegrityConfigurator
+    public class IntegrityConfigurator : IIntegrityConfigurator
     {
-        private IntegrityDatabaseIntermediary _database;
+        private IIntegrityDatabaseIntermediary _database;
         private int _displaySet;
-        public IntegrityConfigurator(IntegrityDatabaseIntermediary integrityDatabase)
+        public IntegrityConfigurator(IIntegrityDatabaseIntermediary integrityDatabase)
         {
             _database = integrityDatabase;
             _displaySet = 10;

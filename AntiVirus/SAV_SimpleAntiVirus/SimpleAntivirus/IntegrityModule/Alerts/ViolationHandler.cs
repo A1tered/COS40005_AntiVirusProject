@@ -13,11 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.Alerts;
 using System.Security.AccessControl;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Alerts
 {
 
-    public class ViolationHandler
+    public class ViolationHandler : IViolationHandler
     {
         public event EventHandler<AlertArgs> AlertFlag;
         public void ViolationAlert(List<IntegrityViolation> integViolation)

@@ -20,6 +20,7 @@ using Windows.Devices.WiFiDirect.Services;
 using Windows.UI.ViewManagement;
 using Wpf.Ui.Tray;
 using SimpleAntivirus.CLIMonitoring;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus
 {
@@ -169,7 +170,7 @@ namespace SimpleAntivirus
                 mutex.Dispose();
             }
 
-            SetupService setupService = SetupService.GetExistingInstance();
+            ISetupService setupService = SetupService.GetExistingInstance();
             await setupService.UpdateConfig();
 
             // Tell CLIService to stop processing events.

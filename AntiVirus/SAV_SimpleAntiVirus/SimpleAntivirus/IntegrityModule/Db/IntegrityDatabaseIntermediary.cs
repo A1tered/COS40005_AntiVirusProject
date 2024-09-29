@@ -15,10 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.System.Diagnostics;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Db
 {
-    public class IntegrityDatabaseIntermediary : DatabaseIntermediary
+    public class IntegrityDatabaseIntermediary : DatabaseIntermediary, IIntegrityDatabaseIntermediary
     {
 
         private CancellationTokenSource _cancelToken;

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Data.Sqlite;
 using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
@@ -21,7 +22,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Constructor to initialize the connection string
         public DatabaseHandler(string dbFolder, bool setupCall = false)
         {
-            SetupService setupService = SetupService.GetExistingInstance();
+            ISetupService setupService = SetupService.GetExistingInstance();
             string dbPath = Path.Combine(dbFolder, "malicious_commands.db");
             connectionString = $"Data Source={dbPath};Password={setupService.DbKey()}";
             EnsureTableExists(dbFolder, setupCall);

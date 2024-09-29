@@ -11,10 +11,12 @@ using Microsoft.Data.Sqlite;
 using System.IO;
 using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.IntegrityModule.Interface;
+using SimpleAntivirus.GUI.Services.Interface;
 namespace SimpleAntivirus.IntegrityModule.Db
 {
   
-    public class DatabaseIntermediary : IDisposable
+    public class DatabaseIntermediary : IDatabaseIntermediary
     {
         protected SqliteConnection _databaseConnection;
         protected string _defaultTable;
@@ -40,7 +42,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
             if (databaseSpecificPath != null || makeDatabase)
             {
                 // Get setup service
-                SetupService setupService = SetupService.GetExistingInstance();
+                ISetupService setupService = SetupService.GetExistingInstance();
 
                 // Make database.
                 if (databaseSpecificPath == null)

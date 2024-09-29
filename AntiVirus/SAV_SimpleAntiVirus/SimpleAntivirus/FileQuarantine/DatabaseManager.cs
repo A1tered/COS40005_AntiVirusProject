@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
 using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 
 namespace SimpleAntivirus.FileQuarantine
@@ -27,7 +28,7 @@ namespace SimpleAntivirus.FileQuarantine
                 Directory.CreateDirectory(directory);
                 Debug.WriteLine($"Database directory created at {directory}");
             }
-            SetupService setupService = SetupService.GetExistingInstance();
+            ISetupService setupService = SetupService.GetExistingInstance();
 
 
             _connectionString = $"Data Source={databasePath};Password={setupService.DbKey()}";

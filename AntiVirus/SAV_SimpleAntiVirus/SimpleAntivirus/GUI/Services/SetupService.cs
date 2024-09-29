@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SimpleAntivirus.AntiTampering;
 using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.FileQuarantine;
+using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.MaliciousCodeScanning;
@@ -21,7 +22,7 @@ namespace SimpleAntivirus.GUI.Services
     /// Has operations for first run, and run every time.
     /// <para/> Provides error messages if things are missing, ideal for when we decide to publish the software.
     /// </summary>
-    public class SetupService
+    public class SetupService : ISetupService
     {
 
         private bool _firstSetup;
@@ -29,6 +30,7 @@ namespace SimpleAntivirus.GUI.Services
         private string _dbFolder;
         private string[] _dbNames;
         private string _configPath;
+        private bool _testingMode;
         Dictionary<string, int> _configDictionary;
         private IServiceProvider _serviceSet;
 
@@ -41,11 +43,20 @@ namespace SimpleAntivirus.GUI.Services
         private static SetupService _setupService;
         private static readonly object _lock = new object(); 
 
-        private SetupService(IServiceProvider serviceSet)
+        private SetupService(IServiceProvider serviceSet, bool testingMode = false)
         {
+            _testingMode = testingMode;
             _programCooked = false;
             _firstSetup = false;
-            _iNaviWindow = serviceSet.GetService<INavigationWindow>();
+
+            if (!_testingMode)
+            {
+                _iNaviWindow = serviceSet.GetService<INavigationWindow>();
+            }
+            else // If testing, assume booting first time.
+            {
+                _firstSetup = true;
+            }
             _dbFolder = Path.Combine(AppContext.BaseDirectory, "Databases");
             _configPath = CreateFilePathProgramDataDirectory("config.enc");
             _serviceSet = serviceSet;
@@ -59,12 +70,18 @@ namespace SimpleAntivirus.GUI.Services
                             @"C:\ProgramData\SimpleAntiVirus\DatabaseKey"};
         }
 
+        // Sets setupservice into testing mode, it sheds functionality and ensures DBKey returns a empty key.
+        public void TestingMode()
+        {
+            _testingMode = true;
+        }
+
         /// <summary>
         /// Singleton pattern.
         /// </summary>
         /// <param name="naviWindow"></param>
         /// <returns></returns>
-        public static SetupService GetInstance(IServiceProvider serviceSet)
+        public static ISetupService GetInstance(IServiceProvider serviceSet, bool testingMode = false)
         {
             if (_setupService == null)
             {
@@ -72,7 +89,7 @@ namespace SimpleAntivirus.GUI.Services
                 {
                     if (_setupService == null)
                     {
-                        _setupService = new SetupService(serviceSet);
+                        _setupService = new SetupService(serviceSet, testingMode);
                     }
                 }
             }
@@ -83,7 +100,7 @@ namespace SimpleAntivirus.GUI.Services
         /// Get SetupService without creating a new one.
         /// </summary>
         /// <returns></returns>
-        public static SetupService GetExistingInstance()
+        public static ISetupService GetExistingInstance()
         {
             if (_setupService != null)
             {
@@ -424,6 +441,11 @@ namespace SimpleAntivirus.GUI.Services
 
         public string DbKey()
         {
+            // If testing just return empty string.
+            if (_testingMode)
+            {
+                return "";
+            }
             try
             {
                 byte[] byteSet = EncryptionHandler.DecryptionDBKeyStorage();

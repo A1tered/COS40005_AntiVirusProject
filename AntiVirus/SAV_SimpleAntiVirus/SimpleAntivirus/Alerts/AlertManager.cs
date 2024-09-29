@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Collections.Concurrent;
 using System.IO;
 using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.Alerts;
 public class AlertManager
@@ -25,7 +26,7 @@ public class AlertManager
     ConcurrentDictionary<string, long> _aggregateViolationTimeSent;
     public AlertManager()
     {
-        SetupService setupService = SetupService.GetExistingInstance();
+        ISetupService setupService = SetupService.GetExistingInstance();
         _violationAmountTimeFrame = 60;
         _violationTimeFrame = 10;
         _violationAmountTimeTracker = 0;

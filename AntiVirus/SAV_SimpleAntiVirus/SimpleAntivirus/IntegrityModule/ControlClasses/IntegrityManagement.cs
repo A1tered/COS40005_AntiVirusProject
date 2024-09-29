@@ -18,12 +18,13 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.ControlClasses
 {
-    public class IntegrityManagement : INotifyPropertyChanged
+    public class IntegrityManagement : IIntegrityManagement
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private IntegrityConfigurator _integrityConfigurator;
         private IntegrityCycler _integrityCycler;
@@ -32,7 +33,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         private double _addProgress;
         private string _progressInfo;
         private EventBus _eventbus;
-        public IntegrityManagement(IntegrityDatabaseIntermediary integrityIntermediary)
+        public IntegrityManagement(IIntegrityDatabaseIntermediary integrityIntermediary)
         {
             _integrityConfigurator = new IntegrityConfigurator(integrityIntermediary);
             ViolationHandler tempHandler = new();
@@ -167,7 +168,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             }
             set
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs("AddProgress"));
+                this?.PropertyChanged(this, new PropertyChangedEventArgs("AddProgress"));
                 _addProgress = value;
             }
         }
@@ -181,7 +182,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             }
             set
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs("Progress"));
+                this?.PropertyChanged(this, new PropertyChangedEventArgs("Progress"));
                 _progress = value;
             }
         }

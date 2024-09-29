@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -28,7 +29,7 @@ namespace SimpleAntivirus.FileHashScanning
         public void Open(string databaseDirectory, bool writeAccess, bool setupRun = false)
         {
 
-            SetupService setupService = SetupService.GetExistingInstance();
+            ISetupService setupService = SetupService.GetExistingInstance();
 
             _tableName = "hashSignatures";
 

@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="AntiTampering\" />
+    <Folder Include="IntegrityModule\Interface\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,17 +15,18 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
 using System.Diagnostics;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {
-    public class IntegrityCycler
+    public class IntegrityCycler : IIntegrityCycler
     {
         // How many data sets does 1 task undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
-        private IntegrityDatabaseIntermediary _database;
-        private ViolationHandler _violationHandler;
+        private IIntegrityDatabaseIntermediary _database;
+        private IViolationHandler _violationHandler;
         private CancellationTokenSource _cancelToken;
-        public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
+        public IntegrityCycler(IIntegrityDatabaseIntermediary database, IViolationHandler violationHandler)
         {
             _database = database;
             _violationHandler = violationHandler;
