@@ -51,6 +51,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             ViewModel = viewModel;
 
             _customList = new List<string>();
+            ViewModel.CustomScanText = "Custom scan list is empty.";
 
             // Initialise Alerts for page
             _alertManager = alertManager;
@@ -109,13 +110,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     {
                         ViewModel.IsScanRunning = true;
                         ViewModel.IsAddFolderButtonVisible = false;
+                        ViewModel.IsCustomListVisible = false;
                         await Task.WhenAll(customscanFileHash, customscanMalCode);
                         if (_customList != null && _customList.Count > 0 && ViewModel.IsScanRunning)
                         {
                             System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         ViewModel.IsAddFolderButtonVisible = true;
+                        ViewModel.IsCustomListVisible = true;
                         _customList.Clear();
+                        ViewModel.CustomScanText = "Custom scan list is empty.";
                     }
                 }
                 else
@@ -141,7 +145,13 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             ViewModel.IsScanRunning = false;
             _customList.Clear();
-            ViewModel.IsAddFolderButtonVisible= true;
+            ViewModel.CustomScanText = "Custom scan list is empty.";
+
+            if ((bool)CustomScanButton.IsChecked)
+            {
+                ViewModel.IsAddFolderButtonVisible = true;
+                ViewModel.IsCustomListVisible = true;
+            }
             Debug.WriteLine("Cancelling scan");
             if (_cancellationTokenSource != null)
             {
@@ -153,11 +163,13 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private void CustomScanButton_Checked(object sender, RoutedEventArgs e)
         {
             ViewModel.IsAddFolderButtonVisible = true;
+            ViewModel.IsCustomListVisible = true;
         }
 
         private void CustomScanButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ViewModel.IsAddFolderButtonVisible= false;
+            ViewModel.IsCustomListVisible= false;
         }
 
         private void AddFolder_Click(object sender, RoutedEventArgs e)
@@ -177,6 +189,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 else
                 {
                     _customList.Add(folderGet);
+                    ViewModel.CustomScanText = string.Join(Environment.NewLine, _customList);
                     System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                 }
             }

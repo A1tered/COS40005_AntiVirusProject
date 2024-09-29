@@ -7,6 +7,8 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
     {
         private bool _isScanRunning;
         private bool _isAddFolderButtonVisible;
+        private bool _isCustomListVisible;
+        private string _customScanText;
         
         public bool IsScanRunning
         {
@@ -29,6 +31,29 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsAddFolderButtonVisible"));
             }
         }
+
+        public bool IsCustomListVisible
+        {
+            get => _isCustomListVisible;
+            set
+            {
+                _isCustomListVisible = value;
+                Debug.WriteLine($"invoke {value}");
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsCustomListVisible"));
+            }
+        }
+
+        public string CustomScanText
+        {
+            get => _customScanText;
+            set
+            {
+                _customScanText = value;
+                Debug.WriteLine($"Current custom scan list: {_customScanText}");
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("CustomScanText"));
+            }
+        }
+
 
         public ScannerViewModel()
         {
