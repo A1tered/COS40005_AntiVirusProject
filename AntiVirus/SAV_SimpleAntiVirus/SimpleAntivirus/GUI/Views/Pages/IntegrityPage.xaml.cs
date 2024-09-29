@@ -259,5 +259,17 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             NavigationServiceIntermediary.NavigationService.Navigate(typeof(IntegrityResultsPage));
         }
+
+        private void CardExpander_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (IntegrityConfigExpansion.IsExpanded)
+            {
+                IntegrityPageWhole.Height = 984;
+            }
+            else
+            {
+                IntegrityPageWhole.Height = 500;
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SimpleAntivirus.GUI.Views.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="SimpleAntivirus.GUI.Views.Pages.IntegrityPage"
       mc:Ignorable="d" 
+      x:Name="IntegrityPageWhole"
       d:DesignHeight="984.4" d:DesignWidth="800"
       Title="IntegritPage"
       Loaded="Page_Loaded">
@@ -37,7 +38,7 @@
         <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,133,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="ViolationNote" TextAlignment="Center" Text="" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="19" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
         <ui:Button x:Name="ResultsButton" Visibility="Hidden" Content="See Results" Margin="0,251,0,0" VerticalAlignment="Top" Click="See_Results_Click" Grid.Column="1" HorizontalAlignment="Center" Height="32" Width="122" Background="#FF2204B8"/>
-        <ui:CardExpander Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        <ui:CardExpander x:Name="IntegrityConfigExpansion" Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" Expanded="CardExpander_Expanded" Collapsed="CardExpander_Expanded">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
