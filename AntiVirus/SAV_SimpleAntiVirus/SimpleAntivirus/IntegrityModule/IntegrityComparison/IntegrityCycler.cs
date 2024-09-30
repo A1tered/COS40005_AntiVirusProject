@@ -27,6 +27,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         private IViolationHandler _violationHandler;
         private CancellationTokenSource _cancelToken;
         private Type _poolerType;
+
         public IntegrityCycler(IIntegrityDatabaseIntermediary database, IViolationHandler violationHandler)
         {
             _database = database;
