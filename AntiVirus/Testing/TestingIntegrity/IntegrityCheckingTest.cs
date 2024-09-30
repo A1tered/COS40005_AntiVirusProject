@@ -42,7 +42,10 @@ namespace TestingIntegrity
         [Test]
         public async Task AddEntryTest()
         {
+            _integDatabase.DeleteAll();
+            Assert.That(_integDatabase.CheckExistence(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles\12853b.jpg"), Is.False);
             await _integDatabase.AddEntry(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles\12853b.jpg", 100);
+            Assert.That(_integDatabase.CheckExistence(@"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\IntegrityCheckedFiles\12853b.jpg"), Is.True);
         }
 
         //[Test]
