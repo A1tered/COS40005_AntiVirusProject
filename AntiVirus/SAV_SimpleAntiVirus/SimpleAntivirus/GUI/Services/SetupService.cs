@@ -115,12 +115,15 @@ namespace SimpleAntivirus.GUI.Services
         /// <param name="problem"></param>
         private void ErrorMessage(string problem)
         {
-            System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-            _programCooked = true;
+            if (_testingMode == false)
+            {
+                System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+                _programCooked = true;
             // Close program
 
-            MainWindow window = _iNaviWindow as MainWindow;
-            window.CloseWindowGracefully();
+                MainWindow window = _iNaviWindow as MainWindow;
+                window.CloseWindowGracefully();
+            }
         }
 
         // Create a path that represents a new dir or file

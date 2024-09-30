@@ -71,6 +71,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
         public void Dispose()
         {
             _databaseConnection.Close();
+            _databaseConnection = null;
         }
 
 
