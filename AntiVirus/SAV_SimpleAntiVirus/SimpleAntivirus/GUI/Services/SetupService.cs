@@ -115,10 +115,10 @@ namespace SimpleAntivirus.GUI.Services
         /// <param name="problem"></param>
         private void ErrorMessage(string problem)
         {
+            _programCooked = true;
             if (_testingMode == false)
             {
                 System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-                _programCooked = true;
             // Close program
 
                 MainWindow window = _iNaviWindow as MainWindow;
@@ -374,7 +374,10 @@ namespace SimpleAntivirus.GUI.Services
                 {
                     ApplicationThemeManager.Apply(ApplicationTheme.Dark);
                 }
-                _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                if (!_testingMode)
+                {
+                    _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                }
             }
             // Ensure existence of database key folders
             foreach (string folderSet in _createFolders)
