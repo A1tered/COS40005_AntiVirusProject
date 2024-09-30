@@ -71,7 +71,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
         public void Dispose()
         {
             _databaseConnection.Close();
-            _databaseConnection = null;
         }
 
 
@@ -83,10 +82,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
         {
             if (_databaseConnection != null)
             {
-                if (_databaseConnection.State == System.Data.ConnectionState.Open)
-                {
-                    return true;
-                }
+                return (_databaseConnection.State == System.Data.ConnectionState.Open);
             }
             return false;
         }
