@@ -377,6 +377,16 @@
             "related": ".xml"
           }
         }
+      },
+      "SimpleAntivirus/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/SimpleAntivirus.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SimpleAntivirus.dll": {}
+        }
       }
     }
   },
@@ -970,6 +980,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SimpleAntivirus/1.0.0": {
+      "type": "project",
+      "path": "../../SAV_SimpleAntiVirus/SimpleAntivirus/SimpleAntivirus.csproj",
+      "msbuildProject": "../../SAV_SimpleAntiVirus/SimpleAntivirus/SimpleAntivirus.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -978,6 +993,7 @@
       "NUnit >= 3.14.0",
       "NUnit.Analyzers >= 3.9.0",
       "NUnit3TestAdapter >= 4.5.0",
+      "SimpleAntivirus >= 1.0.0",
       "coverlet.collector >= 6.0.0"
     ]
   },
@@ -1012,7 +1028,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+              "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1070,5 +1090,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project SimpleAntivirus is not compatible with net8.0 (.NETCoreApp,Version=v8.0). Project SimpleAntivirus supports: net8.0-windows10.0.17763 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "SimpleAntivirus",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

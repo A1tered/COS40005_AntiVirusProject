@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("testFileQuarantine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b55737b19fb82e995d98d5b275fbf9a7d84a5026")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77133eb6acc5066dfacf55ee06b6d3758edec592")]
 [assembly: System.Reflection.AssemblyProductAttribute("testFileQuarantine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("testFileQuarantine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

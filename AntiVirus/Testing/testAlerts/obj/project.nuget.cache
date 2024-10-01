@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "VQnJO0hr0cw=",
-  "success": true,
+  "dgSpecHash": "CsnETtgP5ao=",
+  "success": false,
   "projectFilePath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testAlerts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zach\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
@@ -18,5 +18,15 @@
     "C:\\Users\\Zach\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
     "C:\\Users\\Zach\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project SimpleAntivirus is not compatible with net8.0 (.NETCoreApp,Version=v8.0). Project SimpleAntivirus supports: net8.0-windows10.0.17763 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "SimpleAntivirus",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

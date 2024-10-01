@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using SimpleAntivirus;
+
 namespace testFileQuarantine
 {
     public class Tests
