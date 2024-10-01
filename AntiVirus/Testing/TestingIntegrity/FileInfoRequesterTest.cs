@@ -23,6 +23,14 @@ namespace TestingIntegrity
         }
 
         [Test]
+        public void SizeLabelTest()
+        {
+
+            //99709748FD9E3F995FB24E129974FE1A68811217
+            Assert.That(FileInfoRequester.SizeValueToLabel(6442450944), Is.EqualTo("6 GB"));
+        }
+
+        [Test]
         public void RetrieveFileInfo()
         {
             Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.EqualTo(new Tuple<long, long>(1726814927, 17)));
