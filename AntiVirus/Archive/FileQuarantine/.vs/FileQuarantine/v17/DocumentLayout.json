@@ -1,0 +1,154 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\idatabasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:idatabasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\iquarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:iquarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:maliciouscodescannerstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\filequarantine\\filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{113D0EEF-7910-418D-93A5-31674BD4862A}|FileQuarantine.csproj|solutionrelative:filemover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuarantineManager.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeDocumentMoniker": "QuarantineManager.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeToolTip": "QuarantineManager.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAIkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:51.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAA0AAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:42.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "DatabaseManager.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\DatabaseManager.cs*",
+              "RelativeToolTip": "DatabaseManager.cs*",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAAAHEBAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:57.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IQuarantineManager.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\IQuarantineManager.cs",
+              "RelativeDocumentMoniker": "IQuarantineManager.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\IQuarantineManager.cs",
+              "RelativeToolTip": "IQuarantineManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:54.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IDatabaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\IDatabaseManager.cs",
+              "RelativeDocumentMoniker": "IDatabaseManager.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\IDatabaseManager.cs",
+              "RelativeToolTip": "IDatabaseManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:55.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MaliciousCodeScannerStub.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\MaliciousCodeScannerStub.cs",
+              "RelativeDocumentMoniker": "MaliciousCodeScannerStub.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\MaliciousCodeScannerStub.cs",
+              "RelativeToolTip": "MaliciousCodeScannerStub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:52.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FileMover.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\FileMover.cs",
+              "RelativeDocumentMoniker": "FileMover.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\FileQuarantine\\FileMover.cs",
+              "RelativeToolTip": "FileMover.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:05:41.959Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 288,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

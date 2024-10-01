@@ -7,10 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GUI\Views\Pages\WhitelistPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="GUI\Views\Pages\IntegrityPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Views\Pages\IntegrityResultsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Views\Pages\WhitelistPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

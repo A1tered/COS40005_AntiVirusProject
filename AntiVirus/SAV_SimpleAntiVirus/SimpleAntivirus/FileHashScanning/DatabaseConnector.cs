@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -18,10 +21,18 @@ namespace SimpleAntivirus.FileHashScanning
     {
         private SqliteConnection _sqliteConnectionRepresentation;
         private string _tableName;
-        public DatabaseConnector(string databaseDirectory, bool writeAccess = false)
+        public DatabaseConnector(string databaseDirectory, bool writeAccess = false, bool setupRun = false)
         {
+            Open(databaseDirectory, writeAccess, setupRun);
+        }
+
+        public void Open(string databaseDirectory, bool writeAccess, bool setupRun = false)
+        {
+
+            ISetupService setupService = SetupService.GetExistingInstance();
+
             _tableName = "hashSignatures";
-            
+
             if (!Directory.Exists("Databases"))
             {
                 Directory.CreateDirectory("Databases");
@@ -33,11 +44,18 @@ namespace SimpleAntivirus.FileHashScanning
             }
             else
             {
-                stringBuilder.Add("Mode", SqliteOpenMode.ReadWrite);
+                stringBuilder.Add("Mode", SqliteOpenMode.ReadWriteCreate);
             }
             stringBuilder.Add("Data Source", $"{databaseDirectory}");
+            stringBuilder.Add("Password", setupService.DbKey());
             _sqliteConnectionRepresentation = new SqliteConnection(stringBuilder.ToString());
             _sqliteConnectionRepresentation.Open();
+
+            if (setupRun)
+            {
+                new SqliteCommand($"CREATE TABLE IF NOT EXISTS hashSignatures (sigHash TEXT);", _sqliteConnectionRepresentation).ExecuteNonQuery();
+                SetupService.TransferContents(_sqliteConnectionRepresentation, System.IO.Directory.GetParent(databaseDirectory).ToString(), "sighash_initialisation_init.db", "hashSignatures");
+            }
         }
 
         public void CleanUp()
@@ -116,6 +134,29 @@ namespace SimpleAntivirus.FileHashScanning
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
                 INSERT INTO hashSignatures VALUES ($sigHash);
+                ");
+                //commandCreation.Parameters.AddWithValue("$table", _tableName);
+                commandCreation.Parameters.AddWithValue("$sigHash", hash);
+                int sqliteDataReader = commandCreation.ExecuteNonQuery();
+                if (sqliteDataReader > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool RemoveHash(string hash)
+        {
+            if (QueryHash(hash))
+            {
+                return false;
+            }
+            if (ConnectionSuccessful())
+            {
+                SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
+                commandCreation.CommandText = (@"
+                DELETE FROM hashSignatures VALUES ($sigHash);
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
                 commandCreation.Parameters.AddWithValue("$sigHash", hash);

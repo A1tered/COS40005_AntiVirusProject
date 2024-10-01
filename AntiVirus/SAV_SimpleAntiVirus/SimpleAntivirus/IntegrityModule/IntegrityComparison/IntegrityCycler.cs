@@ -15,23 +15,32 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
 using System.Diagnostics;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {
-    public class IntegrityCycler
+    public class IntegrityCycler : IIntegrityCycler
     {
         // How many data sets does 1 task undertake? (Higher = Less Speed/Less Intensive) (Lower = High Speed / More Intensive)
         private int _amountPerSet;
-        private IntegrityDatabaseIntermediary _database;
-        private ViolationHandler _violationHandler;
-        public IntegrityCycler(IntegrityDatabaseIntermediary database, ViolationHandler violationHandler)
+        private IIntegrityDatabaseIntermediary _database;
+        private IViolationHandler _violationHandler;
+        private CancellationTokenSource _cancelToken;
+        public IntegrityCycler(IIntegrityDatabaseIntermediary database, IViolationHandler violationHandler)
         {
             _database = database;
             _violationHandler = violationHandler;
             _amountPerSet = 500;
+            _cancelToken = new CancellationTokenSource();
         }
 
         public event EventHandler<ProgressArgs> ProgressUpdate;
+
+
+        public async Task CancelScan()
+        {
+            await _cancelToken.CancelAsync();
+        }
 
         /// <summary>
         /// Initiate scan of entire IntegrityDatabase and compare with real time system documents.
@@ -39,6 +48,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// <remarks>One of the most important functions.</remarks>
         public async Task<List<IntegrityViolation>> InitiateScan()
         {
+            _cancelToken = new();
             ProgressArgs setProgressArg;
             // Progress Track variables:
             // List that instantiates all the instances of Datapooler with proper configuration (Does not run them)
@@ -70,7 +80,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             }
             foreach (IntegrityDataPooler poolerObject in dataPoolerList)
             {
-                taskList.Add(Task.Run(poolerObject.CheckIntegrity));
+                taskList.Add(Task.Run(() => poolerObject.CheckIntegrity(_cancelToken.Token), _cancelToken.Token));
             }
             initialTaskAmount = taskList.Count();
             Debug.WriteLine($"Task Initial Amount:{taskList.Count()}");
@@ -78,26 +88,34 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             {
                 taskToDelete.Clear();
                 await Task.WhenAny(taskList.ToArray());
-                foreach (Task<List<IntegrityViolation>> taskItem in taskList)
+                try
                 {
-                    if (taskItem.IsCompleted)
+                    foreach (Task<List<IntegrityViolation>> taskItem in taskList)
                     {
-                        taskToDelete.Add(taskItem);
-                        taskAmountComplete++;
-                        foreach (IntegrityViolation violationComponent in taskItem.Result)
+                        if (taskItem.IsCompleted)
                         {
-                            summaryViolation.Add(violationComponent);
-                            // For each violation, send to violation handler
-                            await _violationHandler.ViolationAlert(violationComponent);
+                            taskToDelete.Add(taskItem);
+                            taskAmountComplete++;
+                            foreach (IntegrityViolation violationComponent in taskItem.Result)
+                            {
+                                summaryViolation.Add(violationComponent);
+                                // For each violation, send to violation handler
+                                await Task.Run(() => _violationHandler.ViolationAlert(violationComponent));
 
-                            // Progress calculation here
-                            setProgressArg = new();
-                            // Percentage of tasks left.
-                            setProgressArg.Progress = ((taskAmountComplete) / (float)initialTaskAmount) * 100;
-                            setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
-                            ProgressUpdate?.Invoke(this, setProgressArg);
+                                // Progress calculation here
+                                setProgressArg = new();
+                                // Percentage of tasks left.
+                                setProgressArg.Progress = Math.Round(((taskAmountComplete) / (float)initialTaskAmount) * 100, 2);
+                                setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
+                                ProgressUpdate?.Invoke(this, setProgressArg);
+                            }
                         }
                     }
+                }
+                catch (OperationCanceledException e)
+                {
+                    // Cancelled.
+                    return summaryViolation;
                 }
                 Debug.WriteLine($"Tasks marked complete in total {taskAmountComplete}");
                 // Delete all marked for deletion
@@ -112,13 +130,21 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         }
 
         /// <summary>
-        /// Similar to InitiateScan, except it only scans 1 file.
+        /// Similar to InitiateScan, except it only scans given directory in database.
         /// </summary>
         /// <param name="path">Windows File Path</param>
-        public async Task InitiateSingleScan(string path)
+        public async Task InitiateDirectoryScan(string directoryPath)
         {
-            IntegrityDataPooler singlePooler = new(_database, path);
-            IntegrityViolation violation = await singlePooler.CheckIntegrityFile();
+            IntegrityDataPooler singlePooler = new(_database, directoryPath);
+            List<IntegrityViolation> violationSet = await singlePooler.CheckIntegrityDirectory();
+            if (violationSet.Count > 0)
+            {             
+                foreach (IntegrityViolation violation in violationSet)
+                {
+                    await Task.Run(() => _violationHandler.ViolationAlert(violation));
+                }
+
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             //Debug.WriteLine($"Reactive Alert: {violation.OriginalHash} -> {violation.Hash}, Size change: {violation.OriginalSize} -> {violation.FileSizeBytes}");
             Console.ResetColor();
