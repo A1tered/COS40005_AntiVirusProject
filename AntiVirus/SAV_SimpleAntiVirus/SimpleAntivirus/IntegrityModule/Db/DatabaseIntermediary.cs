@@ -7,18 +7,16 @@
  **************************************************************************/
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using SimpleAntivirus.IntegrityModule.DataRelated;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.IntegrityModule.Interface;
+using SimpleAntivirus.GUI.Services.Interface;
 namespace SimpleAntivirus.IntegrityModule.Db
 {
   
-    public class DatabaseIntermediary
+    public class DatabaseIntermediary : IDatabaseIntermediary
     {
         protected SqliteConnection _databaseConnection;
         protected string _defaultTable;
@@ -43,15 +41,19 @@ namespace SimpleAntivirus.IntegrityModule.Db
             databaseSpecificPath = FileInfoRequester.FileDirectorySearcher(returnedDirectoryDatabase, databaseName);
             if (databaseSpecificPath != null || makeDatabase)
             {
+                // Get setup service
+                ISetupService setupService = SetupService.GetExistingInstance();
+
                 // Make database.
                 if (databaseSpecificPath == null)
                 {
                     databaseSpecificPath = Path.Combine(returnedDirectoryDatabase, databaseName);
                 }
                 SqliteConnectionStringBuilder connectionBuild = new();
-                Console.WriteLine(databaseSpecificPath);
+                System.Diagnostics.Debug.WriteLine(databaseSpecificPath);
                 connectionBuild.DataSource = databaseSpecificPath;
                 connectionBuild.Mode = SqliteOpenMode.ReadWriteCreate;
+                connectionBuild.Password = setupService.DbKey();
                 _databaseConnection = new SqliteConnection(connectionBuild.ConnectionString);
                 _databaseConnection.Open();
                 SqliteCommand commandPragma = new();
@@ -66,10 +68,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
         }
 
-        ~DatabaseIntermediary()
+        public void Dispose()
         {
             _databaseConnection.Close();
         }
+
+
 
         /// <summary>
         /// Private function, determines whether the database can be used.
@@ -96,7 +100,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
             if (DatabaseUsable())
             {
                 query.Connection = _databaseConnection;
-                return query.ExecuteNonQuery();
+                int getResult = query.ExecuteNonQuery();
+                return getResult;
             }
             return 0;
         }
@@ -111,7 +116,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
             if (DatabaseUsable())
             {
                 query.Connection = _databaseConnection;
-                return query.ExecuteReader();
+                SqliteDataReader dataReaderObj = query.ExecuteReader();
+                return dataReaderObj;
             }
             return null;
         }
@@ -132,13 +138,15 @@ namespace SimpleAntivirus.IntegrityModule.Db
             }
             if (DatabaseUsable())
             {
-                SqliteCommand command = _databaseConnection.CreateCommand();
-                // Concerns may arise from inserting tableName like this, however SQLite parameters does not support placement of table names,
-                // do not allow user direct input for this function.
-                command.CommandText = $"SELECT COUNT(*) FROM {insertTable}";
-                SqliteDataReader returnInfo = command.ExecuteReader();
-                returnInfo.Read();
-                return returnInfo.GetInt64(0);
+                using (SqliteCommand command = _databaseConnection.CreateCommand())
+                {
+                    // Concerns may arise from inserting tableName like this, however SQLite parameters does not support placement of table names,
+                    // do not allow user direct input for this function.
+                    command.CommandText = $"SELECT COUNT(*) FROM {insertTable}";
+                    SqliteDataReader returnInfo = command.ExecuteReader();
+                    returnInfo.Read();
+                    return returnInfo.GetInt64(0);
+                }
             }
             return -1;
         }
@@ -183,9 +191,19 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// </summary>
         public void Vacuum()
         {
-            SqliteCommand command = _databaseConnection.CreateCommand();
-            command.CommandText = "VACUUM";
-            QueryNoReader(command);
+            using (SqliteCommand command = _databaseConnection.CreateCommand())
+            {
+                command.CommandText = "VACUUM";
+                QueryNoReader(command);
+            }
+        }
+
+        public SqliteConnection Connection
+        {
+            get
+            {
+                return _databaseConnection;
+            }
         }
     }
 }

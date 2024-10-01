@@ -6,10 +6,17 @@
       xmlns:local="clr-namespace:SimpleAntivirus.GUI.Views.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="SimpleAntivirus.GUI.Views.Pages.IntegrityPage"
       mc:Ignorable="d" 
+      x:Name="IntegrityPageWhole"
       d:DesignHeight="984.4" d:DesignWidth="800"
       Title="IntegritPage"
       Loaded="Page_Loaded">
     <Page.Resources>
+        <Style BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="ui:Button">
+            <Setter Property="Background" Value="#FF2C05F2"/>
+            <Setter Property="Foreground" Value="#E4FFFFFF"/>
+            <Setter Property="MouseOverBackground" Value="#80476EE9"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
         <Style TargetType="DataGridCell">
 
         </Style>
@@ -25,12 +32,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Integrity Scan" Margin="0,143,0,0" VerticalAlignment="Top" Width="244" Click="Button_Click" Height="32" Grid.Column="1" HorizontalAlignment="Center"/>
-        <Label x:Name="InfoProvide" HorizontalContentAlignment="Center" Content="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
-        <Label x:Name="InfoProvideDescription" HorizontalContentAlignment="Center" Content="{Binding ProgressInfo, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
-        <Label x:Name="ViolationNote" HorizontalContentAlignment="Center" Content="Value" HorizontalAlignment="Center" Margin="0,119,0,0" VerticalAlignment="Top" Width="180" Foreground="Transparent" Background="Transparent" Height="19" FontSize="18" FontWeight="Bold" Grid.Column="1"/>
-        <ui:Button x:Name="ResultsButton" Visibility="Hidden" Content="See Results" Margin="0,214,0,0" VerticalAlignment="Top" Click="See_Results_Click" Grid.Column="1" HorizontalAlignment="Center" Height="32" Width="94"/>
-        <ui:CardExpander Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        <ui:TextBlock Margin="-14,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Check for the integrity of sensitive files here and be alerted of any integrity violations." Grid.ColumnSpan="3" HorizontalAlignment="Left"/>
+        <ui:Button x:Name="IntegrityScanButton" Grid.Column="1" HorizontalAlignment="Center" Content="Run Integrity Scan" Click="Button_Click" Margin="0,195,0,0" VerticalAlignment="Top" Width="166" Height="32" Background="#FF2204B8"/>
+        <ui:TextBlock x:Name="InfoProvide" TextAlignment="Center" Text="{Binding Progress, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
+        <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,133,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
+        <ui:TextBlock x:Name="ViolationNote" TextAlignment="Center" Text="" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="19" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
+        <ui:Button x:Name="ResultsButton" Visibility="Hidden" Content="See Results" Margin="0,251,0,0" VerticalAlignment="Top" Click="See_Results_Click" Grid.Column="1" HorizontalAlignment="Center" Height="32" Width="122" Background="#FF2204B8"/>
+        <ui:CardExpander x:Name="IntegrityConfigExpansion" Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" Expanded="CardExpander_Expanded" Collapsed="CardExpander_Expanded">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -49,16 +57,16 @@
                         <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Grid.Column="2" Content="Delete" Margin="0,251,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="64"/>
-                <Label x:Name="SelectLabel" Content="No Item Selected" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,255,0,0" Grid.Row="1" VerticalAlignment="Top" Width="375" Height="23" Grid.ColumnSpan="2"/>
-                <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,66,0,0" VerticalAlignment="Top" Width="99" Height="32"/>
-                <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Margin="1,66,0,0" Click="AddFolder_Click" VerticalAlignment="Top" Width="97" Height="32"/>
-                <ui:ProgressRing x:Name="ProgressAdd" Visibility="Hidden" RenderTransformOrigin="0.5,0.5"  Grid.Column="1" HorizontalAlignment="Right" Margin="0,74,110,0" VerticalAlignment="Top" Height="24" Width="24">
+                <ui:Button x:Name="DeleteButton" Grid.Column="2" Content="Delete" Margin="20,251,0,0" VerticalAlignment="Top" Click="Delete_Click" Grid.Row="1" Height="32" Width="89" Background="#ba1111" MouseOverBackground="LightPink"/>
+                <ui:TextBlock x:Name="SelectLabel" Text="No Item Selected" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,255,0,0" Grid.Row="1" VerticalAlignment="Top" Width="375" Height="23" Grid.ColumnSpan="2"/>
+                <ui:Button x:Name="AddFile" Grid.Column="1" HorizontalAlignment="Right" Content="Add File" Click="AddFile_Click" Margin="0,66,20,0" VerticalAlignment="Top" Width="99" Height="32" Background="#FF2204B8"/>
+                <ui:Button x:Name="AddFolder" Grid.Column="2" Content="Add Folder" Margin="20,66,0,0" Click="AddFolder_Click" VerticalAlignment="Top" Width="97" Height="32" Background="#FF2204B8"/>
+                <ui:ProgressRing x:Name="ProgressAdd" Visibility="Hidden" RenderTransformOrigin="0.5,0.5"  Grid.Column="1" HorizontalAlignment="Right" Margin="0,70,136,0" VerticalAlignment="Top" Height="24" Width="24">
                     <ui:ProgressRing.RenderTransform>
                         <RotateTransform x:Name="Rotator" Angle="0"/>
                     </ui:ProgressRing.RenderTransform>
                 </ui:ProgressRing>
-                <Label x:Name="ProgressInfo" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,71,20,0" VerticalAlignment="Top" Height="24" Width="50"/>
+                <Label x:Name="ProgressInfo" Visibility="Hidden" Grid.Column="1" Content="{Binding AddProgress, Mode=OneWay}" HorizontalAlignment="Left" Margin="72,70,0,0" VerticalAlignment="Top" Height="24" Width="50"/>
                 <ui:TextBox x:Name="SearchBox" Grid.Column="0" HorizontalAlignment="Right" Margin="0,64,0,0" TextWrapping="Wrap" Text="" PlaceholderText="Search                           " VerticalAlignment="Top" Width="200" TextChanged="SearchBox_TextChanged" Height="36"/>
             </Grid>
         </ui:CardExpander>

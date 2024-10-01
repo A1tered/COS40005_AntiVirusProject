@@ -12,12 +12,26 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.IntegrityModule.DataRelated
 {
     public static class FileInfoRequester
     {
 
+
+        // String is shortened eg. "Hello my name is jack" -> "...is jack"
+        public static string TruncateString(string itemCandidate, int lengthValue = 40)
+        {
+            if (itemCandidate.Length > lengthValue)
+            {
+                string redoString = "...";
+                int startPoint = itemCandidate.Length - lengthValue;
+                redoString = redoString + itemCandidate.Substring(startPoint, lengthValue);
+                return redoString;
+            }
+            return itemCandidate;
+        }
 
         public static string SizeValueToLabel(long bytes)
         {
@@ -37,7 +51,12 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
         /// Hash File via SHA1
         /// </summary>
         /// <param name="directory">File Directory</param>
-        /// <returns>SHA1 Hash of file</returns>
+        /// <returns>SHA1 Hash of file, 
+        /// if error then returns "" (empty string)
+        /// if empty file then returns "empty" (notes that a file should be empty)
+        /// </returns>
+        /// 
+
         public static async Task<string> HashFile(string directory)
         {
             if (Path.Exists(directory))
@@ -45,7 +64,7 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                 StringBuilder hashReturn = new();
                 try
                 {
-                    using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+                    using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 4096, true))
                     {
                         byte[] returnByteSet = await SHA1.HashDataAsync(openFile);
                         foreach (byte individualByte in returnByteSet)
@@ -55,13 +74,38 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                         return hashReturn.ToString();
                     }
                 }
-                catch (IOException e )
+                catch (DirectoryNotFoundException e)
                 {
-                    Console.WriteLine($"IOException (Likely process use) {directory}");
+                    System.Diagnostics.Debug.WriteLine($"Directory not found: {directory} (Privilege issues?)");
+                }
+                catch (EndOfStreamException e)
+                {
+                    System.Diagnostics.Debug.WriteLine($"End of stream exception: {directory}");
+                }
+                catch (FileNotFoundException e)
+                {
+                    System.Diagnostics.Debug.WriteLine($"File not found: {directory} (Privilege issues?)");
+                }
+                catch (FileLoadException e)
+                {
+                    System.Diagnostics.Debug.WriteLine($"File failed to load");
                 }
                 catch (UnauthorizedAccessException e)
                 {
-                    Console.WriteLine($"Unauthorized access {directory}");
+                    System.Diagnostics.Debug.WriteLine($"Unauthorized access {directory}");
+                }
+                catch (IOException e)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Generic IO exception {directory}");
+                    // Potential issue if it is 0 bytes.
+                    if (Path.Exists(directory))
+                    {
+                        if (new FileInfo(directory).Length == 0)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"IO exception dealt with, empty file determined (cannot be hashed)");
+                            return "empty";
+                        }
+                    }
                 }
 
             }
@@ -77,31 +121,16 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
         public static async Task<List<string>> HashSet(List<string> directorySet)
         {
             List<string> returnedHashes = new();
+            List<Task<string>> hashConverterTasks = new();
+
             foreach (string directory in directorySet) {
-                StringBuilder hashReturn = new();
-                if (Path.Exists(directory))
-                {
-                    try
-                    {
-                        using (FileStream openFile = new(directory, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
-                        {
-                            byte[] returnByteSet = await SHA1.HashDataAsync(openFile);
-                            foreach (byte individualByte in returnByteSet)
-                            {
-                                hashReturn.Append(individualByte.ToString("X2"));
-                            }
-                        }
-                    }
-                    catch (IOException e)
-                    {
-                        Console.WriteLine($"IOException (Likely process use) {directory}");
-                    }
-                    catch (UnauthorizedAccessException e)
-                    {
-                        Console.WriteLine($"Unauthorized access {directory}");
-                    }
-                }
-                returnedHashes.Add(hashReturn.ToString());
+                hashConverterTasks.Add(HashFile(directory));
+            }
+            // when all converted
+            await Task.WhenAll(hashConverterTasks.ToArray());
+            foreach (Task<string> taskString in hashConverterTasks)
+            {
+                returnedHashes.Add(await taskString);
             }
             return returnedHashes;
         }
@@ -150,7 +179,7 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                     }
                     catch (UnauthorizedAccessException e)
                     {
-                        Console.WriteLine($"Unauthorized Permission Warning: {tempPathUnpack}");
+                        System.Diagnostics.Debug.WriteLine($"Unauthorized Permission Warning: {tempPathUnpack}");
                     }
                 }
             }
@@ -172,7 +201,7 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
             // Find path that contains database.
             foreach (string path in filePaths)
             {
-                if (Path.GetFileNameWithoutExtension(path).Contains(term))
+                if (path.Contains(term))
                 {
                     return path;
                 }

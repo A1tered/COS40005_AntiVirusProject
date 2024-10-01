@@ -1,17 +1,26 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
+using SimpleAntivirus.ViewModels.Pages;
+using SimpleAntivirus.Models;
+using SimpleAntivirus.Alerts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SimpleAntivirus.GUI.Services;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
-using SimpleAntivirus.ViewModels.Pages;
-using SimpleAntivirus.Models;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Wpf.Ui.Appearance;
+using SimpleAntivirus.FileQuarantine;
+using Windows.Devices.WiFiDirect.Services;
+using Windows.UI.ViewManagement;
+using Wpf.Ui.Tray;
+using SimpleAntivirus.CLIMonitoring;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus
 {
@@ -25,11 +34,13 @@ namespace SimpleAntivirus
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
         // https://docs.microsoft.com/dotnet/core/extensions/configuration
         // https://docs.microsoft.com/dotnet/core/extensions/logging
+        private static Mutex mutex;
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
             .ConfigureServices((context, services) =>
             {
+
                 services.AddHostedService<ApplicationHostService>();
 
                 // Page resolver service
@@ -44,28 +55,46 @@ namespace SimpleAntivirus
                 // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
 
+                // NotifyIcon
+                services.AddSingleton<INotifyIconService, NotifyIconService>();
+
+                services.AddSingleton<SystemTrayService>();
+
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+
                 services.AddSingleton<BlacklistPage>();
                 services.AddSingleton<BlacklistViewModel>();
+
+                services.AddSingleton<WhitelistPage>();
+                services.AddSingleton<WhitelistViewModel>();
+
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
+
                 services.AddSingleton<IntegrityPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();
-                services.AddSingleton<ProtectionHistoryPage>();
-                services.AddSingleton<ProtectionHistoryViewModel>();
+
                 services.AddSingleton<ScannerPage>();
                 services.AddSingleton<ScannerViewModel>();
-                services.AddSingleton<ScanningPage>();
-                services.AddSingleton<ScanningViewModel>(); 
-                services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
+
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
+
+                services.AddSingleton<AlertManager>();
+                services.AddSingleton<EventBus>();
+
+                services.AddSingleton<ProtectionHistoryPage>();
+                services.AddSingleton<ProtectionHistoryViewModel>();
+                services.AddSingleton<ProtectionHistoryModel>();
+                services.AddSingleton<AlertReportPage>();
+
+                services.AddSingleton<CLIService>();
+
             }).Build();
 
         /// <summary>
@@ -82,19 +111,72 @@ namespace SimpleAntivirus
         /// <summary>
         /// Occurs when the application is loading.
         /// </summary>
-        private void OnStartup(object sender, StartupEventArgs e)
+        private async void OnStartup(object sender, StartupEventArgs e)
         {
+            // Mutex setup to ensure that only one instance of the application can run at a time.
+            const string appName = "SimpleAntivirusMutex";
+            bool createdNew;
+
+            mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                // This means another instance is running already
+                System.Windows.MessageBox.Show("Another instance of Simple Antivirus is already running.", "Simple Antivirus", MessageBoxButton.OK, MessageBoxImage.Error);
+                Shutdown();
+                return;
+            }
+
             _host.Start();
             NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
+
+            // Check the program has everything required, and instantiate the Singleton
+            await SetupService.GetInstance(_host.Services).Run();
+
+            // If setup encounters no errors, then continue. 
+            if (!SetupService.GetExistingInstance().ProgramCooked)
+            {
+                // Begin SystemTray
+                _host.Services.GetService<SystemTrayService>();
+
+
+                // Rough fix to theme irregularity copied from other theme window.
+                ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                ApplicationThemeManager.Apply(CurrentTheme);
+                // Concern about async in this, however will only replace if this causes issues.
+                await _host.Services.GetService<IntegrityViewModel>().ReactiveStart();
+
+                // CLI Monitor Setup (If you encounter lag, check this out)
+                _host.Services.GetService<CLIService>().Setup();
+            }
         }
 
         /// <summary>
         /// Occurs when the application is closing.
         /// </summary>
-        private async void OnExit(object sender, ExitEventArgs e)
+        public async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
+            ToastNotificationManagerCompat.History.Clear();
 
+            // Most of these services being told to cancel / remove, are unnecessary most likely, however we will safely clean up some background
+            // operations, even though theyre disposed automatically.
+            
+            // All ongoing operations are to be cancelled within IntegrityManagement.
+            await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
+            if (mutex != null)
+            {
+                mutex.ReleaseMutex();
+                mutex.Dispose();
+            }
+
+            ISetupService setupService = SetupService.GetExistingInstance();
+            await setupService.UpdateConfig();
+
+            // Tell CLIService to stop processing events.
+            _host.Services.GetService<CLIService>().Remove();
+
+            //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }
 

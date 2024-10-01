@@ -29,7 +29,9 @@ namespace DatabaseFoundations
             SqliteCommand command = new();
             command.CommandText = @$"CREATE TABLE IF NOT EXISTS
             {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
-            return QueryNoReader(command) > 0;
+            QueryNoReader(command);
+            TransferAcross();
+            return true;
         }
 
         /// <summary>

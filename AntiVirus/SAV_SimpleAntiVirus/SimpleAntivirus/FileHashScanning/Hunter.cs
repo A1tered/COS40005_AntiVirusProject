@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SimpleAntivirus.Alerts;
+using SimpleAntivirus.FileQuarantine;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -18,21 +21,23 @@ namespace SimpleAntivirus.FileHashScanning
         private DatabaseConnector _databaseConnection;
         public Hasher _hasher;
         private string _databaseDirectory;
+        private readonly CancellationToken _token;
 
-        public Hunter(string directoryToScan, string databaseDirectory)
+        public Hunter(string directoryToScan, string databaseDirectory, CancellationToken token)
         {
             _directoryToScan = directoryToScan;
             _databaseConnection = new DatabaseConnector(databaseDirectory);
+            _token = token;
             _hasher = new Hasher();
         }
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)
         {
-            return await Task.Run(() =>
+            return await Task.Run(async () =>
             {
                 try
                 {
-                    // Console.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
+                    Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
 
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
@@ -40,15 +45,21 @@ namespace SimpleAntivirus.FileHashScanning
 
                     foreach (string file in files)
                     {
-                        FileInfo fileInfo = new FileInfo(file);
-                        scanner.UpdateSize(fileInfo.Length);
-                        scanner.UpdateProgress();
+                        if (_token.IsCancellationRequested)
+                        {
+                            _token.ThrowIfCancellationRequested();
+                        }
+
+                        Debug.WriteLine($"Current file: {file}");
 
                         if (CompareCycle(file))
                         {
                             violationsList.Add(file);
-                            Violation(file);
                         }
+                    }
+                    foreach (string violation in violationsList)
+                    {
+                        await scanner.QuarantineManager.QuarantineFileAsync(violation, scanner.EventBus, "filehash");
                     }
                     return Tuple.Create(violationsList.ToArray(), directoryRemnants);
                 }
@@ -56,7 +67,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     if (exception is IOException || exception is AccessViolationException || exception is UnauthorizedAccessException)
                     {
-                        // Console.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
+                        Debug.WriteLine($"IO Exception. Cannot open directory {_directoryToScan}");
                         return Tuple.Create(Array.Empty<string>(), Array.Empty<string>());
                     }
                     throw;
@@ -65,13 +76,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     _databaseConnection.CleanUp();
                 }
-            });
-        }
-
-        private void Violation(string fileDirectory)
-        {
-            // Alert: Violation found in directory {fileDirectory}
-            // Call Quarantine for fileDirectory
+            }, scanner.Token);
         }
 
         public bool CompareCycle(string fileDirectory)

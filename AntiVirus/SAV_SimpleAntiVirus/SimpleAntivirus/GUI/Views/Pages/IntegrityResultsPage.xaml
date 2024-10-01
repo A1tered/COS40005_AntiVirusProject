@@ -9,7 +9,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IntegrityResultsPage"
       Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <Style BasedOn="{StaticResource {x:Type ui:Button}}" TargetType="ui:Button">
+            <Setter Property="Background" Value="#FF2C05F2"/>
+            <Setter Property="Foreground" Value="#E4FFFFFF"/>
+            <Setter Property="MouseOverBackground" Value="#80476EE9"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,8 +41,8 @@
                 <RotateTransform x:Name="Rotator" Angle="0"/>
             </ui:ProgressRing.RenderTransform>
         </ui:ProgressRing>
-        <ui:Button Grid.Column="0" HorizontalAlignment="Center" Content="Back" Margin="34,21,0,0" VerticalAlignment="Top" Width="221" Click="Back_Click"/>
-        <ui:TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Integrity Results" VerticalAlignment="Top" FontSize="33" Width="234" Foreground="#FFE6DCDC"/>
+        <ui:Button Grid.Column="0" Margin="34,21,0,0" VerticalAlignment="Top" Width="106"  Content="Back" Background="#FF2204B8" Click="Back_Click" FontWeight="Bold"/>
+        <ui:TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Integrity Results" VerticalAlignment="Top" FontSize="33" Width="270" Foreground="#FFE6DCDC" FontWeight="Bold"/>
 
     </Grid>
 </Page>

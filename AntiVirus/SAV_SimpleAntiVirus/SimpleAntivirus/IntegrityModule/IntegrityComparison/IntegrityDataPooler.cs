@@ -17,27 +17,28 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {
-    public class IntegrityDataPooler
+    public class IntegrityDataPooler : IIntegrityDataPooler
     {
         private int _setRepresentation;
         private int _setAmount;
-        private string _selectedPath;
-        private IntegrityDatabaseIntermediary _databaseIntermediary;
+        private string _selectedDirectory;
+        private IIntegrityDatabaseIntermediary _databaseIntermediary;
 
-        public IntegrityDataPooler(IntegrityDatabaseIntermediary database, int set, int setAmount)
+        public IntegrityDataPooler(IIntegrityDatabaseIntermediary database, int set, int setAmount)
         {
             _databaseIntermediary = database;
             _setRepresentation = set;
             _setAmount = setAmount;
         }
 
-        public IntegrityDataPooler(IntegrityDatabaseIntermediary database, string path)
+        public IntegrityDataPooler(IIntegrityDatabaseIntermediary database, string path)
         {
             _databaseIntermediary = database;
-            _selectedPath = path;
+            _selectedDirectory = path;
         }
 
         /// <summary>
@@ -75,10 +76,11 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// Retrieving a set of the database, compare with system files.
         /// </summary>
         /// <returns>Violations found via mismatching Hashes.</returns>
-        public async Task<List<IntegrityViolation>> CheckIntegrity()
+        public async Task<List<IntegrityViolation>> CheckIntegrity(CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
             List<IntegrityViolation> violationSet = new();
-            if (_selectedPath == null)
+            if (_selectedDirectory == null)
             {
                 Dictionary<string, string> infoSet = _databaseIntermediary.GetSetEntries(_setRepresentation, _setAmount);
                 // We want to async calculate all hashes before cycling across.
@@ -87,6 +89,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                 int index = 0;
                 foreach (KeyValuePair<string, string> dirHash in infoSet)
                 {
+                    ct.ThrowIfCancellationRequested();
                     tempHash = stringList[index];
                     index++;
                     if (tempHash != dirHash.Value)
@@ -105,15 +108,26 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// Singular comparison between the database and a windows file.
         /// </summary>
         /// <returns>Violation or Null</returns>
-        public async Task<IntegrityViolation> CheckIntegrityFile()
+        public async Task<List<IntegrityViolation>> CheckIntegrityDirectory()
         {
-            string hash = await FileInfoRequester.HashFile(_selectedPath);
-            Tuple<string, string, long, long, long> resultTuple = _databaseIntermediary.GetDirectoryInfo(_selectedPath);
-            if (hash != resultTuple.Item2)
+            List<IntegrityViolation> violationSet = new();
+            Dictionary<string, string> returnInfo = _databaseIntermediary.GetSetEntriesDirectory(_selectedDirectory);
+            List<string> stringList = await FileInfoRequester.HashSet(returnInfo.Keys.ToList());
+            int index = 0;
+            string tempHash = "";
+            foreach (KeyValuePair<string, string> dirHash in returnInfo)
             {
-                return CreateViolation(hash, resultTuple);
+                tempHash = stringList[index];
+                index++;
+                if (tempHash != dirHash.Value)
+                {
+                    // Database info
+                    Tuple<string, string, long, long, long> infoTuple = _databaseIntermediary.GetDirectoryInfo(dirHash.Key);
+
+                    violationSet.Add(CreateViolation(tempHash, infoTuple));
+                }
             }
-            return null;
+            return violationSet;
         }
 
         public int Set

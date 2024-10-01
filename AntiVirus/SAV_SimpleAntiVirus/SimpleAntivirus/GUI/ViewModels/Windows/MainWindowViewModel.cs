@@ -5,6 +5,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+
         [ObservableProperty]
         private string _applicationTitle = "Simple Antivirus";
 
@@ -51,17 +52,13 @@ namespace SimpleAntivirus.GUI.ViewModels.Windows
                 Content = "Mark as Malicious",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.WarningShield20},
                 TargetPageType = typeof(Views.Pages.BlacklistPage),
-            }
-        };
-
-        [ObservableProperty]
-        private ObservableCollection<object> _footerMenuItems = new()
-        {
+            },
+            
             new NavigationViewItem()
             {
-                Content = "Settings",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.Settings24 },
-                TargetPageType = typeof(Views.Pages.SettingsPage)
+                Content = "Whitelist",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.ShieldCheckmark20},
+                TargetPageType = typeof(Views.Pages.WhitelistPage),
             }
         };
 

@@ -65,5 +65,10 @@ namespace IntegrityModule.ControlClasses
         {
             _integrityCycler.AmountSet = amount;
         }
+
+        public void Close()
+        {
+            _integrityConfigurator.Close();
+        }
     }
 }

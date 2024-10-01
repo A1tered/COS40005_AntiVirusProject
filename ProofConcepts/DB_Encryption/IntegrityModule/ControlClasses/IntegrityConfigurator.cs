@@ -51,5 +51,10 @@ namespace IntegrityModule.ControlClasses
         {
             return _database.DeleteAll();
         }
+
+        public void Close()
+        {
+            _database.CloseDB();
+        }
     }
 }
