@@ -13,11 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.Alerts;
 using System.Security.AccessControl;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Alerts
 {
 
-    public class ViolationHandler
+    public class ViolationHandler : IViolationHandler
     {
         public event EventHandler<AlertArgs> AlertFlag;
         public void ViolationAlert(List<IntegrityViolation> integViolation)
@@ -29,10 +30,10 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
         }
 
         // Convert violation data structure to Alert and then notify via event.
-        public async Task ViolationAlert(IntegrityViolation violation)
+        public void ViolationAlert(IntegrityViolation violation)
         {
-            StringBuilder baseMessage = new("Integrity Check Mismatch:");
-            baseMessage.Append($"File: {violation.Path}");
+            StringBuilder baseMessage = new("Integrity Check Mismatch");
+            baseMessage.Append($"\nFile: {violation.Path}");
             // Parameter creation
             DateTime timeViolation = DateTimeOffset.FromUnixTimeSeconds(violation.TimeOfViolation).DateTime;
             string component = "Integrity Checking";
@@ -40,21 +41,22 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             string message = "";
             string suggestedAction = "";
             //// Determine circumstance
+            ///
+            baseMessage.Append($"\nDetected Issues:");
             if (violation.Missing == false)
             {
-                baseMessage.Append($"Hash Change Detected");
+                baseMessage.Append($"\nHash Change Detected");
                 if (violation.FileSizeBytesChange != "")
                 {
                     severity = "Caution";
-                    baseMessage.Append($"Detected Changes:");
-                    baseMessage.Append($"Size Change: {violation.FileSizeBytesChange}");
+                    baseMessage.Append($"\nSize Change: {violation.FileSizeBytesChange}");
                     suggestedAction = "Check contents of file, alert IT";
                     // Major file size changes
                 }
                 else if (violation.Hash == "")
                 {
                     severity = "Warning";
-                    baseMessage.Append($"File cannot be Scanned");
+                    baseMessage.Append($"\nFile cannot be Scanned");
                     suggestedAction = "Scan again later, and raise issue with IT";
                     // Could not scan file
                 }
@@ -62,7 +64,7 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             else
             {
                 severity = "Danger";
-                baseMessage.Append($"File Missing");
+                baseMessage.Append($"\nFile Missing");
                 suggestedAction = "Check for potential compromise of computer";
                 // File Missing (High Severity)
             }
@@ -74,7 +76,7 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             argument.Message = message;
             argument.SuggestedAction = suggestedAction;
             // Cheap and dirty solution, may not be ideal, and plan to change later on.
-            await Task.Run(() => AlertFlag?.Invoke(this, argument));
+            AlertFlag?.Invoke(this, argument);
         }
     }
 }

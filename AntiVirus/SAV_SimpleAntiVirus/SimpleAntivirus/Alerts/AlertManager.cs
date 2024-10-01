@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Concurrent;
+using System.IO;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.Alerts;
 public class AlertManager
 {
     protected SqliteConnection _databaseConnection;
+
+    // Intended to raise alert, to notify window to update.
+    public event EventHandler NewAlert = delegate { };
 
     // Seconds (60 = 1 minute)
     // How long to keep track of the amount of violations
@@ -15,17 +22,18 @@ public class AlertManager
     private long _violationAmountTimeTracker;
     // How long to supress violations.
     private long _violationTimeFrame;
-    Dictionary<string, int> _violationIncidents;
-    Dictionary<string, long> _aggregateViolationTimeSent;
+    ConcurrentDictionary<string, int> _violationIncidents;
+    ConcurrentDictionary<string, long> _aggregateViolationTimeSent;
     public AlertManager()
     {
+        ISetupService setupService = SetupService.GetExistingInstance();
         _violationAmountTimeFrame = 60;
         _violationTimeFrame = 10;
         _violationAmountTimeTracker = 0;
         _violationIncidents = new();
         _aggregateViolationTimeSent = new();
-        string databasePath = "alerts.db"; // Specify the database path
-        _databaseConnection = new SqliteConnection($"Data Source={databasePath}"); // Use Data Source for the SQLite connection string
+        string databasePath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases"), "alerts.db"); // Specify the database path
+        _databaseConnection = new SqliteConnection($"Data Source={databasePath};Password={setupService.DbKey()}"); // Use Data Source for the SQLite connection string
         InitializeDatabase();
     }
 
@@ -47,20 +55,98 @@ public class AlertManager
         {
             command.ExecuteNonQuery();
         }
+    }
 
-        _databaseConnection.Close();
+    public async Task ClearDatabase()
+    {
+        using (SqliteCommand sqliteCommand = new SqliteCommand("DELETE From Alerts", _databaseConnection))
+        {
+            await sqliteCommand.ExecuteNonQueryAsync();
+        }
+    }
+
+    /// <summary>
+    /// Fun little function, that gets all the alerts that occured within a second timeframe, eg 60, would get the count of all alerts
+    /// sent in the past minute.
+    /// </summary>
+    /// <param name="timeframeGapSeconds"></param>
+    /// <returns></returns>
+    public async Task<int> GetAlertsWithinPastTimeFrame(int timeframeGapSeconds = 120)
+    {
+        int amountAlert = 0;
+        using (SqliteCommand command = new SqliteCommand("SELECT * FROM Alerts", _databaseConnection))
+        {
+            using (SqliteDataReader dataReader = await command.ExecuteReaderAsync())
+            {
+                while (await dataReader.ReadAsync())
+                {
+                    //DEBUG: System.Diagnostics.Debug.WriteLine($"Reformat and Display: {DateTime.Parse(dataReader["Timestamp"].ToString()).ToString("yyyy-MM-dd HH:mm:ss")}");
+                    DateTime compareFromDatabase = DateTime.Parse(dataReader["Timestamp"].ToString());
+                    long alertTime = Convert.ToInt64(new TimeSpan(compareFromDatabase.Ticks).TotalSeconds);
+                    long currentTime = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+                    // If there is an alert that is identical in the database that has already been sent within the timeframe gap, send out.
+                    if (currentTime - alertTime < timeframeGapSeconds)
+                    {
+                        amountAlert += 1;
+                    }
+                }
+            }
+
+        }
+        return amountAlert;
+    }
+
+    /// <summary>
+    /// This checks if the alert already exists in database within a time frame, may help prevent identical alerts being sent
+    /// </summary>
+    /// <param name="message">Alert object (utilises message and timeframe)</param>
+    /// <param name="timeframeGapSeconds">Only check within a timeframe of seconds, alerts after this gap won't be considered
+    /// as identical.</param>
+    /// <remarks>This was necessary, as everytime reactive control was triggered it would send a batch of all violations<para/>
+    /// eg, if there were 10 violations, then every time u changed 1 file, another 10 violations would be added to the database.</remarks>
+    /// <returns>True (Identical alerts found in timeframe) <para/> False (No identical alerts found in timeframe)</returns>
+    public async Task<bool> CheckForIdenticalAlertInTimeFrame(Alert alertItem, int timeframeGapSeconds = 120)
+    {
+        using (SqliteCommand command = new SqliteCommand("SELECT * FROM Alerts WHERE Message = $whereStatement", _databaseConnection))
+        {
+            command.Parameters.AddWithValue("$whereStatement", alertItem.Message);
+            using (SqliteDataReader dataReader = await command.ExecuteReaderAsync())
+            {
+                while (await dataReader.ReadAsync())
+                {
+                    //DEBUG: System.Diagnostics.Debug.WriteLine($"Reformat and Display: {DateTime.Parse(dataReader["Timestamp"].ToString()).ToString("yyyy-MM-dd HH:mm:ss")}");
+                    DateTime compareFromDatabase = DateTime.Parse(dataReader["Timestamp"].ToString());
+                    TimeSpan tickDifferenceObject = new(alertItem.Timestamp.Ticks - compareFromDatabase.Ticks);
+                    // If there is an alert that is identical in the database that has already been sent within the timeframe gap, send out.
+                    if (tickDifferenceObject.TotalSeconds < timeframeGapSeconds)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+        }
+        return false;
     }
 
     public async Task StoreAlertAsync(Alert alert)
     {
-        await _databaseConnection.OpenAsync();
+        bool cancelAlert = false;
+        // Check whether the an identical alert has already been sent in the last minute (Only for integrity checking
+        if (alert.Component == "Integrity Checking")
+        {
+            cancelAlert = await CheckForIdenticalAlertInTimeFrame(alert);
+        }
+        //await _databaseConnection.OpenAsync();
 
+        // If alert has not be cancelled then...
+        if (cancelAlert == false) {
+            NewAlert.Invoke(this, new EventArgs());
         string insertQuery = @"
             INSERT INTO Alerts (Component, Severity, Message, SuggestedAction, Timestamp)
             VALUES (@Component, @Severity, @Message, @SuggestedAction, @Timestamp)";
 
-        using (var command = new SqliteCommand(insertQuery, _databaseConnection))
-        {
+            var command = new SqliteCommand(insertQuery, _databaseConnection);
             command.Parameters.AddWithValue("@Component", alert.Component);
             command.Parameters.AddWithValue("@Severity", alert.Severity);
             command.Parameters.AddWithValue("@Message", alert.Message);
@@ -70,7 +156,7 @@ public class AlertManager
             await command.ExecuteNonQueryAsync();
         }
 
-        _databaseConnection.Close();
+       // _databaseConnection.Close();
     }
 
     public async Task<List<Alert>> GetAllAlertsAsync()
@@ -102,8 +188,6 @@ public class AlertManager
             }
         }
 
-        _databaseConnection.Close();
-
         return alerts;
     }
 
@@ -132,10 +216,10 @@ public class AlertManager
             // If within time frame, then we can send an alert, if not we must wait.
             if (CompareSecoundTime(_aggregateViolationTimeSent[alert.Component]) > _violationTimeFrame)
             {
+                // Erase values
+                _aggregateViolationTimeSent[alert.Component] = Environment.TickCount64;
                 // This is where we can indicate a warning for multiple alerts.
                 alert.DisplayAlert(true, _violationIncidents[alert.Component]);
-                _aggregateViolationTimeSent[alert.Component] = Environment.TickCount64;
-                // Erase values
             }
 
         }

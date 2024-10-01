@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\
 SimpleAntivirus
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\CardmanOfficial\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\App.xaml
-9-177026622
+C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\App.xaml
+10-832329852
 1282391436
-53-942734571
-235784716288
-GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Pages\SettingsPage.xaml;GUI\Views\Windows\MainWindow.xaml;
+812088677430
+244-74722673
+GUI\Views\Pages\AlertReportPage.xaml;GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Pages\WhitelistPage.xaml;GUI\Views\Windows\MainWindow.xaml;
 
 False
 

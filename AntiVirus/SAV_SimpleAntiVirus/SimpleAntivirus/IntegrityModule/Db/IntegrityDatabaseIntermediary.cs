@@ -14,13 +14,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.System.Diagnostics;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Db
 {
-    public class IntegrityDatabaseIntermediary : DatabaseIntermediary
+    public class IntegrityDatabaseIntermediary : DatabaseIntermediary, IIntegrityDatabaseIntermediary
     {
+
+        private CancellationTokenSource _cancelToken;
         public IntegrityDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
         {
+            _cancelToken = new();
+
             // AntiTampering will need to ensure that this is only run at initialisation!!!
             if (firstRun)
             {
@@ -36,10 +42,17 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <remarks>Only to be ran once at initialisation, any more and it will be at risk of easy tampering</remarks>
         public bool SetupDatabase()
         {
-            SqliteCommand command = new();
-            command.CommandText = @$"CREATE TABLE IF NOT EXISTS
+            using (SqliteCommand command = new())
+            {
+                command.CommandText = @$"CREATE TABLE IF NOT EXISTS
             {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
-            return QueryNoReader(command) > 0;
+                return QueryNoReader(command) > 0;
+            }
+        }
+
+        public async Task CancelOperations()
+        {
+            await _cancelToken.CancelAsync();
         }
 
         /// <summary>
@@ -48,9 +61,11 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns></returns>
         public bool DeleteAll()
         {
-            SqliteCommand command = new();
-            command.CommandText = $"DELETE FROM {_defaultTable}";
-            return QueryNoReader(command) > 0;
+            using (SqliteCommand command = new())
+            {
+                command.CommandText = $"DELETE FROM {_defaultTable}";
+                return QueryNoReader(command) > 0;
+            }
         }
 
         /// <summary>
@@ -65,20 +80,20 @@ namespace SimpleAntivirus.IntegrityModule.Db
             System.Diagnostics.Debug.WriteLine($"Started {id}");
             bool noFailure = true;
             string failurePath = "";
-            // Get hashes beforehand
-            List<Task<string>> taskHandlerHash = new();
             // Get all hashes first.
-            foreach (string cyclePath in givenPaths)
+            List<string> hashSet = await FileInfoRequester.HashSet(givenPaths.ToList());
+            if (hashSet.Contains(""))
             {
-                taskHandlerHash.Add(FileInfoRequester.HashFile(cyclePath));
+                // An item failed to be hashed, so its a failure, return false.
+                return false;
             }
-            string[] hashSet = await Task.WhenAll(taskHandlerHash);
             int index = 0;
+            SqliteCommand command;
             foreach (string cyclePath in givenPaths)
             {
                 cancelToken.ThrowIfCancellationRequested();
                 //Debug.WriteLine($"ADD: {cyclePath}");
-                SqliteCommand command = new();
+                command = new();
                 command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
                 command.Transaction = trans;
                 string getHash = hashSet[index];
@@ -87,25 +102,17 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 {
                     System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
                 }
-                if (getHash != "")
+                command.Parameters.AddWithValue("$path", cyclePath);
+                command.Parameters.AddWithValue("$hash", getHash);
+                command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+                command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+                command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+                if (QueryNoReader(command) <= 0)
                 {
-                    command.Parameters.AddWithValue("$path", cyclePath);
-                    command.Parameters.AddWithValue("$hash", getHash);
-                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    if (QueryNoReader(command) <= 0)
-                    {
-                        // Failure detected
-                        noFailure = false;
-                        failurePath = cyclePath;
-                        break;
-                    }
-                }
-                else
-                {
+                    // Failure detected
                     noFailure = false;
                     failurePath = cyclePath;
+                    break;
                 }
                 index++;
             }
@@ -125,6 +132,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
         public async Task<bool> AddEntry(string path, int amountPerSet)
         {
+            // Reset cancel token
+            _cancelToken = new();
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
             List<Task<bool>> taskManager = new();
             List<string> tempPathCreator = new();
@@ -135,7 +144,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
             int maxIds = pathProcess.Count() / amountPerSet;
             // Cancellation control variables
             bool forceFailure = false;
-            CancellationTokenSource cancelToken = new();
             System.Diagnostics.Debug.WriteLine($"Sets required: {maxIds}");
             using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
             { // remove if not good
@@ -148,13 +156,13 @@ namespace SimpleAntivirus.IntegrityModule.Db
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         System.Diagnostics.Debug.WriteLine(idTracker);
-                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {
@@ -183,7 +191,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                                 System.Diagnostics.Debug.WriteLine("Rollbacking Database due to adding directory error");
                                 Console.ResetColor();
                                 forceFailure = true;
-                                cancelToken.Cancel();
+                                _cancelToken.Cancel();
                                 break;
                             }
                         }
@@ -198,7 +206,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 {
                     taskManager.Clear();
                     transactionCreate.Rollback();
-                    cancelToken.Dispose();
+                    _cancelToken.Dispose();
                     return false;
                 }
                 transactionCreate.Commit();
@@ -222,10 +230,12 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {
                 Console.Write($"\r Deleted {progress}/{maxProgress}");
                 progress++;
-                SqliteCommand command = new();
-                command.CommandText = @$"DELETE FROM {_defaultTable} WHERE directory=$directorySet";
-                command.Parameters.AddWithValue("$directorySet", pathCycle);
-                success = QueryNoReader(command) > 0;
+                using (SqliteCommand command = new())
+                {
+                    command.CommandText = @$"DELETE FROM {_defaultTable} WHERE directory=$directorySet";
+                    command.Parameters.AddWithValue("$directorySet", pathCycle);
+                    success = QueryNoReader(command) > 0;
+                }
             }
             return success;
         }
@@ -256,18 +266,20 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Directory, Hash, ModificationTime, SignatureCreation, OriginalSizeInBytes</returns>
         public Tuple<string, string, long, long, long> GetDirectoryInfo(string directory)
         {
-            SqliteCommand command = new();
-            command.CommandText = $"SELECT * FROM {_defaultTable} WHERE directory = $directorySet";
-            command.Parameters.AddWithValue("$directorySet", directory);
-            SqliteDataReader dataReader = QueryReader(command);
-            if (dataReader.Read())
+            using (SqliteCommand command = new())
             {
-                // Directory, Hash, ModificationTime, SignatureCreation, OriginalSize
-                return new Tuple<string, string, long, long, long>(dataReader.GetString(0), dataReader.GetString(1), dataReader.GetInt64(2), dataReader.GetInt64(3), dataReader.GetInt64(4));
-            }
-            else
-            {
-                return null;
+                command.CommandText = $"SELECT * FROM {_defaultTable} WHERE directory = $directorySet";
+                command.Parameters.AddWithValue("$directorySet", directory);
+                SqliteDataReader dataReader = QueryReader(command);
+                if (dataReader.Read())
+                {
+                    // Directory, Hash, ModificationTime, SignatureCreation, OriginalSize
+                    return new Tuple<string, string, long, long, long>(dataReader.GetString(0), dataReader.GetString(1), dataReader.GetInt64(2), dataReader.GetInt64(3), dataReader.GetInt64(4));
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -280,24 +292,54 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>Dictionary, hash pairs.</returns>
         public Dictionary<string, string> GetSetEntries(int set, int amountHandledPerSet)
         {
-            SqliteCommand command = new();
-            Dictionary<string, string> returnDictionary = new();
-            command.CommandText = @$"SELECT * FROM {_defaultTable} LIMIT $limit OFFSET $offset";
-            int setUp = set + 1;
-            command.Parameters.AddWithValue("$limit", amountHandledPerSet);
-            command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
-            SqliteDataReader dataReader = QueryReader(command);
-            int amount = 0;
-            if (dataReader != null)
+            using (SqliteCommand command = new())
             {
-                while (dataReader.Read())
+                Dictionary<string, string> returnDictionary = new();
+                command.CommandText = @$"SELECT * FROM {_defaultTable} LIMIT $limit OFFSET $offset";
+                int setUp = set + 1;
+                command.Parameters.AddWithValue("$limit", amountHandledPerSet);
+                command.Parameters.AddWithValue("$offset", (setUp - 1) * amountHandledPerSet);
+                SqliteDataReader dataReader = QueryReader(command);
+                int amount = 0;
+                if (dataReader != null)
                 {
-                    // Directory -> Hash
-                    returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
-                    amount++;
+                    while (dataReader.Read())
+                    {
+                        // Directory -> Hash
+                        returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
+                        amount++;
+                    }
                 }
+                return returnDictionary;
             }
-            return returnDictionary;
+        }
+
+        /// <summary>
+        /// Get a set of data from the database that bear resemblance to the directory provided.
+        /// </summary>
+        /// <param name="directory">Finds entries that contain relevance to the directory provided</param>
+        /// <example>C:/user5 would return all entries in that folder, and C:/user5/user2</example>
+        /// <returns>Dictionary, hash pairs.</returns>
+        public Dictionary<string, string> GetSetEntriesDirectory(string directory)
+        {
+            using (SqliteCommand command = new())
+            {
+                Dictionary<string, string> returnDictionary = new();
+                command.CommandText = @$"SELECT * FROM {_defaultTable} WHERE directory LIKE $like";
+                command.Parameters.AddWithValue("$like", $"{directory}%");
+                SqliteDataReader dataReader = QueryReader(command);
+                int amount = 0;
+                if (dataReader != null)
+                {
+                    while (dataReader.Read())
+                    {
+                        // Directory -> Hash
+                        returnDictionary[dataReader.GetString(0)] = dataReader.GetString(1);
+                        amount++;
+                    }
+                }
+                return returnDictionary;
+            }
         }
 
     }

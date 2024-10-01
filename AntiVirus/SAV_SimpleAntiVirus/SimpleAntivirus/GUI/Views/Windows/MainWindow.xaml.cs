@@ -1,4 +1,5 @@
 ﻿using SimpleAntivirus.GUI.ViewModels.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
@@ -8,6 +9,8 @@ namespace SimpleAntivirus.GUI.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
+
+        private bool _cancelCloses;
         public MainWindowViewModel ViewModel { get; }
 
         public MainWindow(
@@ -18,6 +21,7 @@ namespace SimpleAntivirus.GUI.Views.Windows
         {
             ViewModel = viewModel;
             DataContext = this;
+            _cancelCloses = true;
 
             SystemThemeWatcher.Watch(this);
 
@@ -39,7 +43,24 @@ namespace SimpleAntivirus.GUI.Views.Windows
 
         public void CloseWindow() => Close();
 
+        public void CloseWindowGracefully()
+        {
+            System.Diagnostics.Debug.WriteLine("Gracefully closing!!");
+            _cancelCloses = false;
+            base.Close();
+        }
+
         #endregion INavigationWindow methods
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("on closing trigger!!");
+            // e.Cancel (true -> does not close program on close) (false -> closes program when closed)
+            e.Cancel = _cancelCloses;
+            this.Hide();
+            base.OnClosing(e);
+        }
+
 
         /// <summary>
         /// Raises the closed event.
