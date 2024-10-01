@@ -78,6 +78,16 @@ namespace TestingIntegrity
             Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.EqualTo(0));
         }
 
+        [Test]
+        public async Task AddBaselineRemoveBaseline()
+        {
+            _integrityManagement.ClearDatabase();
+            await _integrityManagement.AddBaseline(_fileProvided);
+            Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.GreaterThanOrEqualTo(1));
+            _integrityManagement.RemoveBaseline(_fileProvided);
+            Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.EqualTo(0));
+        }
+
 
         [Test]
         public async Task CheckIntegrityFileTest()
