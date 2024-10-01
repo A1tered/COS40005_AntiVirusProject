@@ -26,16 +26,24 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         private IIntegrityDatabaseIntermediary _database;
         private IViolationHandler _violationHandler;
         private CancellationTokenSource _cancelToken;
+        private Type _poolerType;
+
         public IntegrityCycler(IIntegrityDatabaseIntermediary database, IViolationHandler violationHandler)
         {
             _database = database;
             _violationHandler = violationHandler;
             _amountPerSet = 500;
             _cancelToken = new CancellationTokenSource();
+            _poolerType = typeof(IntegrityDataPooler);
         }
 
         public event EventHandler<ProgressArgs> ProgressUpdate;
 
+
+        public void SetPoolerType(Type type)
+        {
+            _poolerType = type;
+        }
 
         public async Task CancelScan()
         {
@@ -52,7 +60,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             ProgressArgs setProgressArg;
             // Progress Track variables:
             // List that instantiates all the instances of Datapooler with proper configuration (Does not run them)
-            List<IntegrityDataPooler> dataPoolerList = new();
+            List<IIntegrityDataPooler> dataPoolerList = new();
             // Keep track of the running data poolers.
             List<Task<List<IntegrityViolation>>> taskList = new();
             // Track all violations that have been reported.
@@ -76,9 +84,10 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             // For each set, give it to a pooler
             for (int cycle = 0; cycle < sets; cycle++)
             {
-                dataPoolerList.Add(new IntegrityDataPooler(_database, cycle, _amountPerSet));
+                IIntegrityDataPooler creator = (IIntegrityDataPooler)Activator.CreateInstance(_poolerType, new object[] {_database, cycle, _amountPerSet});
+                dataPoolerList.Add(creator);
             }
-            foreach (IntegrityDataPooler poolerObject in dataPoolerList)
+            foreach (IIntegrityDataPooler poolerObject in dataPoolerList)
             {
                 taskList.Add(Task.Run(() => poolerObject.CheckIntegrity(_cancelToken.Token), _cancelToken.Token));
             }
@@ -135,7 +144,8 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// <param name="path">Windows File Path</param>
         public async Task InitiateDirectoryScan(string directoryPath)
         {
-            IntegrityDataPooler singlePooler = new(_database, directoryPath);
+            IIntegrityDataPooler singlePooler = (IIntegrityDataPooler)Activator.CreateInstance(_poolerType, new object[] { _database, directoryPath });
+            //IntegrityDataPooler singlePooler = new(_database, directoryPath);
             List<IntegrityViolation> violationSet = await singlePooler.CheckIntegrityDirectory();
             if (violationSet.Count > 0)
             {             
