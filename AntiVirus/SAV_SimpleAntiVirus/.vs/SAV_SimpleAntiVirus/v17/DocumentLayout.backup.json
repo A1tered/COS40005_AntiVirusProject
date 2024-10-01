@@ -1,42 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\",
+  "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\models\\integrityhandlermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\models\\integrityhandlermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\views\\pages\\blacklistpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\views\\pages\\blacklistpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\services\\setupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\services\\setupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\viewmodels\\pages\\blacklistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\viewmodels\\pages\\blacklistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\integritymodule\\db\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\integritymodule\\db\\databaseintermediary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\viewmodels\\pages\\quarantinedviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\viewmodels\\pages\\quarantinedviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\maliciouscodescanning\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\maliciouscodescanning\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\views\\pages\\scannerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\views\\pages\\scannerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\views\\pages\\quarantineditemspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\views\\pages\\quarantineditemspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filehashscanning\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filehashscanning\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\filequarantine\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\viewmodels\\pages\\whitelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\viewmodels\\pages\\whitelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\services\\interface\\isetupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\services\\interface\\isetupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\technology project a\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\viewmodels\\pages\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\viewmodels\\pages\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,116 +42,129 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ScannerPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T03:31:03.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuarantinedItemsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\QuarantinedItemsPage.xaml.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Views\\Pages\\QuarantinedItemsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\QuarantinedItemsPage.xaml.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\QuarantinedItemsPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T02:40:35.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuarantinedViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\QuarantinedViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T02:40:20.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DashboardViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\DashboardViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\DashboardViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\DashboardViewModel.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\DashboardViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T02:38:03.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WhitelistViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\WhitelistViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\WhitelistViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\WhitelistViewModel.cs",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\WhitelistViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T02:37:57.589Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IntegrityHandlerModel.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Models\\IntegrityHandlerModel.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Models\\IntegrityHandlerModel.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Models\\IntegrityHandlerModel.cs",
-              "RelativeToolTip": "SimpleAntivirus\\GUI\\Models\\IntegrityHandlerModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAnwBQAAAA+AAAA",
+              "Title": "BlacklistPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\BlacklistPage.xaml.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Views\\Pages\\BlacklistPage.xaml.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\BlacklistPage.xaml.cs*",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\BlacklistPage.xaml.cs*",
+              "ViewState": "AgIAABIAAAAAAAAAAAAqwCQAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:42:49.003Z",
+              "WhenOpened": "2024-10-01T02:35:20.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SetupService.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "RelativeToolTip": "SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAYwFgAAAAmAAAA",
+              "Title": "BlacklistViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\BlacklistViewModel.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\BlacklistViewModel.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\ViewModels\\Pages\\BlacklistViewModel.cs*",
+              "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\BlacklistViewModel.cs*",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwCIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:38:58.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DatabaseHandler.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
-              "RelativeToolTip": "SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAIwBgAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:42:20.129Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DatabaseIntermediary.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "RelativeToolTip": "SimpleAntivirus\\IntegrityModule\\Db\\DatabaseIntermediary.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAIwCwAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:42:06.92Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DatabaseManager.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
-              "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAIwB4AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:41:04.658Z"
+              "WhenOpened": "2024-10-01T02:35:09.55Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DatabaseConnector.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
-              "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAIwB8AAAAZAAAA",
+              "Title": "QuarantineManager.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAK8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:40:47.093Z"
+              "WhenOpened": "2024-10-01T01:10:43.476Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
-              "RelativeToolTip": "SimpleAntivirus\\App.xaml.cs",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAIwKwAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:40:04.181Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AlertManager.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\AlertManager.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\Alerts\\AlertManager.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\AlertManager.cs",
-              "RelativeToolTip": "SimpleAntivirus\\Alerts\\AlertManager.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAIwBwAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:39:43.804Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ISetupService.cs",
-              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "RelativeToolTip": "SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAQwBkAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:39:09.723Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
