@@ -464,6 +464,11 @@ namespace SimpleAntivirus.GUI.Services
             }
         }
 
+        public static void GetInstance()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool FirstTimeRunning
         {
             get
@@ -479,5 +484,7 @@ namespace SimpleAntivirus.GUI.Services
                 return _programCooked;
             }
         }
+
+        public static ISetupService Instance { get; set; }
     }
 }
