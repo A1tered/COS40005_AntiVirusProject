@@ -14,6 +14,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -50,6 +51,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             ViewModel = viewModel;
 
             _customList = new List<string>();
+            ViewModel.CustomScanText = "Custom scan list is empty.";
 
             // Initialise Alerts for page
             _alertManager = alertManager;
@@ -58,10 +60,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Initialise File Quarantine
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\ProgramData\\SimpleAntiVirus\\Quarantine");
 
             // Initialise Malicious Code
-            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases\\malicious_commands.db"));
+            _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases"));
             _detector = new Detector(_databaseHandler);
         }
 
@@ -80,29 +82,45 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     Task quickScanFileHash = _fileHashScanner.Scan("quick", null);
                     Task quickScanMalCode = _maliciousCodeScanner.Scan("quick", null);
                     await Task.WhenAll(quickScanFileHash, quickScanMalCode);
-                    System.Windows.MessageBox.Show($"Quick scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (ViewModel.IsScanRunning)
+                    {
+                        System.Windows.MessageBox.Show($"Quick scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
                     Task fullScanFileHash = _fileHashScanner.Scan("full", null);
                     Task fullScanMalCode = _maliciousCodeScanner.Scan("full", null);
                     await Task.WhenAll(fullScanFileHash, fullScanMalCode);
-                    System.Windows.MessageBox.Show($"Full scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (ViewModel.IsScanRunning)
+                    {
+                        System.Windows.MessageBox.Show($"Full scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
+                    ViewModel.IsScanRunning = false;
                     Task customscanFileHash = _fileHashScanner.Scan("custom", _customList);
                     Task customscanMalCode = _maliciousCodeScanner.Scan("custom", _customList);
-                    await Task.WhenAll(customscanFileHash, customscanMalCode);
-                    if (_customList != null && _customList.Count > 0)
-                    {
-                        System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else if (_customList.Count == 0 || _customList == null)
+                    if (_customList.Count == 0 || _customList == null)
                     {
                         System.Windows.MessageBox.Show("List of files and folders to scan cannot be empty.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    _customList.Clear();
+                    else
+                    {
+                        ViewModel.IsScanRunning = true;
+                        ViewModel.IsAddFolderButtonVisible = false;
+                        ViewModel.IsCustomListVisible = false;
+                        await Task.WhenAll(customscanFileHash, customscanMalCode);
+                        if (_customList != null && _customList.Count > 0 && ViewModel.IsScanRunning)
+                        {
+                            System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        ViewModel.IsAddFolderButtonVisible = true;
+                        ViewModel.IsCustomListVisible = true;
+                        _customList.Clear();
+                        ViewModel.CustomScanText = "Custom scan list is empty.";
+                    }
                 }
                 else
                 {
@@ -111,7 +129,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
             catch (OperationCanceledException)
             {
-                System.Windows.MessageBox.Show("Scan cancelled.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
             catch (Exception ex)
             {
@@ -123,26 +141,35 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
         }
 
-        private async void CancelScanButton_Click(object sender, RoutedEventArgs e)
+        private void CancelScanButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.IsScanRunning = false;
+            _customList.Clear();
+            ViewModel.CustomScanText = "Custom scan list is empty.";
+
+            if ((bool)CustomScanButton.IsChecked)
+            {
+                ViewModel.IsAddFolderButtonVisible = true;
+                ViewModel.IsCustomListVisible = true;
+            }
             Debug.WriteLine("Cancelling scan");
             if (_cancellationTokenSource != null)
             {
                 _cancellationTokenSource.Cancel();
+                System.Windows.MessageBox.Show("Scan cancelled.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void CustomScanButton_Checked(object sender, RoutedEventArgs e)
         {
-            ViewModel.IsAddFileButtonVisible = true;
             ViewModel.IsAddFolderButtonVisible = true;
+            ViewModel.IsCustomListVisible = true;
         }
 
         private void CustomScanButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ViewModel.IsAddFolderButtonVisible= false;
-            ViewModel.IsAddFileButtonVisible= false;
+            ViewModel.IsCustomListVisible= false;
         }
 
         private void AddFolder_Click(object sender, RoutedEventArgs e)
@@ -155,8 +182,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Send to view model the path of folder.
             if (folderGet != "")
             {
-                _customList.Add(folderGet);
-                System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                if (_customList.Contains(folderGet))
+                {
+                    System.Windows.MessageBox.Show($"Error adding folder: Folder {folderGet} already in custom scan list.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                }
+                else
+                {
+                    _customList.Add(folderGet);
+                    ViewModel.CustomScanText = string.Join(Environment.NewLine, _customList);
+                    System.Windows.MessageBox.Show($"Custom Scan: Folder {folderGet} selected.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                }
             }
         }
     }

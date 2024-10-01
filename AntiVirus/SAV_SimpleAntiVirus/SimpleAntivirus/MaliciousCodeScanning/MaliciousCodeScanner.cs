@@ -14,7 +14,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.Alerts;
 
@@ -47,19 +46,20 @@ namespace SimpleAntivirus.MaliciousCodeScanning
 
                 if (scanType == "quick")
                 {
+                    /* Directories chosen by doing a Google search on common quick scan locations
+                     * Most information regarding this topic is not public, for obvious security reasons, as antivirus companies do not wish for this information
+                     * to be available to attackers.
+                     * Common locations include: Scanning contents of active memory, program files, system files and startup items.
+                     * Memory scanning is out of scope for this project given the limited time constraints. 
+                     * Hence, Program Files, System files (The Windows directory) and the Startup directory are being scanned
+                     * A paper I found regarding this topic can be found here:
+                     * https://www.researchgate.net/profile/Oemer-Aslan-5/publication/321759536_Performance_Comparison_of_Static_Malware_Analysis_Tools_Versus_Antivirus_Scanners_To_Detect_Malware/links/5a30d86c0f7e9b0d50f905c3/Performance-Comparison-of-Static-Malware-Analysis-Tools-Versus-Antivirus-Scanners-To-Detect-Malware.pdf
+                    */
                     directories.AddRange
                     ([
                      $"C:\\Program Files",
                      "C:\\Program Files (x86)",
-                     "C:\\ProgramData",
-                     "C:\\Users\\Default\\AppData",
-                     System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
                      "C:\\Windows",
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
-                     System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
                      System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
                     ]);
                 }
@@ -106,15 +106,19 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                 }
 
                 string[] files = Directory.GetFiles(directoryPath);
-                foreach (string file in files)
-                {
-                    if (Token.IsCancellationRequested)
-                    {
-                        Token.ThrowIfCancellationRequested();
-                    }
 
-                    try
+                if (Token.IsCancellationRequested)
+                {
+                    Token.ThrowIfCancellationRequested();
+                }
+
+                try
+                {
+                    List<string> violationsList = new List<string>();
+
+                    foreach (string file in files)
                     {
+
                         // Create a FileAttributes object to store file metadata
                         FileAttributes fileAttributes = new FileAttributes();
                         FileInfo fileInfo = new FileInfo(file);
@@ -130,28 +134,32 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         Debug.WriteLine($"File Type: {fileAttributes.FileType}");
                         Debug.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
                         Debug.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
+                        Debug.WriteLine($"File Path: {file}");
 
                         // Detect malicious commands in the file content
                         fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
                         Debug.WriteLine($"Contains Malicious Commands: {fileAttributes.ContainsMaliciousCommands}");
+
                         // Output whether the file is malicious or safe
                         if (fileAttributes.ContainsMaliciousCommands)
                         {
-                            await EventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! Malicious code has been found in {file} and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-                            await QuarantineManager.QuarantineFileAsync(file);
+                            violationsList.Add(file);
                         }
 
                         Debug.WriteLine("--------------------------------------------------");
-
                     }
-                    catch (UnauthorizedAccessException)
+                    foreach (string violation in violationsList)
                     {
-                        Debug.WriteLine($"Access denied to file: {file}");
+                        await QuarantineManager.QuarantineFileAsync(violation, EventBus, "maliciouscode");
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Error while scanning file {file}: {ex.Message}");
-                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    Debug.WriteLine($"Access denied to file");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error while scanning file: {ex.Message}");
                 }
             }
             catch (UnauthorizedAccessException)
@@ -167,7 +175,8 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Compute the SHA1 hash for the file
         private async Task<string> ComputeSHA1Async(string filePath)
         {
-            using (FileStream stream = File.OpenRead(filePath))
+            Token.ThrowIfCancellationRequested();
+            using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
             {
                 SHA1 sha1 = SHA1.Create();
                 byte[] hashBytes = await Task.Run(() => sha1.ComputeHash(stream));
@@ -183,6 +192,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Extract file content based on the file type
         private async Task<string> ExtractFileContentAsync(string filePath)
         {
+            Token.ThrowIfCancellationRequested();
             string extension = System.IO.Path.GetExtension(filePath).ToLower();
 
             // Handle .txt and .bat files
@@ -204,6 +214,7 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Extract text from PDFs using iTextSharp (iText5)
         private string ExtractTextFromPdf(string filePath)
         {
+            Token.ThrowIfCancellationRequested();
             StringBuilder text = new StringBuilder();
 
             try

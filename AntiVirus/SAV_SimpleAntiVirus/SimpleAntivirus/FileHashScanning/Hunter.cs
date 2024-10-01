@@ -33,11 +33,11 @@ namespace SimpleAntivirus.FileHashScanning
 
         public async Task<Tuple<string[], string[]>> SearchDirectory(FileHashScanner scanner)
         {
-            return await Task.Run(() =>
+            return await Task.Run(async () =>
             {
                 try
                 {
-                    // Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
+                    Debug.WriteLine($"Hunter currently scanning directory {_directoryToScan}");
 
                     string[] files = Directory.GetFiles(_directoryToScan);
                     string[] directoryRemnants = Directory.GetDirectories(_directoryToScan);
@@ -50,11 +50,16 @@ namespace SimpleAntivirus.FileHashScanning
                             _token.ThrowIfCancellationRequested();
                         }
 
+                        Debug.WriteLine($"Current file: {file}");
+
                         if (CompareCycle(file))
                         {
                             violationsList.Add(file);
-                            Violation(scanner,file);
                         }
+                    }
+                    foreach (string violation in violationsList)
+                    {
+                        await scanner.QuarantineManager.QuarantineFileAsync(violation, scanner.EventBus, "filehash");
                     }
                     return Tuple.Create(violationsList.ToArray(), directoryRemnants);
                 }
@@ -72,12 +77,6 @@ namespace SimpleAntivirus.FileHashScanning
                     _databaseConnection.CleanUp();
                 }
             }, scanner.Token);
-        }
-
-        private async void Violation(FileHashScanner scanner, string fileDirectory)
-        {
-            await scanner.EventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {fileDirectory} has been found and SAV has quarantined the threat.", "No action is required. You may unquarantine or delete if you choose.");
-            await scanner.QuarantineManager.QuarantineFileAsync(fileDirectory);
         }
 
         public bool CompareCycle(string fileDirectory)

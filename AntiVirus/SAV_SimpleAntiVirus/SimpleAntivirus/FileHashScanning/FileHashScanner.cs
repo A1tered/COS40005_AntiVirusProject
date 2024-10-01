@@ -42,7 +42,7 @@ namespace SimpleAntivirus.FileHashScanning
 
         static DirectoryManager directoryManager = new DirectoryManager();
         // Get directory to database.
-        static string databaseDirectory => directoryManager.getDatabaseDirectory("SigHashDB.db");
+        static string databaseDirectory => directoryManager.getDatabaseDirectory("sighash.db");
 
         public async Task Scan(string scanType, List<string> customScanDirs)
         {
@@ -52,19 +52,20 @@ namespace SimpleAntivirus.FileHashScanning
 
                 if (scanType == "quick")
                 {
+                    /* Directories chosen by doing a Google search on common quick scan locations
+                    * Most information regarding this topic is not public, for obvious security reasons, as antivirus companies do not wish for this information
+                    * to be available to attackers.
+                    * Common locations include: Scanning contents of active memory, program files, system files and startup items.
+                    * Memory scanning is out of scope for this project given the limited time constraints. 
+                    * Hence, Program Files, System files (The Windows directory) and the Startup directory are being scanned
+                    * A paper I found regarding this topic can be found here:
+                    * https://www.researchgate.net/profile/Oemer-Aslan-5/publication/321759536_Performance_Comparison_of_Static_Malware_Analysis_Tools_Versus_Antivirus_Scanners_To_Detect_Malware/links/5a30d86c0f7e9b0d50f905c3/Performance-Comparison-of-Static-Malware-Analysis-Tools-Versus-Antivirus-Scanners-To-Detect-Malware.pdf
+                    */
                     directories.AddRange
                     ([
-                     $"C:\\Program Files", 
+                     $"C:\\Program Files",
                      "C:\\Program Files (x86)",
-                     "C:\\ProgramData",
-                     "C:\\Users\\Default\\AppData",
-                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData"),
                      "C:\\Windows",
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-                     Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
-                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Startup")
                     ]);
                 }
@@ -80,7 +81,7 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     if (customScanDirs != null && customScanDirs.Count > 0)
                     {
-                        foreach(string dir in customScanDirs)
+                        foreach (string dir in customScanDirs)
                         {
                             Debug.WriteLine($"Currently added dir: {dir}");
                             directories.Add(dir);

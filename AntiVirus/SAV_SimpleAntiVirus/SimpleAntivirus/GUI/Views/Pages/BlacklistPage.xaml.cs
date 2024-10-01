@@ -32,7 +32,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Start AntiTampering Implementation
             if (InputValSan.FilePathCharLimit(fileGet) && InputValSan.FilePathValidation(fileGet))
             {
-                fileGet = InputValSan.FilePathSanitisation(fileGet);
                 if (fileGet != "")
                 {
                     bool result = ViewModel.BlacklistFile(fileGet);

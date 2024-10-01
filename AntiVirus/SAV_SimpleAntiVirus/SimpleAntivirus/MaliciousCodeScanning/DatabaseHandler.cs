@@ -8,7 +8,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
+using System.IO;
+using Microsoft.Data.Sqlite;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
@@ -17,16 +20,18 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         private readonly string connectionString;
 
         // Constructor to initialize the connection string
-        public DatabaseHandler(string dbPath)
+        public DatabaseHandler(string dbFolder, bool setupCall = false)
         {
-            connectionString = $"Data Source={dbPath};Version=3;";
-            EnsureTableExists();
+            ISetupService setupService = SetupService.GetExistingInstance();
+            string dbPath = Path.Combine(dbFolder, "malicious_commands.db");
+            connectionString = $"Data Source={dbPath};Password={setupService.DbKey()}";
+            EnsureTableExists(dbFolder, setupCall);
         }
 
         // Ensure the MaliciousCommands table exists, if not, create it
-        private void EnsureTableExists()
+        private void EnsureTableExists(string dbFolder, bool setupCall)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
                 string createTableQuery = @"
@@ -35,9 +40,15 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         command TEXT NOT NULL
                     );";
 
-                using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
+                using (SqliteCommand cmd = new SqliteCommand(createTableQuery, conn))
                 {
                     cmd.ExecuteNonQuery();
+                }
+
+                // Only initialisation of database, from pre-filled contents if First Time Running.
+                if (setupCall)
+                {
+                    SetupService.TransferContents(conn, dbFolder, "malicious_commands_init.db", "MaliciousCommands");
                 }
             }
         }
@@ -47,14 +58,14 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         {
             List<string> maliciousCommands = new List<string>();
 
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
 
                 string query = "SELECT command FROM MaliciousCommands;";
 
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                using (SqliteCommand cmd = new SqliteCommand(query, conn))
+                using (SqliteDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -69,12 +80,12 @@ namespace SimpleAntivirus.MaliciousCodeScanning
         // Insert malicious commands into the database
         public void InsertMaliciousCommand(string command)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SqliteConnection conn = new SqliteConnection(connectionString))
             {
                 conn.Open();
 
                 string insertQuery = "INSERT INTO MaliciousCommands (command) VALUES (@command);";
-                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
+                using (SqliteCommand cmd = new SqliteCommand(insertQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@command", command);
                     cmd.ExecuteNonQuery();

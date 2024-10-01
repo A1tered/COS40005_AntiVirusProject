@@ -52,6 +52,13 @@ namespace SimpleAntivirus.GUI.ViewModels.Windows
                 Content = "Mark as Malicious",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.WarningShield20},
                 TargetPageType = typeof(Views.Pages.BlacklistPage),
+            },
+            
+            new NavigationViewItem()
+            {
+                Content = "Whitelist",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.ShieldCheckmark20},
+                TargetPageType = typeof(Views.Pages.WhitelistPage),
             }
         };
 

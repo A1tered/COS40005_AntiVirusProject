@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.GUI.Services;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -53,16 +54,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
         }
 
-        private async void Send_Alert(object sender, RoutedEventArgs e)
-        {
-            await _eventBus.PublishAsync("Test", "Informational", "This is a test alert", "Disregard this alert");
-        }
-
-        
-
         // When the page loads, refresh the datagrid.
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ToastNotificationManagerCompat.History.Clear();
             await RefreshDatagrid();
         }
 

@@ -33,6 +33,6 @@
                 <DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}"  Width="0.3*" />
             </DataGrid.Columns>
         </DataGrid>
-        <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2C05F2" Foreground="#E4FFFFFF" Margin="0,20,0,0" Width="188" Click="DetailsButton_Click" FontWeight="Bold"/>
+        <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2204B8" Foreground="#E4FFFFFF" Margin="0,20,0,0" Width="188" Click="DetailsButton_Click" FontWeight="Bold"/>
     </StackPanel>
 </Page>

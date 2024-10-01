@@ -33,7 +33,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             InitializeComponent();
             _fileMover = new FileMover();
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
-            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\SimpleAntivirusQuarantine");
+            _quarantineManager = new QuarantineManager(_fileMover, _databaseManager, "C:\\ProgramData\\SimpleAntiVirus\\Quarantine");
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -82,6 +82,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 {
                     infoText = $"All Items Selected ({allItemCount} Items)";
                     ViewModel.AllSelected = true;
+                    ViewModel.PathSelected = selectedItems;
                 }
                 SelectLabel.Text = infoText;
             }
@@ -94,9 +95,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void Unquarantine_Click(object sender, RoutedEventArgs e)
         {
-            int result = await ViewModel.Unquarantine();
-            UpdateEntries();
-            DisplayResultUnquarantine(result);
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to unquarantine the selected items?", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (choice == System.Windows.MessageBoxResult.OK)
+            {
+                ViewModel.IsBusy = true;
+                int result = await ViewModel.Unquarantine();
+                UpdateEntries();
+                ViewModel.IsBusy = false;
+                DisplayResultUnquarantine(result);
+                return;
+            }
+            DisplayResultUnquarantine(4);
+            ViewModel.IsBusy = false;
         }
 
         private void DisplayResultUnquarantine(int result)
@@ -115,16 +125,27 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 case 3:
                     System.Windows.MessageBox.Show("Unquarantine Partially Successful: Not all items were able to be unquarantined. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
                     break;
+                case 4:
+                    System.Windows.MessageBox.Show("Unquarantine cancelled. The quarantined files are still present on your computer however do not pose a threat while in quarantine. You may choose to unquarantine, whitelist or delete them at any time.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
+                    break;
             }
         }
 
         private async void Whitelist_Click(object sender, RoutedEventArgs e)
         {
-            await ViewModel.Unquarantine();
-
-            int result = await ViewModel.Whitelist();
-            UpdateEntries();
-            DisplayResultWhitelist(result);
+            System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to whitelist the selected items?", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (choice == System.Windows.MessageBoxResult.OK)
+            {
+                ViewModel.IsBusy = true;
+                await ViewModel.Unquarantine();
+                int result = await ViewModel.Whitelist();
+                UpdateEntries();
+                ViewModel.IsBusy = false;
+                DisplayResultWhitelist(result);
+                return;
+            }
+            DisplayResultWhitelist(4);
+            ViewModel.IsBusy = false;
         }
 
         private void DisplayResultWhitelist(int result)
@@ -143,6 +164,9 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 case 3:
                     System.Windows.MessageBox.Show("Whitelisting Partially Successful: Not all items were able to be whitelisted. Please try again.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
                     break;
+                case 4:
+                    System.Windows.MessageBox.Show("Whitelisting cancelled. The quarantined files are still present on your computer however do not pose a threat while in quarantine. You may choose to unquarantine, whitelist or delete them at any time.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Stop);
+                    break;
             }
         }
 
@@ -151,12 +175,15 @@ namespace SimpleAntivirus.GUI.Views.Pages
             System.Windows.MessageBoxResult choice = System.Windows.MessageBox.Show("Are you sure you want to delete the selected items? These files will be deleted permanently and will NOT be sent to the Recycle Bin!", "Simple Antivirus", System.Windows.MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (choice  == System.Windows.MessageBoxResult.OK)
             {
+                ViewModel.IsBusy = true;
                 int result = await ViewModel.Delete();
                 UpdateEntries();
+                ViewModel.IsBusy = false;
                 DisplayResultDelete(result);
                 return;
             }
             DisplayResultDelete(4);
+            ViewModel.IsBusy = false;
         }
 
         private void DisplayResultDelete(int result)

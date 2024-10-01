@@ -14,13 +14,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.System.Diagnostics;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Db
 {
-    public class IntegrityDatabaseIntermediary : DatabaseIntermediary
+    public class IntegrityDatabaseIntermediary : DatabaseIntermediary, IIntegrityDatabaseIntermediary
     {
+
+        private CancellationTokenSource _cancelToken;
         public IntegrityDatabaseIntermediary(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
         {
+            _cancelToken = new();
+
             // AntiTampering will need to ensure that this is only run at initialisation!!!
             if (firstRun)
             {
@@ -42,6 +48,11 @@ namespace SimpleAntivirus.IntegrityModule.Db
             {_defaultTable}(directory text PRIMARY KEY, hash text, modificationTime int, signatureCreation int, originalSize int)";
                 return QueryNoReader(command) > 0;
             }
+        }
+
+        public async Task CancelOperations()
+        {
+            await _cancelToken.CancelAsync();
         }
 
         /// <summary>
@@ -69,8 +80,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
             System.Diagnostics.Debug.WriteLine($"Started {id}");
             bool noFailure = true;
             string failurePath = "";
-            // Get hashes beforehand
-            List<Task<string>> taskHandlerHash = new();
             // Get all hashes first.
             List<string> hashSet = await FileInfoRequester.HashSet(givenPaths.ToList());
             if (hashSet.Contains(""))
@@ -79,34 +88,33 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 return false;
             }
             int index = 0;
+            SqliteCommand command;
             foreach (string cyclePath in givenPaths)
             {
                 cancelToken.ThrowIfCancellationRequested();
                 //Debug.WriteLine($"ADD: {cyclePath}");
-                using (SqliteCommand command = new())
+                command = new();
+                command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
+                command.Transaction = trans;
+                string getHash = hashSet[index];
+                Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
+                if (CheckExistence(cyclePath, trans))
                 {
-                    command.CommandText = @$"REPLACE INTO {_defaultTable} VALUES($path, $hash, $modTime, $sigCreation, $orgSize)";
-                    command.Transaction = trans;
-                    string getHash = hashSet[index];
-                    Tuple<long, long> fileInfo = FileInfoRequester.RetrieveFileInfo(cyclePath);
-                    if (CheckExistence(cyclePath, trans))
-                    {
-                        System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
-                    }
-                    command.Parameters.AddWithValue("$path", cyclePath);
-                    command.Parameters.AddWithValue("$hash", getHash);
-                    command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
-                    command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
-                    command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
-                    if (QueryNoReader(command) <= 0)
-                    {
-                        // Failure detected
-                        noFailure = false;
-                        failurePath = cyclePath;
-                        break;
-                    }
-                    index++;
+                    System.Diagnostics.Debug.WriteLine("Warning, replacing existing entry");
                 }
+                command.Parameters.AddWithValue("$path", cyclePath);
+                command.Parameters.AddWithValue("$hash", getHash);
+                command.Parameters.AddWithValue("$modTime", fileInfo.Item1);
+                command.Parameters.AddWithValue("$sigCreation", new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds());
+                command.Parameters.AddWithValue("$orgSize", fileInfo.Item2);
+                if (QueryNoReader(command) <= 0)
+                {
+                    // Failure detected
+                    noFailure = false;
+                    failurePath = cyclePath;
+                    break;
+                }
+                index++;
             }
             if (noFailure == false)
             {
@@ -124,6 +132,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>False if nothing changed or most recent addition failed, True if no issues</returns>
         public async Task<bool> AddEntry(string path, int amountPerSet)
         {
+            // Reset cancel token
+            _cancelToken = new();
             List<string> pathProcess =  FileInfoRequester.PathCollector(path);
             List<Task<bool>> taskManager = new();
             List<string> tempPathCreator = new();
@@ -134,7 +144,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
             int maxIds = pathProcess.Count() / amountPerSet;
             // Cancellation control variables
             bool forceFailure = false;
-            CancellationTokenSource cancelToken = new();
             System.Diagnostics.Debug.WriteLine($"Sets required: {maxIds}");
             using (SqliteTransaction transactionCreate = _databaseConnection.BeginTransaction())
             { // remove if not good
@@ -147,13 +156,13 @@ namespace SimpleAntivirus.IntegrityModule.Db
                         string[] pathArray = tempPathCreator.ToArray();
                         int tempInt = idTracker;
                         System.Diagnostics.Debug.WriteLine(idTracker);
-                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, cancelToken.Token)));
+                        taskManager.Add(Task.Run(() => AsyncAdd(pathArray, tempInt, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                         tempPathCreator.Clear();
                         idTracker++;
                     }
                 }
                 // Deal with remainders
-                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, cancelToken.Token)));
+                taskManager.Add(Task.Run(() => AsyncAdd(tempPathCreator.ToArray(), idTracker, transactionCreate, _cancelToken.Token), _cancelToken.Token));
                 // We need a protection, if baseline fails to add...
                 while (taskManager.Count() > 0)
                 {
@@ -182,7 +191,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                                 System.Diagnostics.Debug.WriteLine("Rollbacking Database due to adding directory error");
                                 Console.ResetColor();
                                 forceFailure = true;
-                                cancelToken.Cancel();
+                                _cancelToken.Cancel();
                                 break;
                             }
                         }
@@ -197,7 +206,7 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 {
                     taskManager.Clear();
                     transactionCreate.Rollback();
-                    cancelToken.Dispose();
+                    _cancelToken.Dispose();
                     return false;
                 }
                 transactionCreate.Commit();
@@ -238,16 +247,14 @@ namespace SimpleAntivirus.IntegrityModule.Db
         /// <returns>True/False depending on whether the entry exists within the database</returns>
         public bool CheckExistence(string path, SqliteTransaction trans = null)
         {
-            using (SqliteCommand command = new())
+            SqliteCommand command = new();
+            command.CommandText = @$"SELECT directory FROM {_defaultTable} WHERE directory = $directorySet";
+            command.Parameters.AddWithValue("$directorySet", path);
+            command.Transaction = trans;
+            SqliteDataReader reader = QueryReader(command);
+            if (reader != null)
             {
-                command.CommandText = @$"SELECT directory FROM {_defaultTable} WHERE directory = $directorySet";
-                command.Parameters.AddWithValue("$directorySet", path);
-                command.Transaction = trans;
-                SqliteDataReader reader = QueryReader(command);
-                if (reader != null)
-                {
-                    return reader.HasRows;
-                }
+                return reader.HasRows;
             }
             return false;
         }

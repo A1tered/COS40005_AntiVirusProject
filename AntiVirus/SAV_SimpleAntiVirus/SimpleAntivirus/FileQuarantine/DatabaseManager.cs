@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 
 namespace SimpleAntivirus.FileQuarantine
@@ -26,8 +28,10 @@ namespace SimpleAntivirus.FileQuarantine
                 Directory.CreateDirectory(directory);
                 Debug.WriteLine($"Database directory created at {directory}");
             }
+            ISetupService setupService = SetupService.GetExistingInstance();
 
-            _connectionString = $"Data Source={databasePath}";
+
+            _connectionString = $"Data Source={databasePath};Password={setupService.DbKey()}";
             InitializeDatabase();
         }
 
@@ -145,7 +149,7 @@ namespace SimpleAntivirus.FileQuarantine
         /// Removes a file from the whitelist by deleting its path from the database.
         /// </summary>
         /// <param name="filePath">The full path of the file to remove from the whitelist.</param>
-        public async Task RemoveFromWhitelistAsync(string filePath)
+        public async Task<bool> RemoveFromWhitelistAsync(string filePath)
         {
             try
             {
@@ -163,11 +167,13 @@ namespace SimpleAntivirus.FileQuarantine
                     }
 
                     Debug.WriteLine($"Removed from whitelist: {filePath}");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error removing from whitelist: {ex.Message}");
+                return false;
             }
         }
 

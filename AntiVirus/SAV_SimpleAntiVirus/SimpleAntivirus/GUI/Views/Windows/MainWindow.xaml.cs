@@ -43,9 +43,9 @@ namespace SimpleAntivirus.GUI.Views.Windows
 
         public void CloseWindow() => Close();
 
-        public void CloseWindowForcefully()
+        public void CloseWindowGracefully()
         {
-            System.Diagnostics.Debug.WriteLine("Forcefully closing!!");
+            System.Diagnostics.Debug.WriteLine("Gracefully closing!!");
             _cancelCloses = false;
             base.Close();
         }
