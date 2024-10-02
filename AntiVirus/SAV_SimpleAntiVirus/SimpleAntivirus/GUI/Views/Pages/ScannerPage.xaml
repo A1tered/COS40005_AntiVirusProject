@@ -14,7 +14,7 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d" Height="591">
+    mc:Ignorable="d" Height="652">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -64,6 +64,7 @@
             </ui:ProgressRing.Triggers>
         </ui:ProgressRing>
         <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="Scanning..." HorizontalAlignment="Center" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="{Binding StopwatchText}" HorizontalAlignment="Center" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}"/>
         <ui:Button Content="Cancel" Click="CancelScanButton_Click" Height="30" FontSize="11" FontWeight="Bold"  Background="#ba1111" Foreground ="#E4FFFFFF" MouseOverBackground="LightPink" Visibility="{Binding IsScanRunning, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Center" Margin="0,5,0,0"/>
     </StackPanel>
 </Page>
