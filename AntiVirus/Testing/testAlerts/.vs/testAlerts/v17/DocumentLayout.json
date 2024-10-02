@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\alerttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:alerttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\eventbustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:eventbustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8C6DB9B8-0A80-4933-9F62-25EDEAF7AE89}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\alerts\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -13,18 +17,7 @@
       "AbsoluteMoniker": "D:0:0:{8C6DB9B8-0A80-4933-9F62-25EDEAF7AE89}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\alerts\\alertmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C6DB9B8-0A80-4933-9F62-25EDEAF7AE89}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\integritymodule\\alerts\\violationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8C6DB9B8-0A80-4933-9F62-25EDEAF7AE89}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\alerts\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\alertmanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:alertmanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\testalerts.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:testalerts.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,25 +26,12 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 242,
           "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "testAlerts",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testAlerts.csproj",
-              "RelativeDocumentMoniker": "testAlerts.csproj",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testAlerts.csproj",
-              "RelativeToolTip": "testAlerts.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-01T04:03:42.759Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -68,7 +48,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AlertManager.cs",
               "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\AlertManager.cs",
               "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\AlertManager.cs",
@@ -81,7 +61,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Alert.cs",
               "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\Alert.cs",
               "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\Alerts\\Alert.cs",
@@ -94,47 +74,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\Class1.cs",
-              "RelativeDocumentMoniker": "Class1.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\Class1.cs",
-              "RelativeToolTip": "Class1.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACsAAAA+AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "eventBusTest.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\eventBusTest.cs",
+              "RelativeDocumentMoniker": "eventBusTest.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\eventBusTest.cs",
+              "RelativeToolTip": "eventBusTest.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwGIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-01T04:05:10.325Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "alertManagerTest.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertManagerTest.cs",
-              "RelativeDocumentMoniker": "alertManagerTest.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertManagerTest.cs",
-              "RelativeToolTip": "alertManagerTest.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwBAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "alertTest.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertTest.cs",
+              "RelativeDocumentMoniker": "alertTest.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertTest.cs",
+              "RelativeToolTip": "alertTest.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-01T03:08:53.137Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ViolationHandler.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Alerts\\ViolationHandler.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T06:12:25.467Z",
               "EditorCaption": ""
             }
           ]
