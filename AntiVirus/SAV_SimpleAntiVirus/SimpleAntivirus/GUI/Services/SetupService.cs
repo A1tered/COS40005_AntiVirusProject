@@ -115,12 +115,15 @@ namespace SimpleAntivirus.GUI.Services
         /// <param name="problem"></param>
         private void ErrorMessage(string problem)
         {
-            System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             _programCooked = true;
+            if (_testingMode == false)
+            {
+                System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             // Close program
 
-            MainWindow window = _iNaviWindow as MainWindow;
-            window.CloseWindowGracefully();
+                MainWindow window = _iNaviWindow as MainWindow;
+                window.CloseWindowGracefully();
+            }
         }
 
         // Create a path that represents a new dir or file
@@ -371,7 +374,10 @@ namespace SimpleAntivirus.GUI.Services
                 {
                     ApplicationThemeManager.Apply(ApplicationTheme.Dark);
                 }
-                _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                if (!_testingMode)
+                {
+                    _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                }
             }
             // Ensure existence of database key folders
             foreach (string folderSet in _createFolders)
@@ -458,6 +464,11 @@ namespace SimpleAntivirus.GUI.Services
             }
         }
 
+        public static void GetInstance()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool FirstTimeRunning
         {
             get
@@ -473,5 +484,7 @@ namespace SimpleAntivirus.GUI.Services
                 return _programCooked;
             }
         }
+
+        public static ISetupService Instance { get; set; }
     }
 }

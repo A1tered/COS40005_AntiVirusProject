@@ -20,3 +20,5 @@ AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763
 AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/malicious_commands.db
 AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/integrity_database.db
 AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/alerts.db
+AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/integrity_database.db-shm
+AntiVirus/SAV_SimpleAntiVirus/SimpleAntivirus/bin/Debug/net8.0-windows10.0.17763.0/Databases/integrity_database.db-wal

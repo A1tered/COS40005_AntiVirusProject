@@ -24,7 +24,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             _eventBus = new EventBus(_alertManager);
         }
 
-        private void AddFile_Click(object sender, RoutedEventArgs e)
+        private async void AddFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.ShowDialog();
@@ -34,7 +34,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             {
                 if (fileGet != "")
                 {
-                    bool result = ViewModel.BlacklistFile(fileGet);
+                    bool result = await ViewModel.BlacklistFile(fileGet, _alertManager, _eventBus);
                     DisplayResultFile(result, fileGet);
                 }
             }

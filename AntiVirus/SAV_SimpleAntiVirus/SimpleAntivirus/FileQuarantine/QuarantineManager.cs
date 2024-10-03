@@ -53,11 +53,11 @@ namespace SimpleAntivirus.FileQuarantine
                         // Send alert
                         if (scanType == "filehash")
                         {
-                            await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found.", "No action is required. You may unquarantine or delete if you choose.");
+                            await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found and quarantined.", "No action is required. You may unquarantine or delete if you choose.");
                         }
                         else if (scanType == "maliciouscode")
                         {
-                            await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found.", "No action is required. You may unquarantine or delete if you choose.");
+                            await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found and quarantined.", "No action is required. You may unquarantine or delete if you choose.");
                         }
 
                         // Remove file permissions to prevent unauthorized access
