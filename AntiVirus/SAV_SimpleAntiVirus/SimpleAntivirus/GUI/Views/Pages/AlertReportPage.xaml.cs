@@ -20,6 +20,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         public void Page_Loaded(object sender, RoutedEventArgs e)
         {
             AlertRow alertRowItem = ViewModel.SelectedRow;
+            TimeStampBlock.Text = $"{alertRowItem.TimeStamp}";
             ThreatType.Text = $"Threat Type: {alertRowItem.Component}";
             Severity.Text = $"Severity: {alertRowItem.Severity}";
             Message.Text = $"Message: {alertRowItem.EntireMessage}";
