@@ -1,6 +1,4 @@
-﻿
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 using SimpleAntivirus.Alerts;
@@ -49,9 +47,3 @@ namespace SimpleAntivirus.Tests
         }
     }
 }
-
-
-
-
-
-

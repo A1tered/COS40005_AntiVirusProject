@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using NUnit.Framework;
 using SimpleAntivirus.Alerts;
 using System.Threading.Tasks;
 
@@ -20,8 +21,8 @@ namespace SimpleAntivirus.Tests
         [Test]
         public void InitializationTest()
         {
-            Assert.IsNotNull(_eventBus, "EventBus should initialize correctly.");
-            Assert.IsNotNull(_alertManager, "AlertManager should be initialized.");
+            Assert.IsNotNull(_eventBus, "EventBus initialize correctly.");
+            Assert.IsNotNull(_alertManager, "AlertManager initialized.");
         }
 
         [Test]
@@ -33,8 +34,7 @@ namespace SimpleAntivirus.Tests
             var alerts = await _alertManager.GetAllAlertsAsync();
 
             Assert.IsNotNull(alerts, "Alerts list should not be null.");
-            Assert.IsTrue(alerts.Exists(a => a.Component == "EventComponent" && a.Message == "EventBus test message"),
-                          "Alert should be published via EventBus.");
+            Assert.IsTrue(alerts.Exists(a => a.Component == "EventComponent" && a.Message == "EventBus test message"),"Alert published via EventBus.");
         }
     }
 
@@ -52,7 +52,7 @@ namespace SimpleAntivirus.Tests
         [Test]
         public void InitializationTest()
         {
-            Assert.IsNotNull(_alertManager, "AlertManager should initialize correctly.");
+            Assert.IsNotNull(_alertManager, "AlertManager initialize correctly.");
         }
 
         [Test]
@@ -62,8 +62,7 @@ namespace SimpleAntivirus.Tests
             await _alertManager.StoreAlertAsync(alert);
             var alerts = await _alertManager.GetAllAlertsAsync();
 
-            Assert.IsTrue(alerts.Exists(a => a.Component == "ComponentTest" && a.Message == "Test Store Alert"),
-                          "Alert should be stored successfully in the database.");
+            Assert.IsTrue(alerts.Exists(a => a.Component == "ComponentTest" && a.Message == "Test Store Alert"),"Alert stored successfully in the database.");
         }
 
         [Test]
@@ -73,7 +72,7 @@ namespace SimpleAntivirus.Tests
             await _alertManager.StoreAlertAsync(alert);
             var result = await _alertManager.CheckForIdenticalAlertInTimeFrame(alert, 120);
 
-            Assert.IsTrue(result, "Identical alert should be found within the specified time frame.");
+            Assert.IsTrue(result, "Alert found within the specified time frame.");
         }
 
         [Test]
@@ -81,7 +80,7 @@ namespace SimpleAntivirus.Tests
         {
             await _alertManager.ClearDatabase();
             var alerts = await _alertManager.GetAllAlertsAsync();
-            Assert.AreEqual(0, alerts.Count, "Database should be cleared of all alerts.");
+            Assert.That(alerts.Count, Is.EqualTo(0), "Database cleared of all alerts.");
         }
 
         [Test]
@@ -92,7 +91,7 @@ namespace SimpleAntivirus.Tests
             await _alertManager.StoreAlertAsync(alert);
             var count = await _alertManager.GetAlertsWithinPastTimeFrame(120);
 
-            Assert.GreaterOrEqual(count, 1, "There should be at least one alert in the specified time frame.");
+            Assert.GreaterOrEqual(count, 1, "There is at least one alert in the time frame.");
         }
     }
 }
