@@ -102,8 +102,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\SplitProcess.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T06:40:18.528Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T06:40:18.528Z"
             },
             {
               "$type": "Document",
@@ -115,8 +114,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\Hunter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T06:40:17.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T06:40:17.604Z"
             },
             {
               "$type": "Document",
@@ -128,8 +126,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\Hasher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T06:40:16.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T06:40:16.568Z"
             },
             {
               "$type": "Document",
@@ -141,8 +138,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\FileHashScanner.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T06:40:15.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T06:40:15.632Z"
             },
             {
               "$type": "Document",
@@ -154,8 +150,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileHashScanning\\DirectoryManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T06:40:14.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T06:40:14.675Z"
             },
             {
               "$type": "Document",
@@ -179,8 +174,7 @@
               "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml",
               "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-02T05:44:08.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T05:44:08.445Z"
             },
             {
               "$type": "Document",
@@ -192,8 +186,7 @@
               "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\ScannerPage.xaml.cs",
               "ViewState": "AgIAAI0AAAAAAAAAAAAAAJoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T03:31:03.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-01T03:31:03.386Z"
             },
             {
               "$type": "Document",
@@ -205,8 +198,7 @@
               "RelativeToolTip": "SimpleAntivirus\\GUI\\Services\\CLIService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T05:42:42.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T05:42:42.208Z"
             },
             {
               "$type": "Document",
@@ -218,8 +210,7 @@
               "RelativeToolTip": "SimpleAntivirus\\App.xaml.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T05:42:33.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T05:42:33.07Z"
             },
             {
               "$type": "Document",
@@ -231,8 +222,7 @@
               "RelativeToolTip": "SimpleAntivirus\\CLIMonitoring\\CLIMonitor.cs",
               "ViewState": "AgIAAHYAAAAAAAAAAAAqwKEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T05:32:55.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T05:32:55.496Z"
             },
             {
               "$type": "Document",
@@ -256,8 +246,7 @@
               "RelativeToolTip": "SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAK8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T01:10:43.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-01T01:10:43.476Z"
             },
             {
               "$type": "Document",
@@ -269,8 +258,7 @@
               "RelativeToolTip": "SimpleAntivirus\\GUI\\ViewModels\\Pages\\ScannerViewModel.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAHUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T05:46:26.547Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T05:46:26.547Z"
             },
             {
               "$type": "Document",
@@ -318,8 +306,7 @@
               "RelativeToolTip": "SimpleAntivirus\\GUI\\Views\\Pages\\BlacklistPage.xaml.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAqwB4AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T02:35:20.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-01T02:35:20.536Z"
             },
             {
               "$type": "Document",
