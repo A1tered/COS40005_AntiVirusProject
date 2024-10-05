@@ -69,6 +69,8 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
         {
+            ViewModel.ResetTimer();
+            ViewModel.StartTimer();
             ViewModel.IsScanRunning = true;
             try
             {
@@ -82,9 +84,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     Task quickScanFileHash = _fileHashScanner.Scan("quick", null);
                     Task quickScanMalCode = _maliciousCodeScanner.Scan("quick", null);
                     await Task.WhenAll(quickScanFileHash, quickScanMalCode);
+                    ViewModel.StopTimer();
                     if (ViewModel.IsScanRunning)
                     {
-                        System.Windows.MessageBox.Show($"Quick scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                        System.Windows.MessageBox.Show($"Quick scan completed in {ViewModel.StopwatchShortText}.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 else if (FullScanButton.IsChecked == true)
@@ -92,9 +95,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
                     Task fullScanFileHash = _fileHashScanner.Scan("full", null);
                     Task fullScanMalCode = _maliciousCodeScanner.Scan("full", null);
                     await Task.WhenAll(fullScanFileHash, fullScanMalCode);
+                    ViewModel.StopTimer();
                     if (ViewModel.IsScanRunning)
                     {
-                        System.Windows.MessageBox.Show($"Full scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                        System.Windows.MessageBox.Show($"Full scan completed in {ViewModel.StopwatchShortText}.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 else if (CustomScanButton.IsChecked == true)
@@ -112,9 +116,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
                         ViewModel.IsAddFolderButtonVisible = false;
                         ViewModel.IsCustomListVisible = false;
                         await Task.WhenAll(customscanFileHash, customscanMalCode);
+                        ViewModel.StopTimer();
                         if (_customList != null && _customList.Count > 0 && ViewModel.IsScanRunning)
                         {
-                            System.Windows.MessageBox.Show($"Custom scan completed!", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+                            System.Windows.MessageBox.Show($"Custom scan completed in {ViewModel.StopwatchShortText}.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         ViewModel.IsAddFolderButtonVisible = true;
                         ViewModel.IsCustomListVisible = true;
@@ -138,12 +143,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
             finally
             {
                 ViewModel.IsScanRunning = false;
+                ViewModel.ResetTimer();
             }
         }
 
         private void CancelScanButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.IsScanRunning = false;
+            ViewModel.ResetTimer();
+            ViewModel.StopwatchText = "Time elapsed: 00:00:00";
+            ViewModel.StopwatchShortText = "00:00:00";
             _customList.Clear();
             ViewModel.CustomScanText = "Custom scan list is empty.";
 
