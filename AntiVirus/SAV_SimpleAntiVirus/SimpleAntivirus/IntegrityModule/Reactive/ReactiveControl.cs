@@ -11,19 +11,20 @@ using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.IntegrityComparison;
 using SimpleAntivirus.IntegrityModule.Db;
 using System.IO;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Reactive
 {
-    public class ReactiveControl
+    public class ReactiveControl : IReactiveControl
     {
         private List<FileSystemWatcher> _fileWatcherList;
-        private IntegrityDatabaseIntermediary _intermediaryDB;
-        private IntegrityCycler _integrityCycler;
+        private IIntegrityDatabaseIntermediary _intermediaryDB;
+        private IIntegrityCycler _integrityCycler;
         private bool _reactiveInitialized;
         private List<string> _directoryTracker;
         // Prevent overlap (may result in detection failures, but better than alert failures)
         private bool _eventCallInProgress = false;
-        public ReactiveControl(IntegrityDatabaseIntermediary intermediary, IntegrityCycler cycler)
+        public ReactiveControl(IIntegrityDatabaseIntermediary intermediary, IIntegrityCycler cycler)
         {
             _reactiveInitialized = false;
             _fileWatcherList = new();

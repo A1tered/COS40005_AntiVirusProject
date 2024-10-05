@@ -22,7 +22,7 @@ namespace SimpleAntivirus.FileHashScanning
         {
             try
             {
-                using (FileStream openedFile = File.Open(directory, FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (FileStream openedFile = File.Open(directory, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
                 {
                     return HashFile(openedFile);
                 }
@@ -64,6 +64,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 stringBuild.Append(byteRep.ToString("X2"));
             }
+            fileStream.Close();
             return stringBuild.ToString();
         }
         

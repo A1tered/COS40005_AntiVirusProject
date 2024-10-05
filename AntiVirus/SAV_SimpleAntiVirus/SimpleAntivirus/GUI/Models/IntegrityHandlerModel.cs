@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.Alerts;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.IntegrityModule;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
@@ -19,7 +21,8 @@ namespace SimpleAntivirus.Models
         private List<IntegrityViolation> _recentViolationList;
         public IntegrityHandlerModel(EventBus eventbus)
         {
-            IntegrityDatabaseIntermediary integDatabase = new("IntegrityDatabase", false);
+            ISetupService setupService = SetupService.GetExistingInstance();
+            IntegrityDatabaseIntermediary integDatabase = new("integrity_database.db", setupService.FirstTimeRunning);
             _integDatabase = integDatabase;
             IntegrityManagement integManage = new(integDatabase);
             _integManage = integManage;
@@ -65,6 +68,10 @@ namespace SimpleAntivirus.Models
             return _integManage.BaselinePage(page);
         }
 
+        public async Task CancelAll()
+        {
+            await _integManage.CleanUp();
+        }
         public async Task<int> Scan()
         {
             _recentViolationList = await _integManage.Scan();

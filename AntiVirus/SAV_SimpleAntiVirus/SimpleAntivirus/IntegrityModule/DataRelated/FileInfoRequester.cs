@@ -201,7 +201,7 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
             // Find path that contains database.
             foreach (string path in filePaths)
             {
-                if (Path.GetFileNameWithoutExtension(path).Contains(term))
+                if (path.Contains(term))
                 {
                     return path;
                 }

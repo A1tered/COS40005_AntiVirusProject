@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 
 namespace SimpleAntivirus.FileQuarantine
@@ -26,8 +28,10 @@ namespace SimpleAntivirus.FileQuarantine
                 Directory.CreateDirectory(directory);
                 Debug.WriteLine($"Database directory created at {directory}");
             }
+            ISetupService setupService = SetupService.GetExistingInstance();
 
-            _connectionString = $"Data Source={databasePath}";
+
+            _connectionString = $"Data Source={databasePath};Password={setupService.DbKey()}";
             InitializeDatabase();
         }
 
@@ -145,7 +149,7 @@ namespace SimpleAntivirus.FileQuarantine
         /// Removes a file from the whitelist by deleting its path from the database.
         /// </summary>
         /// <param name="filePath">The full path of the file to remove from the whitelist.</param>
-        public async Task RemoveFromWhitelistAsync(string filePath)
+        public async Task<bool> RemoveFromWhitelistAsync(string filePath)
         {
             try
             {
@@ -163,11 +167,13 @@ namespace SimpleAntivirus.FileQuarantine
                     }
 
                     Debug.WriteLine($"Removed from whitelist: {filePath}");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error removing from whitelist: {ex.Message}");
+                return false;
             }
         }
 
@@ -316,9 +322,9 @@ namespace SimpleAntivirus.FileQuarantine
         /// Retrieves all quarantined files from the database.
         /// </summary>
         /// <returns>A list of all quarantined files, including their IDs, quarantined paths, and original paths.</returns>
-        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetAllQuarantinedFilesAsync()
+        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetAllQuarantinedFilesAsync()
         {
-            var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath)>();
+            var quarantinedFiles = new List<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>();
 
             try
             {
@@ -327,7 +333,7 @@ namespace SimpleAntivirus.FileQuarantine
                     await connection.OpenAsync();
 
                     // Query the database for all quarantined files
-                    string query = "SELECT Id, FilePath, OriginalFilePath FROM QuarantinedFiles";
+                    string query = "SELECT Id, FilePath, OriginalFilePath, QuarantineDate FROM QuarantinedFiles";
 
                     using (var command = new SqliteCommand(query, connection))
                     {
@@ -338,8 +344,9 @@ namespace SimpleAntivirus.FileQuarantine
                                 int id = reader.GetInt32(0);
                                 string quarantinedFilePath = reader.GetString(1);
                                 string originalFilePath = reader.GetString(2);
+                                string quarantineDate = reader.GetString(3);
 
-                                quarantinedFiles.Add((id, quarantinedFilePath, originalFilePath));
+                                quarantinedFiles.Add((id, quarantinedFilePath, originalFilePath, quarantineDate));
                             }
                         }
                     }
@@ -388,7 +395,7 @@ namespace SimpleAntivirus.FileQuarantine
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error retrieving quarantined files: {ex.Message}");
+                Debug.WriteLine($"Error retrieving quarantined files: {ex.Message}");
             }
 
             return quarantinedFiles;

@@ -38,22 +38,19 @@ namespace SimpleAntivirus.FileHashScanning
             string[] directoryContents;
             string[] itemContents;
             int limitTracker = 0; // Tracks how many directories up you are searching.
-            StringBuilder directorySearchBuilder = new StringBuilder();
+            StringBuilder directorySearchBuilder = new StringBuilder(AppDomain.CurrentDomain.BaseDirectory);
             while (limitTracker < _stepUpLimit)
             {
-                directorySearchBuilder.Append("..\\");
                 directoryContents = Directory.GetDirectories(directorySearchBuilder.ToString());
-                string fetchDirectory = MatchDirectory(directoryContents, "Database");
-                if (fetchDirectory != "")
+                string fetchDirectory = MatchDirectory(directoryContents, "Databases");
+                itemContents = Directory.GetFiles(fetchDirectory);
+                databaseDirectory = MatchDirectory(itemContents, databaseName);
+                if (databaseDirectory != "")
                 {
-                    itemContents = Directory.GetFiles(fetchDirectory);
-                    databaseDirectory = MatchDirectory(itemContents, databaseName);
-                    if (databaseDirectory != "")
-                    {
-                        return databaseDirectory;
-                    }
+                        
+                    return databaseDirectory;
                 }
-                limitTracker++;
+                //limitTracker++;
             }
             return "";
         }

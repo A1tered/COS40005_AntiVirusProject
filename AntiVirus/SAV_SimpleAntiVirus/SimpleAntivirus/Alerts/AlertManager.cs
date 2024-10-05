@@ -4,6 +4,9 @@ using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Concurrent;
+using System.IO;
+using SimpleAntivirus.GUI.Services;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.Alerts;
 public class AlertManager
@@ -23,13 +26,14 @@ public class AlertManager
     ConcurrentDictionary<string, long> _aggregateViolationTimeSent;
     public AlertManager()
     {
+        ISetupService setupService = SetupService.GetExistingInstance();
         _violationAmountTimeFrame = 60;
         _violationTimeFrame = 10;
         _violationAmountTimeTracker = 0;
         _violationIncidents = new();
         _aggregateViolationTimeSent = new();
-        string databasePath = "alerts.db"; // Specify the database path
-        _databaseConnection = new SqliteConnection($"Data Source={databasePath}"); // Use Data Source for the SQLite connection string
+        string databasePath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases"), "alerts.db"); // Specify the database path
+        _databaseConnection = new SqliteConnection($"Data Source={databasePath};Password={setupService.DbKey()}"); // Use Data Source for the SQLite connection string
         InitializeDatabase();
     }
 
@@ -142,16 +146,14 @@ public class AlertManager
             INSERT INTO Alerts (Component, Severity, Message, SuggestedAction, Timestamp)
             VALUES (@Component, @Severity, @Message, @SuggestedAction, @Timestamp)";
 
-            using (var command = new SqliteCommand(insertQuery, _databaseConnection))
-            {
-                command.Parameters.AddWithValue("@Component", alert.Component);
-                command.Parameters.AddWithValue("@Severity", alert.Severity);
-                command.Parameters.AddWithValue("@Message", alert.Message);
-                command.Parameters.AddWithValue("@SuggestedAction", alert.SuggestedAction);
-                command.Parameters.AddWithValue("@Timestamp", alert.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
+            var command = new SqliteCommand(insertQuery, _databaseConnection);
+            command.Parameters.AddWithValue("@Component", alert.Component);
+            command.Parameters.AddWithValue("@Severity", alert.Severity);
+            command.Parameters.AddWithValue("@Message", alert.Message);
+            command.Parameters.AddWithValue("@SuggestedAction", alert.SuggestedAction);
+            command.Parameters.AddWithValue("@Timestamp", alert.Timestamp.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                await command.ExecuteNonQueryAsync();
-            }
+            await command.ExecuteNonQueryAsync();
         }
 
        // _databaseConnection.Close();

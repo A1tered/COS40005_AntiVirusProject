@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using SimpleAntivirus.Alerts;
+using System.Diagnostics;
 using System.IO;
 
 namespace SimpleAntivirus.FileQuarantine
@@ -25,28 +26,61 @@ namespace SimpleAntivirus.FileQuarantine
         }
 
         // QuarantineFileAsync handles quarantining a file: moving it to quarantine and updating the database
-        public async Task QuarantineFileAsync(string filePath)
+        public async Task QuarantineFileAsync(string filePath, EventBus eventBus, string scanType)
         {
             try
             {
                 // Check if the file is already whitelisted
-                if (await _databaseManager.IsWhitelistedAsync(filePath))
+                if (await _databaseManager.IsWhitelistedAsync(filePath) && scanType == "filehash")
                 {
+                    await eventBus.PublishAsync("File Hash Scanning", "Low", $"Whitelisted threat detected at location: {filePath}", "Ensure only safe files are whitelisted");
                     Debug.WriteLine($"File or folder is whitelisted and will not be quarantined: {filePath}");
                     return;
                 }
+                else if (await _databaseManager.IsWhitelistedAsync(filePath) && scanType == "maliciouscode")
+                {
+                    await eventBus.PublishAsync("Malicious Code Scanning", "Low", $"Whitelisted threat detected at location: {filePath}", "Ensure only safe files are whitelisted");
+                    Debug.WriteLine($"File or folder is whitelisted and will not be quarantined: {filePath}");
+                    return;
+                }
+                else
+                {
+                    // Move the file to the quarantine directory
+                    string quarantinePath = await _fileMover.MoveFileToQuarantineAsync(filePath, _quarantineDirectory);
+                    
+                    if (quarantinePath != null)
+                    {
+                        // Send alert
+                        if (scanType == "filehash")
+                        {
+                            await eventBus.PublishAsync("File Hash Scanning", "Severe", $"Threat found! File: {filePath} has been found and quarantined.", "No action is required. You may unquarantine or delete if you choose.");
+                        }
+                        else if (scanType == "maliciouscode")
+                        {
+                            await eventBus.PublishAsync("Malicious Code Scanning", "Severe", $"Threat found! File: {filePath} has been found and quarantined.", "No action is required. You may unquarantine or delete if you choose.");
+                        }
 
-                // Move the file to the quarantine directory
-                string quarantinePath = await _fileMover.MoveFileToQuarantineAsync(filePath, _quarantineDirectory);
+                        // Remove file permissions to prevent unauthorized access
+                        await RemoveFilePermissionsUsingPowerShell(quarantinePath);
 
-                // Remove file permissions to prevent unauthorized access
-                await RemoveFilePermissionsUsingPowerShell(quarantinePath);
+                        // Store the quarantine info (path, original location) in the database
+                        await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
 
-                // Store the quarantine info (path, original location) in the database
-                await _databaseManager.StoreQuarantineInfoAsync(quarantinePath, filePath);
-
-                // Log the quarantined file's location securely
-                await LogQuarantinedFileLocationAsync(quarantinePath);
+                        // Log the quarantined file's location securely
+                        await LogQuarantinedFileLocationAsync(quarantinePath);
+                    }
+                    else
+                    {
+                        if (scanType == "filehash")
+                        {
+                            await eventBus.PublishAsync("File Hash Scanning", "Medium", $"File Quarantine Failed. A threat has been found but was unable to be quarantined.", $"Ensure that {filePath} is safe or does not exist. It is likely a protected system file that SAV cannot quarantine.");
+                        }
+                        else if (scanType == "maliciouscode")
+                        {
+                            await eventBus.PublishAsync("Malicious Code Scanning", "Medium", $"File Quarantine Failed. A threat has been found but was unable to be quarantined.", $"Ensure that {filePath} is safe or does not exist. It is likely a protected system file that SAV cannot quarantine.");
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -105,15 +139,26 @@ namespace SimpleAntivirus.FileQuarantine
             }
         }
 
-        // Retrieves all quarantined files from the database
-        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath)>> GetQuarantinedFilesAsync()
+        public async Task<bool> DeleteFileAsync(string filePath)
         {
-            return await _databaseManager.GetAllQuarantinedFilesAsync();
+            try
+            {
+                // Delete the file
+                await DeleteFileUsingPowerShell(filePath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors during the quarantine process
+                Debug.WriteLine($"Error during quarantine process: {ex.Message}");
+                return false;
+            }
         }
 
-        public async Task<IEnumerable<(int Id, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFileDataAsync()
+        // Retrieves all quarantined files from the database
+        public async Task<IEnumerable<(int Id, string QuarantinedFilePath, string OriginalFilePath, string QuarantineDate)>> GetQuarantinedFilesAsync()
         {
-            return await _databaseManager.GetQuarantinedFileDataAsync();
+            return await _databaseManager.GetAllQuarantinedFilesAsync();
         }
 
         // Logs the quarantined file's location to a secure log file
@@ -138,19 +183,27 @@ namespace SimpleAntivirus.FileQuarantine
         // Uses PowerShell to remove file permissions for a quarantined file
         private async Task RemoveFilePermissionsUsingPowerShell(string filePath)
         {
-            string command = $"icacls \"{filePath}\" /inheritance:r /remove:g \"Everyone\"";
+            string command = $"icacls '{filePath}' /inheritance:r /remove:g Everyone";
             await RunPowerShellCommandAsync(command);
         }
 
         // Uses PowerShell to restore file permissions for a file being unquarantined
         private async Task RestoreFilePermissionsUsingPowerShell(string filePath)
         {
-            string command = $"icacls \"{filePath}\" /grant Everyone:F";
+            string command = $"icacls '{filePath}' /grant Everyone:F";
+            await RunPowerShellCommandAsync(command);
+        }
+        
+        // Uses PowerShell to delete a quarantined file from the computer permanently.
+        private async Task DeleteFileUsingPowerShell(string filePath)
+        {
+            string command = $"Remove-Item '{filePath}'";
+            Debug.WriteLine(command);
             await RunPowerShellCommandAsync(command);
         }
 
         // Executes a PowerShell command asynchronously
-        private async Task RunPowerShellCommandAsync(string command)
+        private async Task<bool> RunPowerShellCommandAsync(string command)
         {
             try
             {
@@ -177,16 +230,19 @@ namespace SimpleAntivirus.FileQuarantine
                 if (process.ExitCode == 0)
                 {
                     Debug.WriteLine($"Command executed successfully: {output}");
+                    return true;
                 }
                 else
                 {
                     Debug.WriteLine($"Error executing command: {error}");
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 // Handle errors in PowerShell execution
                 Debug.WriteLine($"Error executing PowerShell command: {ex.Message}");
+                return false;
             }
         }
     }

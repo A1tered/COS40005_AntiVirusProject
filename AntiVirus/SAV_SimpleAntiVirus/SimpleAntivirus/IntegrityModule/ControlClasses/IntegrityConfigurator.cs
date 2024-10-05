@@ -13,14 +13,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.Db;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.ControlClasses
 {
-    public class IntegrityConfigurator
+    public class IntegrityConfigurator : IIntegrityConfigurator
     {
-        private IntegrityDatabaseIntermediary _database;
+        private IIntegrityDatabaseIntermediary _database;
         private int _displaySet;
-        public IntegrityConfigurator(IntegrityDatabaseIntermediary integrityDatabase)
+        public IntegrityConfigurator(IIntegrityDatabaseIntermediary integrityDatabase)
         {
             _database = integrityDatabase;
             _displaySet = 10;
@@ -80,7 +81,6 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             }
             return _database.GetSetEntries(page, _displaySet);
         }
-
         public int GetPageAmount()
         {
             return  Convert.ToInt32((_database.QueryAmount() / _displaySet));
@@ -93,6 +93,13 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         public bool RemoveAll()
         {
             return _database.DeleteAll();
+        }
+
+        // Cancel ongoing operations (Just adding to database)
+        public async Task CancelOperations()
+        {
+            await _database.CancelOperations();
+            _database.Dispose();
         }
     }
 }

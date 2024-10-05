@@ -17,24 +17,25 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {
-    public class IntegrityDataPooler
+    public class IntegrityDataPooler : IIntegrityDataPooler
     {
         private int _setRepresentation;
         private int _setAmount;
         private string _selectedDirectory;
-        private IntegrityDatabaseIntermediary _databaseIntermediary;
+        private IIntegrityDatabaseIntermediary _databaseIntermediary;
 
-        public IntegrityDataPooler(IntegrityDatabaseIntermediary database, int set, int setAmount)
+        public IntegrityDataPooler(IIntegrityDatabaseIntermediary database, int set, int setAmount)
         {
             _databaseIntermediary = database;
             _setRepresentation = set;
             _setAmount = setAmount;
         }
 
-        public IntegrityDataPooler(IntegrityDatabaseIntermediary database, string path)
+        public IntegrityDataPooler(IIntegrityDatabaseIntermediary database, string path)
         {
             _databaseIntermediary = database;
             _selectedDirectory = path;
@@ -75,8 +76,9 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         /// Retrieving a set of the database, compare with system files.
         /// </summary>
         /// <returns>Violations found via mismatching Hashes.</returns>
-        public async Task<List<IntegrityViolation>> CheckIntegrity()
+        public async Task<List<IntegrityViolation>> CheckIntegrity(CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
             List<IntegrityViolation> violationSet = new();
             if (_selectedDirectory == null)
             {
@@ -87,6 +89,7 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                 int index = 0;
                 foreach (KeyValuePair<string, string> dirHash in infoSet)
                 {
+                    ct.ThrowIfCancellationRequested();
                     tempHash = stringList[index];
                     index++;
                     if (tempHash != dirHash.Value)
