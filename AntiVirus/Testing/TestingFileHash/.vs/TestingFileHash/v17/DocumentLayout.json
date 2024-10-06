@@ -3,12 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8414F71C-9C57-4EC0-99B1-6C6E47882313}|TestingFileHash.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testingfilehash\\hashertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8414F71C-9C57-4EC0-99B1-6C6E47882313}|TestingFileHash.csproj|solutionrelative:hashertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8414F71C-9C57-4EC0-99B1-6C6E47882313}|TestingFileHash.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testingfilehash\\testingfilehash.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8414F71C-9C57-4EC0-99B1-6C6E47882313}|TestingFileHash.csproj|solutionrelative:testingfilehash.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5F225B3B-7029-40E3-8825-C0562CA37A75}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filehashscanning\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,27 +36,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HasherTest.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\HasherTest.cs",
-              "RelativeDocumentMoniker": "HasherTest.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\HasherTest.cs",
-              "RelativeToolTip": "HasherTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
+              "Title": "DatabaseConnector.cs",
+              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
+              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileHashScanning\\DatabaseConnector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T01:54:44.704Z",
+              "WhenOpened": "2024-10-06T08:11:32.6Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TestingFileHash.csproj",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
-              "RelativeDocumentMoniker": "TestingFileHash.csproj",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
-              "RelativeToolTip": "TestingFileHash.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-03T01:56:02.562Z"
             }
           ]
         }
