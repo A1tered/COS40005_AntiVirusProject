@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj": {}
+    "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj": {
+    "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
+        "projectUniqueName": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
         "projectName": "TestingFileHash",
-        "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
-        "packagesPath": "C:\\Users\\CardmanOfficial\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\obj\\",
+        "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
+        "packagesPath": "C:\\Users\\tloh1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\CardmanOfficial\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tloh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

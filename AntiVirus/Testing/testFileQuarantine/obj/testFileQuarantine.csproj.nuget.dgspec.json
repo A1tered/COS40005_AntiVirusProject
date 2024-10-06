@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj": {}
+    "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+    "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+        "projectUniqueName": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
         "projectName": "SimpleAntivirus",
-        "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
-        "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\obj\\",
+        "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+        "packagesPath": "C:\\Users\\tloh1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\tloh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -104,7 +100,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.17763.34, 10.0.17763.34]"
+              "version": "[10.0.17763.31, 10.0.17763.31]"
             }
           ],
           "frameworkReferences": {
@@ -118,25 +114,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj": {
+    "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
+        "projectUniqueName": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
         "projectName": "testFileQuarantine",
-        "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
-        "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\obj\\",
+        "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
+        "packagesPath": "C:\\Users\\tloh1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\tloh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -150,8 +142,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
-                "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
+              "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+                "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
               }
             }
           }
@@ -181,7 +173,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
