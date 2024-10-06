@@ -3,8 +3,22 @@
   "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testfilequarantine\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|solutionrelative:unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testfilequarantine\\databasemanagertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|solutionrelative:databasemanagertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testfilequarantine\\quarantinemanagertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|solutionrelative:quarantinemanagertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testfilequarantine\\filemovertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}|testFileQuarantine.csproj|solutionrelative:filemovertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC63AEE1-8806-40F6-9336-F475568C4F8E}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC63AEE1-8806-40F6-9336-F475568C4F8E}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\filequarantine\\quarantinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +37,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "UnitTest1.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\UnitTest1.cs",
-              "RelativeToolTip": "UnitTest1.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAvwEgAAAAAAAAAAAAAAA==",
+              "Title": "databaseManagerTests.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\databaseManagerTests.cs",
+              "RelativeDocumentMoniker": "databaseManagerTests.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\databaseManagerTests.cs",
+              "RelativeToolTip": "databaseManagerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T12:15:59.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\DatabaseManager.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T11:11:46.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "quarantineManagerTests.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\quarantineManagerTests.cs",
+              "RelativeDocumentMoniker": "quarantineManagerTests.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\quarantineManagerTests.cs",
+              "RelativeToolTip": "quarantineManagerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T11:11:13.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "fileMoverTests.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\fileMoverTests.cs",
+              "RelativeDocumentMoniker": "fileMoverTests.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\fileMoverTests.cs",
+              "RelativeToolTip": "fileMoverTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-30T11:31:54.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuarantineManager.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\FileQuarantine\\QuarantineManager.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T11:11:31.787Z",
               "EditorCaption": ""
             }
           ]
