@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**************************************************************************
+* File:        AlertManager.cs
+* Author:      Zachary Smith & (minor changes by Christopher)
+* Description: Handles requests for alerts, and storage of alerts.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
 using Microsoft.Data.Sqlite;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Collections.Concurrent;
 using System.IO;
 using SimpleAntivirus.GUI.Services;

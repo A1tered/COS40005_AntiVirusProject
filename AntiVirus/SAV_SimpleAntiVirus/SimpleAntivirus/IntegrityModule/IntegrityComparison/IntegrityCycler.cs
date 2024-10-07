@@ -3,17 +3,10 @@
  * Author:      Christopher Thompson, etc.
  * Description: Manages the start of the Integrity Scanning process, deals with returned Violations when it initiates multiple 
  * Integrity data poolers to scan certain sets of database queries.
- * Last Modified: 26/08/2024
+ * Last Modified: 8/10/2024
  **************************************************************************/
 
-using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.IntegrityModule.Db;
 using System.Diagnostics;
 using SimpleAntivirus.IntegrityModule.Interface;
 

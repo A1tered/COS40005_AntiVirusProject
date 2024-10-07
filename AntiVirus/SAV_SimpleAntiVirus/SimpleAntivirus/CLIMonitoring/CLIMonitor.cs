@@ -1,23 +1,16 @@
 ﻿/**************************************************************************
  * Author:      Timothy Loh
  * Description: Main monitoring of CLI inputs (Registry read, write, create).
- * Last Modified: 11/08/24
+ * Last Modified: 8/10/24
  **************************************************************************/
 
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
-using System.Management;  // Needed for getting the parent PID
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Threading;
-using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Parsers;
 using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
 using Microsoft.Diagnostics.Tracing.Session;
 using SimpleAntivirus.Alerts;
-using SimpleAntivirus.GUI.Views.Pages;
 
 namespace SimpleAntivirus.CLIMonitoring;
 

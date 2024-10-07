@@ -3,13 +3,10 @@
  * Author:      Christopher Thompson, etc.
  * Description: Deals with scans that are reactive, such that if a file change occurs that it scans that certain file for performance, and the reduction
  * of time taken to respond to issues.
- * Last Modified: 26/08/2024
+ * Last Modified: 8/10/2024
  **************************************************************************/
 
 using SimpleAntivirus.IntegrityModule.DataRelated;
-using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using SimpleAntivirus.IntegrityModule.Db;
 using System.IO;
 using SimpleAntivirus.IntegrityModule.Interface;
 

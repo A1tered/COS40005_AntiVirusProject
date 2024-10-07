@@ -1,15 +1,17 @@
-﻿using SimpleAntivirus.GUI.Services;
+﻿/**************************************************************************
+ * File:        IntegrityCheckingTests.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Deals with integration tests related to IntegrityModule.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
+
+using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.Db;
 using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using System;
-using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestingIntegrity
 {
@@ -25,10 +27,13 @@ namespace TestingIntegrity
             SetupService.GetInstance(null, true);
             _integDatabase = new("IntegrityDatabase", true);
             _integrityManagement = new(_integDatabase);
-            _selfModifyingDirectory = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\self_modifying_testfolder";
-            _fileProvided = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\hashExample.txt";
+            _selfModifyingDirectory = Path.Join(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "self_modifying_testfolder");
+            _fileProvided = Path.Join(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "hashExample.txt");
         }
 
+        /// <summary>
+        /// Create files for ease of testing.
+        /// </summary>
         private string[] CreateFiles(int amountCreate)
         {
             List<string> directoriesCreated = new();
@@ -45,6 +50,9 @@ namespace TestingIntegrity
             return directoriesCreated.ToArray();
         }
 
+        /// <summary>
+        /// This function is a test function, it allows ease to change the state of files being monitored by integrity easily.
+        /// </summary>
         private void ScrewFiles(string[] filesScrewed, int amountScrewed)
         {
             int amountScrewCounter = amountScrewed;
@@ -68,6 +76,11 @@ namespace TestingIntegrity
             _integDatabase = null;
         }
 
+
+        /// <summary>
+        /// This test checks multiple functions at once, these include AddBaseline, QueryAmount and DeleteAll. If any one of these functions fail, the test
+        /// should fail.
+        /// </summary>
         [Test]
         public async Task DeleteAllGetAmount()
         {
@@ -78,6 +91,9 @@ namespace TestingIntegrity
             Assert.That(_integDatabase.QueryAmount("IntegrityTrack"), Is.EqualTo(0));
         }
 
+        /// <summary>
+        /// This test checks whether IntegrityManagement (top level class) is able to add to the database correctly.
+        /// </summary>
         [Test]
         public async Task AddBaselineRemoveBaseline()
         {
@@ -89,6 +105,10 @@ namespace TestingIntegrity
         }
 
 
+        /// <summary>
+        /// This test checks multiple features which includes adding to the database, and then scanning the database and ensuring that the exact amount of violations
+        /// is returned.
+        /// </summary>
         [Test]
         public async Task CheckIntegrityFileTest()
         {
@@ -114,7 +134,9 @@ namespace TestingIntegrity
         }
 
 
-        // Data Pooler Specific Test
+        /// <summary>
+        /// This test is responsible for testing IntegrityDataPooler, and its ability to scan multiple items at once.
+        /// </summary>
         [Test]
         public async Task CheckIntegrityTest()
         {
@@ -126,7 +148,9 @@ namespace TestingIntegrity
             Assert.That(violationList, Has.Exactly(5).Items);
         }
 
-        // Data Pooler Specific Test
+        /// <summary>
+        /// This test is responsible for testing IntegrityDataPooler and its ability to scan its contents.
+        /// </summary>
         [Test]
         public async Task CheckIntegritySingleTest()
         {
@@ -138,7 +162,9 @@ namespace TestingIntegrity
             Assert.That(violationList, Has.Exactly(1).Items);
         }
 
-        // Integrity Cycler Test
+        /// <summary>
+        /// This test utilises IntegrityCycler, and its InitiateScan functionality.
+        /// </summary>
         [Test]
         public async Task IntegrityCyclerTest()
         {
@@ -152,25 +178,17 @@ namespace TestingIntegrity
 
 
 
-        // Integ Inter
+        /// <summary>
+        /// This test is responsible for adding entry via IntegrityDatabaseIntermediary.
+        /// </summary>
         [Test]
         public async Task AddEntryTest()
         {
             _integDatabase.DeleteAll();
-            string fileCheck = @"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem2.txt";
+            string fileCheck = Path.Join(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "testingFolder\\testitem2.txt");
             Assert.That(_integDatabase.CheckExistence(fileCheck), Is.False);
             await _integDatabase.AddEntry(fileCheck, 100);
             Assert.That(_integDatabase.CheckExistence(fileCheck), Is.True);
         }
-
-        //[Test]
-        //public async Task CheckerTest()
-        //{
-        //    _integrityManagement.ClearDatabase();
-        //    await _integrityManagement.AddBaseline(@"C:\\Users\\yumcy\\OneDrive\\Desktop\\UniversitySubjects\\COS40006 Computing Technology Project B\\TestingGround\\HundredIntegrityFiles");
-        //    IntegrityDataPooler pooler = new(_integDatabase,0,100);
-        //    List<IntegrityViolation> listItem = await pooler.CheckIntegrity();
-        //    Assert.That(listItem.Count(), Is.EqualTo(1));
-        //}
     }
 }

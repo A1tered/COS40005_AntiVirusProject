@@ -1,7 +1,10 @@
-﻿using Microsoft.Data.Sqlite;
-using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.Services.Interface;
-using SimpleAntivirus.IntegrityModule.Alerts;
+﻿/**************************************************************************
+ * File:        IntegrityUnitTests.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Deals with tests related to Integrity that are unit tests (isolated via dummy classes)
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.Db;
 using SimpleAntivirus.IntegrityModule.IntegrityComparison;
@@ -19,6 +22,9 @@ namespace TestingIntegrity
             
         }
 
+        /// <summary>
+        /// This test tests IntegrityDataPooler and its check integrity function.
+        /// </summary>
         [Test]
         public async Task CheckIntegrityTest()
         {
@@ -28,6 +34,9 @@ namespace TestingIntegrity
             Assert.That(listGet, Has.Exactly(1).Items);
         }
 
+        /// <summary>
+        ///  This test checks IntegrityDataPooler and its check integrity directory function.
+        /// </summary>
         [Test]
         public async Task CheckIntegrityDirectoryTest()
         {
@@ -37,8 +46,9 @@ namespace TestingIntegrity
         }
 
 
-        // Cycler
-
+        /// <summary>
+        /// This test checks IntegrityCycler and its ability to initiatescans.
+        /// </summary>
         [Test]
         public async Task CyclerInitiateScanTest()
         {
@@ -48,8 +58,9 @@ namespace TestingIntegrity
             Assert.That(violationlist, Has.Exactly(1).Items);
         }
 
-        // ViolationHandler
-
+        /// <summary>
+        /// This is a primitive test to check that ReactiveControl prevents overlap by locking itself once run once.
+        /// </summary>
         [Test]
         public void ReactiveControlLockup()
         {

@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/**************************************************************************
+ * File:        DirectoryManager.cs
+ * Author:      Joel Parks, others
+ * Description: Finds database directory.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace SimpleAntivirus.FileHashScanning

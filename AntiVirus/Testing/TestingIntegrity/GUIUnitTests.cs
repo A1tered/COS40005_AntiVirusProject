@@ -1,12 +1,12 @@
-﻿using Microsoft.Data.Sqlite;
+﻿/**************************************************************************
+ * File:        GUIUnitTests.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Deals with functions that are closest to GUI.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.Services.Interface;
-using SimpleAntivirus.IntegrityModule.Alerts;
-using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.Db;
-using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using SimpleAntivirus.IntegrityModule.Reactive;
-using TestingIntegrity.DummyClasses;
 namespace TestingIntegrity
 {
     public class GUIUnitTests
@@ -17,6 +17,9 @@ namespace TestingIntegrity
             
         }
 
+        /// <summary>
+        /// Tests that SetUpService recognises that the test structure does not meet the project structure.
+        /// </summary>
         [Test]
         public async Task SetupServiceTest()
         {

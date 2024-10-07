@@ -6,7 +6,6 @@
  * NuGet Packages: Microsoft.Toolkit.Uwp.Notifications
  **************************************************************************/
 
-using System;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 /// <summary>

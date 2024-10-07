@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**************************************************************************
+ * File:        Hunter.cs
+ * Author:      Joel Parks, others
+ * Description: Hunter searches directory given to it, gets files in directory and then compares them to the database.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using System.IO;
-using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileQuarantine;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.FileHashScanning

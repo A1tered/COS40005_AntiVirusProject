@@ -1,6 +1,13 @@
-﻿using Microsoft.Data.Sqlite;
+﻿/**************************************************************************
+ * File:        DatabaseTest.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Deals with tests specific to DatabaseIntermediary class.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
+using Microsoft.Data.Sqlite;
+using NUnit.Framework.Internal;
 using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.IntegrityModule.Db;
 namespace TestingIntegrity
 {
@@ -13,7 +20,7 @@ namespace TestingIntegrity
         {
             SetupService.GetInstance(null, true);
             _integData = new IntegrityDatabaseIntermediary("IntegrityDatabase", true);
-            fileProvided = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\hashExample.txt";
+            fileProvided = Path.Join(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "hashExample.txt");
         }
 
         [TearDown]
@@ -23,6 +30,9 @@ namespace TestingIntegrity
             _integData = null;
         }
 
+        /// <summary>
+        /// Tests whether the DatabaseIntermediary (non-specific) can correctly insert data into itself.
+        /// </summary>
         [Test]
         public void InsertRowTest()
         {
@@ -32,6 +42,9 @@ namespace TestingIntegrity
             Assert.That(_integData.QueryNoReader(sqliteCommand), Is.EqualTo(1));
         }
 
+        /// <summary>
+        ///  Tests whether non-specific database intermediary can correctly take queries with no issues.
+        /// </summary>
         [Test]
         public void QueryReaderTestInstance()
         {
@@ -48,6 +61,9 @@ namespace TestingIntegrity
             Assert.That(_integData.QueryReader(sqliteCommand).HasRows, Is.True);
         }
 
+        /// <summary>
+        /// Tests whether non specific database intermediary has correctly taken insert queries correctly.
+        /// </summary>
         [Test]
         public void QueryAmountTest()
         {

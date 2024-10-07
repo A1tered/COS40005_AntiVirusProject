@@ -6,15 +6,7 @@
  * Last Modified: 26/08/2024
  **************************************************************************/
 
-using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.IntegrityModule.Db;
-using System.Diagnostics;
 using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace TestingIntegrity.DummyClasses

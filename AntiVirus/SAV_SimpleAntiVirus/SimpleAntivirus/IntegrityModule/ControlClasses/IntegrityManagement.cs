@@ -2,21 +2,14 @@
  * File:        IntegrityManagement.cs
  * Author:      Christopher Thompson, etc.
  * Description: Initiate scans, provide functions for outer module callers.
- * Last Modified: 26/08/2024
+ * Last Modified: 8/10/2024
  **************************************************************************/
 
 using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.IntegrityComparison;
 using SimpleAntivirus.IntegrityModule.Reactive;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.IntegrityModule.Db;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.IntegrityModule.Interface;
 

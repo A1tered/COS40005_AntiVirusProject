@@ -2,11 +2,10 @@
 * File: InputValSan.cs
 * Author: Johann Banaag
 * Description: This file is used to sanitise file paths and file names, and validate filenames and file paths. There is a fixed char limit implemented as well. 
-* Last Modified: 07/08/2024
+* Last Modified: 8/10/2024
 * Libraries:   [Location Libraries / Dependencies]
 **************************************************************************/
 
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;

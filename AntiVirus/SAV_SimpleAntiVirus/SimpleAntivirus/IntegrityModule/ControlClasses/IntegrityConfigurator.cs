@@ -2,17 +2,10 @@
  * File:        IntegrityConfigurator.cs
  * Author:      Christopher Thompson, etc.
  * Description: A simplified interface for the database.
- * Last Modified: 26/08/2024
+ * Last Modified: 8/10/2024
  **************************************************************************/
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.IntegrityModule.Db;
 using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.ControlClasses
@@ -24,6 +17,7 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
         public IntegrityConfigurator(IIntegrityDatabaseIntermediary integrityDatabase)
         {
             _database = integrityDatabase;
+            // Part of feature that allows it show items in a page chunk. (Eg page 1 -> page 2) kind of style.
             _displaySet = 10;
         }
 

@@ -2,11 +2,9 @@
 * File:        Program.cs
 * Author:      Johann Banaag
 * Description: The main functionality of this program is to be able to encrypt SAV files, decrypt certain functionalities into memory and re-encrypt the files
-* Last Modified: 16/09/2024
-* Libraries:   [Location Libraries / Dependencies]
+* Last Modified: 8/10/2024
 **************************************************************************/
 
-using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.IO;
 

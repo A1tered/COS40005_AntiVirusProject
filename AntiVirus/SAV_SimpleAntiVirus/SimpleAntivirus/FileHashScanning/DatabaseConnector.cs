@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**************************************************************************
+ * File:        DatabaseConnector.cs
+ * Author:      Joel Parks, others
+ * Description: Manages all database related functions. Involves querying, adding, removing hashes.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using System.Data;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.Services.Interface;

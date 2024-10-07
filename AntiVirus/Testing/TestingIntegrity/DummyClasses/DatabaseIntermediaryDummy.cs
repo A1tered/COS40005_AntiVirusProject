@@ -8,11 +8,7 @@
 
 
 using Microsoft.Data.Sqlite;
-using System.IO;
-using SimpleAntivirus.IntegrityModule.DataRelated;
-using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.IntegrityModule.Interface;
-using SimpleAntivirus.GUI.Services.Interface;
 namespace TestingIntegrity.DummyClasses
 {
   

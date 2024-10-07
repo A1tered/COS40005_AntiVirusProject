@@ -1,5 +1,9 @@
-﻿using System.Threading.Tasks;
-
+﻿/**************************************************************************
+* File:        EventBus.cs
+* Author:      Zachary Smith
+* Description: Handles the bus to which functionalities can call to push alerts.
+* Last Modified: 8/10/2024
+**************************************************************************/
 namespace SimpleAntivirus.Alerts;
 public class EventBus
 {

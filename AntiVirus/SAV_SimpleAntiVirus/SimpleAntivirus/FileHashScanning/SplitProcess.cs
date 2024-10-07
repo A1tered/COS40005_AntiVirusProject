@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿/**************************************************************************
+ * File:        SplitProcess.cs
+ * Author:      Joel Parks, others
+ * Description: Produces hunters that search directories.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
 
 namespace SimpleAntivirus.FileHashScanning
 {
@@ -41,7 +41,7 @@ namespace SimpleAntivirus.FileHashScanning
             _directoriesSearched = 0;
         }
 
-        public async Task SearchDirectory(FileHashScanner fileHashScanner)
+        public async Task SearchDirectory()
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)

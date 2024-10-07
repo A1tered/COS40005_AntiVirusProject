@@ -1,6 +1,5 @@
 ﻿using SimpleAntivirus.GUI.ViewModels.Windows;
 using System.ComponentModel;
-using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;

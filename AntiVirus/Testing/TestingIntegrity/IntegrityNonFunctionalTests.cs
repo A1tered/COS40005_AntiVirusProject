@@ -1,14 +1,15 @@
-﻿using Microsoft.Data.Sqlite;
+﻿/**************************************************************************
+ * File:        IntegrityNonFunctionalTests.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Deals with non-functional tests related to the whole IntegrityModule.
+ * Last Modified: 8/10/2024
+ **************************************************************************/
+
 using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.Services.Interface;
-using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.Db;
-using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using SimpleAntivirus.IntegrityModule.Reactive;
 using System.Diagnostics;
-using TestingIntegrity.DummyClasses;
 namespace TestingIntegrity
 {
     public class IntegrityNonFunctionalTests
@@ -24,6 +25,11 @@ namespace TestingIntegrity
             _integrityManagement = new(_integData);
         }
 
+        /// <summary>
+        /// Tests the performance of scanning around 20,000 items and measures the time taken. Due to the size of the test folder, this test needs to be
+        /// altered if ran on another system.
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task PerformanceTest()
         {
@@ -44,6 +50,11 @@ namespace TestingIntegrity
             Assert.That(stopwatchHandler.ElapsedMilliseconds, Is.LessThan(3000));
         }
 
+
+        /// <summary>
+        /// Ensure there is no exception if you enter a directory that does not exist. Considering the test requires directories that does not exist,
+        /// running this on another computer should have no issues.
+        /// </summary>
         [Test]
         public async Task RobustnessTestDirectoryNonExistant()
         {

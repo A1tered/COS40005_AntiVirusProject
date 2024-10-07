@@ -1,20 +1,12 @@
 ﻿/**************************************************************************
-* File:        FileHashScanner
+* File:        FileHashScanner.cs
 * Author:      Christopher Thompson & Joel Parks
 * Description: The main program file for the file hash scanner.
-* Last Modified: 13/08/2024
-* Libraries:   [Location Libraries / Dependencies]
+* Last Modified: 8/10/2024
 **************************************************************************/
 
-using SimpleAntivirus.FileHashScanning;
-using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.GUI.Views.Pages;
-using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.IO;
-using System.Windows.Controls;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileQuarantine;
 
@@ -94,7 +86,7 @@ namespace SimpleAntivirus.FileHashScanning
                     Token.ThrowIfCancellationRequested();
                     SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
                     await splitprocessInstance.fillUpSearch(directorySearch);
-                    await splitprocessInstance.SearchDirectory(this);
+                    await splitprocessInstance.SearchDirectory();
                 }
             });
         }
