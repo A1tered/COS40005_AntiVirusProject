@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.GUI.Services;
+﻿/**************************************************************************
+* File:        IntegrityPage.xaml.cs
+* Author:      Christopher Thompson & Joel Parks
+* Description: Page that handles Integrity addition and scanning.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.GUI.Services;
 using Microsoft.Win32;
 using SimpleAntivirus.ViewModels.Pages;
 using System.Windows.Controls;

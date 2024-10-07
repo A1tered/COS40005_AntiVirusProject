@@ -1,9 +1,15 @@
-﻿using Microsoft.Win32;
+﻿/**************************************************************************
+* File:        BlacklistPage.xaml.cs
+* Author:      Joel Parks
+* Description: Allows files to be marked as malicious.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using Microsoft.Win32;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.AntiTampering;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using System.Text.RegularExpressions;
-using System.Windows.Data;
 using Wpf.Ui.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages

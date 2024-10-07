@@ -1,20 +1,19 @@
-﻿using SimpleAntivirus.FileHashScanning;
+﻿/**************************************************************************
+* File:        ScannerPage.xaml.cs
+* Author:      Joel Parks
+* Description: Allows the initiation of a file hash scan from GUI.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.MaliciousCodeScanning;
-using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileQuarantine;
 using Wpf.Ui.Controls;
 using System.Diagnostics;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.IO;
 using Microsoft.Win32;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {

@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿/**************************************************************************
+* File:        ProtectionHistoryPage.xaml.cs
+* Author:      Christopher Thompson & Joel Parks
+* Description: Displays recent alerts in table form.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using System.Windows.Controls;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.GUI.Services;

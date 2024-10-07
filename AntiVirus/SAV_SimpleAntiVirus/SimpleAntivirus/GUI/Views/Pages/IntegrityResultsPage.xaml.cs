@@ -1,24 +1,12 @@
-﻿using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.IntegrityModule.ControlClasses;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿/**************************************************************************
+* File:        IntegrityPage.xaml.cs
+* Author:      Christopher Thompson & Joel Parks
+* Description: Provides integrity results.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.GUI.Services;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Wpf.Ui.Controls;
 using SimpleAntivirus.ViewModels.Pages;
 
 namespace SimpleAntivirus.GUI.Views.Pages

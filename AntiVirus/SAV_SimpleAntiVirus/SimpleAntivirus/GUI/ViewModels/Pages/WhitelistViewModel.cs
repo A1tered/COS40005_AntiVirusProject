@@ -1,11 +1,14 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+* File:        WhitelistViewModel.cs
+* Author:      Joel Parks
+* Description: Handles removal of whitelist items from database.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Converters;
 using SimpleAntivirus.GUI.Views.Pages;
-using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileHashScanning;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages

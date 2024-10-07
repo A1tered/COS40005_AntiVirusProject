@@ -1,13 +1,13 @@
-﻿using SimpleAntivirus.Models;
+﻿/**************************************************************************
+* File:        IntegrityResultsViewModel.cs
+* Author:      Christopher Thompson
+* Description: Handles interaction with IntegrityModel to retrieve most recent violations.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.Models;
 using SimpleAntivirus.IntegrityModule.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.DataRelated;
 
 namespace SimpleAntivirus.ViewModels.Pages

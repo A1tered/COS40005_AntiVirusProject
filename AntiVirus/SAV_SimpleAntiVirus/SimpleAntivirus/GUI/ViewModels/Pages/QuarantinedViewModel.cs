@@ -1,11 +1,15 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+* File:        QuarantinedViewModel.cs
+* Author:      Joel Parks
+* Description: Deals with quarantine, whitelist and deletion of data.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Converters;
 using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileHashScanning;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages

@@ -1,13 +1,13 @@
-﻿using SimpleAntivirus.IntegrityModule.DataRelated;
+﻿/**************************************************************************
+* File:        IntegrityViewModel.cs
+* Author:      Christopher Thompson
+* Description: Handles interaction with IntegrityModel, to display, scan, add, delete and start reactive control.
+* Last Modified: 8/10/2024
+**************************************************************************/
+using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleAntivirus.ViewModels.Pages
 {

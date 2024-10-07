@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+* File:        ProtectionHistoryViewModel.cs
+* Author:      Christopher Thompson
+* Description: Communicates with ProtectionHistoryModel to get Alert data.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
+using SimpleAntivirus.Alerts;
 using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.Models;
 

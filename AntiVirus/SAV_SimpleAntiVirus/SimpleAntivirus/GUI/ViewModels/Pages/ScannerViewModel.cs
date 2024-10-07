@@ -1,4 +1,10 @@
-﻿using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
+﻿/**************************************************************************
+* File:        ScannerViewModel.cs
+* Author:      JoelParks
+* Description: Handles timing of scan, and the visibility of custom scan button.
+* Last Modified: 8/10/2024
+**************************************************************************/
+
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Threading;
