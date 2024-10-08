@@ -4432,11 +4432,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
-      "projectName": "testFileQuarantine",
-      "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
+      "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj",
+      "projectName": "TestFileQuarantine",
+      "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj",
       "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-      "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\obj\\",
+      "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"

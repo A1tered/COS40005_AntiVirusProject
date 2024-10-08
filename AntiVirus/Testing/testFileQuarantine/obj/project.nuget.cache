@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iIkH6hqJUpc=",
+  "dgSpecHash": "CPdz7A+07Pw=",
   "success": true,
-  "projectFilePath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\testFileQuarantine.csproj",
+  "projectFilePath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zach\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\Zach\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
