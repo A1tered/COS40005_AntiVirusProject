@@ -1,4 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿/**************************************************************************
+* Author:      Zachary
+* Description: Eventbus for alerts
+* Last Modified: 08/10/2024
+**************************************************************************/
+
+using System.Threading.Tasks;
 
 namespace SimpleAntivirus.Alerts;
 public class EventBus

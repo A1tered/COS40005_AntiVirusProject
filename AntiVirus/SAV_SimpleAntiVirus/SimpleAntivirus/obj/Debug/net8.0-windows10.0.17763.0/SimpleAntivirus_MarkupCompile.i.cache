@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\obj\Debug\net8.0-windows10.0.17763.0\
 SimpleAntivirus
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\tloh1\OneDrive\Documents\Github2\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\App.xaml
+E:\GitHub\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\App.xaml
 10-832329852
 1282391436
 82-193266840
-244849953274
+244-1149614601
 GUI\Views\Pages\AlertReportPage.xaml;GUI\Views\Pages\BlacklistPage.xaml;GUI\Views\Pages\DashboardPage.xaml;GUI\Views\Pages\IntegrityPage.xaml;GUI\Views\Pages\IntegrityResultsPage.xaml;GUI\Views\Pages\ProtectionHistoryPage.xaml;GUI\Views\Pages\QuarantinedItemsPage.xaml;GUI\Views\Pages\ScannerPage.xaml;GUI\Views\Pages\WhitelistPage.xaml;GUI\Views\Windows\MainWindow.xaml;
 
-False
+True
 

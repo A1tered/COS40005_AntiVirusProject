@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**************************************************************************
+* Author:      Zachary
+* Description: main program to manage the alerts
+* Last Modified: 08/10/2024
+**************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using System.Threading.Tasks;

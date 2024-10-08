@@ -12,8 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\CardmanOfficial\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\CardmanOfficial\\.nuget\\packages"
+      "C:\\Users\\Zach\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Zach\\.nuget\\packages",
+      "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
