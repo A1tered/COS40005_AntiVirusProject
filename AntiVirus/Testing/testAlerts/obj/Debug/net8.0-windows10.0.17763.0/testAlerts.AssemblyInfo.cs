@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("testAlerts")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("TestAlerts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8324c9479455f93ef0e5d2d03b66048edc52941d")]
-[assembly: System.Reflection.AssemblyProductAttribute("testAlerts")]
-[assembly: System.Reflection.AssemblyTitleAttribute("testAlerts")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fa844a279f87693bf0d35f329d27ac981ccc813")]
+[assembly: System.Reflection.AssemblyProductAttribute("TestAlerts")]
+[assembly: System.Reflection.AssemblyTitleAttribute("TestAlerts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows10.0.17763.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows10.0.17763.0")]
