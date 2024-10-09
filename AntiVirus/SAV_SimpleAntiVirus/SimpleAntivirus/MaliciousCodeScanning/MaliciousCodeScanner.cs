@@ -1,9 +1,9 @@
 ﻿/**************************************************************************
-* File:        [Scanner].cs
-* Author:      [Pawan]
+* File:        MaliciousCodeScanner.cs
+* Author:      Pawan
 * Description: [Handles scanning directories and extracting content]
-* Last Modified: [17/09/2024]
-* Libraries:   [Location Libraries / Dependencies]
+* Last Modified: 17/09/2024
+* Libraries:   Location Libraries / Dependencies
 **************************************************************************/
 
 using System;
@@ -19,6 +19,9 @@ using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
+    /// <summary>
+    /// Scans files or folders for potentially malicious code
+    /// </summary>
     public class MaliciousCodeScanner
     {
         private readonly DatabaseHandler dbHandler;
@@ -38,6 +41,12 @@ namespace SimpleAntivirus.MaliciousCodeScanning
             QuarantineManager = quarantineManager;
         }
 
+        /// <summary>
+        /// Based on the selected scan type, adds directories to the list to scan and scans them.
+        /// </summary>
+        /// <param name="scanType"></param>
+        /// <param name="customScanDirs"></param>
+        /// <returns></returns>
         public async Task Scan(string scanType, List<string> customScanDirs)
         {
             await Task.Run(async () =>

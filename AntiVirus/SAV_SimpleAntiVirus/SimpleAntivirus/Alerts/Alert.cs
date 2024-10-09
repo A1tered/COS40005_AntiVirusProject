@@ -1,6 +1,6 @@
 ﻿/**************************************************************************
  * File:        Alert.cs
- * Author:      Zachary Smith, Joel Parks
+ * Author:      Zachary Smith
  * Description: Creates the structure of an alert and displays it when called
  * Last Modified: 10/09/2024
  * NuGet Packages: Microsoft.Toolkit.Uwp.Notifications
