@@ -17,6 +17,19 @@
     Loaded="Page_Loaded"
     mc:Ignorable="d">
     <StackPanel>
+<<<<<<< Updated upstream
         <ui:ToggleSwitch x:Name="ThemeSwitch" Checked="DarkModeEnabled" Unchecked="LightModeEnabled" IsChecked="False" Content="Light theme enabled" Padding="8,6,0,0" Margin="0,0,0,10" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+=======
+        <!-- <ui:Image Height="100" Source="pack://application:,,,/SimpleAntivirus;component/GUI/resources/atriskdark.png" Width="752" HorizontalAlignment="Left"/> -->
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding QuarantinedItemsCount}" HorizontalAlignment="Center" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding IntegrityViolationsCount}" HorizontalAlignment="Center" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding WhitelistedItemsCount}" HorizontalAlignment="Center" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="14" Text="{Binding LastScanDateTime}" HorizontalAlignment="Center" Margin="0,50,0,0"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding LastScanDuration}" FontSize="14" HorizontalAlignment="Center"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding ThreatsLast24h}" HorizontalAlignment="Center" FontSize="14" Margin="0,50,0,0"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding IntegrityViolationsLast24h}" HorizontalAlignment="Center" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding TerminalAlertsLast24h}" HorizontalAlignment="Center" FontSize="14"/>
+        <ui:ToggleSwitch x:Name="ThemeSwitch" Checked="DarkModeEnabled" Unchecked="LightModeEnabled" IsChecked="False" Content="Light theme enabled" Padding="8,6,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+>>>>>>> Stashed changes
     </StackPanel>
 </Page>

@@ -133,6 +133,17 @@ namespace SimpleAntivirus
             // Check the program has everything required, and instantiate the Singleton
             await SetupService.GetInstance(_host.Services).Run();
 
+            // Y2K38 check
+            int y2k38TimeStamp = 2147483647;
+            long currentUnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+            ISetupService setupService = SetupService.GetExistingInstance();
+
+            if (currentUnixTime > y2k38TimeStamp)
+            {
+                setupService.Y2k38Problem();
+            }
+
             // If setup encounters no errors, then continue. 
             if (!SetupService.GetExistingInstance().ProgramCooked)
             {

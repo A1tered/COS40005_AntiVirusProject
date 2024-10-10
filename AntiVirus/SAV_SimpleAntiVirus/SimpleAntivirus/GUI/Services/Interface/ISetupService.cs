@@ -78,5 +78,7 @@ namespace SimpleAntivirus.GUI.Services.Interface
         public bool FirstTimeRunning{ get;}
 
         public bool ProgramCooked{ get; }
+
+        public void Y2k38Problem();
     }
 }

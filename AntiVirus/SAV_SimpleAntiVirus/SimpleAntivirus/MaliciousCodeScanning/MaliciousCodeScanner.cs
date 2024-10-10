@@ -129,24 +129,22 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         fileAttributes.FileContent = await ExtractFileContentAsync(file);
 
                         // Debug Output
-                        Debug.WriteLine("File Information:");
-                        Debug.WriteLine($"File Name: {fileAttributes.FileName}");
-                        Debug.WriteLine($"File Type: {fileAttributes.FileType}");
-                        Debug.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
-                        Debug.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
-                        Debug.WriteLine($"File Path: {file}");
+                        //Debug.WriteLine("File Information:");
+                        //Debug.WriteLine($"File Name: {fileAttributes.FileName}");
+                        //Debug.WriteLine($"File Type: {fileAttributes.FileType}");
+                        //Debug.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
+                        //Debug.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
+                        //Debug.WriteLine($"File Path: {file}");
 
                         // Detect malicious commands in the file content
                         fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
-                        Debug.WriteLine($"Contains Malicious Commands: {fileAttributes.ContainsMaliciousCommands}");
+                        //Debug.WriteLine($"Contains Malicious Commands: {fileAttributes.ContainsMaliciousCommands}");
 
                         // Output whether the file is malicious or safe
                         if (fileAttributes.ContainsMaliciousCommands)
                         {
                             violationsList.Add(file);
                         }
-
-                        Debug.WriteLine("--------------------------------------------------");
                     }
                     foreach (string violation in violationsList)
                     {
