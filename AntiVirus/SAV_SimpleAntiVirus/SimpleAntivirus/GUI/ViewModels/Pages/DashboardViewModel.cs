@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
 ﻿using Wpf.Ui.Appearance;
-=======
 ﻿/**************************************************************************
 * File:        DashboardViewModel.cs
 * Author:      WPF template
@@ -10,7 +8,6 @@
 
 using System.ComponentModel;
 using Wpf.Ui.Appearance;
->>>>>>> Stashed changes
 using Wpf.Ui.Controls;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages

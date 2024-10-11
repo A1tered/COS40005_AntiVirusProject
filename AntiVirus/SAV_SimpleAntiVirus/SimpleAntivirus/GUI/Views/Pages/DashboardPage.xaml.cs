@@ -1,8 +1,6 @@
-<<<<<<< Updated upstream
 ﻿using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using Wpf.Ui.Appearance;
-=======
 ﻿/**************************************************************************
 * File:        DashboardPage.xaml.cs
 * Author:      Joel Parks
@@ -16,7 +14,6 @@ using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.Models;
->>>>>>> Stashed changes
 using Wpf.Ui.Controls;
 using SimpleAntivirus.Alerts;
 
@@ -27,22 +24,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private IDatabaseManager _databaseManager;
         private IntegrityHandlerModel _integrityHandlerModel;
         private AlertManager _alertManager;
-        private ISetupService _setupService;
+        private EventBus _eventBus;
 
         // ViewModel
         public DashboardViewModel ViewModel { get; }
 
         public DashboardPage(DashboardViewModel viewModel)
         {
-            // Get instance of SetupService
-            _setupService = SetupService.GetExistingInstance();
-
             ViewModel = viewModel;
-            DataContext = this;
-
+            DataContext = ViewModel;
             InitializeComponent();
-
-            _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
         }
 
         private void DarkModeChange(ToggleSwitch toggle)
@@ -96,12 +87,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // On page loaded, determine the current theme and check if Dark mode is already enabled.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
+            _alertManager = new AlertManager();
+            _eventBus = new EventBus(_alertManager);
+            _integrityHandlerModel = new IntegrityHandlerModel(_eventBus);
             UpdatePage();
         }
 
         private void UpdateStats()
         {
+            // Get instance of SetupService
+            ISetupService _setupService = SetupService.GetExistingInstance();
+
             // Quarantined Items Count
             ViewModel.QuarantinedItemsCount = $"{_databaseManager.GetAllQuarantinedFilesAsync().Result.Count()} files in quarantine";
 
@@ -115,7 +112,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             int lastScanDateTimeInt = _setupService.GetFromConfig("lastScanDateTime");
             long lastScanDateTimeUnix = (long)lastScanDateTimeInt;
             DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(lastScanDateTimeUnix).DateTime;
-                // Check scan type
+            // Check scan type
             if (_setupService.GetFromConfig("lastScanType") == 1)
             {
                 ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/mm/yyyy hh:mm tt")} (quick scan)";
