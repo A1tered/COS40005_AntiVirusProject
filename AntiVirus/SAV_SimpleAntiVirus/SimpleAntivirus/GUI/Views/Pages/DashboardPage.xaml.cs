@@ -1,7 +1,6 @@
 ﻿using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.GUI.ViewModels.Windows;
 using Wpf.Ui.Appearance;
-﻿/**************************************************************************
+/**************************************************************************
 * File:        DashboardPage.xaml.cs
 * Author:      Joel Parks
 * Description: Default page of GUI.
@@ -12,10 +11,10 @@ using System.IO;
 using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.GUI.Services;
-using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.Models;
 using Wpf.Ui.Controls;
 using SimpleAntivirus.Alerts;
+using System.Diagnostics;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -40,18 +39,19 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             toggle.Content = "Dark theme enabled";
             ViewModel.OnChangeTheme("theme_dark");
+            UpdateProtectionStatus();
         }
 
         private void LightModeChange(ToggleSwitch toggle)
         {
             toggle.Content = "Light theme enabled";
             ViewModel.OnChangeTheme("theme_light");
+            UpdateProtectionStatus();
         }
 
         private void DarkModeEnabled(object sender, RoutedEventArgs e)
         {
             DashboardViewModel viewModel = new DashboardViewModel();
-
             if (sender is ToggleSwitch toggleSwitch)
             {
                 DarkModeChange(toggleSwitch);
@@ -61,11 +61,16 @@ namespace SimpleAntivirus.GUI.Views.Pages
         private void LightModeEnabled(object sender, RoutedEventArgs e)
         {
             DashboardViewModel viewModel = new DashboardViewModel();
-
             if (sender is ToggleSwitch toggleSwitch)
             {
                 LightModeChange(toggleSwitch);
             }
+        }
+
+        private void RunScan_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(ScannerPage));
+
         }
 
         private void UpdatePage()
@@ -79,6 +84,8 @@ namespace SimpleAntivirus.GUI.Views.Pages
             {
                 LightModeChange(ThemeSwitch);
             }
+            // Update Protection Status
+            UpdateProtectionStatus();
 
             // Update Home Page Statistics
             UpdateStats();
@@ -102,28 +109,26 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Quarantined Items Count
             ViewModel.QuarantinedItemsCount = $"{_databaseManager.GetAllQuarantinedFilesAsync().Result.Count()} files in quarantine";
 
-            // Integrity Violations Count
-            ViewModel.IntegrityViolationsCount = $"{_integrityHandlerModel.RecentViolationList.Count} integrity violations";
-
             // Whitelisted Items Count
             ViewModel.WhitelistedItemsCount = $"{_databaseManager.GetWhitelistAsync().Result.Count()} files whitelisted.";
 
             // Last Scan DateTime
             int lastScanDateTimeInt = _setupService.GetFromConfig("lastScanDateTime");
             long lastScanDateTimeUnix = (long)lastScanDateTimeInt;
-            DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(lastScanDateTimeUnix).DateTime;
+            DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(lastScanDateTimeUnix).ToLocalTime().DateTime;
             // Check scan type
+            Debug.WriteLine($"lastScanDateTime: {_setupService.GetFromConfig("lastScanDateTime")}");
             if (_setupService.GetFromConfig("lastScanType") == 1)
             {
-                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/mm/yyyy hh:mm tt")} (quick scan)";
+                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (quick scan)";
             }
             else if (_setupService.GetFromConfig("lastScanType") == 2)
             {
-                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/mm/yyyy hh:mm tt")} (full scan)";
+                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (full scan)";
             }
             else if (_setupService.GetFromConfig("lastScanType") == 3)
             {
-                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/mm/yyyy hh:mm tt")} (custom scan)";
+                ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (custom scan)";
             }
             else
             {
@@ -144,6 +149,64 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
             // Terminal Alerts Last 24 hours
             ViewModel.TerminalAlertsLast24h = $"Times the registry has been accessed by Command Prompt or PowerShell in the last 24 hours: {_alertManager.GetAlertsByComponentWithinPastTimeFrame("Terminal Scanning", 86400).Result}";
+        }
+
+        /// <summary>
+        ///  Checks the integrity violation, whitelisted item, and recent threat counts and determines the current protection status.
+        /// </summary>
+        private void UpdateProtectionStatus()
+        {
+            // At risk
+            int fileHashAlertsLast24h = _alertManager.GetAlertsByComponentWithinPastTimeFrame("File Hash Scanning", 86400).Result;
+            int maliciousCodeAlertsLast24h = _alertManager.GetAlertsByComponentWithinPastTimeFrame("Malicious Code Scanning", 86400).Result;
+            int threats = fileHashAlertsLast24h + maliciousCodeAlertsLast24h;
+            if (threats > 0 && ViewModel.CurrentTheme == ApplicationTheme.Light)
+            {
+                ResetProtectionStatus();
+                ViewModel.AtRiskLight = true;
+            }
+            if (threats > 0 && ViewModel.CurrentTheme == ApplicationTheme.Dark)
+            {
+                ResetProtectionStatus();
+                ViewModel.AtRiskDark = true;
+            }
+
+            // Potential risk
+            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && ViewModel.CurrentTheme == ApplicationTheme.Light)
+            {
+                ResetProtectionStatus();
+                ViewModel.PotentialRiskLight = true;
+            }
+            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && ViewModel.CurrentTheme == ApplicationTheme.Dark)
+            {
+                ResetProtectionStatus();
+                ViewModel.PotentialRiskDark = true;
+            }
+
+            // Protected
+            if (_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result == 0 && _databaseManager.GetWhitelistAsync().Result.Count() == 0 && threats == 0 && ViewModel.CurrentTheme == ApplicationTheme.Light)
+            {
+                ResetProtectionStatus();
+                ViewModel.ProtectedLight = true;
+            }
+            if (_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result == 0 && threats == 0 && ViewModel.CurrentTheme == ApplicationTheme.Dark)
+            {
+                ResetProtectionStatus();
+                ViewModel.ProtectedDark = true;
+            }
+        }
+
+        /// <summary>
+        /// Just a small method to reset all protection status properties to false before reassigning to ensure accuracy
+        /// </summary>
+        private void ResetProtectionStatus()
+        {
+            ViewModel.AtRiskDark = false;
+            ViewModel.AtRiskLight = false;
+            ViewModel.PotentialRiskLight = false;
+            ViewModel.PotentialRiskDark = false;
+            ViewModel.ProtectedDark = false;
+            ViewModel.ProtectedLight = false;
         }
     }
 }

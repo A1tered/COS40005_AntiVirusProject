@@ -12,7 +12,7 @@ using Wpf.Ui.Controls;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages
 {
-    public partial class DashboardViewModel : ObservableObject, INavigationAware
+    public partial class DashboardViewModel : ObservableObject, INavigationAware, INotifyPropertyChanged
     {
         private bool _isInitialized = false;
         

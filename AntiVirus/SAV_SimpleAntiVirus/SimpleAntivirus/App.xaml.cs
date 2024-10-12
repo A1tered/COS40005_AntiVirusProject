@@ -76,6 +76,7 @@ namespace SimpleAntivirus
                 services.AddSingleton<IntegrityPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
+
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();
 
@@ -85,6 +86,9 @@ namespace SimpleAntivirus
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
 
+                // Other services
+                services.AddSingleton<CLIService>();
+
                 services.AddSingleton<AlertManager>();
                 services.AddSingleton<EventBus>();
 
@@ -92,9 +96,6 @@ namespace SimpleAntivirus
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ProtectionHistoryModel>();
                 services.AddSingleton<AlertReportPage>();
-
-                services.AddSingleton<CLIService>();
-
             }).Build();
 
         /// <summary>
@@ -149,7 +150,6 @@ namespace SimpleAntivirus
             {
                 // Begin SystemTray
                 _host.Services.GetService<SystemTrayService>();
-
 
                 // Rough fix to theme irregularity copied from other theme window.
                 ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();

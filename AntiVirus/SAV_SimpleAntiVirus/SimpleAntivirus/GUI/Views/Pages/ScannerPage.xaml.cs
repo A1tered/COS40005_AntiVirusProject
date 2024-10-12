@@ -149,18 +149,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 {
                     // No scan option selected.
                 }
-            }
-            catch (OperationCanceledException)
-            {
-
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show($"An error occurred: {ex.Message}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                ViewModel.IsScanRunning = false;
 
                 // Scan ended, calculate duration
                 // Get current date and time and store this in the config file
@@ -175,6 +163,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
                 ViewModel.ResetTimer();
                 _scanType = -1;
+            }
+            catch (OperationCanceledException)
+            {
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"An error occurred: {ex.Message}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                ViewModel.IsScanRunning = false;
             }
         }
 

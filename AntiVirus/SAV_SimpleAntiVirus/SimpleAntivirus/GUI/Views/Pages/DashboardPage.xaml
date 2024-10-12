@@ -16,16 +16,25 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+    
     <StackPanel>
-        <!-- <ui:Image Height="100" Source="pack://application:,,,/SimpleAntivirus;component/GUI/resources/atriskdark.png" Width="752" HorizontalAlignment="Left"/> -->
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding QuarantinedItemsCount}" HorizontalAlignment="Center" FontSize="14"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding IntegrityViolationsCount}" HorizontalAlignment="Center" FontSize="14"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding WhitelistedItemsCount}" HorizontalAlignment="Center" FontSize="14"/>
-        <ui:TextBlock TextWrapping="Wrap" FontSize="14" Text="{Binding LastScanDateTime}" HorizontalAlignment="Center" Margin="0,50,0,0"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding LastScanDuration}" FontSize="14" HorizontalAlignment="Center"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding ThreatsLast24h}" HorizontalAlignment="Center" FontSize="14" Margin="0,50,0,0"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding IntegrityViolationsLast24h}" HorizontalAlignment="Center" FontSize="14"/>
-        <ui:TextBlock TextWrapping="Wrap" Text="{Binding TerminalAlertsLast24h}" HorizontalAlignment="Center" FontSize="14"/>
-        <ui:ToggleSwitch x:Name="ThemeSwitch" Checked="DarkModeEnabled" Unchecked="LightModeEnabled" IsChecked="False" Content="Light theme enabled" Padding="8,6,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <ui:Image Height="100" Visibility="{Binding AtRiskDark, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/atriskdark.png" Width="694" HorizontalAlignment="Left"/>
+        <ui:Image Height="100" Visibility="{Binding AtRiskLight, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/atrisklight.png" Width="690" HorizontalAlignment="Left"/>
+        <ui:Image Height="100" Visibility="{Binding PotentialRiskDark, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/potentialriskdark.png" HorizontalAlignment="Left" Width="690"/>
+        <ui:Image Height="100" Visibility="{Binding PotentialRiskLight, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/potentialrisklight.png" Width="692" HorizontalAlignment="Left"/>
+        <ui:Image Height="100" Visibility="{Binding ProtectedDark, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/protecteddark.png" Width="690" HorizontalAlignment="Left"/>
+        <ui:Image Height="100" Visibility="{Binding ProtectedLight, Converter={StaticResource BoolToVisibilityConverter}}" Source="pack://application:,,,/SimpleAntivirus;component/GUI/Resources/protectedlight.png" Width="690" HorizontalAlignment="Left"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding QuarantinedItemsCount}" HorizontalAlignment="Left" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding WhitelistedItemsCount}" HorizontalAlignment="Left" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="14" Text="{Binding LastScanDateTime}" HorizontalAlignment="Left" Margin="0,50,0,0"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding LastScanDuration}" FontSize="14" HorizontalAlignment="Left"/>
+        <ui:Button Content="Run a scan" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="RunScan_Click" Background="#FF2204B8" Foreground="#E4FFFFFF" FontWeight="Bold"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding ThreatsLast24h}" HorizontalAlignment="Left" FontSize="14" Margin="0,50,0,0"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding IntegrityViolationsLast24h}" HorizontalAlignment="Left" FontSize="14"/>
+        <ui:TextBlock TextWrapping="Wrap" Text="{Binding TerminalAlertsLast24h}" HorizontalAlignment="Left" FontSize="14"/>
+        <ui:ToggleSwitch x:Name="ThemeSwitch" Checked="DarkModeEnabled" Unchecked="LightModeEnabled" IsChecked="False" Content="Light theme enabled" Padding="8,6,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,50,0,0"/>
     </StackPanel>
 </Page>

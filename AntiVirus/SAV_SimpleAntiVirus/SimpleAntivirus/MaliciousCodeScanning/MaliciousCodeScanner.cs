@@ -134,11 +134,10 @@ namespace SimpleAntivirus.MaliciousCodeScanning
                         //Debug.WriteLine($"File Type: {fileAttributes.FileType}");
                         //Debug.WriteLine($"File Size: {fileAttributes.FileSize} bytes");
                         //Debug.WriteLine($"File Hash (SHA1): {fileAttributes.FileHash}");
-                        //Debug.WriteLine($"File Path: {file}");
+                        Debug.WriteLine($"Malicious Code Scanner: File Path: {file}");
 
                         // Detect malicious commands in the file content
                         fileAttributes.ContainsMaliciousCommands = detector.ContainsMaliciousCommands(fileAttributes.FileContent);
-                        //Debug.WriteLine($"Contains Malicious Commands: {fileAttributes.ContainsMaliciousCommands}");
 
                         // Output whether the file is malicious or safe
                         if (fileAttributes.ContainsMaliciousCommands)
