@@ -73,6 +73,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
         }
 
+        private void ViewAlerts_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(ProtectionHistoryPage));
+
+        }
+
+        private void ViewQuarantine_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceIntermediary.NavigationService.Navigate(typeof(QuarantinedItemsPage));
+
+        }
+
         private void UpdatePage()
         {
             if (ViewModel.CurrentTheme == Wpf.Ui.Appearance.ApplicationTheme.Dark)
@@ -172,12 +184,12 @@ namespace SimpleAntivirus.GUI.Views.Pages
             }
 
             // Potential risk
-            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && ViewModel.CurrentTheme == ApplicationTheme.Light)
+            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && threats == 0 && ViewModel.CurrentTheme == ApplicationTheme.Light)
             {
                 ResetProtectionStatus();
                 ViewModel.PotentialRiskLight = true;
             }
-            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && ViewModel.CurrentTheme == ApplicationTheme.Dark)
+            if ((_alertManager.GetAlertsByComponentWithinPastTimeFrame("Integrity Checking", 86400).Result > 0 || _databaseManager.GetWhitelistAsync().Result.Count() > 0) && threats == 0 && ViewModel.CurrentTheme == ApplicationTheme.Dark)
             {
                 ResetProtectionStatus();
                 ViewModel.PotentialRiskDark = true;
