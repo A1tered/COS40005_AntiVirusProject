@@ -1,12 +1,13 @@
-﻿/**************************************************************************
+using SimpleAntivirus.FileHashScanning;
+/**************************************************************************
 * File:        ScannerPage.xaml.cs
 * Author:      Joel Parks
 * Description: Allows the initiation of a file hash scan from GUI.
-* Last Modified: 8/10/2024
+* Last Modified: 10/10/2024
 **************************************************************************/
 
-using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.MaliciousCodeScanning;
+using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileQuarantine;
@@ -14,6 +15,7 @@ using Wpf.Ui.Controls;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
+using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {
@@ -41,6 +43,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // ScannerPage GUI
         private List<string> _customList;
         public ScannerViewModel ViewModel { get; }
+        private int _scanType;
+
+        // SetupService (to save timestamp to config)
+        private ISetupService _setupService = SetupService.GetExistingInstance();
 
         public ScannerPage(ScannerViewModel viewModel, AlertManager alertManager, EventBus eventBus)
         {
@@ -64,13 +70,23 @@ namespace SimpleAntivirus.GUI.Views.Pages
             // Initialise Malicious Code
             _databaseHandler = new DatabaseHandler(Path.Combine(AppContext.BaseDirectory, "Databases"));
             _detector = new Detector(_databaseHandler);
+
         }
 
         private async void ScanButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.ResetTimer();
             ViewModel.StartTimer();
+            _setupService.AddToConfig("threatsLastScan", 0);
             ViewModel.IsScanRunning = true;
+
+            // Get current date and time and store this in the config file
+            DateTime currentTime = DateTime.UtcNow;
+            long unixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
+            int unixTimeInt = (int)(unixTime);
+            _setupService.AddToConfig("lastScanDateTime", unixTimeInt);
+            Debug.WriteLine($"Scan started at unix time: {unixTime} seconds");
+
             try
             {
                 Debug.WriteLine($"Scan running: {ViewModel.IsScanRunning}");
@@ -80,6 +96,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
 
                 if (QuickScanButton.IsChecked == true)
                 {
+                    _scanType = 1;
                     Task quickScanFileHash = _fileHashScanner.Scan("quick", null);
                     Task quickScanMalCode = _maliciousCodeScanner.Scan("quick", null);
                     await Task.WhenAll(quickScanFileHash, quickScanMalCode);
@@ -91,6 +108,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else if (FullScanButton.IsChecked == true)
                 {
+                    _scanType = 2;
                     Task fullScanFileHash = _fileHashScanner.Scan("full", null);
                     Task fullScanMalCode = _maliciousCodeScanner.Scan("full", null);
                     await Task.WhenAll(fullScanFileHash, fullScanMalCode);
@@ -102,6 +120,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 }
                 else if (CustomScanButton.IsChecked == true)
                 {
+                    _scanType = 3;
                     ViewModel.IsScanRunning = false;
                     Task customscanFileHash = _fileHashScanner.Scan("custom", _customList);
                     Task customscanMalCode = _maliciousCodeScanner.Scan("custom", _customList);
@@ -130,6 +149,20 @@ namespace SimpleAntivirus.GUI.Views.Pages
                 {
                     // No scan option selected.
                 }
+
+                // Scan ended, calculate duration
+                // Get current date and time and store this in the config file
+                int scanStartTime = _setupService.GetFromConfig("lastScanTime");
+
+                string stopwatchText = ViewModel.StopwatchShortText;
+                TimeSpan timeSpan = TimeSpan.Parse(stopwatchText);
+                int duration = (int)timeSpan.TotalSeconds;
+                Debug.WriteLine($"Scan duration: {duration} seconds");
+                _setupService.AddToConfig("lastScanDuration", duration);
+                _setupService.AddToConfig("lastScanType", _scanType);
+
+                ViewModel.ResetTimer();
+                _scanType = -1;
             }
             catch (OperationCanceledException)
             {
@@ -142,7 +175,6 @@ namespace SimpleAntivirus.GUI.Views.Pages
             finally
             {
                 ViewModel.IsScanRunning = false;
-                ViewModel.ResetTimer();
             }
         }
 

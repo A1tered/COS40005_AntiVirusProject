@@ -54,7 +54,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ui:TextBlock x:Name="TimeStampBlock" Text="11/08/2024 9:21pm" FontSize="20" HorizontalAlignment="Left" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Italic"/>
-                <ui:TextBlock x:Name="ThreatType" Text="Threat Type:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2"/>
+                <ui:TextBlock x:Name="ThreatType" Text="Category:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2"/>
                 <ui:TextBlock x:Name="Severity" Text="Severity:" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"/>
                 <ui:TextBlock x:Name="Message" Text="Message:" FontSize="14" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
                 <ui:TextBlock x:Name="SuggestedAction" Text="Suggested Action:" FontSize="14" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="4" Grid.ColumnSpan="2"/>

@@ -27,10 +27,10 @@
         <ui:TextBlock x:Name="ItemAmount" Margin="10,0,0,0" Text="0 Items" FontStyle="Italic"/>
         <DataGrid x:Name="ProtectionHistoryDataGrid" Height="256" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataShow_Selected">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Component" Binding="{Binding Component}" Width="0.2*"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Component}" Width="0.2*"/>
                 <DataGridTextColumn Header="Severity" Binding="{Binding Severity}" Width="0.2*"/>
                 <DataGridTextColumn Header="Message" Binding="{Binding TruncatedMessage}" Width="0.7*"/>
-                <DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}"  Width="0.3*" />
+                <DataGridTextColumn Header="Date/Time" Binding="{Binding TimeStamp}"  Width="0.3*" />
             </DataGrid.Columns>
         </DataGrid>
         <ui:Button x:Name="DetailsButton" Visibility="Hidden" Content="Details" HorizontalAlignment="Center" Background="#FF2204B8" Foreground="#E4FFFFFF" Margin="0,20,0,0" Width="188" Click="DetailsButton_Click" FontWeight="Bold"/>

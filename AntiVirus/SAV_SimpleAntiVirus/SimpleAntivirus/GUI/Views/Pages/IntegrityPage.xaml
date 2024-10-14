@@ -32,13 +32,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ui:TextBlock Margin="-14,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Check for the integrity of sensitive files here and be alerted of any integrity violations." Grid.ColumnSpan="3" HorizontalAlignment="Left"/>
+        <ui:TextBlock Margin="-14,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Check for the integrity of sensitive files here and be alerted if the files are tampered with. Simple Antivirus will treat any modifications or missing files as integrity violations." Grid.ColumnSpan="3" HorizontalAlignment="Left"/>
         <ui:Button x:Name="IntegrityScanButton" Grid.Column="1" HorizontalAlignment="Center" Content="Run Integrity Scan" Click="Button_Click" Margin="0,195,0,0" VerticalAlignment="Top" Width="166" Height="32" Background="#FF2204B8"/>
         <ui:TextBlock x:Name="InfoProvide" TextAlignment="Center" Text="{Binding Progress, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="InfoProvideDescription" TextAlignment="Center" Text="{Binding ProgressInfo, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,133,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="31" FontSize="18" Grid.Column="1"/>
         <ui:TextBlock x:Name="ViolationNote" TextAlignment="Center" Text="" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top" Width="180" Background="Transparent" Height="19" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
         <ui:Button x:Name="ResultsButton" Visibility="Hidden" Content="See Results" Margin="0,251,0,0" VerticalAlignment="Top" Click="See_Results_Click" Grid.Column="1" HorizontalAlignment="Center" Height="32" Width="122" Background="#FF2204B8"/>
-        <ui:CardExpander x:Name="IntegrityConfigExpansion" Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Configure Integrity Entries" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" Expanded="CardExpander_Expanded" Collapsed="CardExpander_Expanded">
+        <ui:CardExpander x:Name="IntegrityConfigExpansion" Grid.Column="0" HorizontalAlignment="Stretch" Height="669" Header="Add Files or Folders" Margin="-14,305,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" Expanded="CardExpander_Expanded" Collapsed="CardExpander_Expanded">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -53,7 +53,7 @@
 
                 <DataGrid x:Name="DataShow" Grid.ColumnSpan="3" Margin="44,26,24,88" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200" SelectionChanged="DataShow_Selected" Grid.Row="1">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Directory" Binding="{Binding DisplayDirectory}" Width="*" />
+                        <DataGridTextColumn Header="File Path" Binding="{Binding DisplayDirectory}" Width="*" />
                         <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>

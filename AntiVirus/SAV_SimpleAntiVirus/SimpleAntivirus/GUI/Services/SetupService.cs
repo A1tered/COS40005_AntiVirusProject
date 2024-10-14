@@ -464,6 +464,11 @@ namespace SimpleAntivirus.GUI.Services
             }
         }
 
+        public static void GetInstance()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool FirstTimeRunning
         {
             get
@@ -478,6 +483,12 @@ namespace SimpleAntivirus.GUI.Services
             {
                 return _programCooked;
             }
+        }
+
+        public static ISetupService Instance { get; set; }
+        public void Y2k38Problem()
+        {
+            ErrorMessage("The system time is set beyond 19 January 2038 at 03:14:07 UTC. Please change the system time and try again.");
         }
     }
 }

@@ -34,7 +34,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="View the currently whitelisted items and remove them from the whitelist." Margin="0,0,0,20"/>
+        <ui:TextBlock TextWrapping="Wrap" FontSize="20" Text="View the currently whitelisted items and remove them from the whitelist.&#10;If you are looking to add a file to the whitelist, please ensure the file is quarantined by first reviewing the Quarantined Items page.&#10;Finally, select the file and choose [Add to Whitelist]." Margin="0,0,0,20"/>
         <DataGrid x:Name="WhitelistDataGrid" Height="287" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="WhitelistSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="File Path" Width="*" Binding="{Binding FilePath}"/>

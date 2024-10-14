@@ -7,6 +7,8 @@
 
 using System.IO;
 using System.Diagnostics;
+using SimpleAntivirus.GUI.Services.Interface;
+using SimpleAntivirus.GUI.Services;
 
 namespace SimpleAntivirus.FileHashScanning
 {

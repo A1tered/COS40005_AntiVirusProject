@@ -79,6 +79,7 @@ namespace SimpleAntivirus
                 services.AddSingleton<IntegrityPage>();
                 services.AddSingleton<IntegrityViewModel>();
                 services.AddSingleton<IntegrityHandlerModel>();
+
                 services.AddSingleton<IntegrityResultsPage>();
                 services.AddSingleton<IntegrityResultsViewModel>();
 
@@ -88,6 +89,9 @@ namespace SimpleAntivirus
                 services.AddSingleton<QuarantinedItemsPage>();
                 services.AddSingleton<QuarantinedViewModel>();
 
+                // Other services
+                services.AddSingleton<CLIService>();
+
                 services.AddSingleton<AlertManager>();
                 services.AddSingleton<EventBus>();
 
@@ -95,9 +99,6 @@ namespace SimpleAntivirus
                 services.AddSingleton<ProtectionHistoryViewModel>();
                 services.AddSingleton<ProtectionHistoryModel>();
                 services.AddSingleton<AlertReportPage>();
-
-                services.AddSingleton<CLIService>();
-
             }).Build();
 
         /// <summary>
@@ -136,12 +137,22 @@ namespace SimpleAntivirus
             // Check the program has everything required, and instantiate the Singleton
             await SetupService.GetInstance(_host.Services).Run();
 
+            // Y2K38 check
+            int y2k38TimeStamp = 2147483647;
+            long currentUnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+            ISetupService setupService = SetupService.GetExistingInstance();
+
+            if (currentUnixTime > y2k38TimeStamp)
+            {
+                setupService.Y2k38Problem();
+            }
+
             // If setup encounters no errors, then continue. 
             if (!SetupService.GetExistingInstance().ProgramCooked)
             {
                 // Begin SystemTray
                 _host.Services.GetService<SystemTrayService>();
-
 
                 // Rough fix to theme irregularity copied from other theme window.
                 ApplicationTheme CurrentTheme = ApplicationThemeManager.GetAppTheme();

@@ -14,24 +14,12 @@ using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.CLIMonitoring;
 
-public class CompleteCopy
-{
-    public int ProcessID { get; set; }
-
-    public DateTime TimeStamp { get; set; }
-
-    public string KeyName { get; set; }
-
-    public CompleteCopy(int processId, DateTime timeStamp, string keyName)
-    {
-        ProcessID = processId;
-        TimeStamp = timeStamp;
-        KeyName = keyName;
-    }
-}
 
 public class CLIMonitor
 {
+    private TraceEventSession _session;
+    public TraceEventSession Session => _session;
+
 
     // Variable to keep track of total events checked
     private int _totalEventsChecked;
@@ -43,11 +31,11 @@ public class CLIMonitor
 
     private Dictionary<int, string> _processCache;
 
-    private ConcurrentQueue<CompleteCopy> _copyCreator;
+   
 
     private DispatcherTimer _dispatcherTimer;
 
-    private TraceEventSession _session;
+    
 
     private Task _taskTracker;
     public CLIMonitor(EventBus eventBusPass)
@@ -93,18 +81,14 @@ public class CLIMonitor
         }
     }
 
-    private void dispatcherTimerEvent(object sender, EventArgs e)
+    public void dispatcherTimerEvent(object sender, EventArgs e)
     {
         //System.Diagnostics.Debug.WriteLine("Updating cache");
         UpdateProcessCache();
     }
 
-    private void SetupAsync()
+    public void InitializeSession()
     {
-
-        UpdateProcessCache();
-        _dispatcherTimer.Start();
-        System.Diagnostics.Debug.WriteLine("Attempting to boot CLIMonitoring");
         string sessionName = "RegistryMonitorSession";
         _session = null;
         try
@@ -116,59 +100,70 @@ public class CLIMonitor
             };
 
             // Enable Kernel Providers for registry-related events
-            _session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);  // Registry-related events only
+            _session.EnableKernelProvider(KernelTraceEventParser.Keywords.Registry);
 
             Debug.WriteLine("Kernel providers enabled successfully.");
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"Error initializing session: {ex.Message}");
-            return;
-        }
-
-        // Subscribe to specific registry events
-        _session.Source.Kernel.RegistrySetValue += async (RegistryTraceData data) =>
-        {
-            await TrackRegistryEvent(data, "Set Value");
-        };
-
-        _session.Source.Kernel.RegistryOpen += async (RegistryTraceData data) =>
-        {
-            await TrackRegistryEvent(data, "Open Key");
-        };
-
-        _session.Source.Kernel.RegistryCreate += async (RegistryTraceData data) =>
-        {
-            await TrackRegistryEvent(data, "Create Key");
-        };
-
-        _session.Source.Kernel.RegistryDelete += async (RegistryTraceData data) =>
-        {
-            await TrackRegistryEvent(data, "Delete Key");
-        };
-
-        _session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
-        {
-            //CompleteCopy copy = new(data.ProcessID, data.TimeStamp, data.KeyName);
-            //Dispatcher dis = Dispatcher.FromThread(Thread.CurrentThread);
-            await TrackRegistryEvent(data, "Query Value");
-        };
-
-        // Start processing events in a background task
-        try
-        {
-            Debug.WriteLine("Processing events...");
-            _session.Source.Process();
-            System.Diagnostics.Debug.WriteLine("CLI MONITORING ENDED HERE");
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error in event processing: {ex.Message}");
+            _session = null; // Ensure _session is null if initialization fails
         }
     }
 
+    public void SetupAsync()
+    {
+        UpdateProcessCache();
+        _dispatcherTimer.Start();
+        Debug.WriteLine("Attempting to boot CLIMonitoring");
 
-    private async Task TrackRegistryEvent(RegistryTraceData data, string action)
+        // Call the InitializeSession method to set up the session and enable kernel providers
+        InitializeSession();
+
+        // If the session was initialized successfully, subscribe to registry events and process them
+        if (_session != null)
+        {
+            // Subscribe to specific registry events
+            _session.Source.Kernel.RegistrySetValue += async (RegistryTraceData data) =>
+            {
+                await TrackRegistryEvent(data, "Set Value");
+            };
+
+            _session.Source.Kernel.RegistryOpen += async (RegistryTraceData data) =>
+            {
+                await TrackRegistryEvent(data, "Open Key");
+            };
+
+            _session.Source.Kernel.RegistryCreate += async (RegistryTraceData data) =>
+            {
+                await TrackRegistryEvent(data, "Create Key");
+            };
+
+            _session.Source.Kernel.RegistryDelete += async (RegistryTraceData data) =>
+            {
+                await TrackRegistryEvent(data, "Delete Key");
+            };
+
+            _session.Source.Kernel.RegistryQueryValue += async (RegistryTraceData data) =>
+            {
+                await TrackRegistryEvent(data, "Query Value");
+            };
+
+            // Start processing events in a background task
+            try
+            {
+                Debug.WriteLine("Processing events...");
+                _session.Source.Process();
+                Debug.WriteLine("CLI MONITORING ENDED HERE");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error in event processing: {ex.Message}");
+            }
+        }
+    }
+
+    public async Task TrackRegistryEvent(RegistryTraceData data, string action)
     {
 
         try
@@ -180,9 +175,9 @@ public class CLIMonitor
             string processName = GetProcessNameById(data.ProcessID);
 
             // Filter events by target process name (powershell, cmd, pwsh)
-            if (!IsRelevantProcess(processName))
+            if (!IsRelevantProcess(processName, data.ProcessID))
             {
-                return;  // Ignore events not related to PowerShell or CMD
+                return;  // Ignore events not related to PowerShell or CMD or originating from SAV
             }
 
             // Get the registry path
@@ -190,7 +185,7 @@ public class CLIMonitor
 
 
             // Send Alert
-            await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"{processName} {action} registry {registryPath}", "Lookout for suspicious activity");
+            await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"A {processName} process has accessed the Windows Registry and performed an {action} at the key {registryPath}.", "Look out for suspicious activity");
 
             // If the path is already tracked, update the existing entry
 
@@ -208,7 +203,7 @@ public class CLIMonitor
         }
         catch (Exception ex)
         {
-            // Suppress any errors but log them if needed for debugging
+            // Suppress any errors but log them if they're needed for debugging
             Debug.WriteLine($"Error tracking registry event: {ex.Message}");
         }
     }
@@ -222,7 +217,7 @@ public class CLIMonitor
 
 
     // Output a summary of the events and clear the dictionary after output
-    private void OutputSummary()
+    public void OutputSummary()
     {
         if (_registrySummary.Count > 0)
         {
@@ -250,18 +245,45 @@ public class CLIMonitor
 
 
     // Filter relevant processes (PowerShell or CMD)
-    private bool IsRelevantProcess(string processName)
+    public bool IsRelevantProcess(string processName, int processID)
     {
         string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))
-            {
+            { //Checks processname is relevant
+                /* if (processID != currentprocessId && ParentProcessId != currentprocessId)
+                 {//Then checks if 
+                     return true;
+                 }
+                */
                 return true;
             }
         }
         return false;
     }
+
+    // Method to get the parent process ID
+    static int GetParentProcessId(int processId)
+    {
+        int parentProcessId = -1; // Default value if not found
+
+        using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = " + processId))
+        {
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                parentProcessId = Convert.ToInt32(obj["ParentProcessId"]);
+            }
+        }
+
+        return parentProcessId;
+    }
+
+
+
+
+
 
     // Get the name of the process by PID
     private string GetProcessNameById(int pid)
@@ -286,15 +308,6 @@ public class CLIMonitor
         return "N/A";
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -344,20 +357,6 @@ class RegistrySummary
                 break;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Get a high-level summary of the registry path's actions

@@ -27,7 +27,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             AlertRow alertRowItem = ViewModel.SelectedRow;
             TimeStampBlock.Text = $"{alertRowItem.TimeStamp}";
-            ThreatType.Text = $"Threat Type: {alertRowItem.Component}";
+            ThreatType.Text = $"Category: {alertRowItem.Component}";
             Severity.Text = $"Severity: {alertRowItem.Severity}";
             Message.Text = $"Message: {alertRowItem.EntireMessage}";
             SuggestedAction.Text = $"Suggested Action: {alertRowItem.SuggestedAction}";
