@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
 using System.Management;  // Needed for getting the parent PID
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
@@ -18,6 +19,7 @@ using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
 using Microsoft.Diagnostics.Tracing.Session;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.GUI.Views.Pages;
+using Windows.System.Diagnostics;
 
 namespace SimpleAntivirus.CLIMonitoring;
 
@@ -36,7 +38,9 @@ public class CLIMonitor
 
     private EventBus _eventBus;
 
-    private Dictionary<int, string> _processCache;
+    private Dictionary<int, string> _processNameCache;
+
+    private int _currentProcessId;
 
    
 
@@ -50,9 +54,11 @@ public class CLIMonitor
         // This will be relied upon to send alerts.
         _eventBus = eventBusPass;
 
-        _processCache = new();
+        _processNameCache = new();
 
         _registrySummary = new();
+
+        _currentProcessId = Process.GetCurrentProcess().Id;
 
         _totalEventsChecked = 0;
 
@@ -79,18 +85,19 @@ public class CLIMonitor
 
     private void UpdateProcessCache()
     {
-        _processCache.Clear();
+        _processNameCache.Clear();
         Process[] processArray = Process.GetProcesses();
-
         foreach (Process process in processArray)
         {
-            _processCache.Add(process.Id, process.ProcessName);
+            
+            _processNameCache.Add(process.Id, process.ProcessName);
         }
+        System.Diagnostics.Debug.WriteLine("FInished writing to progress cahce");
     }
 
     public void dispatcherTimerEvent(object sender, EventArgs e)
     {
-        //System.Diagnostics.Debug.WriteLine("Updating cache");
+        System.Diagnostics.Debug.WriteLine("Updating cache");
         UpdateProcessCache();
     }
 
@@ -175,17 +182,18 @@ public class CLIMonitor
 
         try
         {
+
             // Increment the total events checked
             Interlocked.Increment(ref _totalEventsChecked);
 
             // Get the process name by PID
             string processName = GetProcessNameById(data.ProcessID);
 
-            // Filter events by target process name (powershell, cmd, pwsh)
             if (!IsRelevantProcess(processName, data.ProcessID))
             {
                 return;  // Ignore events not related to PowerShell or CMD or originating from SAV
             }
+
 
             // Get the registry path
             string registryPath = data.KeyName;
@@ -258,30 +266,93 @@ public class CLIMonitor
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))
-            { //Checks processname is relevant
-                /* if (processID != currentprocessId && ParentProcessId != currentprocessId)
-                 {//Then checks if 
-                     return true;
-                 }
-                */
-                return true;
+            {
+                // Get the PID (Process ID)
+                int ParentProcessId = GetParentProcessId(processID);
+                //System.Diagnostics.Debug.WriteLine($"relevant process raised {processName}, {processID}, parent process id {ParentProcessId}, current saved id: {_currentProcessId}");
+                if (ParentProcessId == _currentProcessId)
+                {
+                    System.Diagnostics.Debug.WriteLine("Terminal event was because of SAV, ignoring...");
+                    return false;
+                }
+                else
+                {
+                    // Only return alert, if parent can be determined.
+                    return ParentProcessId != -1;
+                }
             }
         }
         return false;
     }
 
+    // Method to get all the parent process IDs
+    static Dictionary<int, int> GetAllParentProcessId()
+    {
+        Dictionary<int, int> _processIdToParentId = new();
+        int parentProcessId = -1; // Default value if not found
+        int processId = -1;
+        using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT ParentProcessId, ProcessId FROM Win32_Process"))
+        {
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                processId = Convert.ToInt32(obj["ProcessId"]);
+                parentProcessId = Convert.ToInt32(obj["ParentProcessId"]);
+                _processIdToParentId[processId] = parentProcessId;
+            }
+        }
+
+        return _processIdToParentId;
+    }
+
+
+    // Setting up return structure for a low level API call (Nasty!)
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ProcessReturnStructure
+    {
+        public IntPtr ExitStatus;
+        public IntPtr PebAddress;
+        public IntPtr AffinityMask;
+        public IntPtr BasePriority;
+        public IntPtr UniqueProcessId;
+        public IntPtr InheritedFromUniqueProcessId;
+    }
+
+    // Use a low level way of getting parent process information, as there appears to be no high level way.
+    [DllImport("ntdll.dll")]
+    private static extern int NtQueryInformationProcess(IntPtr handle, int processInfoFilter, ref ProcessReturnStructure processInfo, int processInfoLength, out int returnLengthIn);
+
     // Method to get the parent process ID
     static int GetParentProcessId(int processId)
     {
         int parentProcessId = -1; // Default value if not found
-
-        using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
-            "SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = " + processId))
+        try
         {
-            foreach (ManagementObject obj in searcher.Get())
+            IntPtr processHandler = Process.GetProcessById(processId).Handle;
+            System.Diagnostics.Debug.WriteLine($"processID enter {processId}");
+
+            ProcessReturnStructure processStruct = new();
+            int returnLength;
+            int returnResult = NtQueryInformationProcess(processHandler, 0, ref processStruct, Marshal.SizeOf(processStruct), out returnLength);
+
+            if (returnResult == 0)
             {
-                parentProcessId = Convert.ToInt32(obj["ParentProcessId"]);
+                System.Diagnostics.Debug.WriteLine($"Success using low level function return {processStruct.InheritedFromUniqueProcessId.ToInt32()}");
+                parentProcessId = processStruct.InheritedFromUniqueProcessId.ToInt32();
             }
+
+            //using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            //    "SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = " + processId))
+            //{
+            //    foreach (ManagementObject obj in searcher.Get())
+            //    {
+            //        parentProcessId = Convert.ToInt32(obj["ParentProcessId"]);
+            //    }
+            //}
+        }
+        catch (ArgumentException e)
+        {
+
         }
 
         return parentProcessId;
@@ -297,9 +368,10 @@ public class CLIMonitor
     {
         try
         {
-            if (_processCache.ContainsKey(pid))
+            if (_processNameCache.ContainsKey(pid))
             {
-               return _processCache[pid];
+               //System.Diagnostics.Debug.WriteLine($"Parent id: {_processCache[pid].Item2}");
+               return _processNameCache[pid];
             }
 
             //return "N/A";
