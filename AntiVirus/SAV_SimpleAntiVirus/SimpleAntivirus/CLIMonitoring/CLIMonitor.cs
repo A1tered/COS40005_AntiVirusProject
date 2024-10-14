@@ -192,7 +192,7 @@ public class CLIMonitor
 
 
             // Send Alert
-            await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"{processName} {action} registry {registryPath}", "Lookout for suspicious activity");
+            await _eventBus.PublishAsync("Terminal Scanning", "Informational", $"A {processName} process has accessed the Windows Registry and performed an {action} at the key {registryPath}.", "Look out for suspicious activity");
 
             // If the path is already tracked, update the existing entry
 
@@ -255,11 +255,6 @@ public class CLIMonitor
     public bool IsRelevantProcess(string processName, int processID)
     {
         string[] relevantProcesses = { "powershell", "pwsh", "cmd" };
-        // Get the current process
-        Process currentProcess = Process.GetCurrentProcess();
-        // Get the PID (Process ID)
-        int currentprocessId = currentProcess.Id;
-        int ParentProcessId = GetParentProcessId(processID);
         foreach (string relevantProcess in relevantProcesses)
         {
             if (processName.ToLower().Contains(relevantProcess))

@@ -103,6 +103,37 @@ public class AlertManager
     }
 
     /// <summary>
+    /// Fun little function, that gets all the alerts from a specific component that occured within a second timeframe, eg 60, would get the count of all alerts
+    /// sent in the past minute.
+    /// </summary>
+    /// <param name="timeframeGapSeconds"></param>
+    /// <returns></returns>
+    public async Task<int> GetAlertsByComponentWithinPastTimeFrame(string component, int timeframeGapSeconds = 86400)
+    {
+        int amountAlert = 0;
+        using (SqliteCommand command = new SqliteCommand($"SELECT * FROM Alerts WHERE COMPONENT = '{component}'", _databaseConnection))
+        {
+            using (SqliteDataReader dataReader = await command.ExecuteReaderAsync())
+            {
+                while (await dataReader.ReadAsync())
+                {
+                    //DEBUG: System.Diagnostics.Debug.WriteLine($"Reformat and Display: {DateTime.Parse(dataReader["Timestamp"].ToString()).ToString("yyyy-MM-dd HH:mm:ss")}");
+                    DateTime compareFromDatabase = DateTime.Parse(dataReader["Timestamp"].ToString());
+                    long alertTime = Convert.ToInt64(new TimeSpan(compareFromDatabase.Ticks).TotalSeconds);
+                    long currentTime = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+                    // If there is an alert that is identical in the database that has already been sent within the timeframe gap, send out.
+                    if (currentTime - alertTime < timeframeGapSeconds)
+                    {
+                        amountAlert += 1;
+                    }
+                }
+            }
+
+        }
+        return amountAlert;
+    }
+
+    /// <summary>
     /// This checks if the alert already exists in database within a time frame, may help prevent identical alerts being sent
     /// </summary>
     /// <param name="message">Alert object (utilises message and timeframe)</param>

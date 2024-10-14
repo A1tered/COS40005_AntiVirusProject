@@ -29,11 +29,23 @@
   <ItemGroup>
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
+    <None Remove="GUI\Resources\atriskdark.png" />
+    <None Remove="GUI\Resources\atrisklight.png" />
+    <None Remove="GUI\Resources\potentialriskdark.png" />
+    <None Remove="GUI\Resources\potentialrisklight.png" />
+    <None Remove="GUI\Resources\protecteddark.png" />
+    <None Remove="GUI\Resources\protectedlight.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\wpfui-icon-256.png" />
     <Resource Include="Assets\wpfui-icon-1024.png" />
+    <Resource Include="GUI\Resources\atriskdark.png" />
+    <Resource Include="GUI\Resources\atrisklight.png" />
+    <Resource Include="GUI\Resources\potentialriskdark.png" />
+    <Resource Include="GUI\Resources\potentialrisklight.png" />
+    <Resource Include="GUI\Resources\protecteddark.png" />
+    <Resource Include="GUI\Resources\protectedlight.png" />
   </ItemGroup>
 
   <ItemGroup>
