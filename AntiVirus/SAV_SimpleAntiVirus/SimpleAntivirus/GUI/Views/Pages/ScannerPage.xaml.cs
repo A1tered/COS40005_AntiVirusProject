@@ -84,7 +84,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DateTime currentTime = DateTime.UtcNow;
             long unixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
             int unixTimeInt = (int)(unixTime);
-            _setupService.AddToConfig("lastScanTime", unixTimeInt);
+            _setupService.AddToConfig("lastScanDateTime", unixTimeInt);
             Debug.WriteLine($"Scan started at unix time: {unixTime} seconds");
 
             try

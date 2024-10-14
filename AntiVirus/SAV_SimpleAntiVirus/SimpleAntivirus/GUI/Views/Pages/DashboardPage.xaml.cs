@@ -130,15 +130,15 @@ namespace SimpleAntivirus.GUI.Views.Pages
             DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(lastScanDateTimeUnix).ToLocalTime().DateTime;
             // Check scan type
             Debug.WriteLine($"lastScanDateTime: {_setupService.GetFromConfig("lastScanDateTime")}");
-            if (_setupService.GetFromConfig("lastScanType") == 1)
+            if (_setupService.GetFromConfig("lastScanType") == 1 && lastScanDateTimeUnix != -1)
             {
                 ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (quick scan)";
             }
-            else if (_setupService.GetFromConfig("lastScanType") == 2)
+            else if (_setupService.GetFromConfig("lastScanType") == 2 && lastScanDateTimeUnix != -1)
             {
                 ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (full scan)";
             }
-            else if (_setupService.GetFromConfig("lastScanType") == 3)
+            else if (_setupService.GetFromConfig("lastScanType") == 3 && lastScanDateTimeUnix != -1)
             {
                 ViewModel.LastScanDateTime = $"Last scan: {dateTime.ToString("dd/MM/yyyy hh:mm tt")} (custom scan)";
             }
