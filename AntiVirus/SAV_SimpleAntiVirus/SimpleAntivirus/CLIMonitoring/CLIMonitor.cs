@@ -269,7 +269,6 @@ public class CLIMonitor
             {
                 // Get the PID (Process ID)
                 int ParentProcessId = GetParentProcessId(processID);
-                //System.Diagnostics.Debug.WriteLine($"relevant process raised {processName}, {processID}, parent process id {ParentProcessId}, current saved id: {_currentProcessId}");
                 if (ParentProcessId == _currentProcessId)
                 {
                     System.Diagnostics.Debug.WriteLine("Terminal event was because of SAV, ignoring...");
@@ -277,6 +276,7 @@ public class CLIMonitor
                 }
                 else
                 {
+                    System.Diagnostics.Debug.WriteLine($"relevant process raised {processName}, {processID}, parent process id {ParentProcessId}, current saved id: {_currentProcessId}");
                     // Only return alert, if parent can be determined.
                     return ParentProcessId != -1;
                 }
