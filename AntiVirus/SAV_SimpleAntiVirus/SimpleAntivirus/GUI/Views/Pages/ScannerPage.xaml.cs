@@ -77,6 +77,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             ViewModel.ResetTimer();
             ViewModel.StartTimer();
+            ViewModel.Timer_Tick(sender, e);
             _setupService.AddToConfig("threatsLastScan", 0);
             ViewModel.IsScanRunning = true;
 

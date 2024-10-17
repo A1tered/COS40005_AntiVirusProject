@@ -1,6 +1,7 @@
 ﻿using SimpleAntivirus.Alerts;
 using System.Diagnostics;
 using System.IO;
+using Windows.ApplicationModel.Background;
 
 namespace SimpleAntivirus.FileQuarantine
 {
@@ -198,7 +199,7 @@ namespace SimpleAntivirus.FileQuarantine
         private async Task DeleteFileUsingPowerShell(string filePath)
         {
             string command = $"Remove-Item '{filePath}'";
-            Debug.WriteLine(command);
+            Debug.WriteLine($"Ran command: {command}");
             await RunPowerShellCommandAsync(command);
         }
 
