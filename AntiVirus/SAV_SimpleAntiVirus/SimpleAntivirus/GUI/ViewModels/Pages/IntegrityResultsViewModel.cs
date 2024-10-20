@@ -46,7 +46,7 @@ namespace SimpleAntivirus.ViewModels.Pages
             {
                 long d = vio.TimeOfSignature;
                 DateTime dateTime = DateTimeOffset.FromUnixTimeSeconds(vio.TimeOfSignature).DateTime.ToLocalTime();
-                resultList.Add(new ResultRow(FileInfoRequester.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "True" : "False", dateTime.ToString()));
+                resultList.Add(new ResultRow(FileInfoRequester.TruncateString(vio.Path), vio.FileSizeBytesChange, vio.Missing == true ? "Yes" : "No", dateTime.ToString()));
             }
             return resultList;
         }

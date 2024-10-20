@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\",
+  "WorkspaceRootPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\testingtesting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:testingtesting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\testalerts.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:testalerts.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\testalerts.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:testalerts.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\eventBusTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:eventBusTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testingtesting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:testingtesting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\alerttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:alerttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|e:\\github\\cos40005_antivirusproject\\antivirus\\testing\\testalerts\\eventbustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931BA46F-D1FA-4D0F-B8B5-F1AB3C7F6693}|testAlerts.csproj|solutionrelative:eventbustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,47 +38,73 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "testingtesting.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testingtesting.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\testingtesting.cs",
               "RelativeDocumentMoniker": "testingtesting.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testingtesting.cs*",
-              "RelativeToolTip": "testingtesting.cs*",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwDcAAAAeAAAAAAAAAA==",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\testingtesting.cs",
+              "RelativeToolTip": "testingtesting.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T10:44:33.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T10:44:33.951Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "alertTest.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertTest.cs",
-              "RelativeDocumentMoniker": "alertTest.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\alertTest.cs",
-              "RelativeToolTip": "alertTest.cs",
+              "DocumentIndex": 4,
+              "Title": "AlertTest.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\AlertTest.cs",
+              "RelativeDocumentMoniker": "AlertTest.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\AlertTest.cs",
+              "RelativeToolTip": "AlertTest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T03:08:53.137Z"
+              "WhenOpened": "2024-10-01T03:08:53.137Z",
+              "EditorCaption": ""
             }
           ]
         },
         {
           "DockedWidth": 294,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestAlerts.csproj",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
+              "RelativeDocumentMoniker": "TestAlerts.csproj",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
+              "RelativeToolTip": "TestAlerts.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-08T13:52:22.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "testAlerts",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
+              "RelativeDocumentMoniker": "TestAlerts.csproj",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
+              "RelativeToolTip": "TestAlerts.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-08T13:52:03.499Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "eventBusTest.cs",
-              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\eventBusTest.cs",
+              "DocumentMoniker": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\eventBusTest.cs",
               "RelativeDocumentMoniker": "eventBusTest.cs",
-              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\eventBusTest.cs",
+              "ToolTip": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\eventBusTest.cs",
               "RelativeToolTip": "eventBusTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T04:05:10.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-01T04:05:10.325Z"
             }
           ]
         }

@@ -4432,11 +4432,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testAlerts.csproj",
-      "projectName": "testAlerts",
-      "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\testAlerts.csproj",
+      "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
+      "projectName": "TestAlerts",
+      "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\TestAlerts.csproj",
       "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-      "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testAlerts\\obj\\",
+      "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestAlerts\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"

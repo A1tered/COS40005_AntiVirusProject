@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testFileQuarantine", "testFileQuarantine.csproj", "{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFileQuarantine", "TestFileQuarantine.csproj", "{4439B1A0-A938-4136-82AD-1D6AA0B7C2CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAntivirus", "..\..\SAV_SimpleAntiVirus\SimpleAntivirus\SimpleAntivirus.csproj", "{FC63AEE1-8806-40F6-9336-F475568C4F8E}"
 EndProject

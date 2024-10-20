@@ -4,14 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>wpfui-icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\SAVLogo.ico</ApplicationIcon>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wpfui-icon.ico" />
+    <Resource Include="Assets\SAVLogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,11 +30,23 @@
   <ItemGroup>
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
+    <None Remove="GUI\Resources\atriskdark.png" />
+    <None Remove="GUI\Resources\atrisklight.png" />
+    <None Remove="GUI\Resources\potentialriskdark.png" />
+    <None Remove="GUI\Resources\potentialrisklight.png" />
+    <None Remove="GUI\Resources\protecteddark.png" />
+    <None Remove="GUI\Resources\protectedlight.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\wpfui-icon-256.png" />
     <Resource Include="Assets\wpfui-icon-1024.png" />
+    <Resource Include="GUI\Resources\atriskdark.png" />
+    <Resource Include="GUI\Resources\atrisklight.png" />
+    <Resource Include="GUI\Resources\potentialriskdark.png" />
+    <Resource Include="GUI\Resources\potentialrisklight.png" />
+    <Resource Include="GUI\Resources\protecteddark.png" />
+    <Resource Include="GUI\Resources\protectedlight.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,14 +56,27 @@
   <ItemGroup>
     <Folder Include="AntiTampering\" />
     <Folder Include="IntegrityModule\Interface\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

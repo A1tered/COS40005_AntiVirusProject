@@ -156,7 +156,7 @@ namespace SimpleAntivirus.FileHashScanning
             {
                 SqliteCommand commandCreation = _sqliteConnectionRepresentation.CreateCommand();
                 commandCreation.CommandText = (@"
-                DELETE FROM hashSignatures VALUES ($sigHash);
+                DELETE FROM hashSignatures WHERE sigHash = ($sigHash);
                 ");
                 //commandCreation.Parameters.AddWithValue("$table", _tableName);
                 commandCreation.Parameters.AddWithValue("$sigHash", hash);

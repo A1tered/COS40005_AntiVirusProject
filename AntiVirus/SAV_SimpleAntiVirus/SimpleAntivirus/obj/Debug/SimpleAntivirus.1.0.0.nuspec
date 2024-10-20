@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SimpleAntivirus</id>
+    <version>1.0.0</version>
+    <authors>SimpleAntivirus</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="bf9c29e1d8baec0625968a658a9d8171678283e3" />
+    <dependencies>
+      <group targetFramework="net8.0-windows10.0.17763">
+        <dependency id="CommunityToolkit.Mvvm" version="8.2.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.Sqlite.Core" version="8.0.8" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Diagnostics.Tracing.TraceEvent" version="3.1.15" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Hosting" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Toolkit.Uwp.Notifications" version="7.1.3" exclude="Build,Analyzers" />
+        <dependency id="SQLitePCLRaw.bundle_e_sqlite3mc" version="2.1.10" exclude="Build,Analyzers" />
+        <dependency id="System.Management" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="WPF-UI" version="3.0.4" exclude="Build,Analyzers" />
+        <dependency id="WPF-UI.Tray" version="3.0.4" exclude="Build,Analyzers" />
+        <dependency id="iTextSharp" version="5.5.13.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows10.0.17763">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\yumcy\OneDrive\Desktop\Github Repositories\ProjectB\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.runtimeconfig.json" target="lib\net8.0-windows10.0.17763\SimpleAntivirus.runtimeconfig.json" />
+    <file src="C:\Users\yumcy\OneDrive\Desktop\Github Repositories\ProjectB\COS40005_AntiVirusProject\AntiVirus\SAV_SimpleAntiVirus\SimpleAntivirus\bin\Debug\net8.0-windows10.0.17763.0\SimpleAntivirus.dll" target="lib\net8.0-windows10.0.17763\SimpleAntivirus.dll" />
+  </files>
+</package>

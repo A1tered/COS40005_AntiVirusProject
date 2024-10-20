@@ -30,10 +30,10 @@
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="DataShow" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="3" Margin="34,64,34,64" Grid.RowSpan="2" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="300">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Directory" Binding="{Binding DisplayDirectory}" Width="*" />
+                <DataGridTextColumn Header="File Path" Binding="{Binding DisplayDirectory}" Width="*" />
                 <DataGridTextColumn Header="Size Change" Binding="{Binding SizeChange}" Width="0.3*" />
                 <DataGridTextColumn Header="Missing" Binding="{Binding Missing}" Width="0.3*" />
-                <DataGridTextColumn Header="SigTime" Binding="{Binding SigTime}" Width="0.7*"/>
+                <DataGridTextColumn Header="Date Added" Binding="{Binding SigTime}" Width="0.7*"/>
             </DataGrid.Columns>
         </DataGrid>
         <ui:ProgressRing x:Name="ProgressAdd" Visibility="Hidden" RenderTransformOrigin="0.5,0.5"  Grid.Column="1" HorizontalAlignment="Left" Margin="154,9,0,0" VerticalAlignment="Top" Height="24" Width="24">

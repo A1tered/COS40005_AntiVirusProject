@@ -30,7 +30,7 @@ namespace SimpleAntivirus.GUI.ViewModels.Pages
             _timer.Tick += Timer_Tick;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        public void Timer_Tick(object sender, EventArgs e)
         {
             TimeSpan elapsed = _stopwatch.Elapsed;
             StopwatchShortText = $"{elapsed:hh\\:mm\\:ss}";
