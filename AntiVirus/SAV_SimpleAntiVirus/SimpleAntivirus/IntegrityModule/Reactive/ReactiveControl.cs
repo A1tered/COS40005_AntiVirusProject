@@ -30,6 +30,10 @@ namespace SimpleAntivirus.IntegrityModule.Reactive
             _integrityCycler = cycler;
         }
 
+        /// <summary>
+        /// Set up reactivecontrol and link FileSystemWatcher on directories.
+        /// </summary>
+        /// <returns></returns>
         public bool Initialize()
         {
             // Only initialise if havent before

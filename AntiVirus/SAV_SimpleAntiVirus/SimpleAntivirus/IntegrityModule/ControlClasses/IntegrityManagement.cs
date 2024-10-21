@@ -38,11 +38,20 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             _progressInfo = "";
         }
 
+        /// <summary>
+        /// Starts ReactiveControl so that it starts responding to events on the system.
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> StartReactiveControl()
         {
             return await Task.Run(() => _reactiveControl.Initialize());
         }
 
+        /// <summary>
+        /// When triggered, sends alert to GUI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="alertInfo"></param>
         private async void AlertHandler(object? sender, AlertArgs alertInfo)
         {
    
@@ -118,6 +127,10 @@ namespace SimpleAntivirus.IntegrityModule.ControlClasses
             return _integrityConfigurator.RemoveAll();
         }
 
+        /// <summary>
+        /// Call on close up of program, ensure that database objects are dealt with.
+        /// </summary>
+        /// <returns></returns>
         public async Task CleanUp()
         {
             await _integrityConfigurator.CancelOperations();

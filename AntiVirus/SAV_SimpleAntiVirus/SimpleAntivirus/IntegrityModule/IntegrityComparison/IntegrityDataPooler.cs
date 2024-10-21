@@ -28,6 +28,11 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
             _setAmount = setAmount;
         }
 
+        /// <summary>
+        /// Set up data pooler only to scan a specific file. (Generally ideal for reactive control use)
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="path"></param>
         public IntegrityDataPooler(IIntegrityDatabaseIntermediary database, string path)
         {
             _databaseIntermediary = database;

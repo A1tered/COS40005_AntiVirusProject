@@ -29,6 +29,11 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
             return itemCandidate;
         }
 
+        /// <summary>
+        /// Converts size values to label, eg 1024 b -> 1 KB
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
         public static string SizeValueToLabel(long bytes)
         {
             float byteChange = bytes;
@@ -206,7 +211,9 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
         }
 
         /// <summary>
-        /// Calculate entropy of a file.
+        /// Calculate entropy of a file. Do advise that from the Internet, this is suspected to be an inaccurate way of doing this
+        /// calculation, and appears to be
+        /// slightly inaccurate with one of the cybertools I have tested it with, however should still be adaquete
         /// </summary>
         /// <param name="file">File path</param>
         /// <returns></returns>

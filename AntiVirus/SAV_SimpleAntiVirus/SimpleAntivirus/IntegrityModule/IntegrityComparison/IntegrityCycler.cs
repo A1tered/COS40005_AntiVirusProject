@@ -33,11 +33,19 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
         public event EventHandler<ProgressArgs> ProgressUpdate;
 
 
+        /// <summary>
+        /// Utilized for testing purposes, if the pooler is to be switched out.
+        /// </summary>
+        /// <param name="type"></param>
         public void SetPoolerType(Type type)
         {
             _poolerType = type;
         }
 
+        /// <summary>
+        /// Cancel the ongoing scan.
+        /// </summary>
+        /// <returns></returns>
         public async Task CancelScan()
         {
             await _cancelToken.CancelAsync();
@@ -111,6 +119,12 @@ namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
                                 setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
                                 ProgressUpdate?.Invoke(this, setProgressArg);
                             }
+                            // Progress calculation here
+                            setProgressArg = new();
+                            // Percentage of tasks left.
+                            setProgressArg.Progress = Math.Round(((taskAmountComplete) / (float)initialTaskAmount) * 100, 2);
+                            setProgressArg.ProgressInfo = $"{_amountPerSet * (initialTaskAmount - taskAmountComplete)} Files Left";
+                            ProgressUpdate?.Invoke(this, setProgressArg);
                         }
                     }
                 }

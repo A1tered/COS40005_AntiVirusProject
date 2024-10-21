@@ -24,7 +24,11 @@ namespace SimpleAntivirus.IntegrityModule.Alerts
             }
         }
 
-        // Convert violation data structure to Alert and then notify via event.
+
+        /// <summary>
+        /// Convert violation data structure to Alert and then notify via event.
+        /// </summary>
+        /// <param name="violation">Violation Instance</param>
         public void ViolationAlert(IntegrityViolation violation)
         {
             StringBuilder baseMessage = new("Integrity Check Mismatch");
