@@ -1,8 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Diagnostics;
-using Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace;
 
 
 namespace SimpleAntivirus.FileQuarantine

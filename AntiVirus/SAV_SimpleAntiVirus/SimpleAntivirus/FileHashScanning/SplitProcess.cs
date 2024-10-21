@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace SimpleAntivirus.FileHashScanning
+﻿namespace SimpleAntivirus.FileHashScanning
 {
     public class SplitProcess
     {
@@ -41,7 +34,7 @@ namespace SimpleAntivirus.FileHashScanning
             _directoriesSearched = 0;
         }
 
-        public async Task SearchDirectory(FileHashScanner fileHashScanner)
+        public async Task SearchDirectory()
         {
             // OPTIONS THAT DIRECTLY AFFECT PERFORMANCE!!!
             // How many asynchronous directory readers can run in a cycle (More > system use is heavier)
@@ -93,7 +86,7 @@ namespace SimpleAntivirus.FileHashScanning
         }
 
         // Initial function, to find the initial directories. This is not called other than in the initial process.
-        public async Task fillUpSearch(string directory)
+        public async Task FillUpSearch(string directory)
         {
             Hunter hunter = new Hunter(directory, _databaseDirectory, _token);
             Tuple<string[], string[]> tupleItem = await hunter.SearchDirectory(_scanner);

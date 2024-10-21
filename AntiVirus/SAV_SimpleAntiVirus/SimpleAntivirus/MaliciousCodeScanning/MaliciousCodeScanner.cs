@@ -6,12 +6,10 @@
 * Libraries:   [Location Libraries / Dependencies]
 **************************************************************************/
 
-using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using SimpleAntivirus.FileQuarantine;

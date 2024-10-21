@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
 using SimpleAntivirus.GUI.Services;

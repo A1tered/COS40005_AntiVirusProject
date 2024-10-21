@@ -1,13 +1,6 @@
 ﻿using SimpleAntivirus.Models;
 using SimpleAntivirus.IntegrityModule.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using SimpleAntivirus.IntegrityModule.DataRelated;
 
 namespace SimpleAntivirus.ViewModels.Pages

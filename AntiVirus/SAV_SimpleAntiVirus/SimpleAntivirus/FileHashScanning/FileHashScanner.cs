@@ -6,15 +6,8 @@
 * Libraries:   [Location Libraries / Dependencies]
 **************************************************************************/
 
-using SimpleAntivirus.FileHashScanning;
-using SimpleAntivirus.GUI.ViewModels.Pages;
-using SimpleAntivirus.GUI.Views.Pages;
-using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.IO;
-using System.Windows.Controls;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileQuarantine;
 
@@ -93,8 +86,8 @@ namespace SimpleAntivirus.FileHashScanning
                 {
                     Token.ThrowIfCancellationRequested();
                     SplitProcess splitprocessInstance = new SplitProcess(databaseDirectory, this, Token);
-                    await splitprocessInstance.fillUpSearch(directorySearch);
-                    await splitprocessInstance.SearchDirectory(this);
+                    await splitprocessInstance.FillUpSearch(directorySearch);
+                    await splitprocessInstance.SearchDirectory();
                 }
             });
         }

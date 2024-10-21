@@ -6,12 +6,6 @@
  * Last Modified: 29/09/2024
  **************************************************************************/
 
-using SimpleAntivirus.IntegrityModule.DataRelated;
-using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using SimpleAntivirus.IntegrityModule.Db;
-using System.IO;
-
 namespace SimpleAntivirus.IntegrityModule.Interface
 {
     public interface IReactiveControl

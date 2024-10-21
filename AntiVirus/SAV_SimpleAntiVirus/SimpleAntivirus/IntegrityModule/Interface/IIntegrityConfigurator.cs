@@ -5,15 +5,6 @@
  * Last Modified: 29/09/2024
  **************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.IntegrityModule.Db;
-
 namespace SimpleAntivirus.IntegrityModule.Interface
 {
     public interface IIntegrityConfigurator

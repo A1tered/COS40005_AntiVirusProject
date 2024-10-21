@@ -5,18 +5,7 @@
  * Last Modified: 29/09/2024
  **************************************************************************/
 
-using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.Db;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace SimpleAntivirus.IntegrityModule.IntegrityComparison
 {

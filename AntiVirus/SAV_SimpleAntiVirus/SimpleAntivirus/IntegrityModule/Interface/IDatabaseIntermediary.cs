@@ -8,12 +8,9 @@
 
 
 using Microsoft.Data.Sqlite;
-using System.IO;
-using SimpleAntivirus.IntegrityModule.DataRelated;
-using SimpleAntivirus.GUI.Services;
 namespace SimpleAntivirus.IntegrityModule.Interface
 {
-  
+
     public interface IDatabaseIntermediary : IDisposable
     {
         public void Dispose();

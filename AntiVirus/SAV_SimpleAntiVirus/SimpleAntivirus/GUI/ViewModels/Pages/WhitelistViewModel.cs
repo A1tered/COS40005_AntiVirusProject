@@ -1,11 +1,7 @@
 ﻿using SimpleAntivirus.FileQuarantine;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Converters;
 using SimpleAntivirus.GUI.Views.Pages;
-using SimpleAntivirus.Alerts;
-using SimpleAntivirus.FileHashScanning;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.GUI.ViewModels.Pages

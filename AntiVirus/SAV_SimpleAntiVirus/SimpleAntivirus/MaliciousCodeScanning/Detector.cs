@@ -6,9 +6,6 @@
 * Libraries:   [Location Libraries / Dependencies]
 **************************************************************************/
 
-using System.Linq;
-using System.Collections.Generic;
-
 namespace SimpleAntivirus.MaliciousCodeScanning
 {
     public class Detector

@@ -5,16 +5,8 @@
  * Last Modified: 29/09/2024
  **************************************************************************/
 
-using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.System.Diagnostics;
 
 namespace SimpleAntivirus.IntegrityModule.Interface
 {

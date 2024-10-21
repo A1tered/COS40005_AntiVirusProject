@@ -1,7 +1,6 @@
 ﻿using SimpleAntivirus.Alerts;
 using System.Diagnostics;
 using System.IO;
-using Windows.ApplicationModel.Background;
 
 namespace SimpleAntivirus.FileQuarantine
 {

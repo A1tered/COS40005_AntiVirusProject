@@ -1,11 +1,10 @@
-﻿using Wpf.Ui.Appearance;
 ﻿/**************************************************************************
 * File:        DashboardViewModel.cs
 * Author:      WPF template
 * Description: Handles the specific details of an alert.
 * Last Modified: 8/10/2024
 **************************************************************************/
-
+using Wpf.Ui.Appearance;
 using System.ComponentModel;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
