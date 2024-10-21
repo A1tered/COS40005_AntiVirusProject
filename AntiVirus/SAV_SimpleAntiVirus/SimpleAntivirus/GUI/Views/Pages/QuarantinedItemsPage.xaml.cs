@@ -1,12 +1,15 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+ * File:        QuarantinedItemsPage.xaml.cs
+ * Author:      Joel Parks
+ * Description: Handles quarantine page, where users can quarantine, whitelist, delete.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using Wpf.Ui.Controls;
 using System.IO;
-using System.Diagnostics;
-using System.DirectoryServices;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {

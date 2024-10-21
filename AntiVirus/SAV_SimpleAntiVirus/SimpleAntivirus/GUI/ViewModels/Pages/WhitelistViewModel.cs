@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+ * File:        WhitelistViewModel.cs
+ * Author:      Joel Parks
+ * Description: Handles functionality side of whitelist page.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using System.ComponentModel;
 using System.IO;
 using SimpleAntivirus.GUI.Views.Pages;

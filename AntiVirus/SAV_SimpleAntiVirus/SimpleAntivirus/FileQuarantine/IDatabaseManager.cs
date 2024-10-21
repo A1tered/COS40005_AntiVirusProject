@@ -1,4 +1,11 @@
-﻿namespace SimpleAntivirus.FileQuarantine
+﻿/**************************************************************************
+ * File:        IDatabaseManager.cs
+ * Author:      Zachary Smith
+ * Description: Establishes interface for DatabaseManager class, which manages Quarantine items.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+namespace SimpleAntivirus.FileQuarantine
 {
     public interface IDatabaseManager
     {

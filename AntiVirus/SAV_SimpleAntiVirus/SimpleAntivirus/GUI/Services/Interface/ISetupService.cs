@@ -1,4 +1,11 @@
-﻿using Microsoft.Data.Sqlite;
+﻿/**************************************************************************
+ * File:        ISetupService.cs
+ * Author:      Christopher Thompson 
+ * Description: Interface for SetupService
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using Microsoft.Data.Sqlite;
 
 
 namespace SimpleAntivirus.GUI.Services.Interface

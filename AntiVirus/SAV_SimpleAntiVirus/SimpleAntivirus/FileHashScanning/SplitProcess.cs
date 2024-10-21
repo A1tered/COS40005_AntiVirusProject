@@ -1,4 +1,11 @@
-﻿namespace SimpleAntivirus.FileHashScanning
+﻿/**************************************************************************
+ * File:        SplitProcess.cs
+ * Author:      Joel Parks
+ * Description: Handles the creation of hunters to do scanning, sets up directories for scanning.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+namespace SimpleAntivirus.FileHashScanning
 {
     public class SplitProcess
     {

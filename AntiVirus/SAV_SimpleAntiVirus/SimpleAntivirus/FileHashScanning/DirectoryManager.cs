@@ -1,4 +1,11 @@
-﻿using System.Text;
+﻿/**************************************************************************
+ * File:        DirectoryManager.cs
+ * Author:      Joel Parks
+ * Description: Handles location of database.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using System.Text;
 using System.IO;
 
 namespace SimpleAntivirus.FileHashScanning

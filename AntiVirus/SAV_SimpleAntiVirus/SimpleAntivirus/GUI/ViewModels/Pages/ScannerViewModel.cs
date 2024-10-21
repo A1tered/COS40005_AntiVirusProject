@@ -1,4 +1,10 @@
-﻿using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
+﻿/**************************************************************************
+ * File:        BlacklistViewModel.cs
+ * Author:      Joel Parks
+ * Description: Handles functionality side of file hash scanning page.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Threading;

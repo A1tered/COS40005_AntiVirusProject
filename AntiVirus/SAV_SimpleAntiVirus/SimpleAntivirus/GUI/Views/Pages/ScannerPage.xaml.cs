@@ -1,4 +1,4 @@
-using SimpleAntivirus.FileHashScanning;
+
 /**************************************************************************
 * File:        ScannerPage.xaml.cs
 * Author:      Joel Parks
@@ -11,6 +11,7 @@ using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileQuarantine;
+using SimpleAntivirus.FileHashScanning;
 using Wpf.Ui.Controls;
 using System.Diagnostics;
 using System.IO;

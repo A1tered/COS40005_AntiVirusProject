@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.GUI.Services;
+﻿/**************************************************************************
+ * File:        IntegrityPage.xaml.cs
+ * Author:      Christopher Thompson & Joel Parks
+ * Description: Page where users can scan Integrity database with system files.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.GUI.Services;
 using Microsoft.Win32;
 using SimpleAntivirus.ViewModels.Pages;
 using System.Windows.Controls;

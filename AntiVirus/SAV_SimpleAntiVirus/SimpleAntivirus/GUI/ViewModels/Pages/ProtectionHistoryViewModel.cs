@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+ * File:        ProtectionHistoryViewModel.cs
+ * Author:      Joel Parks & Christopher Thompson
+ * Description: Handles backend code for page which displays alerts.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.Alerts;
 using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.Models;
 

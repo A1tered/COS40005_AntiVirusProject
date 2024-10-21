@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/**************************************************************************
+ * File:        Hasher.cs
+ * Author:      Joel Parks
+ * Description: Hashes files
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 

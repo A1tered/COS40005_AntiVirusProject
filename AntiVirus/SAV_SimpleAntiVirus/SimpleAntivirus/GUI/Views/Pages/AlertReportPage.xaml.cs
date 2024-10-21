@@ -1,4 +1,10 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
+﻿/**************************************************************************
+ * File:        AlertReportPage.xaml.cs
+ * Author:      Joel Parks & Christopher Thompson
+ * Description: Gives specific detail in relation to a single alert.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using Wpf.Ui.Controls;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.GUI.Services;

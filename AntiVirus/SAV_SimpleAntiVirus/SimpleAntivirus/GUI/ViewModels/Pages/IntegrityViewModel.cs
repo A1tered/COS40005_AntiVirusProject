@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.IntegrityModule.DataRelated;
+﻿/**************************************************************************
+ * File:        IntergrityViewModel.cs
+ * Author:      Christopher Thompson
+ * Description: Handles backend code for the Integrity Page.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

@@ -1,4 +1,12 @@
-﻿using System.Data;
+﻿/**************************************************************************
+ * File:        DatabaseConnector.cs
+ * Author:      Joel Parks
+ * Description: Handles connection to database for file hash checking functionality.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+
+using System.Data;
 using System.IO;
 using Microsoft.Data.Sqlite;
 using SimpleAntivirus.GUI.Services;

@@ -1,20 +1,20 @@
-﻿using SimpleAntivirus.GUI.ViewModels.Pages;
-using Wpf.Ui.Appearance;
+﻿
 /**************************************************************************
 * File:        DashboardPage.xaml.cs
 * Author:      Joel Parks
 * Description: Default page of GUI.
 * Last Modified: 8/10/2024
 **************************************************************************/
-
+using SimpleAntivirus.GUI.ViewModels.Pages;
 using System.IO;
 using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.Models;
-using Wpf.Ui.Controls;
 using SimpleAntivirus.Alerts;
 using System.Diagnostics;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {

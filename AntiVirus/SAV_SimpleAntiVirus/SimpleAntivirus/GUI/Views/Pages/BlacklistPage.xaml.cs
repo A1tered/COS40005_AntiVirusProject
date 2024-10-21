@@ -1,4 +1,11 @@
-﻿using Microsoft.Win32;
+﻿/**************************************************************************
+ * File:        BlacklistPage.xaml.cs
+ * Author:      Joel Parks
+ * Description: Blacklist page where users can blacklist files.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using Microsoft.Win32;
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.AntiTampering;
 using SimpleAntivirus.GUI.ViewModels.Pages;

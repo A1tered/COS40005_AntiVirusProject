@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**************************************************************************
+ * File:        IntegrityHandlerModel.cs
+ * Author:      Christopher Thompson
+ * Description: Connects to backend Integrity system
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
 using SimpleAntivirus.Alerts;
 using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.Services.Interface;
-using SimpleAntivirus.IntegrityModule;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using SimpleAntivirus.IntegrityModule.Db;

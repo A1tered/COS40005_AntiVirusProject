@@ -1,4 +1,11 @@
-﻿using System.IO;
+﻿/**************************************************************************
+ * File:        DatabaseManager.cs
+ * Author:      Zachary Smith
+ * Description: Handles database for quarantine database, and functionality relating to adding/querying/removing
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using System.IO;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
 using SimpleAntivirus.GUI.Services;

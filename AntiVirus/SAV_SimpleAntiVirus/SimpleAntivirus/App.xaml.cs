@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.GUI.Services;
+﻿/**************************************************************************
+ * File:        App.xaml.cs
+ * Author:      Christopher Thompson & Joel Parks
+ * Description: Section where required services are setup.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.ViewModels.Windows;
 using SimpleAntivirus.GUI.Views.Pages;
@@ -15,11 +22,7 @@ using System.Windows.Threading;
 using Wpf.Ui;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Wpf.Ui.Appearance;
-using SimpleAntivirus.FileQuarantine;
-using Windows.Devices.WiFiDirect.Services;
-using Windows.UI.ViewManagement;
 using Wpf.Ui.Tray;
-using SimpleAntivirus.CLIMonitoring;
 using SimpleAntivirus.GUI.Services.Interface;
 
 namespace SimpleAntivirus

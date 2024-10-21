@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+ * File:        IQuarantineManager.cs
+ * Author:      Zachary Smith
+ * Description: Interface for quarantine manager, which handles quarantine and unquarantine of files.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.Alerts;
 
 namespace SimpleAntivirus.FileQuarantine
 {

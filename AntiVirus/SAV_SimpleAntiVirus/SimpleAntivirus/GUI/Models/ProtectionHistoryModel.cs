@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**************************************************************************
+ * File:        ProtectionHistoryModel.cs
+ * Author:      Christopher Thompson & Joel Parks
+ * Description: Connects to alert manager backend.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
 using SimpleAntivirus.Alerts;
-using SimpleAntivirus.IntegrityModule;
-using SimpleAntivirus.IntegrityModule.ControlClasses;
-using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.Db;
 namespace SimpleAntivirus.Models
 {
     // Represents the data/business logic of the GUI (IntegrityManagement setup) -> This should be accessible by a range of classes.

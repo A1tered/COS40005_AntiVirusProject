@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+ * File:        QuarantineManager.cs
+ * Author:      Zachary Smith
+ * Description: Sends alerts, and prepares file for quarantine.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.Alerts;
 using System.Diagnostics;
 using System.IO;
 

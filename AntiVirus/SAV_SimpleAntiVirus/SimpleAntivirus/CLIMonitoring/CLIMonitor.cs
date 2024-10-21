@@ -4,22 +4,14 @@
  * Last Modified: 11/08/24
  **************************************************************************/
 
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;  // For dictionary usage
 using System.Diagnostics;
 using System.Management;  // Needed for getting the parent PID
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Threading;
-using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Parsers;
 using Microsoft.Diagnostics.Tracing.Parsers.Kernel;
 using Microsoft.Diagnostics.Tracing.Session;
 using SimpleAntivirus.Alerts;
-using SimpleAntivirus.GUI.Views.Pages;
-using Windows.System.Diagnostics;
 
 namespace SimpleAntivirus.CLIMonitoring;
 

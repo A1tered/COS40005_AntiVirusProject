@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+ * File:        QuarantinedViewModel.cs
+ * Author:      Joel Parks
+ * Description: Handles backend functionality of Quarantine page.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using System.ComponentModel;
 using System.IO;
 using SimpleAntivirus.GUI.Views.Pages;

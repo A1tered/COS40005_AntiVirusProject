@@ -1,11 +1,12 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+ * File:        CLIService.cs
+ * Author:      Christopher Thompson 
+ * Description: Sets up Timothy Loh's CLI monitoring code to run in background.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.Alerts;
 using SimpleAntivirus.CLIMonitoring;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace SimpleAntivirus.GUI.Services
 {

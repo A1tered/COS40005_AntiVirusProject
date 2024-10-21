@@ -1,4 +1,11 @@
-﻿using System.IO;
+﻿/**************************************************************************
+ * File:        FileMover.cs
+ * Author:      Zachary Smith
+ * Description: Handles the moving of files to quarantine
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using System.IO;
 using System.Diagnostics;
 
 

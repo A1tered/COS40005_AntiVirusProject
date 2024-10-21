@@ -1,4 +1,11 @@
-﻿using System.IO;
+﻿/**************************************************************************
+ * File:        Hunter.cs
+ * Author:      Joel Parks
+ * Description: Gathers hashes from database and compares them to system files.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using System.IO;
 using System.Diagnostics;
 
 namespace SimpleAntivirus.FileHashScanning

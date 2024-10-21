@@ -1,12 +1,15 @@
-﻿using SimpleAntivirus.FileQuarantine;
+﻿/**************************************************************************
+ * File:        WhiteListPage.xaml.cs
+ * Author:      Joel Parks
+ * Description: Whitelist page, where users can whitelist files not to be removed.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.FileQuarantine;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using Wpf.Ui.Controls;
 using System.IO;
-using System.Diagnostics;
-using System.DirectoryServices;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace SimpleAntivirus.GUI.Views.Pages
 {

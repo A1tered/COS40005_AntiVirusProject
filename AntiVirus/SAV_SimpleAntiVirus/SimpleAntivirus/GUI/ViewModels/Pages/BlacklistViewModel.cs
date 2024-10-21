@@ -1,4 +1,11 @@
-﻿using SimpleAntivirus.Alerts;
+﻿/**************************************************************************
+ * File:        BlacklistViewModel.cs
+ * Author:      Joel Parks
+ * Description: Handles functionality side of blackview page.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.Alerts;
 using SimpleAntivirus.FileHashScanning;
 using SimpleAntivirus.FileQuarantine;
 using System.IO;

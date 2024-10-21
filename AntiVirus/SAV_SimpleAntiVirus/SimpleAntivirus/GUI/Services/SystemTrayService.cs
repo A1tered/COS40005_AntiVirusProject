@@ -1,14 +1,14 @@
-﻿using SimpleAntivirus.GUI.Views.Pages;
+﻿/**************************************************************************
+ * File:        SystemTrayService.cs
+ * Author:      Christopher Thompson and Joel Parks
+ * Description: Handles the system tray icon that program creates.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
+using SimpleAntivirus.GUI.Views.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using Windows.ApplicationModel.VoiceCommands;
 using Wpf.Ui;
-using Wpf.Ui.Controls;
 using Wpf.Ui.Tray;
 
 namespace SimpleAntivirus.GUI.Services

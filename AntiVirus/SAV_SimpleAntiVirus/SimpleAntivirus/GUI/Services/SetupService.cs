@@ -1,4 +1,10 @@
-﻿using iTextSharp.text.pdf;
+﻿/**************************************************************************
+ * File:        SetupService.cs
+ * Author:      Christopher Thompson 
+ * Description: Handles setup of program, ensures all necessary files are present. Handles decryption/encryption of DB key of Johanns code.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
+
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleAntivirus.AntiTampering;
@@ -8,7 +14,6 @@ using SimpleAntivirus.GUI.Services.Interface;
 using SimpleAntivirus.GUI.ViewModels.Pages;
 using SimpleAntivirus.GUI.Views.Windows;
 using SimpleAntivirus.MaliciousCodeScanning;
-using System.Data.Common;
 using System.IO;
 using System.Text;
 using Wpf.Ui;

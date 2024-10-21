@@ -3,7 +3,6 @@
  * Author:      Christopher Thompson, others
  * Description: Interface for DatabaseIntermediary
  * Last Modified: 29/09/2024
- * Libraries:   [Location Libraries / Dependencies]
  **************************************************************************/
 
 
