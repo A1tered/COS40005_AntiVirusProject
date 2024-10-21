@@ -2,19 +2,12 @@
  * File:        IntegrityDatabaseIntermediary.cs
  * Author:      Christopher Thompson, etc.
  * Description: Interacts with Parent (DatabaseIntermediary), to send function specific database commands.
- * Last Modified: 26/08/2024
+ * Last Modified: 21/10/2024
  **************************************************************************/
 
 using SimpleAntivirus.IntegrityModule.DataRelated;
 using SimpleAntivirus.IntegrityModule.DataTypes;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.System.Diagnostics;
 using SimpleAntivirus.IntegrityModule.Interface;
 
 namespace SimpleAntivirus.IntegrityModule.Db
@@ -33,8 +26,6 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 SetupDatabase();
             }
         }
-
-        public event EventHandler<ProgressArgs> DataAddProgress;
 
         /// <summary>
         /// Creates the table, may do other setup tasks.
@@ -341,6 +332,8 @@ namespace SimpleAntivirus.IntegrityModule.Db
                 return returnDictionary;
             }
         }
+
+        public event EventHandler<ProgressArgs> DataAddProgress;
 
     }
 }

@@ -2,14 +2,8 @@
  * File:        IntegrityViolation.cs
  * Author:      Christopher Thompson, etc.
  * Description: Data structure that represents a violation.
- * Last Modified: 26/08/2024
+ * Last Modified: 21/10/2024
  **************************************************************************/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleAntivirus.IntegrityModule.DataTypes
 {

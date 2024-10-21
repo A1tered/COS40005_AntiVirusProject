@@ -2,17 +2,12 @@
  * File:        FileInfoRequester.cs
  * Author:      Christopher Thompson, etc.
  * Description: Provides useful static functions that can be used by other modules, such functions include Hashing, size bytes to Size label, retrieving file info
- * Last Modified: 26/08/2024
+ * Last Modified: 21/10/2024
  **************************************************************************/
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace SimpleAntivirus.IntegrityModule.DataRelated
 {

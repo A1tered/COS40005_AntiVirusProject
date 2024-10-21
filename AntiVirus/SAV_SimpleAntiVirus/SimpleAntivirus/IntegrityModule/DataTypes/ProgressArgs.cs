@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**************************************************************************
+* File:        ProgressArgs.cs
+* Author:      Christopher Thompson, others
+* Description: Defines event information for updating progress bar info upwards.
+* Last Modified: 8/10/2024
+**************************************************************************/
 
 namespace SimpleAntivirus.IntegrityModule.DataTypes
 {

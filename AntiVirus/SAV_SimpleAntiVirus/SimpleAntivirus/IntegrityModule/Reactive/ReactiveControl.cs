@@ -7,9 +7,6 @@
  **************************************************************************/
 
 using SimpleAntivirus.IntegrityModule.DataRelated;
-using SimpleAntivirus.IntegrityModule.DataTypes;
-using SimpleAntivirus.IntegrityModule.IntegrityComparison;
-using SimpleAntivirus.IntegrityModule.Db;
 using System.IO;
 using SimpleAntivirus.IntegrityModule.Interface;
 

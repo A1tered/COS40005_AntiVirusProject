@@ -1,11 +1,9 @@
-﻿using SimpleAntivirus.IntegrityModule.Alerts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleAntivirus.Alerts;
-
+﻿/**************************************************************************
+ * File:        AlertArgs.cs
+ * Author:      Christopher Thompson, etc.
+ * Description: Provides alerts structure for event information.
+ * Last Modified: 21/10/2024
+ **************************************************************************/
 namespace SimpleAntivirus.IntegrityModule.DataTypes
 {
     public class AlertArgs : EventArgs
