@@ -8,6 +8,7 @@
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Utilities;
 
 namespace SimpleAntivirus.IntegrityModule.DataRelated
 {
@@ -202,6 +203,43 @@ namespace SimpleAntivirus.IntegrityModule.DataRelated
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Calculate entropy of a file.
+        /// </summary>
+        /// <param name="file">File path</param>
+        /// <returns></returns>
+        public static float EntropyCalculate(string file)
+        {
+            float entropyTotal = 0;
+            byte[] byteArray = File.ReadAllBytes(file);
+            Dictionary<int, int> amountTracker = new();
+            foreach (byte byteItem in byteArray)
+            {
+                int convertInt = Convert.ToInt32(byteItem);
+                if (amountTracker.ContainsKey(convertInt))
+                {
+                    amountTracker[convertInt] += 1;
+                }
+                else
+                {
+                    amountTracker[convertInt] = 0;
+                }
+            }
+
+            long fileLength = byteArray.Count();
+
+            foreach (KeyValuePair<int, int> pair in amountTracker)
+            {
+                if (pair.Value > 0)
+                {
+                    float probabilityOfItem = pair.Value / (float)fileLength;
+                    entropyTotal -= probabilityOfItem * (float)Math.Log2(probabilityOfItem);
+                }
+            }
+
+            return entropyTotal;
         }
     }
 }
