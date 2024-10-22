@@ -26,11 +26,18 @@ namespace SimpleAntivirus.GUI.Views.Pages
         public void Page_Loaded(object sender, RoutedEventArgs e)
         {
             AlertRow alertRowItem = ViewModel.SelectedRow;
-            TimeStampBlock.Text = $"{alertRowItem.TimeStamp}";
-            ThreatType.Text = $"Category: {alertRowItem.Component}";
-            Severity.Text = $"Severity: {alertRowItem.Severity}";
-            Message.Text = $"Message: {alertRowItem.EntireMessage}";
-            SuggestedAction.Text = $"Suggested Action: {alertRowItem.SuggestedAction}";
+            if (alertRowItem == null)
+            {
+                System.Windows.MessageBox.Show("An error has occurred. Please try again later.", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                TimeStampBlock.Text = $"{alertRowItem.TimeStamp}";
+                ThreatType.Text = $"Category: {alertRowItem.Component}";
+                Severity.Text = $"Severity: {alertRowItem.Severity}";
+                Message.Text = $"Message: {alertRowItem.EntireMessage}";
+                SuggestedAction.Text = $"Suggested Action: {alertRowItem.SuggestedAction}";
+            }
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
