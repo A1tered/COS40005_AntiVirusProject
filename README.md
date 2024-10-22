@@ -16,8 +16,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/SAVLogo2.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/A1tered/COS40005_AntiVirusProject">
+    <img src="images/SAVLogo2.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">SAV</h3>
