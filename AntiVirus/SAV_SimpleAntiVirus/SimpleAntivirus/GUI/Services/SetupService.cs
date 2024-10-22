@@ -352,7 +352,7 @@ namespace SimpleAntivirus.GUI.Services
             }
 
 
-            System.Windows.MessageBox.Show("Program has been booted up for the first time\n This message will only show up if no data is found!", "First time booting up", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("Welcome to Simple Antivirus!\nAs this is your first time booting the program, why not try a quick scan?", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Information);
             return true;
         }
 
