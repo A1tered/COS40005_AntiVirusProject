@@ -181,7 +181,7 @@ Zachary Smith - [LinkedIn](https://www.linkedin.com/in/zachsmith-zip) - zachjsmi
 
 Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
 
-Christopher Thompson - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Christopher Thompson - 103995646@student.swin.edu.au
 
 Joel Parks - [LinkedIn](https://www.linkedin.com/in/joel-p-b613a6292) - 103981674@student.swin.edu.au 
 
