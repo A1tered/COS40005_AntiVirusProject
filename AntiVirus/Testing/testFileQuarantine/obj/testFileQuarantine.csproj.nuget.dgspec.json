@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj": {}
+    "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\TestFileQuarantine.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+    "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+        "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
         "projectName": "SimpleAntivirus",
-        "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
-        "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\obj\\",
+        "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+        "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,7 +104,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.17763.34, 10.0.17763.34]"
+              "version": "[10.0.17763.31, 10.0.17763.31]"
             }
           ],
           "frameworkReferences": {
@@ -118,24 +118,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj": {
+    "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\TestFileQuarantine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj",
+        "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\TestFileQuarantine.csproj",
         "projectName": "TestFileQuarantine",
-        "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\TestFileQuarantine.csproj",
-        "packagesPath": "C:\\Users\\Zach\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestFileQuarantine\\obj\\",
+        "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\TestFileQuarantine.csproj",
+        "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testFileQuarantine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\programs\\visualStudioCommunity2022\\shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -150,8 +150,8 @@
           "net8.0-windows10.0.17763": {
             "targetAlias": "net8.0-windows10.0.17763.0",
             "projectReferences": {
-              "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
-                "projectPath": "E:\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
+              "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+                "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
               }
             }
           }
@@ -214,7 +214,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.17763.34, 10.0.17763.34]"
+              "version": "[10.0.17763.31, 10.0.17763.31]"
             }
           ],
           "frameworkReferences": {
@@ -225,7 +225,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

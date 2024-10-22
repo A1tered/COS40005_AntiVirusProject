@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestCLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a878b9982214c615706a141075aac021e3c77d9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4a96cae98de4833b61a5a41cccca383f112f021")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestCLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestCLI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

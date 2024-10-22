@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TestAlerts
-build_property.ProjectDir = E:\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\TestAlerts\
+build_property.ProjectDir = C:\Users\yumcy\OneDrive\Desktop\Github Repositories\ProjectB\COS40005_AntiVirusProject\AntiVirus\Testing\testAlerts\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

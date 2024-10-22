@@ -21,9 +21,10 @@ namespace TestingIntegrity.DummyClasses
 {
     public class IntegrityDatabaseIntermediaryDummy : DatabaseIntermediaryDummy, IIntegrityDatabaseIntermediary
     {
+        private string _relativeDir;
         public IntegrityDatabaseIntermediaryDummy(string databaseName, bool firstRun) : base(databaseName, firstRun, "IntegrityTrack")
         {
-
+            _relativeDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
         }
 
         public event EventHandler<ProgressArgs> DataAddProgress;
@@ -101,8 +102,8 @@ namespace TestingIntegrity.DummyClasses
         public Dictionary<string, string> GetSetEntries(int set, int amountHandledPerSet)
         {
             Dictionary<string, string> returnDictionary = new();
-            returnDictionary[@"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem1.txt"] = "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709";
-            returnDictionary[@"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem2.txt"] = "an_incorrect_hash";
+            returnDictionary[Path.Join(_relativeDir, "testingFolder\\testitem2.txt")] = "1A9B9508B6003B68DDFE03A9C8CBC4BD4388339B";
+            returnDictionary[Path.Join(_relativeDir, "testingFolder\\testitem1.txt")] = "an_incorrect_hash";
             return returnDictionary;
         }
 
@@ -115,8 +116,8 @@ namespace TestingIntegrity.DummyClasses
         public Dictionary<string, string> GetSetEntriesDirectory(string directory)
         {
             Dictionary<string, string> returnDictionary = new();
-            returnDictionary[@"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem1.txt"] = "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709";
-            returnDictionary[@"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem2.txt"] = "an_incorrect_hash";
+            returnDictionary[Path.Join(_relativeDir, "testingFolder\\testitem2.txt")] = "1A9B9508B6003B68DDFE03A9C8CBC4BD4388339B";
+            returnDictionary[Path.Join(_relativeDir, "testingFolder\\testitem1.txt")] = "an_incorrect_hash";
             return returnDictionary;
         }
 

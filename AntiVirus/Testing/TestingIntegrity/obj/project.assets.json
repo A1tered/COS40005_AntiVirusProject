@@ -4138,11 +4138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\TestingIntegrity.csproj",
+      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\TestingIntegrity.csproj",
       "projectName": "TestingIntegrity",
-      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\TestingIntegrity.csproj",
+      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\TestingIntegrity.csproj",
       "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\obj\\",
+      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4163,8 +4163,8 @@
         "net8.0-windows10.0.17763": {
           "targetAlias": "net8.0-windows10.0.17763.0",
           "projectReferences": {
-            "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
-              "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
+            "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+              "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
             }
           }
         }

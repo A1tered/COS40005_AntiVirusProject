@@ -11,8 +11,6 @@ namespace TestingIntegrity
 {
     public class IntegrityUnitTests
     {
-        private IntegrityDatabaseIntermediary _integData;
-        private string fileProvided;
         [SetUp]
         public void Setup()
         {

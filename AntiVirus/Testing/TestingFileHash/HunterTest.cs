@@ -19,7 +19,7 @@ namespace TestingFileHash
         [SetUp]
         public void Setup() 
         {
-            SetupService.GetInstance(null, true);
+            SetupService.GetInstance(true);
             _directoryManagerStub = new DirectoryManager();
             _hunterStub = new Hunter("C:\\TestDirectory", _directoryManagerStub.getDatabaseDirectory("sighash.db"), TokenStub);
             _testFile = "C:\\TestDirectory\\Anikdote - Turn It Up [NCS Release] (2).mp3";

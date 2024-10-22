@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf.Ui.Appearance;
 
 namespace TestingIntegrity.DummyClasses
 {
@@ -16,7 +17,7 @@ namespace TestingIntegrity.DummyClasses
 
         }
 
-        public static ISetupService GetInstance(IServiceProvider serviceSet, bool testingMode)
+        public static ISetupService GetInstance(bool testingMode)
         {
             return new SetupServiceDummy();
         }
@@ -68,6 +69,11 @@ namespace TestingIntegrity.DummyClasses
 
         }
 
+        public void Y2k38Problem()
+        {
+
+        }
+
         public string DbKey()
         {
             return "";
@@ -88,6 +94,17 @@ namespace TestingIntegrity.DummyClasses
                 return false;
             }
         }
+
+        public ApplicationTheme ApplicationTheme
+        {
+            get
+            {
+                return ApplicationTheme.Dark;
+            }
+
+        }
+
+
 
     }
 }

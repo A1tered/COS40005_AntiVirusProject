@@ -1,14 +1,44 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\",
+  "WorkspaceRootPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\integritycheckingtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\dummyclasses\\integritydatabaseintermediarydummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:dummyclasses\\integritydatabaseintermediarydummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\integrityunittests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:integrityunittests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\integritycheckingtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:integritycheckingtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\integritynonfunctionaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:integritynonfunctionaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\guiunittests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:guiunittests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\fileinforequestertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:fileinforequestertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A646F98-58C0-4E18-9A73-821E88CA476E}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\integritymodule\\integritycomparison\\integritydatapooler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\testing\\testingintegrity\\dummyclasses\\setupservicedummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC871E7F-CFFC-474D-BD68-7B232496BE6B}|TestingIntegrity.csproj|solutionrelative:dummyclasses\\setupservicedummy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A646F98-58C0-4E18-9A73-821E88CA476E}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\yumcy\\onedrive\\desktop\\github repositories\\projectb\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\services\\interface\\isetupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -36,122 +66,209 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IntegrityNonFunctionalTests.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityNonFunctionalTests.cs",
+              "RelativeDocumentMoniker": "IntegrityNonFunctionalTests.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityNonFunctionalTests.cs",
+              "RelativeToolTip": "IntegrityNonFunctionalTests.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:17:43.881Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "GUIUnitTests.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\GUIUnitTests.cs",
+              "RelativeDocumentMoniker": "GUIUnitTests.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\GUIUnitTests.cs",
+              "RelativeToolTip": "GUIUnitTests.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAwBQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:17:37.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "IntegrityCheckingTest.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityCheckingTest.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityCheckingTest.cs",
               "RelativeDocumentMoniker": "IntegrityCheckingTest.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityCheckingTest.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityCheckingTest.cs",
               "RelativeToolTip": "IntegrityCheckingTest.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T04:12:43.551Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DatabaseTest.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DatabaseTest.cs",
-              "RelativeDocumentMoniker": "DatabaseTest.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DatabaseTest.cs",
-              "RelativeToolTip": "DatabaseTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAbAAAA",
+              "DocumentIndex": 2,
+              "Title": "IntegrityUnitTests.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityUnitTests.cs",
+              "RelativeDocumentMoniker": "IntegrityUnitTests.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\IntegrityUnitTests.cs",
+              "RelativeToolTip": "IntegrityUnitTests.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAmwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T03:51:05.854Z"
+              "WhenOpened": "2024-10-22T04:22:24.124Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "IntegrityDatabaseIntermediaryDummy.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DummyClasses\\IntegrityDatabaseIntermediaryDummy.cs",
+              "RelativeDocumentMoniker": "DummyClasses\\IntegrityDatabaseIntermediaryDummy.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DummyClasses\\IntegrityDatabaseIntermediaryDummy.cs",
+              "RelativeToolTip": "DummyClasses\\IntegrityDatabaseIntermediaryDummy.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAADwv3cAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:26:39.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseTest.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DatabaseTest.cs",
+              "RelativeDocumentMoniker": "DatabaseTest.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DatabaseTest.cs",
+              "RelativeToolTip": "DatabaseTest.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAWwBwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T03:51:05.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FileInfoRequesterTest.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\FileInfoRequesterTest.cs",
+              "RelativeDocumentMoniker": "FileInfoRequesterTest.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\FileInfoRequesterTest.cs",
+              "RelativeToolTip": "FileInfoRequesterTest.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAmwBMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:20:38.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IntegrityDataPooler.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\IntegrityComparison\\IntegrityDataPooler.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\IntegrityComparison\\IntegrityDataPooler.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\IntegrityComparison\\IntegrityDataPooler.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\IntegrityComparison\\IntegrityDataPooler.cs",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAAwG8AAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:27:41.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ISetupService.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAywFsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:16:05.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SetupServiceDummy.cs",
+              "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DummyClasses\\SetupServiceDummy.cs",
+              "RelativeDocumentMoniker": "DummyClasses\\SetupServiceDummy.cs",
+              "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\DummyClasses\\SetupServiceDummy.cs",
+              "RelativeToolTip": "DummyClasses\\SetupServiceDummy.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAADwv0kAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T04:15:15.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "IntegrityConfigurator.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityConfigurator.cs",
               "ViewState": "AQIAACcAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T04:11:47.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "IIntegrityConfigurator.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\Interface\\IIntegrityConfigurator.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T04:11:40.88Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "IntegrityManagement.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\IntegrityModule\\ControlClasses\\IntegrityManagement.cs",
               "ViewState": "AQIAAE4AAAAAAAAAAAAowFwAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T04:07:41.598Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml.cs",
               "ViewState": "AQIAAHEAAAAAAAAAAAA/wIUAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T04:05:57.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "SetupService.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
               "ViewState": "AQIAANsAAAAAAAAAAAAiwFMAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T02:33:44.241Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "ISetupService.cs",
               "DocumentMoniker": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
               "ToolTip": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\Interface\\ISetupService.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAxwBMAAABuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-29T03:59:28.987Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

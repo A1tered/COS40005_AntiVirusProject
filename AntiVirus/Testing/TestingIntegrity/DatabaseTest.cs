@@ -11,9 +11,11 @@ namespace TestingIntegrity
         [SetUp]
         public void Setup()
         {
-            SetupService.GetInstance(null, true);
+            string relativeDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+            fileProvided = Path.Join(relativeDirectory, "hashExample.txt");
+            SetupService.GetInstance(true);
             _integData = new IntegrityDatabaseIntermediary("IntegrityDatabase", true);
-            fileProvided = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\hashExample.txt";
         }
 
         [TearDown]

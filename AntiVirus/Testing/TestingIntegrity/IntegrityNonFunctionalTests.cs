@@ -15,19 +15,21 @@ namespace TestingIntegrity
     {
         private IntegrityDatabaseIntermediary _integData;
         private IntegrityManagement _integrityManagement;
-        private string fileProvided;
+        private string _baseDirectory;
         [SetUp]
         public void Setup()
         {
-            SetupService.GetInstance(null, true);
+            SetupService.GetInstance(true);
             _integData = new("IntegrityDatabase", true);
             _integrityManagement = new(_integData);
+            // This is hard coded because I do not want to upload 20,000 files to this github repository.
+            _baseDirectory = @"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround";
         }
 
         [Test]
         public async Task PerformanceTest()
         {
-            string directoryFolder = @"C:\Users\yumcy\OneDrive\Desktop\UniversitySubjects\COS40006 Computing Technology Project B\TestingGround\TwentyThousandTest";
+            string directoryFolder = Path.Join(_baseDirectory, "TwentyThousandTest");
             _integData.DeleteAll();
             await _integrityManagement.AddBaseline(directoryFolder);
             string[] files = Directory.GetFiles(directoryFolder);

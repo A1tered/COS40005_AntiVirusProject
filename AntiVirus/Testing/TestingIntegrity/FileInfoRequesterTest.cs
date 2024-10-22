@@ -11,7 +11,9 @@ namespace TestingIntegrity
         [SetUp]
         public void Setup()
         {
-            fileProvided = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\hashExample.txt";
+            string relativeDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+            fileProvided = Path.Join(relativeDirectory, "hashExample.txt");
         }
 
         [Test]
@@ -33,7 +35,7 @@ namespace TestingIntegrity
         [Test]
         public void RetrieveFileInfo()
         {
-            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.EqualTo(new Tuple<long, long>(1726814927, 17)));
+            Assert.That(FileInfoRequester.RetrieveFileInfo(fileProvided), Is.EqualTo(new Tuple<long, long>(1728798693, 17)));
         }
     }
 }

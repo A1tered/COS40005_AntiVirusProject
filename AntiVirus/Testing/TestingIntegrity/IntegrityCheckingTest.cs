@@ -1,4 +1,5 @@
-﻿using SimpleAntivirus.GUI.Services;
+﻿using Microsoft.Extensions.FileProviders;
+using SimpleAntivirus.GUI.Services;
 using SimpleAntivirus.IntegrityModule.Alerts;
 using SimpleAntivirus.IntegrityModule.ControlClasses;
 using SimpleAntivirus.IntegrityModule.DataTypes;
@@ -22,11 +23,12 @@ namespace TestingIntegrity
         [SetUp]
         public void Setup()
         {
-            SetupService.GetInstance(null, true);
+            string relativeDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            _selfModifyingDirectory = Path.Join(relativeDirectory, "self_modifying_testfolder");
+            _fileProvided = Path.Join(relativeDirectory, "hashExample.txt");
+            SetupService.GetInstance(true);
             _integDatabase = new("IntegrityDatabase", true);
             _integrityManagement = new(_integDatabase);
-            _selfModifyingDirectory = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\self_modifying_testfolder";
-            _fileProvided = "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\Technology Project A\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingIntegrity\\hashExample.txt";
         }
 
         private string[] CreateFiles(int amountCreate)
@@ -157,7 +159,7 @@ namespace TestingIntegrity
         public async Task AddEntryTest()
         {
             _integDatabase.DeleteAll();
-            string fileCheck = @"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\Technology Project A\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem2.txt";
+            string fileCheck = @"C:\Users\yumcy\OneDrive\Desktop\Github Repositories\ProjectB\COS40005_AntiVirusProject\AntiVirus\Testing\TestingIntegrity\testingFolder\testitem2.txt";
             Assert.That(_integDatabase.CheckExistence(fileCheck), Is.False);
             await _integDatabase.AddEntry(fileCheck, 100);
             Assert.That(_integDatabase.CheckExistence(fileCheck), Is.True);

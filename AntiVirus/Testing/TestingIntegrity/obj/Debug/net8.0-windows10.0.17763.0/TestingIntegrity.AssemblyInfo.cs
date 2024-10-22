@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestingIntegrity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7d43a1464fc5cb75b00365c5931f7a2625df33b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4a96cae98de4833b61a5a41cccca383f112f021")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestingIntegrity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestingIntegrity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

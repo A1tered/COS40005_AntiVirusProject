@@ -4089,19 +4089,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tloh1\\.nuget\\packages\\": {}
+    "C:\\Users\\yumcy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
+      "projectUniqueName": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
       "projectName": "TestingFileHash",
-      "projectPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
-      "packagesPath": "C:\\Users\\tloh1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tloh1\\OneDrive\\Documents\\Github2\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\obj\\",
+      "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\TestingFileHash.csproj",
+      "packagesPath": "C:\\Users\\yumcy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\TestingFileHash\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\tloh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yumcy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4115,8 +4120,8 @@
         "net8.0-windows10.0.17763": {
           "targetAlias": "net8.0-windows10.0.17763.0",
           "projectReferences": {
-            "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
-              "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
+            "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj": {
+              "projectPath": "C:\\Users\\yumcy\\OneDrive\\Desktop\\Github Repositories\\ProjectB\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj"
             }
           }
         }
@@ -4171,7 +4176,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.17763.34, 10.0.17763.34]"
+            "version": "[10.0.17763.31, 10.0.17763.31]"
           }
         ],
         "frameworkReferences": {
@@ -4182,7 +4187,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("testFileQuarantine")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("TestFileQuarantine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0864e153f49c0ddc78f64161dfe74bed8c21482")]
-[assembly: System.Reflection.AssemblyProductAttribute("testFileQuarantine")]
-[assembly: System.Reflection.AssemblyTitleAttribute("testFileQuarantine")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4a96cae98de4833b61a5a41cccca383f112f021")]
+[assembly: System.Reflection.AssemblyProductAttribute("TestFileQuarantine")]
+[assembly: System.Reflection.AssemblyTitleAttribute("TestFileQuarantine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows10.0.17763.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows10.0.17763.0")]

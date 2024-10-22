@@ -20,7 +20,7 @@ namespace TestingIntegrity
         [Test]
         public async Task SetupServiceTest()
         {
-            ISetupService setupService = SetupService.GetInstance(null, true);
+            ISetupService setupService = SetupService.GetInstance(true);
             bool getResult = await setupService.Run();
             Assert.That(setupService.ProgramCooked, Is.True);
         }
