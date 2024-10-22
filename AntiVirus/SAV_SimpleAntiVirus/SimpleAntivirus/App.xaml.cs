@@ -131,26 +131,40 @@ namespace SimpleAntivirus
                 return;
             }
 
-            _host.Start();
-            NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
 
-            // Check the program has everything required, and instantiate the Singleton
-            await SetupService.GetInstance(_host.Services).Run();
+            await SetupService.GetInstance().Run();
 
-            // Y2K38 check
-            int y2k38TimeStamp = 2147483647;
-            long currentUnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
-            ISetupService setupService = SetupService.GetExistingInstance();
-
-            if (currentUnixTime > y2k38TimeStamp)
-            {
-                setupService.Y2k38Problem();
-            }
 
             // If setup encounters no errors, then continue. 
             if (!SetupService.GetExistingInstance().ProgramCooked)
             {
+                _host.Start();
+                //INavigationWindow _iNaviWindow = _host.Services.GetService<INavigationWindow>();
+                //MainWindow window = _iNaviWindow as MainWindow;
+                //window.CloseWindowGracefully();
+
+                ApplicationTheme appThemeGet = SetupService.GetExistingInstance().ApplicationTheme;
+
+                if (appThemeGet != ApplicationTheme.Unknown)
+                {
+                    _host.Services.GetService<DashboardViewModel>().CurrentTheme = SetupService.GetExistingInstance().ApplicationTheme;
+                }
+
+                NavigationServiceIntermediary.NavigationService = _host.Services.GetService<INavigationService>();
+
+                // Check the program has everything required, and instantiate the Singleton
+
+                // Y2K38 check
+                int y2k38TimeStamp = 2147483647;
+                long currentUnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+                ISetupService setupService = SetupService.GetExistingInstance();
+
+                if (currentUnixTime > y2k38TimeStamp)
+                {
+                    setupService.Y2k38Problem();
+                }
+
                 // Begin SystemTray
                 _host.Services.GetService<SystemTrayService>();
 
@@ -162,6 +176,10 @@ namespace SimpleAntivirus
 
                 // CLI Monitor Setup (If you encounter lag, check this out)
                 _host.Services.GetService<CLIService>().Setup();
+            }
+            else
+            {
+                Shutdown();
             }
         }
 
@@ -177,19 +195,23 @@ namespace SimpleAntivirus
             // operations, even though theyre disposed automatically.
             
             // All ongoing operations are to be cancelled within IntegrityManagement.
-            await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
             if (mutex != null)
             {
                 mutex.ReleaseMutex();
                 mutex.Dispose();
             }
 
+
             ISetupService setupService = SetupService.GetExistingInstance();
             await setupService.UpdateConfig();
+            if (!SetupService.GetExistingInstance().ProgramCooked)
+            {
+                await _host.Services.GetService<IntegrityViewModel>().CancelAllOperations();
 
-            // Tell CLIService to stop processing events.
-            _host.Services.GetService<CLIService>().Remove();
+                // Tell CLIService to stop processing events.
+                _host.Services.GetService<CLIService>().Remove();
 
+            }
             //INotifyIconService serviceGet = _host.Services.GetService<SystemTrayService>();
             _host.Dispose();
         }

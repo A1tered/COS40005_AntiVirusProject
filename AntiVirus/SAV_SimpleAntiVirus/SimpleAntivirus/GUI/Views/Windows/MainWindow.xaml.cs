@@ -22,6 +22,8 @@ namespace SimpleAntivirus.GUI.Views.Windows
             DataContext = this;
             _cancelCloses = true;
 
+            System.Diagnostics.Debug.WriteLine("Debug setup");
+
             SystemThemeWatcher.Watch(this);
 
             InitializeComponent();

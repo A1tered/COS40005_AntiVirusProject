@@ -6,6 +6,7 @@
  **************************************************************************/
 
 using Microsoft.Data.Sqlite;
+using Wpf.Ui.Appearance;
 
 
 namespace SimpleAntivirus.GUI.Services.Interface
@@ -24,7 +25,7 @@ namespace SimpleAntivirus.GUI.Services.Interface
         /// </summary>
         /// <param name="naviWindow"></param>
         /// <returns></returns>
-        public static abstract ISetupService GetInstance(IServiceProvider serviceSet, bool testingMode = false);
+        public static abstract ISetupService GetInstance(bool testingMode = false);
 
         /// <summary>
         /// Get SetupService without creating a new one.
@@ -85,6 +86,8 @@ namespace SimpleAntivirus.GUI.Services.Interface
         public bool FirstTimeRunning{ get;}
 
         public bool ProgramCooked{ get; }
+
+        public ApplicationTheme ApplicationTheme { get; }
 
         public void Y2k38Problem();
     }

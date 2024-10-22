@@ -28,9 +28,10 @@ namespace SimpleAntivirus.GUI.Views.Pages
         // ViewModel
         public DashboardViewModel ViewModel { get; }
 
-        public DashboardPage(DashboardViewModel viewModel)
+        public DashboardPage(DashboardViewModel viewModel, IntegrityHandlerModel integHandlerModel)
         {
             ViewModel = viewModel;
+            _integrityHandlerModel = integHandlerModel;
             DataContext = ViewModel;
             InitializeComponent();
         }
@@ -108,8 +109,7 @@ namespace SimpleAntivirus.GUI.Views.Pages
         {
             _databaseManager = new DatabaseManager(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases", "quarantine.db"));
             _alertManager = new AlertManager();
-            _eventBus = new EventBus(_alertManager);
-            _integrityHandlerModel = new IntegrityHandlerModel(_eventBus);
+            _eventBus = new EventBus(_alertManager);;
             UpdatePage();
         }
 

@@ -36,8 +36,8 @@ namespace SimpleAntivirus.GUI.Services
         private string[] _dbNames;
         private string _configPath;
         private bool _testingMode;
+        private ApplicationTheme _applicationTheme;
         Dictionary<string, int> _configDictionary;
-        private IServiceProvider _serviceSet;
 
         // db folders
         string[] _createFolders;
@@ -48,23 +48,18 @@ namespace SimpleAntivirus.GUI.Services
         private static SetupService _setupService;
         private static readonly object _lock = new object(); 
 
-        private SetupService(IServiceProvider serviceSet, bool testingMode = false)
+        private SetupService(bool testingMode = false)
         {
             _testingMode = testingMode;
             _programCooked = false;
             _firstSetup = false;
-
-            if (!_testingMode)
-            {
-                _iNaviWindow = serviceSet.GetService<INavigationWindow>();
-            }
-            else // If testing, assume booting first time.
+            _applicationTheme = ApplicationTheme.Unknown;
+            if (testingMode)  // If testing, assume booting first time.
             {
                 _firstSetup = true;
             }
             _dbFolder = Path.Combine(AppContext.BaseDirectory, "Databases");
             _configPath = CreateFilePathProgramDataDirectory("config.enc");
-            _serviceSet = serviceSet;
             // Config Dictionary (eg, firstRun=1)
             _configDictionary = new();
 
@@ -86,7 +81,7 @@ namespace SimpleAntivirus.GUI.Services
         /// </summary>
         /// <param name="naviWindow"></param>
         /// <returns></returns>
-        public static ISetupService GetInstance(IServiceProvider serviceSet, bool testingMode = false)
+        public static ISetupService GetInstance(bool testingMode = false)
         {
             if (_setupService == null)
             {
@@ -94,7 +89,7 @@ namespace SimpleAntivirus.GUI.Services
                 {
                     if (_setupService == null)
                     {
-                        _setupService = new SetupService(serviceSet, testingMode);
+                        _setupService = new SetupService(testingMode);
                     }
                 }
             }
@@ -126,8 +121,6 @@ namespace SimpleAntivirus.GUI.Services
                 System.Windows.MessageBox.Show($"Operation Failure: {problem}", "Simple Antivirus", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
             // Close program
 
-                MainWindow window = _iNaviWindow as MainWindow;
-                window.CloseWindowGracefully();
             }
         }
 
@@ -381,7 +374,7 @@ namespace SimpleAntivirus.GUI.Services
                 }
                 if (!_testingMode)
                 {
-                    _serviceSet.GetService<DashboardViewModel>().CurrentTheme = ApplicationThemeManager.GetAppTheme();
+                    _applicationTheme = ApplicationThemeManager.GetAppTheme();
                 }
             }
             // Ensure existence of database key folders
@@ -398,6 +391,7 @@ namespace SimpleAntivirus.GUI.Services
             {
                 foreach (string databaseName in _dbNames)
                 {
+
                     if (!Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
                     {
                         ErrorMessage($"{databaseName} DB missing, reinstall program");
@@ -469,11 +463,6 @@ namespace SimpleAntivirus.GUI.Services
             }
         }
 
-        public static void GetInstance()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool FirstTimeRunning
         {
             get
@@ -490,7 +479,14 @@ namespace SimpleAntivirus.GUI.Services
             }
         }
 
-        public static ISetupService Instance { get; set; }
+        public ApplicationTheme ApplicationTheme
+        {
+            get
+            {
+                return _applicationTheme;
+            }
+        }
+
         public void Y2k38Problem()
         {
             ErrorMessage("The system time is set beyond 19 January 2038 at 03:14:07 UTC. Please change the system time and try again.");
