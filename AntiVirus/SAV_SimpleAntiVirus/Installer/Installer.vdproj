@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_256FC103DB9948AFAF7BCE482C01D93F"
+        "MsmKey" = "8:_1CAF135A25094302A9346D922B4E4F22"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -28,12 +28,6 @@
         "Entry"
         {
         "MsmKey" = "8:_87BCE7F5AF0342C2AA457FA98E5610CA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C2ECF79B76AF47499B5D7C3C25F4455F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -80,6 +74,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -104,6 +106,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -162,26 +172,6 @@
             "TargetName" = "8:malicious_commands_init.db"
             "Tag" = "8:"
             "Folder" = "8:_99C6E5C99EB54153A4EFC1D023279EBC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C2ECF79B76AF47499B5D7C3C25F4455F"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\Downloads\\SAVLogo2.ico"
-            "TargetName" = "8:SAVLogo2.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -374,7 +364,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:The installer will guide you through the steps required to install our Simple Antivirus on your computer."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_C2ECF79B76AF47499B5D7C3C25F4455F"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -489,20 +479,6 @@
             "Folder" = "8:_E5967766DA3B4B51AF85068F90A4C705"
             "WorkingFolder" = "8:_E5967766DA3B4B51AF85068F90A4C705"
             "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8F1EC294444D444B981FE721557CA6B5"
-            {
-            "Name" = "8:Shortcut to %sApplication Folder"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_C7681808C504459D88C15D7F2553D2BB"
-            "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
-            "WorkingFolder" = "8:_C7681808C504459D88C15D7F2553D2BB"
-            "Icon" = "8:_C2ECF79B76AF47499B5D7C3C25F4455F"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F88392A5461342A78B503DAA8AB3ED49"
@@ -918,7 +894,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_256FC103DB9948AFAF7BCE482C01D93F"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1CAF135A25094302A9346D922B4E4F22"
             {
             "SourcePath" = "8:..\\SimpleAntivirus\\obj\\Debug\\net8.0-windows10.0.17763.0\\apphost.exe"
             "TargetName" = "8:"
