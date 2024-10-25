@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\installerscript\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|solutionrelative:installerscript\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\installerscript\\installerscript.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|solutionrelative:installerscript\\installerscript.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\installerscript\\installerscript.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{A02A616B-BD96-46DA-8475-8E1E080C61DB}|InstallerScript\\InstallerScript.csproj|solutionrelative:installerscript\\installerscript.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\simpleantivirus.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\simpleantivirus.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\gui\\services\\setupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\gui\\services\\setupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\simpleantivirus.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}|SimpleAntivirus\\SimpleAntivirus.csproj|solutionrelative:simpleantivirus\\simpleantivirus.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,24 +41,46 @@
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\App.xaml",
-              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml",
-              "RelativeToolTip": "SimpleAntivirus\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-24T15:22:43.807Z",
+              "DocumentIndex": 1,
+              "Title": "InstallerScript.csproj",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\InstallerScript.csproj",
+              "RelativeDocumentMoniker": "InstallerScript\\InstallerScript.csproj",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\InstallerScript.csproj",
+              "RelativeToolTip": "InstallerScript\\InstallerScript.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-25T05:18:43.442Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\Program.cs",
+              "RelativeDocumentMoniker": "InstallerScript\\Program.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\Program.cs",
+              "RelativeToolTip": "InstallerScript\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T05:02:20.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SimpleAntivirus",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\SimpleAntivirus.csproj",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
+              "RelativeToolTip": "SimpleAntivirus\\SimpleAntivirus.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-22T04:14:08.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "SetupService.cs",
               "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\GUI\\Services\\SetupService.cs",
               "RelativeDocumentMoniker": "SimpleAntivirus\\GUI\\Services\\SetupService.cs",
@@ -58,14 +92,30 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml",
+              "RelativeDocumentMoniker": "SimpleAntivirus\\App.xaml",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\App.xaml",
+              "RelativeToolTip": "SimpleAntivirus\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-24T15:22:43.807Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SimpleAntivirus",
-              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
-              "RelativeDocumentMoniker": "SimpleAntivirus\\SimpleAntivirus.csproj",
-              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj",
-              "RelativeToolTip": "SimpleAntivirus\\SimpleAntivirus.csproj",
+              "Title": "InstallerScript",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\InstallerScript.csproj",
+              "RelativeDocumentMoniker": "InstallerScript\\InstallerScript.csproj",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\InstallerScript\\InstallerScript.csproj",
+              "RelativeToolTip": "InstallerScript\\InstallerScript.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-22T04:14:08.474Z"
+              "WhenOpened": "2024-10-25T05:18:49.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             }
           ]
         },

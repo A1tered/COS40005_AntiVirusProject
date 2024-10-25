@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAntivirus", "SimpleAn
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{98EE64A8-1DFA-49A0-867E-31A455568D89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallerScript", "InstallerScript\InstallerScript.csproj", "{A02A616B-BD96-46DA-8475-8E1E080C61DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{F0C54FE1-DE09-4C5B-830C-5C70C1E61080}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98EE64A8-1DFA-49A0-867E-31A455568D89}.Debug|Any CPU.ActiveCfg = Debug
 		{98EE64A8-1DFA-49A0-867E-31A455568D89}.Release|Any CPU.ActiveCfg = Release
+		{A02A616B-BD96-46DA-8475-8E1E080C61DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02A616B-BD96-46DA-8475-8E1E080C61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02A616B-BD96-46DA-8475-8E1E080C61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02A616B-BD96-46DA-8475-8E1E080C61DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

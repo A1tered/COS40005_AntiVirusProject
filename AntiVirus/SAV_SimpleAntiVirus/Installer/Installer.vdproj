@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_214F716A237F4976BF6973D763ECAA04"
+        "MsmKey" = "8:_8B7745BA60FE476A831A76FB85CD37D3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,13 +33,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E96CCB14172D4A41820217FCD4DA5E7F"
+        "MsmKey" = "8:_9C3726098E80474EA4C9666FC56E12C2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F66DB53D43C64D5BAC008390219126F7"
+        "MsmKey" = "8:_E96CCB14172D4A41820217FCD4DA5E7F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -115,6 +115,21 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_D673AAD6B72E461E9FBF38CC5785FF69"
+            {
+            "Name" = "8:InstallerScript.exe"
+            "Condition" = "8:"
+            "Object" = "8:_9C3726098E80474EA4C9666FC56E12C2"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_63325C31_D014_48C2_B4D4_5AECE319E048"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            "Run64Bit" = "11:FALSE"
+            }
         }
         "DefaultFeature"
         {
@@ -160,12 +175,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_214F716A237F4976BF6973D763ECAA04"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B7745BA60FE476A831A76FB85CD37D3"
             {
-            "SourcePath" = "8:E:\\Swinburne\\script.bat"
-            "TargetName" = "8:script.bat"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\Downloads\\SAVLogo2.ico"
+            "TargetName" = "8:SAVLogo2.ico"
             "Tag" = "8:"
-            "Folder" = "8:_BE6D2E4E99DA4C8794AF294D4AFF4B73"
+            "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -176,7 +191,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -200,23 +215,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F66DB53D43C64D5BAC008390219126F7"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C3726098E80474EA4C9666FC56E12C2"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\Downloads\\SAVLogo2.ico"
-            "TargetName" = "8:SAVLogo2.ico"
+            "SourcePath" = "8:..\\InstallerScript\\bin\\Debug\\net8.0\\InstallerScript.exe"
+            "TargetName" = "8:InstallerScript.exe"
             "Tag" = "8:"
             "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Vital" = "11:FALSE"
+            "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -281,17 +296,6 @@
                             }
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A3E191E22615484A845298802094DA69"
-                    {
-                    "Name" = "8:Quarantine"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_77876404C7F74720B63D0B85CC6D835E"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_E5967766DA3B4B51AF85068F90A4C705"
@@ -333,7 +337,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Simple Antivirus"
         "ProductCode" = "8:{FEB8E60E-2A38-4D35-8686-3039530114C5}"
-        "PackageCode" = "8:{913F17E2-07E8-4267-89D7-4768E67D3E3D}"
+        "PackageCode" = "8:{7E88ECB9-2AE7-4022-AAC9-52E4E042DBC5}"
         "UpgradeCode" = "8:{91E9DA84-D5E6-4EF9-BFF5-8732E1A66E63}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -350,7 +354,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:The installer will guide you through the steps required to install our Simple Antivirus on your computer."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_F66DB53D43C64D5BAC008390219126F7"
+        "ARPPRODUCTICON" = "8:_8B7745BA60FE476A831A76FB85CD37D3"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
