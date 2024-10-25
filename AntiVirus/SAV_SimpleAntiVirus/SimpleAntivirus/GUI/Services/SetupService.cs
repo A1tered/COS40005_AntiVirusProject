@@ -323,7 +323,7 @@ namespace SimpleAntivirus.GUI.Services
                     {
                         if (Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
                         {
-                            ErrorMessage($"Database setup failed, unexpected pre-existing databases found");
+                            ErrorMessage($"Database setup failed, unexpected pre-existing databases found {databaseName}");
                         }
                     }
                 }
