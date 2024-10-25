@@ -366,15 +366,11 @@ namespace SimpleAntivirus.GUI.Services
             if (_configDictionary.ContainsKey("darkMode")) {
                 if (_configDictionary["darkMode"] == 0)
                 {
-                    ApplicationThemeManager.Apply(ApplicationTheme.Light);
+                    _applicationTheme = ApplicationTheme.Light;
                 }
                 else
                 {
-                    ApplicationThemeManager.Apply(ApplicationTheme.Dark);
-                }
-                if (!_testingMode)
-                {
-                    _applicationTheme = ApplicationThemeManager.GetAppTheme();
+                    _applicationTheme = ApplicationTheme.Dark;
                 }
             }
             // Ensure existence of database key folders

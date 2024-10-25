@@ -144,9 +144,10 @@ namespace SimpleAntivirus
                 //window.CloseWindowGracefully();
 
                 ApplicationTheme appThemeGet = SetupService.GetExistingInstance().ApplicationTheme;
-
+                ApplicationThemeManager.Apply(appThemeGet);
                 if (appThemeGet != ApplicationTheme.Unknown)
                 {
+                    System.Diagnostics.Debug.WriteLine("Theme set");
                     _host.Services.GetService<DashboardViewModel>().CurrentTheme = SetupService.GetExistingInstance().ApplicationTheme;
                 }
 
