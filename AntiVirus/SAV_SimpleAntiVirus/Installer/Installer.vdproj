@@ -15,37 +15,31 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1CAF135A25094302A9346D922B4E4F22"
+        "MsmKey" = "8:_18FF5C62011744B9B1E3C8ADE8C9F741"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_28D3A68B6639452AB695D2745262520D"
+        "MsmKey" = "8:_214F716A237F4976BF6973D763ECAA04"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_87BCE7F5AF0342C2AA457FA98E5610CA"
+        "MsmKey" = "8:_922CB7D1A5DC41B8915D9156DE90020A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C720833A93404A2C9C154A38E99FBB82"
+        "MsmKey" = "8:_E96CCB14172D4A41820217FCD4DA5E7F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D3162383E5654FDBAA92CA5B3A707F02"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FF1217A473434D9E80B8CF58A036996C"
+        "MsmKey" = "8:_F66DB53D43C64D5BAC008390219126F7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -146,32 +140,12 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_28D3A68B6639452AB695D2745262520D"
-            {
-            "SourcePath" = "8:..\\SimpleAntivirus\\bin\\Debug\\net8.0-windows10.0.17763.0\\Databases\\integrity_database.db"
-            "TargetName" = "8:integrity_database.db"
-            "Tag" = "8:"
-            "Folder" = "8:_64F9C6D689F647B69EA8B2164BA76B07"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_87BCE7F5AF0342C2AA457FA98E5610CA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18FF5C62011744B9B1E3C8ADE8C9F741"
             {
             "SourcePath" = "8:..\\SimpleAntivirus\\bin\\Debug\\net8.0-windows10.0.17763.0\\Databases\\initialisation_databases\\malicious_commands_init.db"
             "TargetName" = "8:malicious_commands_init.db"
             "Tag" = "8:"
-            "Folder" = "8:_99C6E5C99EB54153A4EFC1D023279EBC"
+            "Folder" = "8:_6520401A735940229DB1EC74F54EC458"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -186,12 +160,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C720833A93404A2C9C154A38E99FBB82"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_214F716A237F4976BF6973D763ECAA04"
+            {
+            "SourcePath" = "8:E:\\Swinburne\\script.bat"
+            "TargetName" = "8:script.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_BE6D2E4E99DA4C8794AF294D4AFF4B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_922CB7D1A5DC41B8915D9156DE90020A"
             {
             "SourcePath" = "8:..\\SimpleAntivirus\\bin\\Debug\\net8.0-windows10.0.17763.0\\Databases\\initialisation_databases\\sighash_initialisation_init.db"
             "TargetName" = "8:sighash_initialisation_init.db"
             "Tag" = "8:"
-            "Folder" = "8:_99C6E5C99EB54153A4EFC1D023279EBC"
+            "Folder" = "8:_6520401A735940229DB1EC74F54EC458"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -206,15 +200,15 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3162383E5654FDBAA92CA5B3A707F02"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F66DB53D43C64D5BAC008390219126F7"
             {
-            "SourcePath" = "8:..\\SimpleAntivirus\\bin\\Debug\\net8.0-windows10.0.17763.0\\Databases\\sighash.db"
-            "TargetName" = "8:sighash.db"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\Downloads\\SAVLogo2.ico"
+            "TargetName" = "8:SAVLogo2.ico"
             "Tag" = "8:"
-            "Folder" = "8:_64F9C6D689F647B69EA8B2164BA76B07"
+            "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
+            "Vital" = "11:FALSE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
@@ -222,27 +216,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FF1217A473434D9E80B8CF58A036996C"
-            {
-            "SourcePath" = "8:..\\SimpleAntivirus\\bin\\Debug\\net8.0-windows10.0.17763.0\\Databases\\malicious_commands.db"
-            "TargetName" = "8:malicious_commands.db"
-            "Tag" = "8:"
-            "Folder" = "8:_64F9C6D689F647B69EA8B2164BA76B07"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -263,6 +237,18 @@
                 {
                 }
             }
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_BE6D2E4E99DA4C8794AF294D4AFF4B73"
+            {
+            "DefaultLocation" = "8:[CommonAppDataFolder]\\SimpleAntiVirus"
+            "Name" = "8:ProgramData"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY1"
+                "Folders"
+                {
+                }
+            }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C7681808C504459D88C15D7F2553D2BB"
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
@@ -273,35 +259,35 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_64F9C6D689F647B69EA8B2164BA76B07"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_477DD9E29F9D4BECAE2DE1F2BE390B91"
                     {
                     "Name" = "8:Databases"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_8420DA99AFE54258831A82CF98DBC640"
+                    "Property" = "8:_FB822C4DF8FF4A1E9DB36C117320280F"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_99C6E5C99EB54153A4EFC1D023279EBC"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6520401A735940229DB1EC74F54EC458"
                             {
                             "Name" = "8:initialisation_databases"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_DA4E102A161C45DBA748C683FB320512"
+                            "Property" = "8:_5E33DF8DB76C44CCB2AC980138E11FFC"
                                 "Folders"
                                 {
                                 }
                             }
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8A3D1535B4274EF1836BA5EE5D2A23A5"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A3E191E22615484A845298802094DA69"
                     {
                     "Name" = "8:Quarantine"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_6D9BE5A4E8C144EA9BCCD023F705EDDD"
+                    "Property" = "8:_77876404C7F74720B63D0B85CC6D835E"
                         "Folders"
                         {
                         }
@@ -345,7 +331,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SAV"
+        "ProductName" = "8:Simple Antivirus"
         "ProductCode" = "8:{FEB8E60E-2A38-4D35-8686-3039530114C5}"
         "PackageCode" = "8:{913F17E2-07E8-4267-89D7-4768E67D3E3D}"
         "UpgradeCode" = "8:{91E9DA84-D5E6-4EF9-BFF5-8732E1A66E63}"
@@ -353,9 +339,9 @@
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:SAV"
+        "Manufacturer" = "8:Bad Security Inc."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Installer"
@@ -364,7 +350,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:The installer will guide you through the steps required to install our Simple Antivirus on your computer."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_F66DB53D43C64D5BAC008390219126F7"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -894,7 +880,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1CAF135A25094302A9346D922B4E4F22"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E96CCB14172D4A41820217FCD4DA5E7F"
             {
             "SourcePath" = "8:..\\SimpleAntivirus\\obj\\Debug\\net8.0-windows10.0.17763.0\\apphost.exe"
             "TargetName" = "8:"
