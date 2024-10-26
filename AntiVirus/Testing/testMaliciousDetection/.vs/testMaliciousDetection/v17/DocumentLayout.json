@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testmaliciousdetection\\testdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|solutionrelative:testdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testmaliciousdetection\\testdatabasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|solutionrelative:testdatabasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\testing\\testmaliciousdetection\\testmaliciouscodescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE099E4-0CA7-4923-BBD5-F7CE0191232A}|testMaliciousDetection.csproj|solutionrelative:testmaliciouscodescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29F0EF92-FDBA-4A7B-B50F-6B88B464D677}|..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\SimpleAntivirus.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\antivirus\\sav_simpleantivirus\\simpleantivirus\\maliciouscodescanning\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "RelativeDocumentMoniker": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "RelativeToolTip": "..\\..\\SAV_SimpleAntiVirus\\SimpleAntivirus\\MaliciousCodeScanning\\DatabaseHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T01:36:30.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "testMaliciousCodeScanner.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testMaliciousCodeScanner.cs",
+              "RelativeDocumentMoniker": "testMaliciousCodeScanner.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testMaliciousCodeScanner.cs",
+              "RelativeToolTip": "testMaliciousCodeScanner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T01:27:24.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "testDetector.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testDetector.cs",
+              "RelativeDocumentMoniker": "testDetector.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testDetector.cs",
+              "RelativeToolTip": "testDetector.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T01:26:45.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "testDatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testDatabaseHandler.cs",
+              "RelativeDocumentMoniker": "testDatabaseHandler.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\AntiVirus\\Testing\\testMaliciousDetection\\testDatabaseHandler.cs",
+              "RelativeToolTip": "testDatabaseHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T01:21:10.973Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

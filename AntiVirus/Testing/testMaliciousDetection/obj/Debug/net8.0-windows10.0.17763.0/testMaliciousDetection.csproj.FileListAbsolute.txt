@@ -1,0 +1,13 @@
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\bin\Debug\net8.0-windows10.0.17763.0\CoverletSourceRootsMapping
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.csproj.AssemblyReference.cache
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.AssemblyInfoInputs.cache
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.AssemblyInfo.cs
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.csproj.CoreCompileInputs.cache
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.sourcelink.json
+E:\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.dll
+E:\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\refint\testMaliciousDetection.dll
+E:\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.pdb
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.dll
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\refint\testMaliciousDetection.dll
+C:\Users\Pawan\Documents\GitHub\COS40005_AntiVirusProject\AntiVirus\Testing\testMaliciousDetection\obj\Debug\net8.0-windows10.0.17763.0\testMaliciousDetection.pdb
