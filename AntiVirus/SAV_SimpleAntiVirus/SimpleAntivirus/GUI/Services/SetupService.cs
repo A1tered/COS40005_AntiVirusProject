@@ -65,7 +65,7 @@ namespace SimpleAntivirus.GUI.Services
 
             _dbNames = new string[] { "sighash.db", "alerts.db", "malicious_commands.db", "quarantine.db", "integrity_database.db" };
 
-            // db folers
+            // db folders
             _createFolders = new string[]{@"C:\ProgramData\SimpleAntiVirus\EncryptionKey",
                             @"C:\ProgramData\SimpleAntiVirus\DatabaseKey"};
         }
@@ -238,7 +238,7 @@ namespace SimpleAntivirus.GUI.Services
                 catch (KeyNotFoundException e)
                 {
                     // If we decrypt the config file and don't have this string, there is an issue.
-                    ErrorMessage("Configuration file has been tampered with and cannot be read, reinstall program.");
+                    ErrorMessage("Configuration file has been tampered with and cannot be read. Please reinstall Simple Antivirus and try again.");
                 }
             }
             else
@@ -323,7 +323,7 @@ namespace SimpleAntivirus.GUI.Services
                     {
                         if (Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
                         {
-                            ErrorMessage($"Database setup failed, unexpected pre-existing databases found {databaseName}");
+                            ErrorMessage($"Database setup failed, unexpected pre-existing databases found {databaseName}. Please reinstall Simple Antivirus and try again.");
                         }
                     }
                 }
@@ -378,7 +378,7 @@ namespace SimpleAntivirus.GUI.Services
             {
                 if (!Directory.Exists(folderSet))
                 {
-                    ErrorMessage("Incomplete ProgramData Setup! Reinstall Program!");
+                    ErrorMessage("Program files were incorrectly set up. Please reinstall Simple Antivirus and try again.");
                 }
             }
 
@@ -390,13 +390,13 @@ namespace SimpleAntivirus.GUI.Services
 
                     if (!Path.Exists(CreateFilePathInProjectDirectory($"Databases\\{databaseName}")))
                     {
-                        ErrorMessage($"{databaseName} DB missing, reinstall program");
+                        ErrorMessage($"The database {databaseName} is missing. Please reinstall Simple Antivirus and try again.");
                     }
                 }
             }
             else
             {
-                ErrorMessage("Databases folder does not exist!");
+                ErrorMessage("Databases folder does not exist. Please reinstall Simple Antivirus and try again.");
                 return false;
             }
 
@@ -411,11 +411,11 @@ namespace SimpleAntivirus.GUI.Services
             {
                 if (e.Message.Contains("file is not a database"))
                 {
-                    ErrorMessage("Keys in ProgramData are not the same keys that were utilised to encrypt the database. Reinstall Program.");
+                    ErrorMessage("The encryption keys in ProgramData are not the same keys that were utilised to encrypt the database. Please reinstall Simple Antivirus and try again.");
                     return false;
                 }
 
-                ErrorMessage("Database failed to open.");
+                ErrorMessage("Database failed to open. Please reinstall Simple Antivirus and try again.");
             }
 
 
@@ -454,7 +454,7 @@ namespace SimpleAntivirus.GUI.Services
             }
             catch (System.Security.Cryptography.CryptographicException e)
             {
-                ErrorMessage("Key for database has been corrupted or mismatch, reinstall program.");
+                ErrorMessage("The encryption key for the database has been corrupted or a mismatch has been found. Please reinstall Simple Antivirus and try again.");
                 return "failure";
             }
         }
