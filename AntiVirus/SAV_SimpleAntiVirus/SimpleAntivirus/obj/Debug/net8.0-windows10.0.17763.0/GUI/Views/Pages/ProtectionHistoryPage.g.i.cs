@@ -81,7 +81,7 @@ namespace SimpleAntivirus.GUI.Views.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SimpleAntivirus;component/gui/views/pages/protectionhistorypage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SimpleAntivirus;V1.0.0.0;component/gui/views/pages/protectionhistorypage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\GUI\Views\Pages\ProtectionHistoryPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

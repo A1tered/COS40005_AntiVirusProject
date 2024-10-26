@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleAntivirus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27760dd2c451d235cca8c655871189d68ec5b4ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6d600b1cd338fd185eb28ba30ef834116dc0337")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleAntivirus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleAntivirus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
