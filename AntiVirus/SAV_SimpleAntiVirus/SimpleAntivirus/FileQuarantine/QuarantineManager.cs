@@ -212,14 +212,14 @@ namespace SimpleAntivirus.FileQuarantine
         // Uses PowerShell to remove file permissions for a quarantined file
         private async Task RemoveFilePermissionsUsingPowerShell(string filePath)
         {
-            string command = $"icacls '{filePath}' /deny {Environment.UserName}:F";
+            string command = $"icacls '{filePath}' /deny '{Environment.UserName}:F'";
             await RunPowerShellCommandAsync(command);
         }
 
         // Uses PowerShell to restore file permissions for a file being unquarantined
         private async Task RestoreFilePermissionsUsingPowerShell(string filePath)
         {
-            string command = $"icacls '{filePath}' /grant {Environment.UserName}:F";
+            string command = $"icacls '{filePath}' /grant '{Environment.UserName}:F'";
             await RunPowerShellCommandAsync(command);
         }
         
