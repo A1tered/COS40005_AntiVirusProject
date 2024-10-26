@@ -146,28 +146,6 @@ namespace SimpleAntivirus.FileQuarantine
             }
         }
 
-        private void ObfuscateFileIntoLocation(string source, string dest)
-        {
-            // Moves file
-            using (FileStream fileWriter = File.OpenWrite(dest))
-            {
-                using (FileStream fileStream = File.OpenRead(source))
-                {
-                    byte[] byteBuffer = new byte[1024];
-                    int readBytes;
-                    while ((readBytes = fileStream.ReadAtLeast(byteBuffer, 1024, false)) > 0)
-                    {
-                        byte[] truncateBytes = new byte[readBytes];
-
-                        Array.Copy(byteBuffer, truncateBytes, readBytes);
-
-                        fileWriter.Write(truncateBytes);
-
-                    }
-                }
-            }
-        }
-
         public async Task<bool> DeleteFileAsync(string filePath)
         {
             try
