@@ -21,19 +21,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1DF9A4845CCF48EE9E3F95D203A945F7"
+        "MsmKey" = "8:_841F0B8000AD443EB857A5B67EA1E1CE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1EB8357DEF574E89A61AD3ADD34A872D"
+        "MsmKey" = "8:_90D8EA505CA5410DA2AE0DBCADEAC126"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_922CB7D1A5DC41B8915D9156DE90020A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C3E8265418F24A40B458512CF951F4F8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -51,7 +57,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\SAV Setup.msi"
+        "OutputFilename" = "8:Simple Antivirus Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -83,7 +89,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Installer.msi"
+        "OutputFilename" = "8:Simple Antivirus Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -115,31 +121,31 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_1BB4B3C917264585B99AF7F013F9EE2E"
-            {
-            "Name" = "8:Install.vbs"
-            "Condition" = "8:"
-            "Object" = "8:_1DF9A4845CCF48EE9E3F95D203A945F7"
-            "FileType" = "3:4"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_CFBE81CB_9AC3_4493_823A_143DFD55F95A"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_7D55953ED34F4056ABD25FAF574429AA"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_189CCAFAC5014AB0B3A2435DF25BEF11"
             {
             "Name" = "8:Uninstall.vbs"
             "Condition" = "8:"
-            "Object" = "8:_1EB8357DEF574E89A61AD3ADD34A872D"
+            "Object" = "8:_90D8EA505CA5410DA2AE0DBCADEAC126"
             "FileType" = "3:4"
             "InstallAction" = "3:4"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_5592E494_7CF6_4AEE_B2C1_EB218AB8E805"
+            "Identifier" = "8:_0800C09A_AACA_4B55_A9A2_D996963CCD0A"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DF54C0F8C5224BF2A224F5313B41AFF3"
+            {
+            "Name" = "8:Install.vbs"
+            "Condition" = "8:"
+            "Object" = "8:_C3E8265418F24A40B458512CF951F4F8"
+            "FileType" = "3:4"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_BA87A0A9_CA69_4584_B597_BA6608A49463"
             "InstallerClass" = "11:FALSE"
             "CustomActionData" = "8:"
             }
@@ -188,10 +194,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DF9A4845CCF48EE9E3F95D203A945F7"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_841F0B8000AD443EB857A5B67EA1E1CE"
             {
-            "SourcePath" = "8:Install.vbs"
-            "TargetName" = "8:Install.vbs"
+            "SourcePath" = "8:..\\..\\..\\images\\SAVLogo2.ico"
+            "TargetName" = "8:SAVLogo2.ico"
             "Tag" = "8:"
             "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
@@ -208,7 +214,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1EB8357DEF574E89A61AD3ADD34A872D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_90D8EA505CA5410DA2AE0DBCADEAC126"
             {
             "SourcePath" = "8:Uninstall.vbs"
             "TargetName" = "8:Uninstall.vbs"
@@ -234,6 +240,26 @@
             "TargetName" = "8:sighash_initialisation_init.db"
             "Tag" = "8:"
             "Folder" = "8:_6520401A735940229DB1EC74F54EC458"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3E8265418F24A40B458512CF951F4F8"
+            {
+            "SourcePath" = "8:Install.vbs"
+            "TargetName" = "8:Install.vbs"
+            "Tag" = "8:"
+            "Folder" = "8:_C7681808C504459D88C15D7F2553D2BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -338,7 +364,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Simple Antivirus"
         "ProductCode" = "8:{FEB8E60E-2A38-4D35-8686-3039530114C5}"
-        "PackageCode" = "8:{A4A68DFE-DB33-425F-874A-EC69F1217AAF}"
+        "PackageCode" = "8:{52A32F21-26EF-453D-A62A-A3061F1CBA18}"
         "UpgradeCode" = "8:{91E9DA84-D5E6-4EF9-BFF5-8732E1A66E63}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -355,7 +381,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:The installer will guide you through the steps required to install our Simple Antivirus on your computer."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_841F0B8000AD443EB857A5B67EA1E1CE"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -494,18 +520,18 @@
             "Icon" = "8:"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F88392A5461342A78B503DAA8AB3ED49"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C184C3BB572A451785CFAA818C1D593B"
             {
-            "Name" = "8:Shortcut to %sUser's Desktop"
+            "Name" = "8:Simple Antivirus"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_A437E0A595BE49F79AD5C37FA7379536"
+            "Target" = "8:_E96CCB14172D4A41820217FCD4DA5E7F"
             "Folder" = "8:_A437E0A595BE49F79AD5C37FA7379536"
-            "WorkingFolder" = "8:_A437E0A595BE49F79AD5C37FA7379536"
-            "Icon" = "8:"
+            "WorkingFolder" = "8:_C7681808C504459D88C15D7F2553D2BB"
+            "Icon" = "8:_841F0B8000AD443EB857A5B67EA1E1CE"
             "Feature" = "8:"
             }
         }
