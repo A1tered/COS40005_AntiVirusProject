@@ -5,19 +5,19 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Pawan\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\CardmanOfficial\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.11.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Pawan\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\CardmanOfficial\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.diagnostics.tracing.traceevent\3.1.15\buildTransitive\Microsoft.Diagnostics.Tracing.TraceEvent.props" Condition="Exists('$(NuGetPackageRoot)microsoft.diagnostics.tracing.traceevent\3.1.15\buildTransitive\Microsoft.Diagnostics.Tracing.TraceEvent.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgWPF-UI Condition=" '$(PkgWPF-UI)' == '' ">C:\Users\Pawan\.nuget\packages\wpf-ui\3.0.4</PkgWPF-UI>
-    <PkgWPF-UI_Tray Condition=" '$(PkgWPF-UI_Tray)' == '' ">C:\Users\Pawan\.nuget\packages\wpf-ui.tray\3.0.4</PkgWPF-UI_Tray>
+    <PkgWPF-UI Condition=" '$(PkgWPF-UI)' == '' ">C:\Users\CardmanOfficial\.nuget\packages\wpf-ui\3.0.4</PkgWPF-UI>
+    <PkgWPF-UI_Tray Condition=" '$(PkgWPF-UI_Tray)' == '' ">C:\Users\CardmanOfficial\.nuget\packages\wpf-ui.tray\3.0.4</PkgWPF-UI_Tray>
   </PropertyGroup>
 </Project>
