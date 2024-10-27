@@ -23,7 +23,7 @@
   <h3 align="center">SAV</h3>
 
   <p align="center">
-    SAV is an awesome and Simple AntiVirus project made by a small team of student at Swinburne Uni!
+    SAV is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University of Technology
     <br />
     <a href="https://github.com/A1tered/COS40005_AntiVirusProject"><strong>Explore the docs »</strong></a>
     <br />
@@ -104,15 +104,13 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- Repo Structure -->
 ## Repository Structure
 
-The repository is organized into two main folders: AntiVirus and ProofConcepts. Each folder serves a distinct purpose in the development and organization of the Simple Antivirus (SAV) project.
+The repository is organized into two main folders: AntiVirus and Archive. Each folder serves a distinct purpose in the development and organization of the Simple Antivirus (SAV) project.
 
 * AntiVirus:
 This folder contains the core of the project, where the final, integrated version of the Simple Antivirus resides. All team members contribute their completed functionalities here, ensuring that the antivirus is cohesive and fully functional. The AntiVirus folder is the central hub where all features, from real-time monitoring to file scanning, come together to form the finished product. Additionally, this is where the test files and projects are location for the testing phase of the project. 
 
 * Archive:
 The Archive folder is a dedicated space for experimentation and development of individual functionalities. Here, team members create drafts, prototypes, and test versions of the components before they are finalized. This allows for iterative development and testing of new ideas without affecting the stability of the main project. Once a feature is polished and fully developed, it is then integrated into the main AntiVirus project. Proof concepts being the first draft of each function, and v2 folder being the polished code that is used and prepared to be integrated into the main project. Additional files in archive include backup and original code that may be useful in future.
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -194,8 +192,8 @@ Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://git
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- ACKNOWLEDEMENTS -->
+## Acknowledgements
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
@@ -209,8 +207,6 @@ Use this space to list resources you find helpful and would like to give credit 
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
