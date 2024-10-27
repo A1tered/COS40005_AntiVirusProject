@@ -142,10 +142,11 @@ Please follow the below instructions to install Simple Antivirus onto your compu
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+Below are examples and short demonstrations of how to use Simple Antivirus
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Switch display theme
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<img src="Media/usagedemo1.gif" alt="Demonstration of how to switch display theme">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
