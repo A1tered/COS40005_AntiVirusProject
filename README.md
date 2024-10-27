@@ -58,13 +58,11 @@
   </ol>
 </details>
 
-
+## DISCLAIMER
+### Simple Antivirus is a student project and is provided "as is", and therefore is limited in functionality. It does not receive definition updates and does not support behavioural-based detection or heuristics. It should not be used as a replacement for traditional antivirus software. The authors are not liable for any damage to your computer from incorrect usage of the software. Licensed under the MIT License. See LICENSE.txt for more information.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-### DISCLAIMER
-#### Simple Antivirus is a student project and is provided "as is", and therefore is limited in functionality. It does not receive definition updates and does not support behavioural-based detection or heuristics. It should not be used as a replacement for traditional antivirus software. The authors are not liable for any damage to your computer from incorrect usage of the software. Licensed under the MIT License. See LICENSE.txt for more information.
 
 Simple Antivirus (SAV) is a lightweight and simple antivirus solution designed to protect Windows computers from potentially malicious activities, files, and processes. This project aims to deliver a simple yet powerful tool that runs quietly in the background, safeguarding your device through various detection methods including file hash scanning, malicious code checking, terminal monitoring and integrity checking.
 
@@ -81,12 +79,12 @@ If an assigned user logs onto the computer, the program will be installed for th
 
 SAV is designed to be a user-friendly yet powerful antivirus solution, providing essential protection without overwhelming users with unnecessary features or complexity.
 
-The Simple Antivirus (SAV) project was initiated on the 27th of Febuary, with the goal of developing a robust yet simple antivirus solution for Windows users. The project was conceptualized, planned, and executed by a dedicated team of developers, including Tim, Zach, Pawan, Chris, Joel, and Johann. Each team member contributed their expertise to various aspects of the project, from coding the core functionalities to planning and implementing the detection mechanisms. This teams collaborative efforts have resulted in a reliable and user-friendly antivirus solution that meets the needs of a wide range of users.
+The Simple Antivirus (SAV) project was initiated on the 27th of Febuary, with the goal of developing a robust yet simple antivirus solution for Windows users. The project was conceptualised, planned, and executed by a dedicated team of developers, including Tim, Zach, Pawan, Chris, Joel, and Johann. Each team member contributed their expertise to various aspects of the project, from coding the core functionalities to planning and implementing the detection mechanisms. This teams collaborative efforts have resulted in a reliable and user-friendly antivirus solution that meets the needs of a wide range of users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+<!-- Built With-->
 ### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
@@ -102,13 +100,13 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- Repo Structure -->
 ## Repository Structure
 
-The repository is organized into two main folders: AntiVirus and Archive. Each folder serves a distinct purpose in the development and organization of the Simple Antivirus (SAV) project.
+The repository is organised into two main folders: AntiVirus and Archive. Each folder serves a distinct purpose in the development and organisation of the Simple Antivirus (SAV) project.
 
 * AntiVirus:
 This folder contains the core of the project, where the final, integrated version of the Simple Antivirus resides. All team members contribute their completed functionalities here, ensuring that the antivirus is cohesive and fully functional. The AntiVirus folder is the central hub where all features, from real-time monitoring to file scanning, come together to form the finished product. Additionally, this is where the test files and projects are location for the testing phase of the project. 
 
 * Archive:
-The Archive folder is a dedicated space for experimentation and development of individual functionalities. Here, team members create drafts, prototypes, and test versions of the components before they are finalized. This allows for iterative development and testing of new ideas without affecting the stability of the main project. Once a feature is polished and fully developed, it is then integrated into the main AntiVirus project. Proof concepts being the first draft of each function, and v2 folder being the polished code that is used and prepared to be integrated into the main project. Additional files in archive include backup and original code that may be useful in future.
+The Archive folder is a dedicated space for experimentation and development of individual functionalities. Here, team members create drafts, prototypes, and test versions of the components before they are finalised. This allows for iterative development and testing of new ideas without affecting the stability of the main project. Once a feature is polished and fully developed, it is then integrated into the main AntiVirus project. Proof concepts being the first draft of each function, and v2 folder being the polished code that is used and prepared to be integrated into the main project. Additional files in archive include backup and original code that may be useful in future.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
