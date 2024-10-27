@@ -16,7 +16,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/A1tered/COS40005_AntiVirusProject">
+  <a href="https://github.com/A1tered/SimpleAntivirus">
     <img src="Media/SAVLogo2.png" alt="Logo" width="100" height="100">
   </a>
 
@@ -25,14 +25,7 @@
   <p align="center">
     SAV is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University!
     <br />
-    <a href="https://github.com/A1tered/COS40005_AntiVirusProject"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/A1tered/COS40005_AntiVirusProject">View Demo</a>
-    ·
-    <a href="https://github.com/A1tered/COS40005_AntiVirusProject/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/A1tered/COS40005_AntiVirusProject/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/A1tered/SimpleAntivirus">View Demo</a>
   </p>
 </div>
 
