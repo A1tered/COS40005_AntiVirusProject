@@ -23,7 +23,7 @@
   <h3 align="center">SAV</h3>
 
   <p align="center">
-    SAV is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University of Technology
+    SAV is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University!
     <br />
     <a href="https://github.com/A1tered/COS40005_AntiVirusProject"><strong>Explore the docs »</strong></a>
     <br />
