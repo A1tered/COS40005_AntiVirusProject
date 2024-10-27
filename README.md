@@ -17,7 +17,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/A1tered/COS40005_AntiVirusProject">
-    <img src="images/SAVLogo2.png" alt="Logo" width="100" height="100">
+    <img src="Media/SAVLogo2.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">SAV</h3>
@@ -48,6 +48,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li><a href="#repository-structure">Repository Structure</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -69,19 +70,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Simple Antivirus (SAV) is a lightweight and effective antivirus solution designed to protect Windows computers from potentially malicious activities, files, and processes. This project aims to deliver a simple yet powerful tool that runs quietly in the background, safeguarding your device through various detection methods including signature-based detection, heuristics, and behavior analysis.
+Simple Antivirus (SAV) is a lightweight and simple antivirus solution designed to protect Windows computers from potentially malicious activities, files, and processes. This project aims to deliver a simple yet powerful tool that runs quietly in the background, safeguarding your device through various detection methods including file hash scanning, malicious code checking, terminal monitoring and integrity checking.
 
 Key Features:
-* Installation Script: Easily set up SAV on your Windows machine with a straightforward installation script.
-* File and Disk Scanning: Quickly scan your files and disks to identify potentially harmful code, with options to quarantine or delete detected threats.
-* Real-Time Monitoring: Continuously monitor suspicious CMD and PowerShell commands, alerting users to any unusual activity.
-* Quarantine Management: Users can manage quarantined files, with options to unquarantine or permanently erase them.
-* File Hash Checking: Verify the integrity of files with hash checking, with an option for users to add custom file hashes for personalized protection.
-* Integrity Checking: Ensure the security of sensitive files through advanced integrity checks, protecting against tampering.
-* Tamper Prevention: Robust techniques are in place to prevent tampering with the antivirus, including secure configuration, input validation, memory protection, and more.
+* <b>Installation</b>: Easily set up Simple Antivirus on your Windows machine with a straightforward setup package. We chose .msi as it is simple to create the installer from and allows easy deployment for system administrators. Administrators can use Group Policy Editor to assign the program to either specific users or the entire computer.
+If an assigned user logs onto the computer, the program will be installed for them, and if it is assigned to a computer, the first user to log on will install the program for use by everyone. 
+* <b>Alerts</b>: Alerts are utilised thoroughly throughout the program. Alerts are displayed via Windows Toast notifications. If the same component sends more than one alert within a short timeframe, the alerts will be aggregated and the alert shown will display “There are 'number' new alerts for 'Component' , with the suggested action to “Review protection history immediately!” 
+* <b>File Hash Scanning</b>: Reads files from a given directory, computes its SHA1 hash and compares the hash to the SQLite database of hash signatures. If a match is found, the file is quarantined. Using the ‘Mark as Malicious’ page, hashes can be added to the blacklist by the user. Users can browse for files on the computer to be added, of which the file will be automatically quarantined. SHA1 hashes can also be manually added, and input validation is used to ensure a valid hash is entered.
+* <b>File Quarantine</b>: When a malicious file is found  (either by hash or if it contains malicious code), the file will be sent to <i>quarantine</i>. Using the GUI, the quarantined files can be managed. In the Quarantined Items page, files can be unquarantined, added to a whitelist, or deleted. Files that are unquarantined will be moved back to their original location and permissions will be restored. Add a file to the whitelist to unquarantine it, and mark it as safe. This will ensure the file is ignored by the Quarantine function if it is detected again in a scan. Deleting a quarantined file will permanently delete the file, it will <b>NOT</b> send it to the Recycle Bin. Remove a file from the whitelist using the Whitelist GUI page and selecting Remove from Whitelist.
+* <b>Integrity Checking</b>: Ensure the security of sensitive files. When a user selects files or folders to be integrity checked, the hash, file size, and existence of the file will be monitored. If any changes are detected, an integrity violation will be detected and an alert will be raised. Integrity scans can be conducted manually, but it also runs in the background and will reactively alert users of any violations.
+* <b>Malicious Code Scanning</b>: The malicious code scan runs simultaneously alongside the File Hash scan, and reads files in the directories, and searches for text-based files in either .bat, .txt or .pdf file formats for potentially malicious CMD or PowerShell commands.
+* <b>Protection History</b>: View all previously sent alerts here, and by clicking on an alert and then the Details button, the full details of the alert can be read in a neat view, which may prove useful to administrators. The alerts log can be cleared at any time.
+* <b>Terminal Scanning</b>: SAV monitors Command Prompt and PowerShell and sends an alert whenever the command line is used to access the Windows Registry. SAV does not block the registry from being accessed, it merely alerts the user that the registry is being accessed. There is also a check to ensure that SAV behaviour is not alerted.
 
-
-SAV is designed to be a user-friendly yet powerful antivirus solution, providing essential protection without overwhelming users with unnecessary features or complexity. Whether you're a casual user or a more advanced one, SAV offers reliable security that integrates seamlessly into your daily workflow.
+SAV is designed to be a user-friendly yet powerful antivirus solution, providing essential protection without overwhelming users with unnecessary features or complexity.
 
 The Simple Antivirus (SAV) project was initiated on the 27th of Febuary, with the goal of developing a robust yet simple antivirus solution for Windows users. The project was conceptualized, planned, and executed by a dedicated team of developers, including Tim, Zach, Pawan, Chris, Joel, and Johann. Each team member contributed their expertise to various aspects of the project, from coding the core functionalities to planning and implementing the detection mechanisms. This teams collaborative efforts have resulted in a reliable and user-friendly antivirus solution that meets the needs of a wide range of users.
 
@@ -192,7 +194,7 @@ Project Link: [https://github.com/A1tered/COS40005_AntiVirusProject](https://git
 
 
 
-<!-- ACKNOWLEDEMENTS -->
+<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
