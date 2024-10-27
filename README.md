@@ -169,7 +169,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Timothy Loh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Timothy Loh - [LinkedIn](https://www.linkedin.com/in/timothy-hj-loh/)
 
 Zachary Smith - [LinkedIn](https://www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
 
