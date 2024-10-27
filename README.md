@@ -20,10 +20,10 @@
     <img src="Media/SAVLogo2.png" alt="Logo" width="100" height="100">
   </a>
 
-  <h3 align="center">SAV</h3>
+  <h3 align="center">Simple Antivirus</h3>
 
   <p align="center">
-    SAV is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University!
+    Simple Antivirus (SAV) is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University!
     <br />
     <a href="https://github.com/A1tered/SimpleAntivirus">View Demo</a>
   </p>
