@@ -63,6 +63,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+### DISCLAIMER
+#### Simple Antivirus is a student project and is provided "as is", and therefore is limited in functionality. It does not receive definition updates and does not support behavioural-based detection or heuristics. It should not be used as a replacement for traditional antivirus software. The authors are not liable for any damage to your computer from incorrect usage of the software. Licensed under the MIT License. See LICENSE.txt for more information.
+
 Simple Antivirus (SAV) is a lightweight and simple antivirus solution designed to protect Windows computers from potentially malicious activities, files, and processes. This project aims to deliver a simple yet powerful tool that runs quietly in the background, safeguarding your device through various detection methods including file hash scanning, malicious code checking, terminal monitoring and integrity checking.
 
 Key Features:
