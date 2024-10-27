@@ -25,7 +25,7 @@
   <p align="center">
     Simple Antivirus (SAV) is an awesome and Simple AntiVirus project made by a small team of students at Swinburne University!
     <br />
-    <a href="https://github.com/A1tered/SimpleAntivirus">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=yuZQj9MRkhw">View Demo</a>
   </p>
 </div>
 
@@ -144,8 +144,68 @@ Please follow the below instructions to install Simple Antivirus onto your compu
 ## Usage
 Below are examples and short demonstrations of how to use Simple Antivirus
 
-### Switch display theme
+### Run a scan
+To run a scan, simply select Scan from the left navigation menu. There are three scan types; quick, full or custom. Use the radio button to select a scan then click 'Scan now!'
 
+#### Demo: Running a quick scan
+<img src="Media/usagedemo2.gif" alt="Demonstration for running a quick scan"/>
+
+#### Demo: Custom scans
+<img src="Media/usagedemo3.gif" alt="Demonstration for a custom scan"/>
+
+### Integrity Checking
+Integrity Checking works in the background, or you can run manual integrity scans.
+
+#### Demo: Adding a folder with files in it to be integrity scanned
+<img src="Media/usagedemo4.gif" alt="Demonstration for adding a folder of files to the integrity checking list"/>
+
+#### Demo: Manual Integrity Scan
+<img src="Media/usagedemo5.gif" alt="Demonstration for a manual integrity scan"/>
+
+#### Demo: Real-time alert for an integrity violation
+<img src="Media/usagedemo6.gif" alt="Demonstration for a real-time alert for an integrity violation"/>
+
+### Protection History
+View a list of all past alerts from the Protection History page. You can clear the alerts or select one and view its details by clicking the 'Details' button.
+
+#### Demo: Viewing an alert's details
+<img src="Media/usagedemo7.gif" alt="Demonstration for viewing the details of an alert"/>
+
+### Managing Quarantined Items
+On the quarantined items page, you can manage the files that are currently in quarantine. You can select files and either unquarantine, whitelist, or delete them.
+
+#### Demo: Unquarantine a file
+<img src="Media/usagedemo8.gif" alt="Demonstration for unquarantining a file"/>
+
+#### Demo: Add a file to the whitelist
+<img src="Media/usagedemo9.gif" alt="Demonstration for adding a file to whitelist"/>
+
+#### Demo: Delete a quarantined file
+<img src="Media/usagedemo10.gif" alt="Demonstration for deleting a quarantined file"/>
+
+### Mark as Malicious
+Notice something malicious that Simple Antivirus was unable to detect? Add a file or hash on this page and Simple Antivirus will promptly take action.
+
+#### Demo: Marking a file as malicious
+<img src="Media/usagedemo11.gif" alt="Demonstration for marking a file as malicious"/>
+
+#### Demo: Marking a hash as malicious
+<img src="Media/usagedemo12.gif" alt="Demonstration for marking a hash as malicious"/>
+
+### Removing Whitelisted Items
+You can remove files from the whitelist on the Whitelist page. Simply select the file and click the red 'Remove from Whitelist button'
+
+#### Demo: Removing a file from the whitelist
+<img src="Media/usagedemo13.gif" alt="Demonstration for removing a whitelisted file"/>
+
+### Terminal Scanning
+Simple Antivirus monitors your computer's terminal. If Command Prompt or PowerShell is being used to access the Windows Registry, you will be alerted. Terminal Scanning runs in the background.
+
+#### Demo: Simple Antivirus reacts to a registry query on the key HKEY_LOCAL_MACHINE
+<img src="Media/usagedemo14.gif" alt="Demonstration for Terminal Scanning"/>
+
+### Switch display theme
+To switch display theme, do so by toggling the switch on the bottom of the homepage.
 <img src="Media/usagedemo1.gif" alt="Demonstration of how to switch display theme">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
