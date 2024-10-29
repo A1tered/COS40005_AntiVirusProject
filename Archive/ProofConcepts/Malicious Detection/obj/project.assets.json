@@ -2510,19 +2510,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CardmanOfficial\\.nuget\\packages\\": {}
+    "C:\\Users\\Pawan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
+      "projectUniqueName": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
       "projectName": "Malicious Detection",
-      "projectPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
-      "packagesPath": "C:\\Users\\CardmanOfficial\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\obj\\",
+      "projectPath": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
+      "packagesPath": "C:\\Users\\Pawan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\CardmanOfficial\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pawan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

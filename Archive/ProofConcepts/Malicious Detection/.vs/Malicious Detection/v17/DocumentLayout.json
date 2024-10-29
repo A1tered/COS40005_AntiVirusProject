@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\",
+  "WorkspaceRootPath": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\scanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:scanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\detector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:detector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\fileattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:fileattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\cardmanofficial\\documents\\github\\cos40005_antivirusproject\\proofconcepts\\malicious detection\\malicious detection.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\scanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:scanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\fileattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:fileattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\detector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:detector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|c:\\users\\pawan\\documents\\github\\cos40005_antivirusproject\\archive\\proofconcepts\\malicious detection\\malicious detection.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{7B9E0C53-BC07-415F-A3B4-EF75925D5D2F}|Malicious Detection.csproj|solutionrelative:malicious detection.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,72 +42,76 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Scanner.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Scanner.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Scanner.cs",
               "RelativeDocumentMoniker": "Scanner.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Scanner.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Scanner.cs",
               "RelativeToolTip": "Scanner.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAQwHwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T06:38:07.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Detector.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Detector.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Detector.cs",
               "RelativeDocumentMoniker": "Detector.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Detector.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Detector.cs",
               "RelativeToolTip": "Detector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T00:44:52.511Z"
+              "WhenOpened": "2024-09-22T00:44:52.511Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Program.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAYwBsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T00:44:26.786Z"
+              "WhenOpened": "2024-09-22T00:44:26.786Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "FileAttributes.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\FileAttributes.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\FileAttributes.cs",
               "RelativeDocumentMoniker": "FileAttributes.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\FileAttributes.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\FileAttributes.cs",
               "RelativeToolTip": "FileAttributes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T01:14:48.971Z"
+              "WhenOpened": "2024-09-22T01:14:48.971Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "DatabaseHandler.cs",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\DatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\DatabaseHandler.cs",
               "RelativeDocumentMoniker": "DatabaseHandler.cs",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\DatabaseHandler.cs",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\DatabaseHandler.cs",
               "RelativeToolTip": "DatabaseHandler.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwEYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T00:34:17.183Z"
+              "WhenOpened": "2024-09-22T00:34:17.183Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Malicious Detection.csproj",
-              "DocumentMoniker": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
+              "DocumentMoniker": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
               "RelativeDocumentMoniker": "Malicious Detection.csproj",
-              "ToolTip": "C:\\Users\\CardmanOfficial\\Documents\\GitHub\\COS40005_AntiVirusProject\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
+              "ToolTip": "C:\\Users\\Pawan\\Documents\\GitHub\\COS40005_AntiVirusProject\\Archive\\ProofConcepts\\Malicious Detection\\Malicious Detection.csproj",
               "RelativeToolTip": "Malicious Detection.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -119,10 +123,6 @@
           "DockedWidth": 200,
           "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"

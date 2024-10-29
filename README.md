@@ -226,7 +226,7 @@ Timothy Loh - [LinkedIn](https://www.linkedin.com/in/timothy-hj-loh/)
 
 Zachary Smith - [LinkedIn](https://www.linkedin.com/in/zachsmith-zip) - zachjsmith.zip@gmail.com
 
-Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - email@example.com
+Pawanpreet Singh - [LinkedIn](https://www.linkedin.com/in/your_username) - pawansingh2002.email@gmail.com
 
 Christopher Thompson - 103995646@student.swin.edu.au
 
